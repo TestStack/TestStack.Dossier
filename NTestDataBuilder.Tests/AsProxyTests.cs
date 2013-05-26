@@ -21,11 +21,13 @@ namespace NTestDataBuilder.Tests
         [Test]
         public void GivenBuilderThatAltersProxyIsSetAsProxy_WhenBuilding_TheProxyIsAltered()
         {
-            var builder = new ProxyAlteringCustomerBuilder().AsProxy();
+            var builder = new ProxyAlteringCustomerBuilder()
+                .AsProxy()
+                .HasBeenMemberForYears(10);
 
             var proxy = builder.Build();
 
-            Assert.That(proxy.CustomerForHowManyYears(DateTime.Now), Is.EqualTo(ProxyAlteringCustomerBuilder.MemberFor));
+            Assert.That(proxy.CustomerForHowManyYears(DateTime.Now), Is.EqualTo(10));
         }
     }
 }

@@ -6,11 +6,17 @@ namespace NTestDataBuilder.Tests.Builders
 {
     class ProxyAlteringCustomerBuilder : DataBuilder<Customer, ProxyAlteringCustomerBuilder>
     {
-        public const int MemberFor = 4;
+        private int _years;
+
+        public ProxyAlteringCustomerBuilder HasBeenMemberForYears(int years)
+        {
+            _years = years;
+            return this;
+        }
 
         protected override void AlterProxy(Customer proxy)
         {
-            proxy.CustomerForHowManyYears(Arg.Any<DateTime>()).Returns(MemberFor);
+            proxy.CustomerForHowManyYears(Arg.Any<DateTime>()).Returns(_years);
         }
 
         protected override Customer BuildObject()
