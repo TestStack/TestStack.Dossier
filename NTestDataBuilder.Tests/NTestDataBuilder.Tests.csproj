@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FizzWare.NBuilder">
+      <HintPath>..\packages\NBuilder.3.0.1.1\lib\FizzWare.NBuilder.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.2.6.2\lib\nunit.framework.dll</HintPath>
     </Reference>
@@ -42,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Builders\BasicCustomerBuilder.cs" />
     <Compile Include="BuildTests.cs" />
+    <Compile Include="CreateListTests.cs" />
     <Compile Include="Entities\Customer.cs" />
     <Compile Include="GetOrDefaultTests.cs" />
     <Compile Include="GetSetTests.cs" />

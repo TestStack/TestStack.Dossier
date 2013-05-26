@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using FizzWare.NBuilder;
 
 namespace NTestDataBuilder
 {
@@ -77,6 +78,17 @@ namespace NTestDataBuilder
             return Has(property)
                 ? Get(property)
                 : default(TValue);
+        }
+
+        /// <summary>
+        /// Creates an NBuilder list builder expression that allows you to create a list of builders.
+        /// When you are done call .Build().Select(b => b.Build()) to get the list of entities.
+        /// </summary>
+        /// <param name="size">The size of list</param>
+        /// <returns>The NBuilder list builder for a list of <see cref="TBuilder"/> of the specified size</returns>
+        public static IListBuilder<TBuilder> CreateListOfSize(int size)
+        {
+            return Builder<TBuilder>.CreateListOfSize(size);
         }
 
         /// <summary>
