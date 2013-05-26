@@ -66,5 +66,14 @@ namespace NTestDataBuilder.Tests
             Assert.That(ex.Message, Is.StringStarting("No value has been recorded yet for FirstName; consider using Has(x => x.FirstName) to check for a value first."));
             Assert.That(ex.ParamName, Is.EqualTo("property"));
         }
+
+        [Test]
+        public void WhenRetrievingValueForANonProperty_ThenThrowAnException()
+        {
+            var ex = Assert.Throws<ArgumentException>(() => _b.Get(x => x.CustomerForHowManyYears(DateTime.Now)));
+
+            Assert.That(ex.Message, Is.StringStarting("Given property expression (x => x.CustomerForHowManyYears(DateTime.Now)) didn't specify a property on Customer"));
+            Assert.That(ex.ParamName, Is.EqualTo("property"));
+        }
     }
 }

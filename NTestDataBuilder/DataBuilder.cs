@@ -94,7 +94,14 @@ namespace NTestDataBuilder
         {
             var memExp = property.Body as MemberExpression;
             if (memExp == null)
-                throw new ArgumentException("Property must be valid on the entity object", "property");
+                throw new ArgumentException(
+                    string.Format(
+                        "Given property expression ({0}) didn't specify a property on {1}",
+                        property,
+                        typeof(TEntity).Name
+                    ),
+                    "property"
+                );
 
             return memExp.Member.Name;
         }
