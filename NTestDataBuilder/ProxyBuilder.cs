@@ -28,14 +28,14 @@ namespace NTestDataBuilder
         /// <returns>The proxy object</returns>
         public T Build()
         {
-            var proxyEntity = Substitute.For<T>();
-            var entityProperties = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
-            foreach (var property in entityProperties.Where(property => _properties.ContainsKey(property.Name)))
+            var proxy = Substitute.For<T>();
+            var properties = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+            foreach (var property in properties.Where(property => _properties.ContainsKey(property.Name)))
             {
-                property.GetValue(proxyEntity, null).Returns(_properties[property.Name]);
+                property.GetValue(proxy, null).Returns(_properties[property.Name]);
             }
 
-            return proxyEntity;
+            return proxy;
         }
     }
 }
