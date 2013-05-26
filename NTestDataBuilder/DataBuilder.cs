@@ -53,7 +53,27 @@ namespace NTestDataBuilder
         /// <returns>The recorded value of the property</returns>
         public TValue Get<TValue>(Expression<Func<TEntity, TValue>> property)
         {
+            if (!Has(property))
+                throw new ArgumentException(
+                    string.Format(
+                        "No value has been recorded yet for {0}; consider using Has(x => x.{0}) to check for a value first.",
+                        GetPropertyName(property)
+                    ),
+                    "property"
+                );
+
             return (TValue)_properties[GetPropertyName(property)];
+        }
+
+        /// <summary>
+        /// Returns whether or not there is currently a value recorded against the given property from <see cref="TEntity"/>.
+        /// </summary>
+        /// <typeparam name="TValue">The type of the property</typeparam>
+        /// <param name="property">A lambda expression specifying the property to retrieve the recorded value for</param>
+        /// <returns>Whether or not there is a recorded value for the property</returns>
+        protected bool Has<TValue>(Expression<Func<TEntity, TValue>> property)
+        {
+            return _properties.ContainsKey(GetPropertyName(property));
         }
 
         private static string GetPropertyName<TValue>(Expression<Func<TEntity, TValue>> property)

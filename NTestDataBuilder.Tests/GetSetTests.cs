@@ -1,4 +1,5 @@
-﻿using NTestDataBuilder.Tests.Builders;
+﻿using System;
+using NTestDataBuilder.Tests.Builders;
 using NUnit.Framework;
 
 namespace NTestDataBuilder.Tests
@@ -55,6 +56,15 @@ namespace NTestDataBuilder.Tests
             var retrieved = _b.Get(x => x.LastName);
 
             Assert.That(retrieved, Is.EqualTo(SetValue));
+        }
+
+        [Test]
+        public void GivenNoValueHasBeenSetForAProperty_WhenRetrievingTheValueForThatProperty_ThenThrowAnException()
+        {
+            var ex = Assert.Throws<ArgumentException>(() => _b.Get(x => x.FirstName));
+
+            Assert.That(ex.Message, Is.StringStarting("No value has been recorded yet for FirstName; consider using Has(x => x.FirstName) to check for a value first."));
+            Assert.That(ex.ParamName, Is.EqualTo("property"));
         }
     }
 }
