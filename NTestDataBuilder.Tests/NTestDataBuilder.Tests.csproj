@@ -43,6 +43,7 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BuildDataListTests.cs" />
     <Compile Include="Builders\BasicCustomerBuilder.cs" />
     <Compile Include="Builders\CustomerBuilder.cs" />
     <Compile Include="BuildTests.cs" />
