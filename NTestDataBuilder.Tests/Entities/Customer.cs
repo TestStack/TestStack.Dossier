@@ -4,6 +4,8 @@ namespace NTestDataBuilder.Tests.Entities
 {
     public class Customer
     {
+        protected Customer() {}
+
         public Customer(string firstName, string lastName, int yearJoined)
         {
             if (string.IsNullOrEmpty(firstName))
@@ -23,8 +25,8 @@ namespace NTestDataBuilder.Tests.Entities
             return since.Year - YearJoined;
         }
 
-        public string FirstName { get; private set; }
-        public string LastName { get; private set; }
-        public int YearJoined { get; private set; }
+        public virtual string FirstName { get; private set; }
+        public virtual string LastName { get; private set; }
+        public virtual int YearJoined { get; private set; }
     }
 }
