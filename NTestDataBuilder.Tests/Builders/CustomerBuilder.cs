@@ -6,14 +6,14 @@ namespace NTestDataBuilder.Tests.Builders
 {
     static class CustomerBuilderExtensions
     {
-        public static IList<Customer> BuildDataList(this IOperable<CustomerBuilder> list)
+        public static IList<Customer> BuildList(this IOperable<CustomerBuilder> list)
         {
-            return list.BuildDataList<Customer, CustomerBuilder>();
+            return list.BuildList<Customer, CustomerBuilder>();
         }
 
-        public static IList<Customer> BuildDataList(this IListBuilder<CustomerBuilder> list)
+        public static IList<Customer> BuildList(this IListBuilder<CustomerBuilder> list)
         {
-            return list.BuildDataList<Customer, CustomerBuilder>();
+            return list.BuildList<Customer, CustomerBuilder>();
         }
     }
 

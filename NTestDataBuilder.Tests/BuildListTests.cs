@@ -6,34 +6,34 @@ using NUnit.Framework;
 
 namespace NTestDataBuilder.Tests
 {
-    class BuildDataListTests
+    class BuildListTests
     {
         [Test]
-        public void GivenListOfBuilders_WhenCallingBuildDataList_ThenAListOfEntitiesOfTheRightSizeShouldBeReturned()
+        public void GivenListOfBuilders_WhenCallingBuildList_ThenAListOfEntitiesOfTheRightSizeShouldBeReturned()
         {
             var builders = BasicCustomerBuilder.CreateListOfSize(5);
 
-            var entities = builders.BuildDataList<Customer, BasicCustomerBuilder>();
+            var entities = builders.BuildList<Customer, BasicCustomerBuilder>();
 
             Assert.That(entities, Has.Count.EqualTo(5));
         }
 
         [Test]
-        public void GivenListOfBuilders_WhenCallingBuildDataList_ThenAListOfEntitiesOfTheRightTypeShouldBeReturned()
+        public void GivenListOfBuilders_WhenCallingBuildList_ThenAListOfEntitiesOfTheRightTypeShouldBeReturned()
         {
             var builders = BasicCustomerBuilder.CreateListOfSize(5);
 
-            var entities = builders.BuildDataList<Customer, BasicCustomerBuilder>();
+            var entities = builders.BuildList<Customer, BasicCustomerBuilder>();
 
             Assert.That(entities, Has.All.With.TypeOf<Customer>());
         }
 
         [Test]
-        public void GivenListOfBuilders_WhenCallingBuildDataList_ThenAListOfUniqueEntitiesShouldBeReturned()
+        public void GivenListOfBuilders_WhenCallingBuildList_ThenAListOfUniqueEntitiesShouldBeReturned()
         {
             var builders = BasicCustomerBuilder.CreateListOfSize(5);
 
-            var entities = builders.BuildDataList<Customer, BasicCustomerBuilder>();
+            var entities = builders.BuildList<Customer, BasicCustomerBuilder>();
 
             Assert.That(entities, Is.Unique);
         }
@@ -43,7 +43,7 @@ namespace NTestDataBuilder.Tests
         {
             var builders = CustomerBuilder.CreateListOfSize(5);
 
-            var entities = builders.BuildDataList();
+            var entities = builders.BuildList();
 
             Assert.That(entities, Has.Count.EqualTo(5));
         }
@@ -53,7 +53,7 @@ namespace NTestDataBuilder.Tests
         {
             var builders = CustomerBuilder.CreateListOfSize(5);
 
-            var entities = builders.BuildDataList();
+            var entities = builders.BuildList();
 
             Assert.That(entities, Has.All.TypeOf<Customer>());
         }
@@ -63,7 +63,7 @@ namespace NTestDataBuilder.Tests
         {
             var builders = CustomerBuilder.CreateListOfSize(5);
 
-            var entities = builders.BuildDataList();
+            var entities = builders.BuildList();
 
             Assert.That(entities, Is.Unique);
         }
@@ -75,7 +75,7 @@ namespace NTestDataBuilder.Tests
             var list = CustomerBuilder.CreateListOfSize(3)
                 .All().With(b => b.WithFirstName(generator.Generate().ToString()));
 
-            var data = list.BuildDataList();
+            var data = list.BuildList();
 
             Assert.That(data.Select(c => c.FirstName), Is.EqualTo(new[]{"0", "1", "2"}));
         }

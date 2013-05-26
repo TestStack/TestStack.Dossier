@@ -48,7 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AsProxyTests.cs" />
-    <Compile Include="BuildDataListTests.cs" />
+    <Compile Include="BuildListTests.cs" />
     <Compile Include="Builders\BasicCustomerBuilder.cs" />
     <Compile Include="Builders\CustomerBuilder.cs" />
     <Compile Include="Builders\ProxyAlteringCustomerBuilder.cs" />
