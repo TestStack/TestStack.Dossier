@@ -45,8 +45,8 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataBuilder.cs" />
-    <Compile Include="DataBuilderExtensions.cs" />
+    <Compile Include="TestDataBuilder.cs" />
+    <Compile Include="TestDataBuilderExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProxyBuilder.cs" />
   </ItemGroup>
