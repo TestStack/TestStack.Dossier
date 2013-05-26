@@ -12,7 +12,6 @@ How do I get started?
 
 1. `Install-Package NTestDataBuilder`
 2. Create a builder class for one of your objects, e.g. if you have a customer:
-
 ```c#
     // Customer.cs
     
@@ -83,13 +82,10 @@ How do I get started?
         }
     }
 ```
-
 3. Use the builder in a test, e.g.
-
 ```c#
     var customer = new CustomerBuilder().WithFirstName("Robert").Build();
 ```
-
 4. Consider using the Object Mother pattern in combination with the builders, see [my blog post](http://robdmoore.id.au/blog/2013/05/26/test-data-generation-the-right-way-object-mother-test-data-builders-nsubstitute-nbuilder/) for a description of how I use this library.
 
 How can I create a list of entities using my builders?
@@ -166,6 +162,8 @@ If you need to alter the proxy before calling `Build` to add complex behaviours 
     var customer = new CustomerBuilder().AsProxy().HasBeenMemberForYears(10);
     var years = customer.CustomerForHowManyYears(DateTime.Now); // 10
 ```
+
+*Remember that when using proxy objects of real classes that you need to mark properties and methods as virtual and have a protected empty constructor.*
 
 Why does NTestDataBuilder have NSubstitute and NBuilder as dependencies?
 ------------------------------------------------------------------------
