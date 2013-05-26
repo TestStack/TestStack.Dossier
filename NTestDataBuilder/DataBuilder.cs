@@ -66,6 +66,20 @@ namespace NTestDataBuilder
         }
 
         /// <summary>
+        /// Gets the recorded value for the given property from <see cref="TEntity"/> or if no
+        /// value has been recorded the default value for <see cref="TValue"/>.
+        /// </summary>
+        /// <typeparam name="TValue">The type of the property</typeparam>
+        /// <param name="property">A lambda expression specifying the property to retrieve the recorded value for</param>
+        /// <returns>The recorded value of the property or teh default value for <see cref="TValue"/> if no value recorded</returns>
+        public TValue GetOrDefault<TValue>(Expression<Func<TEntity, TValue>> property)
+        {
+            return Has(property)
+                ? Get(property)
+                : default(TValue);
+        }
+
+        /// <summary>
         /// Returns whether or not there is currently a value recorded against the given property from <see cref="TEntity"/>.
         /// </summary>
         /// <typeparam name="TValue">The type of the property</typeparam>

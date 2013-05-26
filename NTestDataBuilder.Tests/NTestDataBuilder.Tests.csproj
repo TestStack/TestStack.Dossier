@@ -43,6 +43,7 @@
     <Compile Include="Builders\BasicCustomerBuilder.cs" />
     <Compile Include="BuildTests.cs" />
     <Compile Include="Entities\Customer.cs" />
+    <Compile Include="GetOrDefaultTests.cs" />
     <Compile Include="GetSetTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

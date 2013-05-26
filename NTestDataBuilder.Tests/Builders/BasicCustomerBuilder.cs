@@ -6,7 +6,7 @@ namespace NTestDataBuilder.Tests.Builders
     {
         public override Customer Build()
         {
-            return new Customer("First Name", "Last Name");
+            return new Customer("First Name", "Last Name", 2013);
         }
     }
 }
