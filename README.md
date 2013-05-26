@@ -45,7 +45,7 @@ How do I get started?
     
     // CustomerBuilder.cs
     
-    class CustomerBuilder : DataBuilder<Customer, CustomerBuilder>
+    class CustomerBuilder : TestDataBuilder<Customer, CustomerBuilder>
     {
         public CustomerBuilder()
         {
@@ -137,7 +137,7 @@ This library integrates with [NSubstitute](http://nsubstitute.github.io/) for ge
 If you need to alter the proxy before calling `Build` to add complex behaviours that can't be expressed by the default public properties returns values then you can override the `AlterProxy` method in your builder, e.g.
 
 ```c#
-    class CustomerBuilder : DataBuilder<Customer, CustomerBuilder>
+    class CustomerBuilder : TestDataBuilder<Customer, CustomerBuilder>
     {
         // ...
         
@@ -170,7 +170,7 @@ Why does NTestDataBuilder have NSubstitute and NBuilder as dependencies?
 
 NTestDataBuilder is an opinionated framework and as such prescribes how to build your fixture data, including how to build lists and how to build mock objects. Because of this we have decided to bundle it with the two best of breed libraries for this purpose: NBuilder and NSubstitute.
 
-This allows for this library to provide a rich value-add on top of the basics of tracking properties in a dictionary in the `DataBuilder` base class. If you want to use different libraries or want a cut down version that doesn't come with NSubstitute or NBuilder and the extra functionality they bring then take the `DataBuilder.cs` file and cut out the bits you don't want - open source ftw :).
+This allows for this library to provide a rich value-add on top of the basics of tracking properties in a dictionary in the `TestDataBuilder` base class. If you want to use different libraries or want a cut down version that doesn't come with NSubstitute or NBuilder and the extra functionality they bring then take the `TestDataBuilder.cs` file and cut out the bits you don't want - open source ftw :).
 
 If you have a suggestion for the library that can incorporate this value-add without bundling these libraries feel free to submit a pull request.
 

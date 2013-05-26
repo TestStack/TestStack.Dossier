@@ -9,7 +9,7 @@ namespace NTestDataBuilder
     /// Generates objects of type <see cref="T"/>.
     /// </summary>
     /// <typeparam name="T">The type of object this class generates</typeparam>
-    public interface IDataBuilder<out T> where T : class
+    public interface ITestDataBuilder<out T> where T : class
     {
         /// <summary>
         /// Build the object.
@@ -23,9 +23,9 @@ namespace NTestDataBuilder
     /// </summary>
     /// <typeparam name="TObject">The type of object this class generates</typeparam>
     /// <typeparam name="TBuilder">The type for this class, yes this is a recursive type definition</typeparam>
-    public abstract class DataBuilder<TObject, TBuilder> : IDataBuilder<TObject>
+    public abstract class TestDataBuilder<TObject, TBuilder> : ITestDataBuilder<TObject>
         where TObject : class
-        where TBuilder : class, IDataBuilder<TObject>
+        where TBuilder : class, ITestDataBuilder<TObject>
     {
         private readonly Dictionary<string, object> _properties = new Dictionary<string, object>();
         private ProxyBuilder<TObject> _proxyBuilder;

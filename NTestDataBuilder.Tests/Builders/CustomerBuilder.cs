@@ -17,7 +17,7 @@ namespace NTestDataBuilder.Tests.Builders
         }
     }
 
-    class CustomerBuilder : DataBuilder<Customer, CustomerBuilder>
+    class CustomerBuilder : TestDataBuilder<Customer, CustomerBuilder>
     {
         public CustomerBuilder()
         {

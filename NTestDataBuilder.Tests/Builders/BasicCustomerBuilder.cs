@@ -2,7 +2,7 @@
 
 namespace NTestDataBuilder.Tests.Builders
 {
-    class BasicCustomerBuilder : DataBuilder<Customer, BasicCustomerBuilder>
+    class BasicCustomerBuilder : TestDataBuilder<Customer, BasicCustomerBuilder>
     {
         protected override Customer BuildObject()
         {

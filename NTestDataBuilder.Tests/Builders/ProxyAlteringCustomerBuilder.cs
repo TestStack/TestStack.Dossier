@@ -4,7 +4,7 @@ using NTestDataBuilder.Tests.Entities;
 
 namespace NTestDataBuilder.Tests.Builders
 {
-    class ProxyAlteringCustomerBuilder : DataBuilder<Customer, ProxyAlteringCustomerBuilder>
+    class ProxyAlteringCustomerBuilder : TestDataBuilder<Customer, ProxyAlteringCustomerBuilder>
     {
         private int _years;
 
