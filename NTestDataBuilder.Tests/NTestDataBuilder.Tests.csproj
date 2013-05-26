@@ -47,9 +47,11 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AsProxyTests.cs" />
     <Compile Include="BuildDataListTests.cs" />
     <Compile Include="Builders\BasicCustomerBuilder.cs" />
     <Compile Include="Builders\CustomerBuilder.cs" />
+    <Compile Include="Builders\ProxyAlteringCustomerBuilder.cs" />
     <Compile Include="BuildTests.cs" />
     <Compile Include="CreateListTests.cs" />
     <Compile Include="Entities\Customer.cs" />

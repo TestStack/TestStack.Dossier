@@ -18,7 +18,7 @@ namespace NTestDataBuilder.Tests.Entities
             YearJoined = yearJoined;
         }
 
-        public int CustomerForHowManyYears(DateTime since)
+        public virtual int CustomerForHowManyYears(DateTime since)
         {
             if (since.Year < YearJoined)
                 throw new ArgumentException("Date must be on year or after year that customer joined.", "since");

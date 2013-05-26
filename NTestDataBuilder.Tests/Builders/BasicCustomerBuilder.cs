@@ -4,7 +4,7 @@ namespace NTestDataBuilder.Tests.Builders
 {
     class BasicCustomerBuilder : DataBuilder<Customer, BasicCustomerBuilder>
     {
-        public override Customer Build()
+        protected override Customer BuildObject()
         {
             return new Customer("First Name", "Last Name", 2013);
         }

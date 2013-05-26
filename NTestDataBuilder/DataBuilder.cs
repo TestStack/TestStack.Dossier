@@ -28,13 +28,47 @@ namespace NTestDataBuilder
         where TBuilder : class, IDataBuilder<TEntity>
     {
         private readonly Dictionary<string, object> _properties = new Dictionary<string, object>();
+        private ProxyBuilder<TEntity> _proxyBuilder;
 
         /// <summary>
         /// Build the object.
         /// </summary>
         /// <returns>The built object</returns>
-        public abstract TEntity Build();
+        public TEntity Build()
+        {
+            if (_proxyBuilder != null)
+            {
+                var proxy = _proxyBuilder.Build();
+                AlterProxy(proxy);
+                return proxy;
+            }
 
+            return BuildObject();
+        }
+
+        /// <summary>
+        /// Build the actual object
+        /// </summary>
+        /// <returns>The built object</returns>
+        protected abstract TEntity BuildObject();
+
+        /// <summary>
+        /// Return an NSubstitute proxy object when .Build() is called rather than a real object.
+        /// </summary>
+        /// <returns>The builder so that other method calls can be chained</returns>
+        public TBuilder AsProxy()
+        {
+            _proxyBuilder = new ProxyBuilder<TEntity>(_properties);
+            return this as TBuilder;
+        }
+
+        /// <summary>
+        /// Alter the proxy object just after it has been built and before it's returned from .Build().
+        /// This allows you to add any .Returns() values that are more complex than the public properties that are proxied by default.
+        /// </summary>
+        /// <param name="proxy">The proxy object</param>
+        protected virtual void AlterProxy(TEntity proxy) {}
+        
         /// <summary>
         /// Records the given value for the given property from <see cref="TEntity"/>.
         /// </summary>

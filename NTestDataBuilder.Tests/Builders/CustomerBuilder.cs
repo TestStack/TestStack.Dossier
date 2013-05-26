@@ -44,7 +44,7 @@ namespace NTestDataBuilder.Tests.Builders
             return this;
         }
 
-        public override Customer Build()
+        protected override Customer BuildObject()
         {
             return new Customer(
                 Get(x => x.FirstName),
