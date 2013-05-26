@@ -1,0 +1,41 @@
+﻿<?xml version='1.0' encoding='UTF-8'?> 
+<package>
+  <metadata>
+    <id>
+       NTestDataBuilder
+    </id>
+    <version>
+       0.1.0.0
+    </version>
+    <authors>
+       Robert Moore
+    </authors>
+    <description>
+      NTestDataBuilder provides you with the code instructure to easily and quickly generate test fixture data for your automated tests in a terse, readable and maintainable way using the Test Data Builder pattern.
+    </description>
+    <projectUrl>
+      https://github.com/robdmoore/NTestDataBuilder
+    </projectUrl>
+    <licenseUrl>
+      https://github.com/robdmoore/NTestDataBuilder/blob/master/LICENSE
+    </licenseUrl>
+    <iconUrl>
+      https://raw.github.com/robdmoore/NTestDataBuilder/master/logo.png
+    </iconUrl>
+    <tags>
+       testing, data generation, test fixture, nbuilder, nsubstitute, mocking
+    </tags>
+    <language>
+       en-US 
+    </language>
+    <dependencies>
+      <dependency id="NSubstitute" version="1.6.0.0" />
+      <dependency id="NBuilder" version="3.0.1.1" />
+    </dependencies>
+  </metadata>
+  <files>
+     <file src="bin\Release\NTestDataBuilder.dll" target="lib\NET40" />
+     <file src="bin\Release\NTestDataBuilder.pdb" target="lib\NET40" />
+     <file src="bin\Release\NTestDataBuilder.XML" target="lib\NET40" />
+  </files>
+</package>
