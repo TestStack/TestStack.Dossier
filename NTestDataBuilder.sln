@@ -12,6 +12,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{C98285
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTestDataBuilder.Tests", "NTestDataBuilder.Tests\NTestDataBuilder.Tests.csproj", "{DC49CE57-CB3F-487D-83DC-6A4E78CB908C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BC8508D1-6FCB-46B2-9C14-F41F6AD76B09}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE = LICENSE
+		logo.png = logo.png
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
