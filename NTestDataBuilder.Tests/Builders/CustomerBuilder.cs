@@ -8,7 +8,7 @@ namespace NTestDataBuilder.Tests.Builders
         {
             WithFirstName("Rob");
             WithLastName("Moore");
-            JoinedIn(2013);
+            WhoJoinedIn(2013);
         }
 
         public CustomerBuilder WithFirstName(string firstName)
@@ -23,7 +23,7 @@ namespace NTestDataBuilder.Tests.Builders
             return this;
         }
 
-        public CustomerBuilder JoinedIn(int yearJoined)
+        public CustomerBuilder WhoJoinedIn(int yearJoined)
         {
             Set(x => x.YearJoined, yearJoined);
             return this;
