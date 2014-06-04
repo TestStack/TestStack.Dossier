@@ -32,7 +32,8 @@ namespace NTestDataBuilder
             var properties = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
             foreach (var property in properties.Where(property => _properties.ContainsKey(property.Name)))
             {
-                property.GetValue(proxy, null).Returns(_properties[property.Name]);
+                if (property.GetGetMethod().IsVirtual)
+                    property.GetValue(proxy, null).Returns(_properties[property.Name]);
             }
 
             return proxy;

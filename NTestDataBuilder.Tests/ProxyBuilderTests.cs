@@ -59,5 +59,21 @@ namespace NTestDataBuilder.Tests
             Assert.That(proxy.LastName, Is.EqualTo("LastName"));
             Assert.That(proxy.YearJoined, Is.EqualTo(1));
         }
+
+        [Test]
+        public void GivenClassWithSomeVirtualProperties_WhenBuildingProxy_ThenOnlyVirtualMembersAreProxied()
+        {
+            var proxyBuilder = new ProxyBuilder<Company>(new Dictionary<string, object>()
+            {
+                {"Name", "Vandelay Industries"},
+                {"EmployeeCount", 100}
+            });
+
+            var proxy = proxyBuilder.Build();
+
+            Assert.That(proxy.Name, Is.EqualTo("Vandelay Industries"));
+            Assert.That(proxy.EmployeeCount, Is.EqualTo(0));
+        }
     }
 }
+    
