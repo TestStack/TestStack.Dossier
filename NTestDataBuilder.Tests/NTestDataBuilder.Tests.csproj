@@ -54,6 +54,7 @@
     <Compile Include="Builders\ProxyAlteringCustomerBuilder.cs" />
     <Compile Include="BuildTests.cs" />
     <Compile Include="CreateListTests.cs" />
+    <Compile Include="Entities\Company.cs" />
     <Compile Include="Entities\Customer.cs" />
     <Compile Include="GetOrDefaultTests.cs" />
     <Compile Include="GetSetTests.cs" />
