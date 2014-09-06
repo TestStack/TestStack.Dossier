@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnonymousValueFixture.cs" />
+    <Compile Include="EquivalenceClasses\StringEquivalenceClasses.cs" />
     <Compile Include="IAnonymousValueSupplier.cs" />
     <Compile Include="PropertyNameGetter.cs" />
     <Compile Include="Suppliers\DefaultValueSupplier.cs" />
