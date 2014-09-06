@@ -34,8 +34,9 @@
     </dependencies>
   </metadata>
   <files>
-     <file src="bin\Release\NTestDataBuilder.dll" target="lib\NET40" />
-     <file src="bin\Release\NTestDataBuilder.pdb" target="lib\NET40" />
-     <file src="bin\Release\NTestDataBuilder.XML" target="lib\NET40" />
+    <file src="bin\Release\NTestDataBuilder.dll" target="lib\NET40" />
+    <file src="bin\Release\NTestDataBuilder.pdb" target="lib\NET40" />
+    <file src="bin\Release\NTestDataBuilder.XML" target="lib\NET40" />
+    <file src="**\*.cs" exclude="obj\**\*.*" target="src" />
   </files>
 </package>
