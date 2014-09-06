@@ -48,6 +48,7 @@
     <Compile Include="IAnonymousValueSupplier.cs" />
     <Compile Include="PropertyNameGetter.cs" />
     <Compile Include="Suppliers\DefaultValueSupplier.cs" />
+    <Compile Include="Suppliers\StringValueSupplier.cs" />
     <Compile Include="TestDataBuilder.cs" />
     <Compile Include="TestDataBuilderExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

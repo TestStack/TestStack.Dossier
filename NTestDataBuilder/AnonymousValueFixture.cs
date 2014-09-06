@@ -19,8 +19,8 @@ namespace NTestDataBuilder
             GlobalValueSuppliers = new List<IAnonymousValueSupplier>();
             DefaultValueSuppliers = new IAnonymousValueSupplier[]
             {
+                new StringValueSupplier(),
                 new DefaultValueSupplier()
-                // todo
             };
         }
 
