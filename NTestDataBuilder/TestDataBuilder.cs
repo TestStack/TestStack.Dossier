@@ -31,6 +31,19 @@ namespace NTestDataBuilder
         private ProxyBuilder<TObject> _proxyBuilder;
 
         /// <summary>
+        /// Default Constructor.
+        /// </summary>
+        protected TestDataBuilder()
+        {
+            Any = new AnonymousValueFixture();
+        }
+
+        /// <summary>
+        /// Generate anonymous data using this fixture.
+        /// </summary>
+        public AnonymousValueFixture Any { get; private set; }
+
+        /// <summary>
         /// Build the object.
         /// </summary>
         /// <returns>The built object</returns>
@@ -75,9 +88,10 @@ namespace NTestDataBuilder
         /// <typeparam name="TValue">The type of the property</typeparam>
         /// <param name="property">A lambda expression specifying the property to record a value for</param>
         /// <param name="value">The value to record</param>
-        public void Set<TValue>(Expression<Func<TObject, TValue>> property, TValue value)
+        public TBuilder Set<TValue>(Expression<Func<TObject, TValue>> property, TValue value)
         {
-            _properties[GetPropertyName(property)] = value;
+            _properties[PropertyNameGetter.Get(property)] = value;
+            return this as TBuilder;
         }
 
         /// <summary>
@@ -89,15 +103,9 @@ namespace NTestDataBuilder
         public TValue Get<TValue>(Expression<Func<TObject, TValue>> property)
         {
             if (!Has(property))
-                throw new ArgumentException(
-                    string.Format(
-                        "No value has been recorded yet for {0}; consider using Has(x => x.{0}) to check for a value first.",
-                        GetPropertyName(property)
-                    ),
-                    "property"
-                );
+                return Any.Get(property);
 
-            return (TValue)_properties[GetPropertyName(property)];
+            return (TValue)_properties[PropertyNameGetter.Get(property)];
         }
 
         /// <summary>
@@ -126,30 +134,14 @@ namespace NTestDataBuilder
         }
 
         /// <summary>
-        /// Returns whether or not there is currently a value recorded against the given property from <see cref="TObject"/>.
+        /// Returns whether or not there is currently an explicit value recorded against the given property from <see cref="TObject"/>.
         /// </summary>
         /// <typeparam name="TValue">The type of the property</typeparam>
         /// <param name="property">A lambda expression specifying the property to retrieve the recorded value for</param>
         /// <returns>Whether or not there is a recorded value for the property</returns>
         protected bool Has<TValue>(Expression<Func<TObject, TValue>> property)
         {
-            return _properties.ContainsKey(GetPropertyName(property));
-        }
-
-        private static string GetPropertyName<TValue>(Expression<Func<TObject, TValue>> property)
-        {
-            var memExp = property.Body as MemberExpression;
-            if (memExp == null)
-                throw new ArgumentException(
-                    string.Format(
-                        "Given property expression ({0}) didn't specify a property on {1}",
-                        property,
-                        typeof(TObject).Name
-                    ),
-                    "property"
-                );
-
-            return memExp.Member.Name;
+            return _properties.ContainsKey(PropertyNameGetter.Get(property));
         }
     }
 }

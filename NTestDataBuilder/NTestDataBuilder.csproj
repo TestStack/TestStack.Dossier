@@ -44,6 +44,10 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnonymousValueFixture.cs" />
+    <Compile Include="IAnonymousValueSupplier.cs" />
+    <Compile Include="PropertyNameGetter.cs" />
+    <Compile Include="Suppliers\DefaultValueSupplier.cs" />
     <Compile Include="TestDataBuilder.cs" />
     <Compile Include="TestDataBuilderExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

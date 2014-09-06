@@ -59,12 +59,9 @@ namespace NTestDataBuilder.Tests
         }
 
         [Test]
-        public void GivenNoValueHasBeenSetForAProperty_WhenRetrievingTheValueForThatProperty_ThenThrowAnException()
+        public void GivenNoValueHasBeenSetForAProperty_WhenRetrievingTheValueForThatProperty_ThenReturnDefaultValue()
         {
-            var ex = Assert.Throws<ArgumentException>(() => _b.Get(x => x.FirstName));
-
-            Assert.That(ex.Message, Is.StringStarting("No value has been recorded yet for FirstName; consider using Has(x => x.FirstName) to check for a value first."));
-            Assert.That(ex.ParamName, Is.EqualTo("property"));
+            Assert.That(_b.Get(x => x.FirstName), Is.EqualTo(default(string)));
         }
 
         [Test]
@@ -74,6 +71,12 @@ namespace NTestDataBuilder.Tests
 
             Assert.That(ex.Message, Is.StringStarting("Given property expression (x => x.CustomerForHowManyYears(DateTime.Now)) didn't specify a property on Customer"));
             Assert.That(ex.ParamName, Is.EqualTo("property"));
+        }
+
+        [Test]
+        public void WhenSettingAValue_ThenReturntheBuilder()
+        {
+            Assert.That(_b.Set(x => x.FirstName, ""), Is.EqualTo(_b));
         }
     }
 }
