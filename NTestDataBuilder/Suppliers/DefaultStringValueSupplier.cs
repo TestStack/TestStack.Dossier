@@ -1,6 +1,4 @@
-﻿using NSubstitute.Core.Arguments;
-using NTestDataBuilder.EquivalenceClasses;
-using Ploeh.AutoFixture;
+﻿using NTestDataBuilder.EquivalenceClasses;
 
 namespace NTestDataBuilder.Suppliers
 {

@@ -54,9 +54,12 @@ namespace NTestDataBuilder.Tests
         }
 
         [Test]
-        public void GivenNoValueHasBeenSetForAnIntProperty_WhenRetrievingTheValueForThatProperty_ThenReturnDefaultValue()
+        public void GivenNoValueHasBeenSetForAnIntProperty_WhenRetrievingTheValueForThatProperty_ThenReturnAnonymousInteger()
         {
-            Assert.That(_b.Get(x => x.YearJoined), Is.EqualTo(default(int)));
+            var val1 = _b.Get(x => x.YearJoined);
+            var val2 = _b.Get(x => x.YearJoined);
+
+            Assert.That(val1, Is.Not.EqualTo(val2));
         }
     }
 }

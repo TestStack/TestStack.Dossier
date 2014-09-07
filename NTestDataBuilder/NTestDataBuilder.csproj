@@ -54,6 +54,7 @@
     <Compile Include="PropertyNameGetter.cs" />
     <Compile Include="Suppliers\DefaultValueSupplier.cs" />
     <Compile Include="Suppliers\DefaultStringValueSupplier.cs" />
+    <Compile Include="Suppliers\DefaultValueTypeValueSupplier.cs" />
     <Compile Include="TestDataBuilder.cs" />
     <Compile Include="TestDataBuilderExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

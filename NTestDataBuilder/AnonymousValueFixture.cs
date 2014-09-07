@@ -20,6 +20,7 @@ namespace NTestDataBuilder
             DefaultValueSuppliers = new IAnonymousValueSupplier[]
             {
                 new DefaultStringValueSupplier(),
+                new DefaultValueTypeValueSupplier(),
                 new DefaultValueSupplier()
             };
         }
