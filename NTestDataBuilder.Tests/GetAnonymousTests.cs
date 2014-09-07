@@ -1,4 +1,6 @@
-﻿using NTestDataBuilder.Tests.Builders;
+﻿using System.CodeDom;
+using NTestDataBuilder.Tests.Builders;
+using NTestDataBuilder.Tests.TestHelpers;
 using NUnit.Framework;
 
 namespace NTestDataBuilder.Tests
@@ -10,7 +12,40 @@ namespace NTestDataBuilder.Tests
         [SetUp]
         public void Setup()
         {
+            AnonymousValueFixture.GlobalValueSuppliers.Clear();
             _b = new BasicCustomerBuilder();
+        }
+
+        [Test]
+        public void GivenNoValueHasBeenSetForAPropertyAndAGlobalAndLocalSupplierHasBeenRegisteredThatWontAcceptThatProperty_WhenRetrievingTheValueForThatProperty_ThenDontUseLocalOrGlobalValue()
+        {
+            const string globalVal = "global";
+            const string localVal = "local";
+            AnonymousValueFixture.GlobalValueSuppliers.Add(new StaticAnonymousValueSupplier(globalVal));
+            _b.Any.LocalValueSuppliers.Add(new StaticAnonymousValueSupplier(localVal));
+
+            Assert.That(_b.Get(x => x.YearJoined), Is.Not.EqualTo(localVal));
+            Assert.That(_b.Get(x => x.YearJoined), Is.Not.EqualTo(globalVal));
+        }
+
+        [Test]
+        public void GivenNoValueHasBeenSetForAPropertyAndAGlobalAndLocalSupplierHasBeenRegisteredThatWillAcceptThatProperty_WhenRetrievingTheValueForThatProperty_ThenReturnLocalSupplierValue()
+        {
+            const string globalVal = "global";
+            const string localVal = "local";
+            AnonymousValueFixture.GlobalValueSuppliers.Add(new StaticAnonymousValueSupplier(globalVal));
+            _b.Any.LocalValueSuppliers.Add(new StaticAnonymousValueSupplier(localVal));
+
+            Assert.That(_b.Get(x => x.FirstName), Is.EqualTo(localVal));
+        }
+
+        [Test]
+        public void GivenNoValueHasBeenSetForAPropertyAndAGlobalSupplierHasBeenRegisteredThatWillAcceptThatProperty_WhenRetrievingTheValueForThatProperty_ThenReturnGlobalSupplierValue()
+        {
+            const string globalVal = "global";
+            AnonymousValueFixture.GlobalValueSuppliers.Add(new StaticAnonymousValueSupplier(globalVal));
+
+            Assert.That(_b.Get(x => x.FirstName), Is.EqualTo(globalVal));
         }
 
         [Test]
