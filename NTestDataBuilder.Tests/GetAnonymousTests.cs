@@ -11,7 +11,7 @@ namespace NTestDataBuilder.Tests
         [SetUp]
         public void Setup()
         {
-            AnonymousValueFixture.ClearGlobalState();
+            AnonymousValueFixture.GlobalValueSuppliers.Clear();
             _b = new BasicCustomerBuilder();
         }
 

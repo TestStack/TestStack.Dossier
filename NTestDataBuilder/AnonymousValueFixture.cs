@@ -16,7 +16,6 @@ namespace NTestDataBuilder
     {
         static AnonymousValueFixture()
         {
-            GlobalFixtureBag = new ExpandoObject();
             GlobalValueSuppliers = new List<IAnonymousValueSupplier>();
             DefaultValueSuppliers = new IAnonymousValueSupplier[]
             {
@@ -30,7 +29,6 @@ namespace NTestDataBuilder
         /// </summary>
         public AnonymousValueFixture()
         {
-            LocalFixtureBag = new ExpandoObject();
             LocalValueSuppliers = new List<IAnonymousValueSupplier>();
             Fixture = new Fixture();
         }
@@ -40,16 +38,6 @@ namespace NTestDataBuilder
         ///   and can be used to generate anonymous values using AutoFixture.
         /// </summary>
         public Fixture Fixture { get; private set; }
-
-        /// <summary>
-        /// Dynamic value store in case anonymous suppliers need to store global state.
-        /// </summary>
-        public static dynamic GlobalFixtureBag { get; private set; }
-
-        /// <summary>
-        /// Dynamic value store in case anonymous suppliers need to store fixture-specific state.
-        /// </summary>
-        public dynamic LocalFixtureBag { get; private set; }
 
         /// <summary>
         /// Ordered, immutable collection of default anonymous value suppliers to interrogate when automatically generating an anonymous value.
@@ -85,15 +73,6 @@ namespace NTestDataBuilder
                 .First(s => s.CanSupplyValue<TObject, T>(propertyName));
 
             return valueSupplier.GenerateAnonymousValue<TObject, T>(this, propertyName);
-        }
-
-        /// <summary>
-        /// Clears all global state.
-        /// </summary>
-        public static void ClearGlobalState()
-        {
-            GlobalValueSuppliers.Clear();
-            GlobalFixtureBag = new ExpandoObject();
         }
     }
 }
