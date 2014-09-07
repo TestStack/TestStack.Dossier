@@ -19,9 +19,9 @@
         /// </summary>
         /// <typeparam name="TObject">The type that the property is enclosed in</typeparam>
         /// <typeparam name="TValue">The type of the target property - the required anonymous value is of this type</typeparam>
-        /// <param name="fixture"></param>
-        /// <param name="propertyName"></param>
-        /// <returns></returns>
-        TValue GenerateAnonymousValue<TObject, TValue>(AnonymousValueFixture fixture, string propertyName);
+        /// <param name="any">Anonymous value fixture</param>
+        /// <param name="propertyName">The name of the property to return an anonymous value for</param>
+        /// <returns>The anonymous value</returns>
+        TValue GenerateAnonymousValue<TObject, TValue>(AnonymousValueFixture any, string propertyName);
     }
 }

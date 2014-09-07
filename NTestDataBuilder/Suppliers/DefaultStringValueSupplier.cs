@@ -1,4 +1,6 @@
-﻿using Ploeh.AutoFixture;
+﻿using NSubstitute.Core.Arguments;
+using NTestDataBuilder.EquivalenceClasses;
+using Ploeh.AutoFixture;
 
 namespace NTestDataBuilder.Suppliers
 {
@@ -14,9 +16,9 @@ namespace NTestDataBuilder.Suppliers
         }
 
         /// <inheritdoc />
-        public TValue GenerateAnonymousValue<TObject, TValue>(AnonymousValueFixture fixture, string propertyName)
+        public TValue GenerateAnonymousValue<TObject, TValue>(AnonymousValueFixture any, string propertyName)
         {
-            return (TValue) (object) fixture.Fixture.Create(propertyName);
+            return (TValue) (object) any.StringStartingWith(propertyName);
         }
     }
 }

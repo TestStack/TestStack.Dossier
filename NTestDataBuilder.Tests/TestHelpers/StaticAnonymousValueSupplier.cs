@@ -14,7 +14,7 @@
             return typeof(TValue) == _valueToSupply.GetType();
         }
 
-        public TValue GenerateAnonymousValue<TObject, TValue>(AnonymousValueFixture fixture, string propertyName)
+        public TValue GenerateAnonymousValue<TObject, TValue>(AnonymousValueFixture any, string propertyName)
         {
             return (TValue) _valueToSupply;
         }

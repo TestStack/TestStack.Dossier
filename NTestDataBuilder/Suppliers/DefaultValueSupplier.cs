@@ -12,7 +12,7 @@
         }
 
         /// <inheritdoc />
-        public TValue GenerateAnonymousValue<TObject, TValue>(AnonymousValueFixture fixture, string propertyName)
+        public TValue GenerateAnonymousValue<TObject, TValue>(AnonymousValueFixture any, string propertyName)
         {
             return default(TValue);
         }
