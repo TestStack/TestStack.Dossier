@@ -1,4 +1,4 @@
-﻿using NTestDataBuilder.Suppliers;
+﻿using Ploeh.AutoFixture;
 
 namespace NTestDataBuilder.EquivalenceClasses
 {
@@ -14,8 +14,7 @@ namespace NTestDataBuilder.EquivalenceClasses
         /// <returns>The generated string</returns>
         public static string String(this AnonymousValueFixture fixture)
         {
-            return new StringValueSupplier()
-                .GenerateAnonymousValue<object, string>(fixture, "");
+            return fixture.Fixture.Create<string>();
         }
     }
 }

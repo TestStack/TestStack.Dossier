@@ -59,18 +59,6 @@ namespace NTestDataBuilder.Tests
         }
 
         [Test]
-        public void GivenNoValueHasBeenSetForAStringProperty_WhenRetrievingTheValueForThatProperty_ThenReturnPropertyNameFollowedByGuid()
-        {
-            Assert.That(_b.Get(x => x.FirstName), Is.StringMatching("^FirstName[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"));
-        }
-
-        [Test]
-        public void GivenNoValueHasBeenSetForAnIntProperty_WhenRetrievingTheValueForThatProperty_ThenReturnDefaultValue()
-        {
-            Assert.That(_b.Get(x => x.YearJoined), Is.EqualTo(default(int)));
-        }
-
-        [Test]
         public void WhenRetrievingValueForANonProperty_ThenThrowAnException()
         {
             var ex = Assert.Throws<ArgumentException>(() => _b.Get(x => x.CustomerForHowManyYears(DateTime.Now)));

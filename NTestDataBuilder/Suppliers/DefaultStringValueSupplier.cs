@@ -1,8 +1,12 @@
 ﻿using System;
+using Ploeh.AutoFixture;
 
 namespace NTestDataBuilder.Suppliers
 {
-    public class StringValueSupplier : IAnonymousValueSupplier
+    /// <summary>
+    /// Supplies default anonymous value for a string type.
+    /// </summary>
+    public class DefaultStringValueSupplier : IAnonymousValueSupplier
     {
         public bool CanSupplyValue<TObject, TValue>(string propertyName)
         {
@@ -11,7 +15,7 @@ namespace NTestDataBuilder.Suppliers
 
         public TValue GenerateAnonymousValue<TObject, TValue>(AnonymousValueFixture fixture, string propertyName)
         {
-            return (TValue) (object) string.Format("{0}{1}", propertyName, Guid.NewGuid());
+            return (TValue) (object) fixture.Fixture.Create(propertyName);
         }
     }
 }

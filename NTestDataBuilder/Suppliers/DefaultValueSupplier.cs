@@ -1,7 +1,7 @@
 ﻿namespace NTestDataBuilder.Suppliers
 {
     /// <summary>
-    /// Supplies default value for the value type.
+    /// Supplies default value for any type.
     /// </summary>
     public class DefaultValueSupplier : IAnonymousValueSupplier
     {

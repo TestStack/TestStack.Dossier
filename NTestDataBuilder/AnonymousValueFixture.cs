@@ -4,6 +4,7 @@ using System.Dynamic;
 using System.Linq;
 using System.Linq.Expressions;
 using NTestDataBuilder.Suppliers;
+using Ploeh.AutoFixture;
 
 namespace NTestDataBuilder
 {
@@ -19,7 +20,7 @@ namespace NTestDataBuilder
             GlobalValueSuppliers = new List<IAnonymousValueSupplier>();
             DefaultValueSuppliers = new IAnonymousValueSupplier[]
             {
-                new StringValueSupplier(),
+                new DefaultStringValueSupplier(),
                 new DefaultValueSupplier()
             };
         }
@@ -31,7 +32,14 @@ namespace NTestDataBuilder
         {
             LocalFixtureBag = new ExpandoObject();
             LocalValueSuppliers = new List<IAnonymousValueSupplier>();
+            Fixture = new Fixture();
         }
+
+        /// <summary>
+        /// An AutoFixture Fixture instance that is scoped to this anonymous value fixture
+        ///   and can be used to generate anonymous values using AutoFixture.
+        /// </summary>
+        public Fixture Fixture { get; private set; }
 
         /// <summary>
         /// Dynamic value store in case anonymous suppliers need to store global state.

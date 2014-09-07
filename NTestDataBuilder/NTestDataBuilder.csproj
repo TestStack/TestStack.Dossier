@@ -39,6 +39,9 @@
     <Reference Include="NSubstitute">
       <HintPath>..\packages\NSubstitute.1.6.0.0\lib\NET40\NSubstitute.dll</HintPath>
     </Reference>
+    <Reference Include="Ploeh.AutoFixture">
+      <HintPath>..\packages\AutoFixture.3.20.0\lib\net40\Ploeh.AutoFixture.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,7 +52,7 @@
     <Compile Include="IAnonymousValueSupplier.cs" />
     <Compile Include="PropertyNameGetter.cs" />
     <Compile Include="Suppliers\DefaultValueSupplier.cs" />
-    <Compile Include="Suppliers\StringValueSupplier.cs" />
+    <Compile Include="Suppliers\DefaultStringValueSupplier.cs" />
     <Compile Include="TestDataBuilder.cs" />
     <Compile Include="TestDataBuilderExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
