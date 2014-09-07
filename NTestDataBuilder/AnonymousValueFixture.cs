@@ -86,5 +86,14 @@ namespace NTestDataBuilder
 
             return valueSupplier.GenerateAnonymousValue<TObject, T>(this, propertyName);
         }
+
+        /// <summary>
+        /// Clears all global state.
+        /// </summary>
+        public static void ClearGlobalState()
+        {
+            GlobalValueSuppliers.Clear();
+            GlobalFixtureBag = new ExpandoObject();
+        }
     }
 }

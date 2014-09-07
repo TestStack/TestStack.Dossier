@@ -1,5 +1,4 @@
-﻿using System.CodeDom;
-using NTestDataBuilder.Tests.Builders;
+﻿using NTestDataBuilder.Tests.Builders;
 using NTestDataBuilder.Tests.TestHelpers;
 using NUnit.Framework;
 
@@ -12,7 +11,7 @@ namespace NTestDataBuilder.Tests
         [SetUp]
         public void Setup()
         {
-            AnonymousValueFixture.GlobalValueSuppliers.Clear();
+            AnonymousValueFixture.ClearGlobalState();
             _b = new BasicCustomerBuilder();
         }
 
