@@ -11,7 +11,7 @@
        Robert Moore
     </authors>
     <description>
-      NTestDataBuilder provides you with the code instructure to easily and quickly generate test fixture data for your automated tests in a terse, readable and maintainable way using the Test Data Builder pattern.
+      NTestDataBuilder provides you with the code infrastructure to easily and quickly generate test fixture data for your automated tests in a terse, readable and maintainable way using the Test Data Builder pattern.
     </description>
     <projectUrl>
       https://github.com/robdmoore/NTestDataBuilder
