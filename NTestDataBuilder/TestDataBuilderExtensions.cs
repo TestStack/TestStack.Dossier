@@ -17,7 +17,7 @@ namespace NTestDataBuilder
         /// <param name="builderList">The NBuilder list of builders</param>
         /// <returns>The built list of objects</returns>
         public static IList<TObject> BuildList<TObject, TBuilder>(this IOperable<TBuilder> builderList)
-            where TBuilder : ITestDataBuilder<TObject>
+            where TBuilder : TestDataBuilder<TObject, TBuilder>, new()
             where TObject : class
         {
             return builderList.Build().Select(b => b.Build()).ToList();
@@ -31,7 +31,7 @@ namespace NTestDataBuilder
         /// <param name="builderList">The NBuilder list of builders</param>
         /// <returns>The built list of objects</returns>
         public static IList<TObject> BuildList<TObject, TBuilder>(this IListBuilder<TBuilder> builderList)
-            where TBuilder : ITestDataBuilder<TObject>
+            where TBuilder : TestDataBuilder<TObject, TBuilder>, new()
             where TObject : class
         {
             return builderList.All().BuildList<TObject, TBuilder>();

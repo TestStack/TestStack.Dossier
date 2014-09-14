@@ -17,19 +17,19 @@ namespace NTestDataBuilder.Tests.Builders
         }
     }
 
-    class CustomerBuilder : TestDataBuilder<Customer, CustomerBuilder>
+    public class CustomerBuilder : TestDataBuilder<Customer, CustomerBuilder>
     {
-        public CustomerBuilder WithFirstName(string firstName)
+        public virtual CustomerBuilder WithFirstName(string firstName)
         {
             return Set(x => x.FirstName, firstName);
         }
 
-        public CustomerBuilder WithLastName(string lastName)
+        public virtual CustomerBuilder WithLastName(string lastName)
         {
             return Set(x => x.LastName, lastName);
         }
 
-        public CustomerBuilder WhoJoinedIn(int yearJoined)
+        public virtual CustomerBuilder WhoJoinedIn(int yearJoined)
         {
             return Set(x => x.YearJoined, yearJoined);
         }

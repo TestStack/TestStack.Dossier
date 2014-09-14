@@ -2,33 +2,22 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using FizzWare.NBuilder;
+using NTestDataBuilder.Lists;
 
 namespace NTestDataBuilder
 {
-    /// <summary>
-    /// Generates objects of type {T}.
-    /// </summary>
-    /// <typeparam name="T">The type of object this class generates</typeparam>
-    public interface ITestDataBuilder<out T> where T : class
-    {
-        /// <summary>
-        /// Build the object.
-        /// </summary>
-        /// <returns>The built object</returns>
-        T Build();
-    }
-
     /// <summary>
     /// Base class definining infrastructure for a class that generates objects of type {TObject}.
     /// </summary>
     /// <typeparam name="TObject">The type of object this class generates</typeparam>
     /// <typeparam name="TBuilder">The type for this class, yes this is a recursive type definition</typeparam>
-    public abstract class TestDataBuilder<TObject, TBuilder> : ITestDataBuilder<TObject>
+    public abstract class TestDataBuilder<TObject, TBuilder>
         where TObject : class
-        where TBuilder : class, ITestDataBuilder<TObject>
+        where TBuilder : TestDataBuilder<TObject, TBuilder>, new()
     {
         private readonly Dictionary<string, object> _properties = new Dictionary<string, object>();
         private ProxyBuilder<TObject> _proxyBuilder;
+        internal ListBuilder<TObject, TBuilder> ListBuilder { get; set; } 
 
         /// <summary>
         /// Default Constructor.
@@ -132,6 +121,11 @@ namespace NTestDataBuilder
         {
             return Builder<TBuilder>.CreateListOfSize(size);
         }
+
+        public static NTestDataBuilder.Lists.ListBuilder<TObject, TBuilder> ListOFSize(int size)
+        {
+            return new ListBuilder<TObject, TBuilder>(size);
+        } 
 
         /// <summary>
         /// Returns whether or not there is currently an explicit value recorded against the given property from {TObject}.

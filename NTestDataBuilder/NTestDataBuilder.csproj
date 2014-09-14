@@ -33,6 +33,9 @@
     <DocumentationFile>bin\Release\NTestDataBuilder.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\packages\Castle.Core.3.3.1\lib\net40-client\Castle.Core.dll</HintPath>
+    </Reference>
     <Reference Include="FizzWare.NBuilder">
       <HintPath>..\packages\NBuilder.3.0.1.1\lib\FizzWare.NBuilder.dll</HintPath>
     </Reference>
@@ -51,6 +54,7 @@
     <Compile Include="AnonymousValueFixture.cs" />
     <Compile Include="EquivalenceClasses\StringEquivalenceClasses.cs" />
     <Compile Include="IAnonymousValueSupplier.cs" />
+    <Compile Include="Lists\ListBuilder.cs" />
     <Compile Include="PropertyNameGetter.cs" />
     <Compile Include="Suppliers\DefaultValueSupplier.cs" />
     <Compile Include="Suppliers\DefaultStringValueSupplier.cs" />
