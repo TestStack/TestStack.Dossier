@@ -49,7 +49,7 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AnyTests.cs" />
+    <Compile Include="EquivalenceClasses\StringEquivalenceClassesTests.cs" />
     <Compile Include="AsProxyTests.cs" />
     <Compile Include="BuildListTests.cs" />
     <Compile Include="Builders\BasicCustomerBuilder.cs" />
@@ -76,6 +76,7 @@
       <Name>NTestDataBuilder</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
