@@ -19,29 +19,19 @@ namespace NTestDataBuilder.Tests.Builders
 
     class CustomerBuilder : TestDataBuilder<Customer, CustomerBuilder>
     {
-        public CustomerBuilder()
-        {
-            WithFirstName("Rob");
-            WithLastName("Moore");
-            WhoJoinedIn(2013);
-        }
-
         public CustomerBuilder WithFirstName(string firstName)
         {
-            Set(x => x.FirstName, firstName);
-            return this;
+            return Set(x => x.FirstName, firstName);
         }
 
         public CustomerBuilder WithLastName(string lastName)
         {
-            Set(x => x.LastName, lastName);
-            return this;
+            return Set(x => x.LastName, lastName);
         }
 
         public CustomerBuilder WhoJoinedIn(int yearJoined)
         {
-            Set(x => x.YearJoined, yearJoined);
-            return this;
+            return Set(x => x.YearJoined, yearJoined);
         }
 
         protected override Customer BuildObject()
