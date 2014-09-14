@@ -1,31 +1,31 @@
 ﻿using System;
 using NTestDataBuilder.Tests.Builders;
-using NUnit.Framework;
+using Shouldly;
+using Xunit;
 
 namespace NTestDataBuilder.Tests
 {
-    class GetSetTests
+    public class GetSetTests
     {
         private BasicCustomerBuilder _b;
         const string SetValue = "Value";
 
-        [SetUp]
-        public void Setup()
+        public GetSetTests()
         {
             _b = new BasicCustomerBuilder();
         }
 
-        [Test]
+        [Fact]
         public void GivenAValueHasBeenSetAgainstAProperty_WhenRetrievingTheValueForThatProperty_ThenTheSetValueIsReturned()
         {
             _b.Set(x => x.FirstName, SetValue);
 
             var retrieved = _b.Get(x => x.FirstName);
 
-            Assert.That(retrieved, Is.EqualTo(SetValue));
+            retrieved.ShouldBe(SetValue);
         }
 
-        [Test]
+        [Fact]
         public void GivenTwoValuesHaveBeenSetAgainstAProperty_WhenRetrievingTheValueForThatProperty_ThenTheLastSetValueIsReturned()
         {
             _b.Set(x => x.FirstName, "random");
@@ -33,10 +33,10 @@ namespace NTestDataBuilder.Tests
 
             var retrieved = _b.Get(x => x.FirstName);
 
-            Assert.That(retrieved, Is.EqualTo(SetValue));
+            retrieved.ShouldBe(SetValue);
         }
 
-        [Test]
+        [Fact]
         public void GivenAValueHasBeenSetAgainstTwoProperties_WhenRetrievingTheValueForTheFirstSetProperty_ThenTheSetValueIsReturned()
         {
             _b.Set(x => x.FirstName, SetValue);
@@ -44,33 +44,33 @@ namespace NTestDataBuilder.Tests
 
             var retrieved = _b.Get(x => x.FirstName);
 
-            Assert.That(retrieved, Is.EqualTo(SetValue));
+            retrieved.ShouldBe(SetValue);
         }
 
-        [Test]
+        [Fact]
         public void GivenAValueHasBeenSetAgainstTwoProperties_WhenRetrievingTheValueForTheSecondSetProperty_ThenTheSetValueIsReturned()
         {
             _b.Set(x => x.FirstName, "random");
             _b.Set(x => x.LastName, SetValue);
 
             var retrieved = _b.Get(x => x.LastName);
-
-            Assert.That(retrieved, Is.EqualTo(SetValue));
+            retrieved.ShouldBe(SetValue);
         }
 
-        [Test]
+        [Fact]
         public void WhenRetrievingValueForANonProperty_ThenThrowAnException()
         {
             var ex = Assert.Throws<ArgumentException>(() => _b.Get(x => x.CustomerForHowManyYears(DateTime.Now)));
 
-            Assert.That(ex.Message, Is.StringStarting("Given property expression (x => x.CustomerForHowManyYears(DateTime.Now)) didn't specify a property on Customer"));
-            Assert.That(ex.ParamName, Is.EqualTo("property"));
+            ex.Message.ShouldStartWith("Given property expression (x => x.CustomerForHowManyYears(DateTime.Now)) didn't specify a property on Customer");
+            ex.ParamName.ShouldBe("property");
         }
 
-        [Test]
+        [Fact]
         public void WhenSettingAValue_ThenReturntheBuilder()
         {
-            Assert.That(_b.Set(x => x.FirstName, ""), Is.EqualTo(_b));
+            _b.Set(x => x.FirstName, "")
+                .ShouldBe(_b);
         }
     }
 }

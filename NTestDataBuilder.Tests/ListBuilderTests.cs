@@ -2,14 +2,14 @@
 using NTestDataBuilder.Lists;
 using NTestDataBuilder.Tests.Builders;
 using NTestDataBuilder.Tests.Entities;
-using NUnit.Framework;
+using Xunit;
 using Shouldly;
 
 namespace NTestDataBuilder.Tests
 {
-    class ListBuilderTests
+    public class ListBuilderTests
     {
-        [Test]
+        [Fact]
         public void WhenBuildingAListOfObjects_ThenThenTheListIsBuiltAndModifiedCorrectly()
         {
             var i = 0;

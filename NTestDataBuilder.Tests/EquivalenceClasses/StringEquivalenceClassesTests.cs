@@ -1,6 +1,6 @@
 ﻿using NTestDataBuilder.EquivalenceClasses;
-using NUnit.Framework;
 using Shouldly;
+using Xunit;
 
 namespace NTestDataBuilder.Tests.EquivalenceClasses
 {
@@ -8,13 +8,12 @@ namespace NTestDataBuilder.Tests.EquivalenceClasses
     {
         public AnonymousValueFixture Any { get; private set; }
 
-        [SetUp]
-        public void Setup()
+        public StringEquivalenceClassesTests()
         {
             Any = new AnonymousValueFixture();
         }
 
-        [Test]
+        [Fact]
         public void WhenGettingAnyString_ThenReturnDifferentNonEmptyStringsEveryTime()
         {
             var s1 = Any.String();
@@ -27,7 +26,7 @@ namespace NTestDataBuilder.Tests.EquivalenceClasses
             s1.ShouldNotBe(s2);
         }
 
-        [Test]
+        [Fact]
         public void WhenGettingAnyStringStartingWithSomething_ThenReturnDifferentStringsStartingWithThatStringEveryTime()
         {
             var s1 = Any.StringStartingWith("St4rt");

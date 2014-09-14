@@ -1,13 +1,14 @@
 ﻿using System;
 using NSubstitute;
 using NTestDataBuilder.Tests.Builders;
-using NUnit.Framework;
+using Shouldly;
+using Xunit;
 
 namespace NTestDataBuilder.Tests
 {
-    class AsProxyTests
+    public class AsProxyTests
     {
-        [Test]
+        [Fact]
         public void GivenBuilderIsSetAsProxy_WhenBuilding_AnNSubstituteProxyIsReturned()
         {
             var builder = new CustomerBuilder().AsProxy();
@@ -15,10 +16,10 @@ namespace NTestDataBuilder.Tests
             var proxy = builder.Build();
 
             proxy.CustomerForHowManyYears(Arg.Any<DateTime>()).Returns(100);
-            Assert.That(proxy.CustomerForHowManyYears(DateTime.Now), Is.EqualTo(100));
+            proxy.CustomerForHowManyYears(DateTime.Now).ShouldBe(100);
         }
 
-        [Test]
+        [Fact]
         public void GivenBuilderThatAltersProxyIsSetAsProxy_WhenBuilding_TheProxyIsAltered()
         {
             var builder = new ProxyAlteringCustomerBuilder()
@@ -27,7 +28,7 @@ namespace NTestDataBuilder.Tests
 
             var proxy = builder.Build();
 
-            Assert.That(proxy.CustomerForHowManyYears(DateTime.Now), Is.EqualTo(10));
+            proxy.CustomerForHowManyYears(DateTime.Now).ShouldBe(10);
         }
     }
 }

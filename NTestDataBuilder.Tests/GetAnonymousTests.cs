@@ -1,9 +1,9 @@
-﻿using System.Linq;
-using FizzWare.NBuilder;
+﻿using FizzWare.NBuilder;
 using NTestDataBuilder.Tests.Builders;
 using NTestDataBuilder.Tests.Entities;
 using NTestDataBuilder.Tests.TestHelpers;
-using NUnit.Framework;
+using Shouldly;
+using Xunit;
 
 namespace NTestDataBuilder.Tests
 {
@@ -11,14 +11,13 @@ namespace NTestDataBuilder.Tests
     {
         private BasicCustomerBuilder _b;
 
-        [SetUp]
-        public void Setup()
+        public GetAnonymousTests()
         {
             AnonymousValueFixture.GlobalValueSuppliers.Clear();
             _b = new BasicCustomerBuilder();
         }
 
-        [Test]
+        [Fact]
         public void GivenNoValueHasBeenSetForAPropertyAndAGlobalAndLocalSupplierHasBeenRegisteredThatWontAcceptThatProperty_WhenRetrievingTheValueForThatProperty_ThenDontUseLocalOrGlobalValue()
         {
             const string globalVal = "global";
@@ -26,11 +25,11 @@ namespace NTestDataBuilder.Tests
             AnonymousValueFixture.GlobalValueSuppliers.Add(new StaticAnonymousValueSupplier(globalVal));
             _b.Any.LocalValueSuppliers.Add(new StaticAnonymousValueSupplier(localVal));
 
-            Assert.That(_b.Get(x => x.YearJoined), Is.Not.EqualTo(localVal));
-            Assert.That(_b.Get(x => x.YearJoined), Is.Not.EqualTo(globalVal));
+            ((object)_b.Get(x => x.YearJoined)).ShouldNotBe(localVal);
+            ((object)_b.Get(x => x.YearJoined)).ShouldNotBe(globalVal);
         }
 
-        [Test]
+        [Fact]
         public void GivenNoValueHasBeenSetForAPropertyAndAGlobalAndLocalSupplierHasBeenRegisteredThatWillAcceptThatProperty_WhenRetrievingTheValueForThatProperty_ThenReturnLocalSupplierValue()
         {
             const string globalVal = "global";
@@ -38,34 +37,34 @@ namespace NTestDataBuilder.Tests
             AnonymousValueFixture.GlobalValueSuppliers.Add(new StaticAnonymousValueSupplier(globalVal));
             _b.Any.LocalValueSuppliers.Add(new StaticAnonymousValueSupplier(localVal));
 
-            Assert.That(_b.Get(x => x.FirstName), Is.EqualTo(localVal));
+            _b.Get(x => x.FirstName).ShouldBe(localVal);
         }
 
-        [Test]
+        [Fact]
         public void GivenNoValueHasBeenSetForAPropertyAndAGlobalSupplierHasBeenRegisteredThatWillAcceptThatProperty_WhenRetrievingTheValueForThatProperty_ThenReturnGlobalSupplierValue()
         {
             const string globalVal = "global";
             AnonymousValueFixture.GlobalValueSuppliers.Add(new StaticAnonymousValueSupplier(globalVal));
 
-            Assert.That(_b.Get(x => x.FirstName), Is.EqualTo(globalVal));
+            _b.Get(x => x.FirstName).ShouldBe(globalVal);
         }
 
-        [Test]
+        [Fact]
         public void GivenNoValueHasBeenSetForAStringProperty_WhenRetrievingTheValueForThatProperty_ThenReturnPropertyNameFollowedByGuid()
         {
-            Assert.That(_b.Get(x => x.FirstName), Is.StringMatching("^FirstName[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"));
+            _b.Get(x => x.FirstName).ShouldMatch("^FirstName[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$");
         }
 
-        [Test]
+        [Fact]
         public void GivenNoValueHasBeenSetForAnIntProperty_WhenRetrievingTheValueForThatProperty_ThenReturnAnonymousInteger()
         {
             var val1 = _b.Get(x => x.YearJoined);
             var val2 = _b.Get(x => x.YearJoined);
 
-            Assert.That(val1, Is.Not.EqualTo(val2));
+            val1.ShouldNotBe(val2);
         }
 
-        [Test]
+        [Fact]
         public void GivenGlobalValueSupplierSet_WhenGeneratingList_UseTheSupplierForTheRelevantPropertyExceptWhereItsOverridden()
         {
             AnonymousValueFixture.GlobalValueSuppliers.Add(new YearValueSupplier());
@@ -73,11 +72,11 @@ namespace NTestDataBuilder.Tests
                 .TheLast(1).With(b => b.WhoJoinedIn(1990))
                 .BuildList<Customer, CustomerBuilder>();
 
-            Assert.That(customers[0].YearJoined, Is.EqualTo(2000));
-            Assert.That(customers[1].YearJoined, Is.EqualTo(2001));
-            Assert.That(customers[2].YearJoined, Is.EqualTo(2002));
-            Assert.That(customers[3].YearJoined, Is.EqualTo(2003));
-            Assert.That(customers[4].YearJoined, Is.EqualTo(1990));
+            customers[0].YearJoined.ShouldBe(2000);
+            customers[1].YearJoined.ShouldBe(2001);
+            customers[2].YearJoined.ShouldBe(2002);
+            customers[3].YearJoined.ShouldBe(2003);
+            customers[4].YearJoined.ShouldBe(1990);
         }
     }
 

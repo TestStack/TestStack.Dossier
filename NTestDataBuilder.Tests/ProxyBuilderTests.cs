@@ -2,25 +2,26 @@
 using System.Collections.Generic;
 using NSubstitute;
 using NTestDataBuilder.Tests.Entities;
-using NUnit.Framework;
+using Shouldly;
+using Xunit;
 
 namespace NTestDataBuilder.Tests
 {
     class ProxyBuilderTests
     {
-        [Test]
+        [Fact]
         public void GivenClassToProxyWithNoProperties_WhenBuildingProxy_ReturnAClassWithNoReturnsValuesSet()
         {
             var proxyBuilder = new ProxyBuilder<Customer>(new Dictionary<string, object>());
 
             var proxy = proxyBuilder.Build();
 
-            Assert.That(proxy.FirstName, Is.EqualTo(string.Empty));
-            Assert.That(proxy.LastName, Is.EqualTo(string.Empty));
-            Assert.That(proxy.YearJoined, Is.EqualTo(0));
+            proxy.FirstName.ShouldBe(string.Empty);
+            proxy.LastName.ShouldBe(string.Empty);
+            proxy.YearJoined.ShouldBe(0);
         }
 
-        [Test]
+        [Fact]
         public void GivenClassToProxyWithNoProperties_WhenBuildingProxy_ReturnAnNSubstituteProxyOfThatClass()
         {
             var proxyBuilder = new ProxyBuilder<Customer>(new Dictionary<string, object>());
@@ -30,19 +31,19 @@ namespace NTestDataBuilder.Tests
             proxy.DidNotReceive().CustomerForHowManyYears(Arg.Any<DateTime>());
         }
 
-        [Test]
+        [Fact]
         public void GivenClassToProxyWithSinglePropertyValue_WhenBuildingProxy_ReturnAClassWithReturnValueSet()
         {
             var proxyBuilder = new ProxyBuilder<Customer>(new Dictionary<string, object> {{"FirstName", "FirstName"}});
 
             var proxy = proxyBuilder.Build();
 
-            Assert.That(proxy.FirstName, Is.EqualTo("FirstName"));
-            Assert.That(proxy.LastName, Is.EqualTo(string.Empty));
-            Assert.That(proxy.YearJoined, Is.EqualTo(0));
+            proxy.FirstName.ShouldBe("FirstName");
+            proxy.LastName.ShouldBe(string.Empty);
+            proxy.YearJoined.ShouldBe(0);
         }
 
-        [Test]
+        [Fact]
         public void GivenClassToProxyWithMultiplePropertyValues_WhenBuildingProxy_ReturnAClassWithReturnValueSet()
         {
             var proxyBuilder = new ProxyBuilder<Customer>(new Dictionary<string, object>
@@ -55,12 +56,12 @@ namespace NTestDataBuilder.Tests
 
             var proxy = proxyBuilder.Build();
 
-            Assert.That(proxy.FirstName, Is.EqualTo("FirstName"));
-            Assert.That(proxy.LastName, Is.EqualTo("LastName"));
-            Assert.That(proxy.YearJoined, Is.EqualTo(1));
+            proxy.FirstName.ShouldBe("FirstName");
+            proxy.LastName.ShouldBe("LastName");
+            proxy.YearJoined.ShouldBe(1);
         }
 
-        [Test]
+        [Fact]
         public void GivenClassWithSomeVirtualProperties_WhenBuildingProxy_ThenOnlyVirtualMembersAreProxied()
         {
             var proxyBuilder = new ProxyBuilder<Company>(new Dictionary<string, object>()
@@ -71,8 +72,8 @@ namespace NTestDataBuilder.Tests
 
             var proxy = proxyBuilder.Build();
 
-            Assert.That(proxy.Name, Is.EqualTo("Vandelay Industries"));
-            Assert.That(proxy.EmployeeCount, Is.EqualTo(0));
+            proxy.Name.ShouldBe("Vandelay Industries");
+            proxy.EmployeeCount.ShouldBe(0);
         }
     }
 }

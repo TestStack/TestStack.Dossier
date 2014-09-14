@@ -1,74 +1,94 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using FizzWare.NBuilder;
 using NTestDataBuilder.Tests.Builders;
 using NTestDataBuilder.Tests.Entities;
-using NUnit.Framework;
+using Shouldly;
+using Xunit;
 
 namespace NTestDataBuilder.Tests
 {
-    class BuildListTests
+    public class BuildListTests
     {
-        [Test]
+        [Fact]
         public void GivenListOfBuilders_WhenCallingBuildList_ThenAListOfEntitiesOfTheRightSizeShouldBeReturned()
         {
             var builders = BasicCustomerBuilder.CreateListOfSize(5);
 
             var entities = builders.BuildList<Customer, BasicCustomerBuilder>();
 
-            Assert.That(entities, Has.Count.EqualTo(5));
+            entities.Count.ShouldBe(5);
         }
 
-        [Test]
+        [Fact]
         public void GivenListOfBuilders_WhenCallingBuildList_ThenAListOfEntitiesOfTheRightTypeShouldBeReturned()
         {
             var builders = BasicCustomerBuilder.CreateListOfSize(5);
 
             var entities = builders.BuildList<Customer, BasicCustomerBuilder>();
 
-            Assert.That(entities, Has.All.With.TypeOf<Customer>());
+            entities.ShouldBeAssignableTo<IList<Customer>>();
         }
 
-        [Test]
+        [Fact]
         public void GivenListOfBuilders_WhenCallingBuildList_ThenAListOfUniqueEntitiesShouldBeReturned()
         {
             var builders = BasicCustomerBuilder.CreateListOfSize(5);
 
             var entities = builders.BuildList<Customer, BasicCustomerBuilder>();
 
-            Assert.That(entities, Is.Unique);
+            entities[0].ShouldNotBe(entities[1]);
+            entities[0].ShouldNotBe(entities[2]);
+            entities[0].ShouldNotBe(entities[3]);
+            entities[0].ShouldNotBe(entities[4]);
+            entities[1].ShouldNotBe(entities[2]);
+            entities[1].ShouldNotBe(entities[3]);
+            entities[1].ShouldNotBe(entities[4]);
+            entities[2].ShouldNotBe(entities[3]);
+            entities[2].ShouldNotBe(entities[4]);
+            entities[3].ShouldNotBe(entities[4]);
         }
 
-        [Test]
+        [Fact]
         public void GivenListOfBuildersWithNoCustomisation_WhenCallingExtensionMethodToBuildList_ThenListOfTheRightSizeShouldBeReturned()
         {
             var builders = CustomerBuilder.CreateListOfSize(5);
 
             var entities = builders.BuildList();
 
-            Assert.That(entities, Has.Count.EqualTo(5));
+            entities.Count.ShouldBe(5);
         }
 
-        [Test]
+        [Fact]
         public void GivenListOfBuildersWithNoCustomisation_WhenCallingExtensionMethodToBuildList_ThenListOfTheRightTypeShouldBeReturned()
         {
             var builders = CustomerBuilder.CreateListOfSize(5);
 
             var entities = builders.BuildList();
 
-            Assert.That(entities, Has.All.TypeOf<Customer>());
+            entities.ShouldBeAssignableTo<IList<Customer>>();
         }
 
-        [Test]
+        [Fact]
         public void GivenListOfBuildersWithNoCustomisation_WhenCallingExtensionMethodToBuildList_ThenAListOfUniqueEntitiesShouldBeReturned()
         {
             var builders = CustomerBuilder.CreateListOfSize(5);
 
             var entities = builders.BuildList();
 
-            Assert.That(entities, Is.Unique);
+            entities[0].ShouldNotBe(entities[1]);
+            entities[0].ShouldNotBe(entities[2]);
+            entities[0].ShouldNotBe(entities[3]);
+            entities[0].ShouldNotBe(entities[4]);
+            entities[1].ShouldNotBe(entities[2]);
+            entities[1].ShouldNotBe(entities[3]);
+            entities[1].ShouldNotBe(entities[4]);
+            entities[2].ShouldNotBe(entities[3]);
+            entities[2].ShouldNotBe(entities[4]);
+            entities[3].ShouldNotBe(entities[4]);
         }
 
-        [Test]
+        [Fact]
         public void GivenListOfBuildersWithCustomisation_WhenCallingExtensionMethodToBuildList_ThenTheCustomisationShouldTakeEffect()
         {
             var generator = new SequentialGenerator<int>();
@@ -77,7 +97,8 @@ namespace NTestDataBuilder.Tests
 
             var data = list.BuildList();
 
-            Assert.That(data.Select(c => c.FirstName), Is.EqualTo(new[]{"0", "1", "2"}));
+            data.Select(c => c.FirstName).ToArray()
+                .ShouldBe(new[]{"0", "1", "2"});
         }
     }
 }

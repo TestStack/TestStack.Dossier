@@ -1,22 +1,23 @@
 ﻿using NTestDataBuilder.Tests.Builders;
 using NTestDataBuilder.Tests.Entities;
-using NUnit.Framework;
+using Shouldly;
+using Xunit;
 
 namespace NTestDataBuilder.Tests
 {
-    class BuildTests
+    public class BuildTests
     {
-        [Test]
+        [Fact]
         public void GivenBasicBuilder_WhenCallingBuild_ThenReturnAnObject()
         {
             var builder = new BasicCustomerBuilder();
 
             var customer = builder.Build();
 
-            Assert.That(customer, Is.TypeOf<Customer>());
+            customer.ShouldBeOfType<Customer>();
         }
 
-        [Test]
+        [Fact]
         public void GivenBuilderWithMethodCalls_WhenCallingBuild_ThenReturnAnObjectWithTheConfiguredParameters()
         {
             var builder = new CustomerBuilder()
@@ -26,9 +27,9 @@ namespace NTestDataBuilder.Tests
 
             var customer = builder.Build();
 
-            Assert.That(customer.FirstName, Is.EqualTo("Matt"));
-            Assert.That(customer.LastName, Is.EqualTo("Kocaj"));
-            Assert.That(customer.YearJoined, Is.EqualTo(2010));
+            customer.FirstName.ShouldBe("Matt");
+            customer.LastName.ShouldBe("Kocaj");
+            customer.YearJoined.ShouldBe(2010);
         }
     }
 }

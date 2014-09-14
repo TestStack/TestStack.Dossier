@@ -1,43 +1,35 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using FizzWare.NBuilder;
 using NTestDataBuilder.Tests.Builders;
-using NUnit.Framework;
+using Shouldly;
+using Xunit;
 
 namespace NTestDataBuilder.Tests
 {
-    class CreateListTests
+    public class CreateListTests
     {
-        [Test]
+        [Fact]
         public void GivenCreatingListOfSizeX_WhenListIsBuilt_ThenAListOfTheRightSizeIsGenerated()
         {
             var builderExpression = BasicCustomerBuilder.CreateListOfSize(5);
 
             var builtList = builderExpression.Build();
 
-            Assert.That(builtList, Has.Count.EqualTo(5));
+            builtList.Count.ShouldBe(5);
         }
 
-        [Test]
-        public void GivenCreatingListOfSizeX_WhenListIsBuilt_ThenAListOfUniqueBuildersIsGenerated()
-        {
-            var builderExpression = BasicCustomerBuilder.CreateListOfSize(5);
-
-            var builtList = builderExpression.Build();
-
-            Assert.That(builtList, Is.Unique);
-        }
-
-        [Test]
+        [Fact]
         public void GivenCreatingListOfSizeX_WhenListIsBuilt_ThenAListOfTheRightBuilderTypesIsGenerated()
         {
             var builderExpression = BasicCustomerBuilder.CreateListOfSize(5);
 
             var builtList = builderExpression.Build();
 
-            Assert.That(builtList, Has.All.With.TypeOf<BasicCustomerBuilder>());
+            builtList.ShouldBeAssignableTo<IList<BasicCustomerBuilder>>();
         }
 
-        [Test]
+        [Fact]
         public void GivenCreatingAList_WhenUsingNBuilderToChangeTheList_ThenTheChangesAreReflected()
         {
             var generator = new SequentialGenerator<int>();
@@ -46,7 +38,8 @@ namespace NTestDataBuilder.Tests
                 .All().With(b => b.WithFirstName(generator.Generate().ToString()))
                 .Build();
 
-            Assert.That(list.Select(b => b.Get(x => x.FirstName)), Is.EqualTo(new[]{"0", "1", "2"}));
+            list.Select(b => b.Get(x => x.FirstName)).ToArray()
+                .ShouldBe(new[] {"0", "1", "2"});
         }
     }
 }
