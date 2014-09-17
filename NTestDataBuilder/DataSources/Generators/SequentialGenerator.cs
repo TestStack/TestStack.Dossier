@@ -5,9 +5,13 @@ namespace NTestDataBuilder.DataSources.Generators
     public class SequentialGenerator : IGenerator
     {
         private int _currentListIndex;
-        public int StartIndex { get; private set; }
-        public int ListSize { get; private set; }
+        public int StartIndex { get; set; }
+        public int ListSize { get; set; }
         public bool ListShouldBeUnique { get; private set; }
+
+        public SequentialGenerator() : this(0,1)
+        {
+        }
 
         public SequentialGenerator(int startIndex, int listSize, bool listShouldBeUnique = false)
         {
@@ -44,7 +48,6 @@ namespace NTestDataBuilder.DataSources.Generators
             {
                 _currentListIndex = StartIndex;
             }
-
         }
     }
 }

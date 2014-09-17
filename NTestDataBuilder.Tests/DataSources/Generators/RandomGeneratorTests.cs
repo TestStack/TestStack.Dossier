@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using NTestDataBuilder.DataSources.Generators;
 using Shouldly;
 using Xunit;
@@ -9,9 +10,6 @@ namespace NTestDataBuilder.Tests.DataSources.Generators
     public class RandomGeneratorTests
     {
         [Theory,
-        InlineData(0,0),
-        InlineData(0,-1),
-        InlineData(-1,-2),
         InlineData(5,4),
         InlineData(5,5)]
         public void WhenCreatingRandomGenerator_ThenStartIndexMustBeLessThanListSize(int startIndex, int listSize)
@@ -37,5 +35,32 @@ namespace NTestDataBuilder.Tests.DataSources.Generators
                 result.ShouldBeLessThanOrEqualTo(maximumValue);
             }
         }
+
+        [Fact]
+        public void WhenGeneratingRandomIntegers_ThenShouldBeAbleToGenerateLowerBoundaryValue()
+        {
+            var results = new List<int>();
+            var sut = new RandomGenerator(0, 3);
+            for (int i = 0; i < 10; i++)
+            {
+                results.Add(sut.Generate());
+            }
+            results.ShouldContain(0);
+        }
+
+        [Fact]
+        public void WhenGeneratingRandomIntegers_ThenShouldBeAbleToGenerateUpperBoundaryValue()
+        {
+            var results = new List<int>();
+            var sut = new RandomGenerator(0, 3);
+            for (int i = 0; i < 10; i++)
+            {
+                results.Add(sut.Generate());
+            }
+            results.ShouldContain(2);
+            results.ShouldNotContain(3);
+        }
+
+
     }
 }
