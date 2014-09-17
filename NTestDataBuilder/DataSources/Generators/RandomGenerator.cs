@@ -5,23 +5,21 @@ namespace NTestDataBuilder.DataSources.Generators
     public class RandomGenerator : IGenerator
     {
         private readonly Random _random;
-        private readonly int _minValue;
-        private readonly int _maxValue;
+        public int StartIndex { get; private set; }
+        public int ListSize { get; private set; }
 
-        public RandomGenerator(int minValue, int maxValue)
+        public RandomGenerator(int startIndex, int listSize)
         {
-            if (minValue >= maxValue)
-            {
-                throw new ArgumentException("minValue must be less than maxValue");
-            }
-            _minValue = minValue;
-            _maxValue = maxValue;
+            Guard.Against(startIndex >= listSize, "startIndex must be less than listSize");
+
+            StartIndex = startIndex;
+            ListSize = listSize;
             _random = new Random();
         }
 
         public int Generate()
         {
-            return _random.Next(_minValue, _maxValue);
+            return _random.Next(StartIndex, ListSize-1);
         }
     }
 }

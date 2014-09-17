@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataSources\Generators\RandomGeneratorTests.cs" />
+    <Compile Include="DataSources\Generators\SequentiaGeneratorTests.cs" />
     <Compile Include="EquivalenceClasses\StringEquivalenceClassesTests.cs" />
     <Compile Include="AsProxyTests.cs" />
     <Compile Include="BuildListTests.cs" />

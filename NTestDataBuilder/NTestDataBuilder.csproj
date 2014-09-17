@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnonymousValueFixture.cs" />
+    <Compile Include="Guard.cs" />
     <Compile Include="DataSources\Generators\IGenerator.cs" />
     <Compile Include="DataSources\Generators\RandomGenerator.cs" />
     <Compile Include="DataSources\Generators\SequentialGenerator.cs" />

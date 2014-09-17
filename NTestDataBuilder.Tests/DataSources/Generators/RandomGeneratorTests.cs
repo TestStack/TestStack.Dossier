@@ -8,8 +8,21 @@ namespace NTestDataBuilder.Tests.DataSources.Generators
 {
     public class RandomGeneratorTests
     {
+        [Theory,
+        InlineData(0,0),
+        InlineData(0,-1),
+        InlineData(-1,-2),
+        InlineData(5,4),
+        InlineData(5,5)]
+        public void WhenCreatingRandomGenerator_ThenStartIndexMustBeLessThanListSize(int startIndex, int listSize)
+        {
+            Action factory = () => new RandomGenerator(startIndex, listSize);
+            Should.Throw<ArgumentException>(factory)
+                .Message.ShouldBe(string.Format("startIndex must be less than listSize"));
+        }
+
         [Fact]
-        public void WhenGeneratingRandomIntegers_ThenShouldAlwaysGenerateIntegerBetweenMinAndMaxValue()
+        public void WhenGeneratingRandomIntegers_ThenShouldAlwaysGenerateIntegerBetweenStartIndexAndListSize()
         {
             var random = new Random();
             for (int i = 0; i < 10; i++)
@@ -23,19 +36,6 @@ namespace NTestDataBuilder.Tests.DataSources.Generators
                 result.ShouldBeGreaterThanOrEqualTo(minimumValue);
                 result.ShouldBeLessThanOrEqualTo(maximumValue);
             }
-        }
-
-        [Theory,
-        InlineData(0,0),
-        InlineData(0,-1),
-        InlineData(-1,-2),
-        InlineData(5,4),
-        InlineData(5,5)]
-        public void WhenCreatingRandomGenerator_minimumValueMustBeLessThanMaximumValue(int minValue, int maxValue)
-        {
-            Action factory = () => new RandomGenerator(minValue, maxValue);
-            Should.Throw<ArgumentException>(factory)
-                .Message.ShouldBe(string.Format("minValue must be less than maxValue"));
         }
     }
 }
