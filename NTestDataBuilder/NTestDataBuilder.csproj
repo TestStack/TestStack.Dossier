@@ -52,6 +52,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnonymousValueFixture.cs" />
+    <Compile Include="DataSources\Generators\IGenerator.cs" />
+    <Compile Include="DataSources\Generators\RandomGenerator.cs" />
+    <Compile Include="DataSources\Generators\SequentialGenerator.cs" />
     <Compile Include="EquivalenceClasses\StringEquivalenceClasses.cs" />
     <Compile Include="IAnonymousValueSupplier.cs" />
     <Compile Include="Lists\ListBuilder.cs" />
@@ -68,6 +71,7 @@
     <None Include="NTestDataBuilder.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
