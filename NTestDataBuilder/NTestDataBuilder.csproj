@@ -52,9 +52,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnonymousValueFixture.cs" />
-    <Compile Include="DataSources\CalendarDaySource.cs" />
-    <Compile Include="DataSources\CalendarUkSeasonSource.cs" />
+    <Compile Include="DataSources\CompanySource.cs" />
     <Compile Include="DataSources\DataSource.cs" />
+    <Compile Include="EquivalenceClasses\CompanyEquivalenceClass.cs" />
     <Compile Include="Guard.cs" />
     <Compile Include="DataSources\Generators\IGenerator.cs" />
     <Compile Include="DataSources\Generators\RandomGenerator.cs" />
