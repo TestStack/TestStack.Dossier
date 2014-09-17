@@ -67,6 +67,13 @@ namespace NTestDataBuilder.Tests.DataSources
             Should.Throw<InvalidOperationException>(() => sut.Next());
         }
 
+        [Fact]
+        public void WhenGeneratingValuesFromPersonDataSource_ThenShouldHave500Records()
+        {
+            new FirstNameSource().List.Count.ShouldBe(500);
+            new LastNameSource().List.Count.ShouldBe(500);
+            new FullNameSource().List.Count.ShouldBe(500);
+        }
     }
 
     public class DummyDataSource : DataSource<string>
