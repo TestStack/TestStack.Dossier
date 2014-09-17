@@ -58,7 +58,7 @@
     <Compile Include="DataSources\CompanySource.cs" />
     <Compile Include="DataSources\DataSource.cs" />
     <Compile Include="DataSources\FirstNameSource.cs" />
-    <Compile Include="EquivalenceClasses\Class1.cs" />
+    <Compile Include="EquivalenceClasses\PersonEquivalenceClasses.cs" />
     <Compile Include="EquivalenceClasses\CompanyEquivalenceClass.cs" />
     <Compile Include="Guard.cs" />
     <Compile Include="DataSources\Generators\IGenerator.cs" />
