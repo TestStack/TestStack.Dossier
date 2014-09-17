@@ -9,7 +9,6 @@ namespace NTestDataBuilder.Tests.DataSources.Generators
     public class SequentiaGeneratorTests
     {
         [Theory,
-        InlineData(0, 0),
         InlineData(5, 4),
         InlineData(5, 5)]
         public void WhenCreatingRandomGenerator_ThenStartIndexMustBeLessThanListSize(int startIndex, int listSize)
@@ -42,7 +41,7 @@ namespace NTestDataBuilder.Tests.DataSources.Generators
         public void WhenGeneratingIntegers_ThenShouldBeSequential()
         {
             var sut = new SequentialGenerator(0, 11);
-            for (int index = sut.StartIndex; index <= sut.ListSize; index++)
+            for (int index = sut.StartIndex; index < sut.ListSize; index++)
             {
                 sut.Generate().ShouldBe(index);
             }
@@ -52,7 +51,7 @@ namespace NTestDataBuilder.Tests.DataSources.Generators
         public void GivenGeneratorIsNotUnique_WhenGeneratingIntegers_ThenShouldResetAtEndOfList()
         {
             var sut = new SequentialGenerator(0, 2);
-            for (int index = sut.StartIndex; index <= sut.ListSize; index++)
+            for (int index = sut.StartIndex; index < sut.ListSize; index++)
             {
                 sut.Generate().ShouldBe(index);
             }
@@ -64,7 +63,7 @@ namespace NTestDataBuilder.Tests.DataSources.Generators
         public void GivenGeneratorIsUnique_WhenGeneratingIntegers_ThenShouldResetAtEndOfList()
         {
             var sut = new SequentialGenerator(0, 2, true);
-            for (int index = sut.StartIndex; index <= sut.ListSize; index++)
+            for (int index = sut.StartIndex; index < sut.ListSize; index++)
             {
                 sut.Generate().ShouldBe(index);
             }

@@ -30,7 +30,7 @@ namespace NTestDataBuilder.DataSources.Generators
 
         private void CheckForEndOfList()
         {
-            if (_currentListIndex <= ListSize)
+            if (_currentListIndex < ListSize)
             {
                 return;
             }
