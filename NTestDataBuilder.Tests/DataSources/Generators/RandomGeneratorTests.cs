@@ -41,7 +41,7 @@ namespace NTestDataBuilder.Tests.DataSources.Generators
         {
             var results = new List<int>();
             var sut = new RandomGenerator(0, 3);
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 20; i++)
             {
                 results.Add(sut.Generate());
             }
@@ -53,7 +53,7 @@ namespace NTestDataBuilder.Tests.DataSources.Generators
         {
             var results = new List<int>();
             var sut = new RandomGenerator(0, 3);
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 20; i++)
             {
                 results.Add(sut.Generate());
             }

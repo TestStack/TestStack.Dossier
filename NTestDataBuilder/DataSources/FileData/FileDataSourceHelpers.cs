@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
-using System.Linq;
 using System.Reflection;
 
 namespace NTestDataBuilder.DataSources.FileData
 {
-    public static class DataTableExtensions
+    internal static class FileDataSourceHelpers
     {
-        public static IEnumerable<T> AsEnumerable<T>(this DataTable table) where T : new()
+        internal static IEnumerable<T> AsEnumerable<T>(this DataTable table) where T : new()
         {
             if (table == null)
                 throw new NullReferenceException("DataTable");
@@ -36,39 +35,12 @@ namespace NTestDataBuilder.DataSources.FileData
                 }
                 objList.Add(obj);
             }
-
             return objList;
         }
-    }
 
-    public class Person
-    {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string CompanyName { get; set; }
-        public string Address { get; set; }
-        public string City { get; set; }
-        public string County { get; set; }
-        public string Postal { get; set; }
-        public string Phone1 { get; set; }
-        public string Phone2 { get; set; }
-        public string Email { get; set; }
-        public string Web { get; set; }
-    }
-    public class PersonData
-    {
-        public static IList<Person> People { get; private set; } 
-
-        static PersonData()
+        internal static DataTable ConvertCsvToDataTable(string embeddedFilename)
         {
-            People = ConvertCSVtoDataTable()
-                .AsEnumerable<Person>()
-                .ToList();
-        }
-
-        private static DataTable ConvertCSVtoDataTable()
-        {
-            var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("NTestDataBuilder.DataSources.FileData.uk-500.csv");
+            var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(embeddedFilename);
             var sr = new StreamReader(stream);
             var headers = sr.ReadLine().Split(',');
             var dt = new DataTable();

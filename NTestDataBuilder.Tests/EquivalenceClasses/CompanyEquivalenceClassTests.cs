@@ -17,7 +17,7 @@ namespace NTestDataBuilder.Tests.EquivalenceClasses
         }
 
         [Fact]
-        public void WhenGettingAnyCountry_ThenReturnRandomCompanyWhichIsReasonablyUnique()
+        public void WhenGettingAnyCompany_ThenReturnRandomCompanyWhichIsReasonablyUnique()
         {
             var companySource = new CompanySource();
 
