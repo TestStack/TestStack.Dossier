@@ -7,7 +7,7 @@ namespace NTestDataBuilder.DataSources
     /// The base class for data sources to inherit from.
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public abstract class DataSource<T> 
+    public abstract class DataSource<T> : IDataSource<T>
     {
         /// <summary>
         /// Allows a custom data generation strategy to be passed to the data source

@@ -9,9 +9,12 @@ namespace NTestDataBuilder.DataSources.FileData
 
         static FileDataRepository()
         {
-            People = FileDataSourceHelpers.ConvertCsvToDataTable("NTestDataBuilder.DataSources.FileData.uk-500.csv")
-                .AsEnumerable<Person>()
-                .ToList();
+            var dt = FileDataSourceHelpers.ConvertCsvToDataTable("NTestDataBuilder.DataSources.FileData.uk-500.csv");
+            var people = dt.AsEnumerable<Person>().ToList();
+            People = people;
+            //People = FileDataSourceHelpers.ConvertCsvToDataTable("NTestDataBuilder.DataSources.FileData.uk-500.csv")
+            //    .AsEnumerable<Person>()
+            //    .ToList();
         }
     }
 }

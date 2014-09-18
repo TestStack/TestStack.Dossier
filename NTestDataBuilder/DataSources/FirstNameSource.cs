@@ -18,10 +18,12 @@ namespace NTestDataBuilder.DataSources
         public FirstNameSource(IGenerator generator) 
             : base(generator) { }
 
+        /// <inheritdoc />
         protected override IList<string> InitializeList()
         {
             return FileDataRepository.People
                 .Select(person => person.FirstName)
+                .Distinct()
                 .ToList();
         }
     }

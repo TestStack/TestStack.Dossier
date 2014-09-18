@@ -54,6 +54,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnonymousValueFixture.cs" />
+    <Compile Include="DataSources\CitySource.cs" />
+    <Compile Include="DataSources\CountySource.cs" />
+    <Compile Include="DataSources\WebsiteSource.cs" />
+    <Compile Include="DataSources\PostCodeSource.cs" />
+    <Compile Include="DataSources\PhoneSource.cs" />
+    <Compile Include="DataSources\EmailSource.cs" />
+    <Compile Include="DataSources\StreetSource.cs" />
     <Compile Include="DataSources\FileData\FileDataSourceHelpers.cs" />
     <Compile Include="DataSources\FileData\Person.cs" />
     <Compile Include="DataSources\FileData\FileDataRepository.cs" />
@@ -61,9 +68,9 @@
     <Compile Include="DataSources\DataSource.cs" />
     <Compile Include="DataSources\FirstNameSource.cs" />
     <Compile Include="DataSources\FullNameSource.cs" />
+    <Compile Include="DataSources\IDataSource.cs" />
     <Compile Include="DataSources\LastNameSource.cs" />
     <Compile Include="EquivalenceClasses\PersonEquivalenceClasses.cs" />
-    <Compile Include="EquivalenceClasses\CompanyEquivalenceClass.cs" />
     <Compile Include="DataSources\Generators\IGenerator.cs" />
     <Compile Include="DataSources\Generators\RandomGenerator.cs" />
     <Compile Include="DataSources\Generators\SequentialGenerator.cs" />
