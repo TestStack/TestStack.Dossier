@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using NTestDataBuilder.DataSources.FileData;
 using NTestDataBuilder.DataSources.Generators;
@@ -8,21 +8,21 @@ namespace NTestDataBuilder.DataSources
     /// <summary>
     /// Free sample data for testing obtained from http://www.briandunning.com/sample-data/
     /// </summary>
-    public class CompanySource : DataSource<string>
+    public class LastNameSource : DataSource<string>
     {
         /// <inheritdoc />
-        public CompanySource() 
+        public LastNameSource() 
             : base() { }
 
         /// <inheritdoc />
-        public CompanySource(IGenerator generator) 
+        public LastNameSource(IGenerator generator) 
             : base(generator) { }
 
         /// <inheritdoc />
         protected override IList<string> InitializeList()
         {
             return FileDataRepository.People
-                .Select(person => person.CompanyName)
+                .Select(person => person.LastName)
                 .Distinct()
                 .ToList();
         }

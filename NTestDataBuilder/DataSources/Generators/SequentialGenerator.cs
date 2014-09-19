@@ -2,6 +2,9 @@ using System;
 
 namespace NTestDataBuilder.DataSources.Generators
 {
+    /// <summary>
+    /// A strategy that selects each item from the collection in sequence. At the end of the collection it can optionally start from the beginning or throw an exception. By default it starts from the beginning again.
+    /// </summary>
     public class SequentialGenerator : IGenerator
     {
         private int _currentListIndex;
@@ -9,15 +12,22 @@ namespace NTestDataBuilder.DataSources.Generators
         public int ListSize { get; set; }
         public bool ListShouldBeUnique { get; private set; }
 
-        public SequentialGenerator() : this(0,1)
-        {
-        }
+        /// <summary>
+        /// Default constructor.
+        /// </summary>
+        public SequentialGenerator()
+            : this(0, 1) { }
 
+        /// <summary>
+        /// Specify the startIndex and listSize
+        /// </summary>
+        /// <param name="startIndex">The first index that can be selected in a list. Ranges from 0 to one less than the number of items in the list</param>
+        /// <param name="listSize">The number of items in the list</param>
         public SequentialGenerator(int startIndex, int listSize, bool listShouldBeUnique = false)
         {
-            Guard.Against(startIndex < 0, "startIndex must be zero or more");
-            Guard.Against(listSize < 1, "listSize must be greater than zero");
-            Guard.Against(startIndex >= listSize, "startIndex must be less than listSize");
+            if (startIndex < 0) throw new ArgumentException("startIndex must be zero or more");
+            if (listSize < 1) throw new ArgumentException("listSize must be greater than zero");
+            if (startIndex >= listSize) throw new ArgumentException("startIndex must be less than listSize");
 
             StartIndex = startIndex;
             ListSize = listSize;

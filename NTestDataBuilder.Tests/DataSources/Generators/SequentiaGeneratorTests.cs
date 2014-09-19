@@ -11,7 +11,7 @@ namespace NTestDataBuilder.Tests.DataSources.Generators
         [Theory,
         InlineData(5, 4),
         InlineData(5, 5)]
-        public void WhenCreatingRandomGenerator_ThenStartIndexMustBeLessThanListSize(int startIndex, int listSize)
+        public void WhenCreatingSequentialGenerator_ThenStartIndexMustBeLessThanListSize(int startIndex, int listSize)
         {
             Action factory = () => new SequentialGenerator(startIndex, listSize);
             Should.Throw<ArgumentException>(factory)
@@ -19,7 +19,7 @@ namespace NTestDataBuilder.Tests.DataSources.Generators
         }
 
         [Fact]
-        public void WhenCreatingRandomGenerator_ThenStartIndexMustBeZeroOrMore()
+        public void WhenCreatingSequentialGenerator_ThenStartIndexMustBeZeroOrMore()
         {
             Action factory = () => new SequentialGenerator(-1, 1);
             Should.Throw<ArgumentException>(factory)
@@ -29,7 +29,7 @@ namespace NTestDataBuilder.Tests.DataSources.Generators
         [Theory,
         InlineData(0, 0),
         InlineData(0, -1)]
-        public void WhenCreatingRandomGenerator_ThenListSizeMustBeGreaterThanZero(int startIndex, int listSize)
+        public void WhenCreatingSequentialGenerator_ThenListSizeMustBeGreaterThanZero(int startIndex, int listSize)
         {
             Action factory = () => new SequentialGenerator(startIndex, listSize);
             Should.Throw<ArgumentException>(factory)
@@ -60,7 +60,7 @@ namespace NTestDataBuilder.Tests.DataSources.Generators
         }
 
         [Fact]
-        public void GivenGeneratorIsUnique_WhenGeneratingIntegers_ThenShouldResetAtEndOfList()
+        public void GivenGeneratorIsUnique_WhenGeneratingIntegers_ThenShouldThrowAtEndOfList()
         {
             var sut = new SequentialGenerator(0, 2, true);
             for (int index = sut.StartIndex; index < sut.ListSize; index++)

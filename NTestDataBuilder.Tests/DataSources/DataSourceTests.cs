@@ -34,7 +34,7 @@ namespace NTestDataBuilder.Tests.DataSources
             var sut = new DummyDataSource();
 
             var results = new List<string>();
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 20; i++)
             {
                 results.Add(sut.Next());
             }
@@ -65,14 +65,6 @@ namespace NTestDataBuilder.Tests.DataSources
             sut.Next().ShouldBe(sut.List[1]);
             sut.Next().ShouldBe(sut.List[2]);
             Should.Throw<InvalidOperationException>(() => sut.Next());
-        }
-
-        [Fact]
-        public void WhenGeneratingValuesFromPersonDataSource_ThenShouldHave500Records()
-        {
-            new FirstNameSource().List.Count.ShouldBe(500);
-            new LastNameSource().List.Count.ShouldBe(500);
-            new FullNameSource().List.Count.ShouldBe(500);
         }
     }
 

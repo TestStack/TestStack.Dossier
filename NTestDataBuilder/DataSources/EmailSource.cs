@@ -8,21 +8,21 @@ namespace NTestDataBuilder.DataSources
     /// <summary>
     /// Free sample data for testing obtained from http://www.briandunning.com/sample-data/
     /// </summary>
-    public class CompanySource : DataSource<string>
+    public class EmailSource : DataSource<string>
     {
         /// <inheritdoc />
-        public CompanySource() 
+        public EmailSource() 
             : base() { }
 
         /// <inheritdoc />
-        public CompanySource(IGenerator generator) 
+        public EmailSource(IGenerator generator) 
             : base(generator) { }
 
         /// <inheritdoc />
         protected override IList<string> InitializeList()
         {
             return FileDataRepository.People
-                .Select(person => person.CompanyName)
+                .Select(person => person.Email)
                 .Distinct()
                 .ToList();
         }
