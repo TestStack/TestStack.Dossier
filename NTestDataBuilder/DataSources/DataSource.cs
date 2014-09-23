@@ -16,24 +16,50 @@ namespace NTestDataBuilder.DataSources
         protected DataSource(IGenerator generator)
         {
             Generator = generator;
-            List = InitializeList();
-            Generator.ListSize = List.Count;
         }
 
         /// <summary>
         /// The default constructor implements a RandomGenerator strategy
         /// </summary>
-        protected DataSource() 
+        protected DataSource()
             : this(new RandomGenerator()) { }
 
-        public IList<T> List { get; private set; }
+        private IList<T> _list;
+
+        /// <summary>
+        /// The data source data
+        /// </summary>
+        public IList<T> Data
+        {
+            get
+            {
+                if (_list == null)
+                {
+                    _list = InitializeDataSource();
+                    Generator.ListSize = Data.Count;
+                }
+                return _list;
+            }
+        }
+
+        /// <summary>
+        /// The Generator that determines which record from the data source collection is returned with the Next operation.
+        /// </summary>
         public IGenerator Generator { get; private set; }
 
-        protected abstract IList<T> InitializeList();
+        /// <summary>
+        /// Each data source implements this method to load data into the data source the first time the data is accessed
+        /// </summary>
+        /// <returns></returns>
+        protected abstract IList<T> InitializeDataSource();
 
+        /// <summary>
+        /// Returns the next item from the data source as determined by the Generator
+        /// </summary>
+        /// <returns></returns>
         public virtual T Next()
         {
-            return List[Generator.Generate()];
+            return Data[Generator.Generate()];
         }
     }
 }

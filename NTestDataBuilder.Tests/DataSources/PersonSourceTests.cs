@@ -12,9 +12,9 @@ namespace NTestDataBuilder.Tests.DataSources
         [PropertyData("TestCases")]
         public void PersonSourceSpec(DataSource<string> sut, int expectedCount)
         {
-            var collection = sut.List.ToList();
+            var collection = sut.Data.ToList();
             collection.Count.ShouldBe(expectedCount);
-            collection.Count.ShouldBe(sut.List.Distinct().ToList().Count);
+            collection.Count.ShouldBe(sut.Data.Distinct().ToList().Count);
             collection.ForEach(item => item.ShouldNotBeNullOrEmpty());
         }
 

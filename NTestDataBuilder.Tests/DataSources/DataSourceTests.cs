@@ -14,7 +14,7 @@ namespace NTestDataBuilder.Tests.DataSources
         {
             var sut = new DummyDataSource();
 
-            var result = sut.List;
+            var result = sut.Data;
 
             result.Count.ShouldBe(3);
             result.ShouldBe(new List<string> { "Value 1", "Value 2", "Value 3" });
@@ -25,7 +25,7 @@ namespace NTestDataBuilder.Tests.DataSources
         {
             var sut = new DummyDataSource();
             var result = sut.Next();
-            sut.List.ShouldContain(result);
+            sut.Data.ShouldContain(result);
         }
 
         [Fact]
@@ -39,7 +39,7 @@ namespace NTestDataBuilder.Tests.DataSources
                 results.Add(sut.Next());
             }
 
-            foreach (var item in sut.List)
+            foreach (var item in sut.Data)
             {
                 results.ShouldContain(item);
             }
@@ -50,10 +50,10 @@ namespace NTestDataBuilder.Tests.DataSources
         {
             var sut = new DummyDataSource(new SequentialGenerator());
 
-            sut.Next().ShouldBe(sut.List[0]);
-            sut.Next().ShouldBe(sut.List[1]);
-            sut.Next().ShouldBe(sut.List[2]);
-            sut.Next().ShouldBe(sut.List[0]);
+            sut.Next().ShouldBe(sut.Data[0]);
+            sut.Next().ShouldBe(sut.Data[1]);
+            sut.Next().ShouldBe(sut.Data[2]);
+            sut.Next().ShouldBe(sut.Data[0]);
         }
 
         [Fact]
@@ -61,9 +61,9 @@ namespace NTestDataBuilder.Tests.DataSources
         {
             var sut = new DummyDataSource(new SequentialGenerator(0,1,true));
 
-            sut.Next().ShouldBe(sut.List[0]);
-            sut.Next().ShouldBe(sut.List[1]);
-            sut.Next().ShouldBe(sut.List[2]);
+            sut.Next().ShouldBe(sut.Data[0]);
+            sut.Next().ShouldBe(sut.Data[1]);
+            sut.Next().ShouldBe(sut.Data[2]);
             Should.Throw<InvalidOperationException>(() => sut.Next());
         }
     }
@@ -76,7 +76,7 @@ namespace NTestDataBuilder.Tests.DataSources
         public DummyDataSource() 
             : this(new RandomGenerator()) { }
 
-        protected override IList<string> InitializeList()
+        protected override IList<string> InitializeDataSource()
         {
             return new List<string>{"Value 1", "Value 2", "Value 3"};
         }

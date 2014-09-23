@@ -26,7 +26,7 @@ namespace NTestDataBuilder.Tests.EquivalenceClasses
             {
                 testCase.ShouldBeOfType<string>();
                 testCase.ShouldNotBeNullOrEmpty();
-                source.List.ShouldContain(testCase);
+                source.Data.ShouldContain(testCase);
             }
             var unique = testCases.Distinct().Count();
             unique.ShouldBeGreaterThan(5);

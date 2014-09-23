@@ -55,7 +55,10 @@
   <ItemGroup>
     <Compile Include="AnonymousValueFixture.cs" />
     <Compile Include="DataSources\CitySource.cs" />
+    <Compile Include="DataSources\Dictionaries\IDictionaryRepository.cs" />
     <Compile Include="DataSources\CountySource.cs" />
+    <Compile Include="DataSources\Dictionaries\FileDictionaryRepository.cs" />
+    <Compile Include="DataSources\Dictionaries\FileDictionarySource.cs" />
     <Compile Include="DataSources\WebsiteSource.cs" />
     <Compile Include="DataSources\PostCodeSource.cs" />
     <Compile Include="DataSources\PhoneSource.cs" />
@@ -91,7 +94,9 @@
     <None Include="NTestDataBuilder.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\GeoContinent.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

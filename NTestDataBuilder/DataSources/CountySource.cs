@@ -19,7 +19,7 @@ namespace NTestDataBuilder.DataSources
             : base(generator) { }
 
         /// <inheritdoc />
-        protected override IList<string> InitializeList()
+        protected override IList<string> InitializeDataSource()
         {
             return FileDataRepository.People
                 .Select(person => person.County)
