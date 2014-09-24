@@ -54,28 +54,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnonymousValueFixture.cs" />
-    <Compile Include="DataSources\CitySource.cs" />
     <Compile Include="DataSources\Dictionaries\Cache.cs" />
     <Compile Include="DataSources\Dictionaries\IDictionaryRepository.cs" />
-    <Compile Include="DataSources\CountySource.cs" />
     <Compile Include="DataSources\Dictionaries\CachedFileDictionaryRepository.cs" />
     <Compile Include="DataSources\Dictionaries\FileDictionarySource.cs" />
     <Compile Include="DataSources\Geography\GeoContinentSource.cs" />
     <Compile Include="DataSources\Geography\GeoCountrySource.cs" />
-    <Compile Include="DataSources\WebsiteSource.cs" />
-    <Compile Include="DataSources\PostCodeSource.cs" />
-    <Compile Include="DataSources\PhoneSource.cs" />
-    <Compile Include="DataSources\EmailSource.cs" />
-    <Compile Include="DataSources\StreetSource.cs" />
-    <Compile Include="DataSources\FileData\FileDataSourceHelpers.cs" />
-    <Compile Include="DataSources\FileData\Person.cs" />
-    <Compile Include="DataSources\FileData\FileDataRepository.cs" />
-    <Compile Include="DataSources\CompanySource.cs" />
     <Compile Include="DataSources\DataSource.cs" />
-    <Compile Include="DataSources\FirstNameSource.cs" />
-    <Compile Include="DataSources\FullNameSource.cs" />
     <Compile Include="DataSources\IDataSource.cs" />
-    <Compile Include="DataSources\LastNameSource.cs" />
+    <Compile Include="DataSources\Person\PersonEmailAddressSource.cs" />
+    <Compile Include="DataSources\Person\PersonLanguageSource.cs" />
+    <Compile Include="DataSources\Person\PersonNameFirstFemaleSource.cs" />
+    <Compile Include="DataSources\Person\PersonNameFirstSource.cs" />
+    <Compile Include="DataSources\Person\PersonNameFullSource.cs" />
+    <Compile Include="DataSources\Person\PersonNameLastSource.cs" />
+    <Compile Include="DataSources\Person\PersonNameFirstMaleSource.cs" />
+    <Compile Include="DataSources\Person\PersonNameSuffixSource.cs" />
+    <Compile Include="DataSources\Person\PersonNameTitleSource.cs" />
     <Compile Include="EquivalenceClasses\GeographyEquivalenceClassescs.cs" />
     <Compile Include="EquivalenceClasses\PersonEquivalenceClasses.cs" />
     <Compile Include="DataSources\Generators\IGenerator.cs" />
@@ -94,7 +89,6 @@
     <Compile Include="ProxyBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="DataSources\FileData\uk-500.csv" />
     <None Include="NTestDataBuilder.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>

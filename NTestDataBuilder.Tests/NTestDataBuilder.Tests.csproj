@@ -56,6 +56,7 @@
     <Compile Include="DataSources\Dictionaries\CacheTests.cs" />
     <Compile Include="DataSources\Dictionaries\FileDictionaryRepositoryIntegrationTests.cs" />
     <Compile Include="DataSources\Dictionaries\FileDictionarySourceTests.cs" />
+    <Compile Include="DataSources\Dictionaries\Resources\Class1.cs" />
     <Compile Include="DataSources\Generators\RandomGeneratorTests.cs" />
     <Compile Include="DataSources\Generators\SequentiaGeneratorTests.cs" />
     <Compile Include="DataSources\PersonSourceTests.cs" />
@@ -88,9 +89,7 @@
       <Name>NTestDataBuilder</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DataSources\Dictionaries\Resources\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="SampleDictionaryFile.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

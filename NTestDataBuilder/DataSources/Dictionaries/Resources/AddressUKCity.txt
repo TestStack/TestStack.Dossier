@@ -53,9 +53,7 @@ Wollaton West Ward
 Llangeler Community
 Brockley Ward
 Meads Ward
-Broxburn, Uphall and Winchburg
 St. Ive
-Shard End Ward
 Norton Canes
 Bulwell Ward
 Treorchy Community
@@ -237,7 +235,6 @@ Soho Ward
 Oakridge and Castlefield Ward
 Irvine East Ward
 Springfields and Trent Vale Wa
-Fawley
 Ise Lodge Ward
 Tatsfield
 Kings Hill
@@ -247,7 +244,6 @@ Goldsmid Ward
 Cherryfield Ward
 Wakefield East Ward
 Nith Ward
-Meads Ward
 Holywell Community
 Lamport
 Chadderton Central Ward
@@ -258,18 +254,15 @@ East Kilbride West Ward
 Tiffield
 Londesborough
 Whitchurch Urban
-Northgate Ward
 Ponteland
 Appleton Wiske
 Barnham
-Deepdale Ward
 Stutton with Hazlewood
 Holyrood Ward
 East Sheen Ward
 Byker Ward
 Llangristiolus Community
 Neilston, Uplawmoor and Newton
-Central Buchan Ward
 Little Parndon and Hare Street
 Read
 Blantyre Ward
@@ -294,13 +287,11 @@ Cotham Ward
 Greenlands Ward
 Boothen and Oak Hill Ward
 Stoneygate Ward
-City and Hunslet Ward
 Trelawnyd and Gwaenysgor Commu
 Cobham and Downside Ward
 Leighton-Linslade
 Hetton
 Hodge Hill Ward
-Loundsley Green Ward
 Little Clacton
 Aldbrough
 Coatbridge South Ward
@@ -321,7 +312,6 @@ Bellshill Ward
 Rhoose Community
 Grovehill Ward
 Sharston Ward
-Trossachs and Teith Ward
 Lobley Hill and Bensham Ward
 Tibberton
 Stretton
@@ -350,7 +340,6 @@ Llwyn-y-Pia Community
 Clackmannanshire South Ward
 Corporation Park Ward
 Cirencester
-Franche Ward
 Mossend and Holytown Ward
 Heath Town Ward
 Long Preston
@@ -364,19 +353,16 @@ Kirkintilloch East and Twechar
 Loughborough Hastings Ward
 Alphington Ward
 Woodford cum Membris
-Temple Newsam Ward
 Billesley Ward
 Milton Ward
 Mossley
 Dingwall and Seaforth Ward
-Central Ward
 Broomhill Ward
 Frimley Green Ward
 Littleborough Lakeside Ward
 Girvan and South Carrick Ward
 Leigh-on-Sea
 Wonersh
-Chichester
 Stainburn
 Earlestown Ward
 Blyth
@@ -384,7 +370,6 @@ Upper Rawcliffe-with-Tarnacre
 Northwood Ward
 Shrewsbury
 Empress Ward
-Halliwell Ward
 Hartburn Ward
 West Garioch Ward
 Roundway
@@ -392,7 +377,6 @@ Castleford Central and Glassho
 Melton Dorian Ward
 Patching Hall Ward
 Sunningdale
-Castle Ward
 Leek
 Churchill Ward
 Aspley Ward
@@ -400,11 +384,9 @@ Callington
 Ravenshead
 Church Langley Ward
 Midlothian West Ward
-Central Ward
 Grangemouth Ward
 Rhos-on-Sea Community
 Kingswells
-Blyth
 Warwick
 Inverclyde South Ward
 Hamilton South Ward
@@ -413,28 +395,22 @@ Daybrook Ward
 Ravensthorpe Ward
 Silloth-on-Solway
 Milton
-Seaham
 Llantrisant Community
 Lansdown Ward
-Victoria Ward
 Fowlmere
 Audley Ward
 Warham
 Mildmay Ward
 Radcliffe West Ward
-City and Hunslet Ward
 Murdostoun Ward
 Eastbrook Ward
 Ipplepen
 Stowting
 Werrington
 Banchory and Mid Deeside Ward
-Westbury
 Madeley
 Kincorth
 Benwell and Scotswood Ward
-Woodhouse Ward
-Wheatley Ward
 Rothwell Ward
 Markhouse Ward
 Stokenham
@@ -442,17 +418,12 @@ High Barnet Ward
 Hexham
 Shorne
 Stannington Ward
-Town Ward
-Astley Bridge Ward
 Market Rasen
 Tadworth and Walton Ward
 Moreton Morrell
-Wombourne
 Launceston
 Henllan Community
-Springfield Ward
 Glastonbury
-West End Ward
 Thorpe Hamlet Ward
 Yalding
 Moordown Ward
@@ -481,7 +452,6 @@ Seven Sisters Ward
 Fareham South Ward
 Sutton cum Duckmanton
 Whitley Ward
-Everton Ward
 Shirley Ward
 Holbrook
 North East Ward
@@ -493,8 +463,6 @@ Park Ward
 Ballochmyle Ward
 Priory Heath Ward
 Farnworth Ward
-Knightsbridge and Belgravia Wa
 Inverness Ness-Side Ward
-Darton West Ward
 Consett North ED
 Tanworth-in-Arden

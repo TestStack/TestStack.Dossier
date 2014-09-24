@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using NTestDataBuilder.DataSources;
+using NTestDataBuilder.DataSources.Person;
 using Shouldly;
 using Xunit.Extensions;
 
@@ -22,18 +23,15 @@ namespace NTestDataBuilder.Tests.DataSources
         {
             get
             {
-                yield return new object[] { new FirstNameSource(), 479 };
-                yield return new object[] { new LastNameSource(), 498 };
-                yield return new object[] { new FullNameSource(), 500 };
-                yield return new object[] { new CompanySource(), 496 };
-                yield return new object[] { new StreetSource(), 498 };
-                yield return new object[] { new CitySource(), 483 };
-                yield return new object[] { new CountySource(), 214 };
-                yield return new object[] { new PostCodeSource(), 433 };
-                yield return new object[] { new PhoneSource(), 500 };
-                yield return new object[] { new EmailSource(), 500 };
-                yield return new object[] { new WebsiteSource(), 498 };
-
+                yield return new object[] { new PersonEmailAddressSource(), 1000 };
+                yield return new object[] { new PersonLanguageSource(), 97 };
+                yield return new object[] { new PersonNameFirstFemaleSource(), 100 };
+                yield return new object[] { new PersonNameFirstSource(), 479 };
+                yield return new object[] { new PersonNameFullSource(), 1000 };
+                yield return new object[] { new PersonNameLastSource(), 747 };
+                yield return new object[] { new PersonNameFirstMaleSource(), 100 };
+                yield return new object[] { new PersonNameSuffixSource(), 5 };
+                yield return new object[] { new PersonNameTitleSource(), 9 };
             }
         }
     }

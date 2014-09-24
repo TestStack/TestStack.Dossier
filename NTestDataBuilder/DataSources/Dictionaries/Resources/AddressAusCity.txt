@@ -2,7 +2,6 @@ Leith
 Proston
 Hamel
 Talmalmo
-Lane Cove
 Cartmeticup
 Nyamup
 Bendick Murrell
@@ -36,7 +35,6 @@ Buninyong
 Dangar Island
 Sunny Nook
 Minden
-Tibradden
 Clermont
 Kadina
 Sawtell
@@ -57,7 +55,6 @@ Macks Creek
 East Toowoomba
 Bimbijy
 Kundabung
-Pinnacle
 Watsonville
 Seaforth
 White Hills
@@ -87,7 +84,6 @@ Wattle Hill
 Bower
 Stonehaven
 East Newdegate
-Emerald
 Katunga
 Willunga
 Two Rocks
@@ -105,13 +101,11 @@ Pacific Heights
 Guildford
 Herron
 Mirrool
-Bundaberg West
 Lane Cove
 Reservoir
 Upper Kedron
 Buchan
 Beltana
-Kingswood
 Nicholls Rivulet
 Upper Mount Gravatt
 Ridgley
@@ -126,7 +120,6 @@ Trowutta
 Rouse Hill
 Wyandra
 Goondi Hill
-Hill River
 Fairview Park
 Bar Beach
 University Of Tasmania
@@ -170,7 +163,6 @@ Whetstone
 Corella
 Humpty Doo
 Goode Beach
-Heidelberg Rgh
 Waterloo
 Minyip
 Hunchy
@@ -182,7 +174,6 @@ Elizabeth West
 Gumly Gumly
 Wilmington
 Pagewood
-Tawonga
 Hamlyn Heights
 Southtown
 East Bowes
@@ -190,7 +181,6 @@ Blue Haven
 Cramphorne
 Beelbi Creek
 Tanbar
-Ringwood
 Battery Point
 Milton
 Laura
@@ -241,7 +231,6 @@ Julia Creek
 Salter Point
 Lilydale
 Tea Gardens
-Oxley
 Yallah
 Cavendish
 Condobolin
@@ -282,7 +271,6 @@ Rocklands
 Oaklands Park
 Buckland Park
 Longwood
-Varsity Lakes
 Appin
 Adelaide River
 Harris Park
@@ -312,7 +300,6 @@ Gillieston Heights
 Neerabup
 Mount Martha
 Appila
-Milton
 Etty Bay
 Lower Hermitage
 Degilbo
@@ -328,7 +315,6 @@ Andergrove
 Concord West
 Bethania
 Barooga
-Willetton
 Stratton
 Elimbah
 Emerald
@@ -347,7 +333,6 @@ Chatsworth
 Bawley Point
 Weengallon
 Tuggeranong Dc
-Dangar Island
 Shannon
 Greenhills
 Cherrybrook
@@ -385,7 +370,6 @@ Indented Head
 Marla
 Mungabunda
 Houston
-Larrakeyah
 Docklands
 Gabbadah
 Morundah
@@ -413,7 +397,6 @@ Mouroubra
 Flinders University
 Crows Nest
 Panmure
-Bygalorie
 Oakhurst
 Mandurah East
 Daisy Hill
@@ -441,7 +424,6 @@ Kinglake West
 Canning Vale
 Upper Glastonbury
 Caroline Springs
-Hunchy
 Hamlyn Terrace
 Darbys Falls
 Pinnacle
@@ -468,7 +450,6 @@ Buraminya
 Balnagowan
 Lower Cressbrook
 Larrakeyah
-Middleton
 Oak Flats
 Orange Hill
 Welshpool
@@ -485,7 +466,6 @@ Ilford
 Caparra
 Duaringa
 Weston
-Clunes
 Oakey
 Barton
 Lanena

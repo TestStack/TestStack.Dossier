@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using NTestDataBuilder.DataSources;
+using NTestDataBuilder.DataSources.Person;
 using NTestDataBuilder.EquivalenceClasses;
 using Shouldly;
 using Xunit.Extensions;
@@ -28,25 +29,26 @@ namespace NTestDataBuilder.Tests.EquivalenceClasses
                 testCase.ShouldNotBeNullOrEmpty();
                 source.Data.ShouldContain(testCase);
             }
-            var unique = testCases.Distinct().Count();
-            unique.ShouldBeGreaterThan(5);
+            if (source.Data.Count > 15)
+            {
+                var unique = testCases.Distinct().Count();
+                unique.ShouldBeGreaterThan(5);
+            }
         }
 
         public static IEnumerable<object[]> TestCases
         {
             get
             {
-                yield return new object[] { new FirstNameSource(), GenerateTestCasesForSut(Any.FirstName) };
-                yield return new object[] { new LastNameSource(), GenerateTestCasesForSut(Any.LastName) };
-                yield return new object[] { new FullNameSource(), GenerateTestCasesForSut(Any.FullName) };
-                yield return new object[] { new CompanySource(), GenerateTestCasesForSut(Any.Company) };
-                yield return new object[] { new StreetSource(), GenerateTestCasesForSut(Any.Street) };
-                yield return new object[] { new CitySource(), GenerateTestCasesForSut(Any.City) };
-                yield return new object[] { new CountySource(), GenerateTestCasesForSut(Any.County) };
-                yield return new object[] { new PostCodeSource(), GenerateTestCasesForSut(Any.PostCode) };
-                yield return new object[] { new PhoneSource(), GenerateTestCasesForSut(Any.Phone) };
-                yield return new object[] { new EmailSource(), GenerateTestCasesForSut(Any.Email) };
-                yield return new object[] { new WebsiteSource(), GenerateTestCasesForSut(Any.Website) };
+                yield return new object[] { new PersonEmailAddressSource(), GenerateTestCasesForSut(Any.PersonEmailAddress) };
+                yield return new object[] { new PersonLanguageSource(), GenerateTestCasesForSut(Any.PersonLanguage) };
+                yield return new object[] { new PersonNameFirstFemaleSource(), GenerateTestCasesForSut(Any.PersonNameFirstFemale) };
+                yield return new object[] { new PersonNameFirstSource(), GenerateTestCasesForSut(Any.PersonNameFirst) };
+                yield return new object[] { new PersonNameFullSource(), GenerateTestCasesForSut(Any.PersonNameFull) };
+                yield return new object[] { new PersonNameLastSource(), GenerateTestCasesForSut(Any.PersonNameLast) };
+                yield return new object[] { new PersonNameFirstMaleSource(), GenerateTestCasesForSut(Any.PersonNameFirstMale) };
+                yield return new object[] { new PersonNameSuffixSource(), GenerateTestCasesForSut(Any.PersonNameSuffix) };
+                yield return new object[] { new PersonNameTitleSource(), GenerateTestCasesForSut(Any.PersonNameTitle) };
             }
         }
 

@@ -107,18 +107,15 @@ Fayetteville
 Tacoma
 Oxnard
 Fontana
-Columbus
 Montgomery
 Moreno Valley
 Shreveport
-Aurora
 Yonkers
 Akron
 Huntington Beach
 Little Rock
 Augusta
 Amarillo
-Glendale
 Mobile
 Grand Rapids
 Salt Lake City
@@ -155,7 +152,6 @@ Corona
 Eugene
 Palmdale
 Salinas
-Springfield
 Pasadena
 Fort Collins
 Hayward
@@ -165,7 +161,6 @@ Rockford
 Alexandria
 Escondido
 McKinney
-Kansas City
 Joliet
 Sunnyvale
 Torrance
@@ -180,7 +175,6 @@ Dayton
 Savannah
 Clarksville
 Orange
-Pasadena
 Fullerton
 Killeen
 Frisco
@@ -227,12 +221,9 @@ Beaumont
 Independence
 Murfreesboro
 Ann Arbor
-Springfield
 Berkeley
-Peoria
 Provo
 El Monte
-Columbia
 Lansing
 Fargo
 Downey
@@ -243,7 +234,6 @@ Inglewood
 Miami Gardens
 Carlsbad
 Westminster
-Rochester
 Odessa
 Manchester
 Elgin
@@ -259,7 +249,6 @@ Ventura
 Pueblo
 High Point
 West Covina
-Richmond
 Murrieta
 Cambridge
 Antioch
