@@ -55,9 +55,10 @@
   <ItemGroup>
     <Compile Include="AnonymousValueFixture.cs" />
     <Compile Include="DataSources\CitySource.cs" />
+    <Compile Include="DataSources\Dictionaries\Cache.cs" />
     <Compile Include="DataSources\Dictionaries\IDictionaryRepository.cs" />
     <Compile Include="DataSources\CountySource.cs" />
-    <Compile Include="DataSources\Dictionaries\FileDictionaryRepository.cs" />
+    <Compile Include="DataSources\Dictionaries\CachedFileDictionaryRepository.cs" />
     <Compile Include="DataSources\Dictionaries\FileDictionarySource.cs" />
     <Compile Include="DataSources\Geography\GeoContinentSource.cs" />
     <Compile Include="DataSources\Geography\GeoCountrySource.cs" />

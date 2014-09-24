@@ -10,7 +10,7 @@ namespace NTestDataBuilder.Tests.DataSources.Dictionaries
         [Fact]
         public void GivenAnExternalFileDictionaryExists_WhenRetrievingWords_ThenExternalDictionaryIsUsed()
         {
-            var sut = new FileDictionaryRepository();
+            var sut = new CachedFileDictionaryRepository();
 
             var result = sut.GetWordsFrom("SampleDictionaryFile");
 
@@ -21,7 +21,7 @@ namespace NTestDataBuilder.Tests.DataSources.Dictionaries
         [Fact]
         public void GivenAResourceDictionaryAndNoExternalFileDictionary_WhenRetrievingWords_ThenResourceDictionaryIsUsed()
         {
-            var sut = new FileDictionaryRepository();
+            var sut = new CachedFileDictionaryRepository();
 
             var result = sut.GetWordsFrom("GeoContinent");
 
@@ -32,7 +32,7 @@ namespace NTestDataBuilder.Tests.DataSources.Dictionaries
         [Fact]
         public void GivenNoResourceDictionaryAndNoExternalFileDictionary_WhenRetrievingWords_ThenFileNotFoundException()
         {
-            var sut = new FileDictionaryRepository();
+            var sut = new CachedFileDictionaryRepository();
             Should.Throw<FileNotFoundException>(() => sut.GetWordsFrom("NonExistentDictionary"));
         }
 

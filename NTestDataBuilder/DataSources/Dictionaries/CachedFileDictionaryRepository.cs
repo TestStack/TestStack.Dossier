@@ -1,27 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 
 namespace NTestDataBuilder.DataSources.Dictionaries
 {
     /// <summary>
-    /// Retrieves words from dictionaries stored in files
+    /// Retrieves words from dictionaries stored in files. First looks for external file that user might have created. If this does not exist then data is retrieved from embedded resource files.
     /// </summary>
-    public class FileDictionaryRepository : IDictionaryRepository
+    public class CachedFileDictionaryRepository : IDictionaryRepository
     {
         public IList<string> GetWordsFrom(string dictionary)
         {
-            // let users override values with file in bin directory
+            if (Cache.Contains(dictionary))
+            {
+                return Cache.Get(dictionary);
+            }
+
+            var words = new List<string>();
+
             var name = string.Format("{0}.txt", dictionary);
             if (File.Exists(name))
             {
-                return File.ReadAllLines(name);
+                words = File.ReadAllLines(name).ToList();
+            }
+            else
+            {
+                var resourceName = string.Format("NTestDataBuilder.DataSources.Dictionaries.Resources.{0}", name);
+                words = GetWordsFromEmbeddedResource(GetType().Assembly, resourceName).ToList();
             }
 
-            // otherwise get data from embedded resource files
-            var resourceName = string.Format("NTestDataBuilder.DataSources.Dictionaries.Resources.{0}", name);
-            return GetWordsFromEmbeddedResource(GetType().Assembly, resourceName);
+            Cache.Set(dictionary, words);
+            return words;
         }
 
         internal IList<string> GetWordsFromEmbeddedResource(Assembly assembly, string resourceName)

@@ -21,7 +21,7 @@ namespace NTestDataBuilder.Tests.EquivalenceClasses
         [Theory]
         [PropertyData("TestCases")]
         public void WhenGettingAnyDictionaryData_ThenReturnRandomDictionaryDataWhichIsReasonablyUnique(DataSource<string> source,
-            List<string> testCases, bool checkUniqueness = true)
+            List<string> testCases)
         {
             foreach (var testCase in testCases)
             {
@@ -29,7 +29,7 @@ namespace NTestDataBuilder.Tests.EquivalenceClasses
                 testCase.ShouldNotBeNullOrEmpty();
                 source.Data.ShouldContain(testCase);
             }
-            if (checkUniqueness)
+            if (source.Data.Count > 15)
             {
                 var unique = testCases.Distinct().Count();
                 unique.ShouldBeGreaterThan(5);
@@ -40,6 +40,7 @@ namespace NTestDataBuilder.Tests.EquivalenceClasses
         {
             get
             {
+                yield return new object[] { new GeoContinentSource(), GenerateTestCasesForSut(Any.GeoContinent) };
                 yield return new object[] { new GeoCountrySource(), GenerateTestCasesForSut(Any.GeoCountry) };
             }
         }

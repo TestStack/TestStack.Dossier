@@ -12,7 +12,7 @@ namespace NTestDataBuilder.DataSources.Dictionaries
 
         /// <inheritdoc />
         protected FileDictionarySource()
-            : this(new RandomGenerator(), new FileDictionaryRepository()) { }
+            : this(new RandomGenerator(), new CachedFileDictionaryRepository()) { }
 
         /// <inheritdoc />
         public FileDictionarySource(IGenerator generator, IDictionaryRepository repository)
