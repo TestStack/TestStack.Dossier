@@ -59,8 +59,11 @@
     <Compile Include="DataSources\Dictionaries\CachedFileDictionaryRepository.cs" />
     <Compile Include="DataSources\Dictionaries\FileDictionarySource.cs" />
     <Compile Include="DataSources\Geography\GeoContinentSource.cs" />
+    <Compile Include="DataSources\Geography\GeoCountryCodeSource.cs" />
     <Compile Include="DataSources\Geography\GeoCountrySource.cs" />
     <Compile Include="DataSources\DataSource.cs" />
+    <Compile Include="DataSources\Geography\GeoLatitudeSource.cs" />
+    <Compile Include="DataSources\Geography\GeoLongitudeSource.cs" />
     <Compile Include="DataSources\IDataSource.cs" />
     <Compile Include="DataSources\Person\PersonEmailAddressSource.cs" />
     <Compile Include="DataSources\Person\PersonLanguageSource.cs" />

@@ -3,24 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using NTestDataBuilder.DataSources;
 using NTestDataBuilder.DataSources.Geography;
+using NTestDataBuilder.DataSources.Person;
 using NTestDataBuilder.EquivalenceClasses;
 using Shouldly;
 using Xunit.Extensions;
 
 namespace NTestDataBuilder.Tests.EquivalenceClasses
 {
-    public class DictionaryEquivalenceClassesTests
+    public class PersonEquivalenceClassesTests
     {
          public static AnonymousValueFixture Any { get; private set; }
 
-         public DictionaryEquivalenceClassesTests()
+         public PersonEquivalenceClassesTests()
         {
             Any = new AnonymousValueFixture();
         }
 
         [Theory]
         [PropertyData("TestCases")]
-        public void WhenGettingAnyDictionaryData_ThenReturnRandomDictionaryDataWhichIsReasonablyUnique(DataSource<string> source,
+        public void WhenGettingAnyPersonData_ThenReturnRandomPersonDataWhichIsReasonablyUnique(DataSource<string> source,
             List<string> testCases)
         {
             foreach (var testCase in testCases)
@@ -40,8 +41,21 @@ namespace NTestDataBuilder.Tests.EquivalenceClasses
         {
             get
             {
+                yield return new object[] { new PersonEmailAddressSource(), GenerateTestCasesForSut(Any.PersonEmailAddress) };
+                yield return new object[] { new PersonLanguageSource(), GenerateTestCasesForSut(Any.PersonLanguage) };
+                yield return new object[] { new PersonNameFirstFemaleSource(), GenerateTestCasesForSut(Any.PersonNameFirstFemale) };
+                yield return new object[] { new PersonNameFirstSource(), GenerateTestCasesForSut(Any.PersonNameFirst) };
+                yield return new object[] { new PersonNameFullSource(), GenerateTestCasesForSut(Any.PersonNameFull) };
+                yield return new object[] { new PersonNameLastSource(), GenerateTestCasesForSut(Any.PersonNameLast) };
+                yield return new object[] { new PersonNameFirstMaleSource(), GenerateTestCasesForSut(Any.PersonNameFirstMale) };
+                yield return new object[] { new PersonNameSuffixSource(), GenerateTestCasesForSut(Any.PersonNameSuffix) };
+                yield return new object[] { new PersonNameTitleSource(), GenerateTestCasesForSut(Any.PersonNameTitle) };
+
                 yield return new object[] { new GeoContinentSource(), GenerateTestCasesForSut(Any.GeoContinent) };
                 yield return new object[] { new GeoCountrySource(), GenerateTestCasesForSut(Any.GeoCountry) };
+                yield return new object[] { new GeoCountryCodeSource(), GenerateTestCasesForSut(Any.GeoCountryCode) };
+                yield return new object[] { new GeoLatitudeSource(), GenerateTestCasesForSut(Any.GeoLatitude) };
+                yield return new object[] { new GeoLongitudeSource(), GenerateTestCasesForSut(Any.GeoLongitude) };
             }
         }
 

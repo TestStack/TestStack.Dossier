@@ -1,17 +1,18 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using NTestDataBuilder.DataSources;
+using NTestDataBuilder.DataSources.Geography;
 using NTestDataBuilder.DataSources.Person;
 using Shouldly;
 using Xunit.Extensions;
 
 namespace NTestDataBuilder.Tests.DataSources
 {
-    public class PersonSourceTests
+    public class DataSourceConventionTests
     {
         [Theory]
         [PropertyData("TestCases")]
-        public void PersonSourceSpec(DataSource<string> sut, int expectedCount)
+        public void DataSourceConventions(DataSource<string> sut, int expectedCount)
         {
             var collection = sut.Data.ToList();
             collection.Count.ShouldBe(expectedCount);
@@ -23,6 +24,12 @@ namespace NTestDataBuilder.Tests.DataSources
         {
             get
             {
+                yield return new object[] { new GeoContinentSource(), 7 };
+                yield return new object[] { new GeoCountrySource(), 249 };
+                yield return new object[] { new GeoCountryCodeSource(), 64 };
+                yield return new object[] { new GeoLatitudeSource(), 1000 };
+                yield return new object[] { new GeoLongitudeSource(), 1000 };
+
                 yield return new object[] { new PersonEmailAddressSource(), 1000 };
                 yield return new object[] { new PersonLanguageSource(), 97 };
                 yield return new object[] { new PersonNameFirstFemaleSource(), 100 };
