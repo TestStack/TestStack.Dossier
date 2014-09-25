@@ -21,7 +21,7 @@ namespace NTestDataBuilder.Tests.DataSources.Dictionaries
 
     public class DummySource : FileDictionarySource
     {
-        public DummySource(IDictionaryRepository repository) 
+        internal DummySource(IDictionaryRepository repository) 
             : base(Substitute.For<IGenerator>(), repository) { }
     }
 }

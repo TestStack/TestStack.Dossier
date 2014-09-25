@@ -5,7 +5,7 @@ namespace NTestDataBuilder.DataSources.Dictionaries
     /// <summary>
     /// Retrieves words from specified dictionaries
     /// </summary>
-    public interface IDictionaryRepository
+    internal interface IDictionaryRepository
     {
         /// <summary>
         /// Retrieves words from specified dictionary

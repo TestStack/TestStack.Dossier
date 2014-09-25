@@ -10,11 +10,11 @@ using Xunit.Extensions;
 
 namespace NTestDataBuilder.Tests.EquivalenceClasses
 {
-    public class PersonEquivalenceClassesTests
+    public class DictionaryEquivalenceClassesTests
     {
          public static AnonymousValueFixture Any { get; private set; }
 
-         public PersonEquivalenceClassesTests()
+         public DictionaryEquivalenceClassesTests()
         {
             Any = new AnonymousValueFixture();
         }

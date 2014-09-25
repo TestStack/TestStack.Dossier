@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections.Concurrent;
+using System.Collections.Generic;
 
 namespace NTestDataBuilder.DataSources.Dictionaries
 {
     internal static class Cache
     {
-        private static IDictionary<string, IList<string>> _cache = new Dictionary<string, IList<string>>();
+        private static ConcurrentDictionary<string, IList<string>> _cache = new ConcurrentDictionary<string, IList<string>>();
 
         internal static IList<string> Get(string dictionary)
         {
@@ -23,7 +24,7 @@ namespace NTestDataBuilder.DataSources.Dictionaries
 
         public static void Clear()
         {
-            _cache = new Dictionary<string, IList<string>>();
+            _cache = new ConcurrentDictionary<string, IList<string>>();
         }
     }
 }

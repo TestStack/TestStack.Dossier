@@ -15,7 +15,7 @@ namespace NTestDataBuilder.DataSources.Dictionaries
             : this(new RandomGenerator(), new CachedFileDictionaryRepository()) { }
 
         /// <inheritdoc />
-        public FileDictionarySource(IGenerator generator, IDictionaryRepository repository)
+        internal FileDictionarySource(IGenerator generator, IDictionaryRepository repository)
             : base(generator)
         {
             _repository = repository;

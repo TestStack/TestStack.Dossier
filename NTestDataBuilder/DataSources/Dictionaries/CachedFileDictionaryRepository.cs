@@ -8,7 +8,7 @@ namespace NTestDataBuilder.DataSources.Dictionaries
     /// <summary>
     /// Retrieves words from dictionaries stored in files. First looks for external file that user might have created. If this does not exist then data is retrieved from embedded resource files.
     /// </summary>
-    public class CachedFileDictionaryRepository : IDictionaryRepository
+    internal class CachedFileDictionaryRepository : IDictionaryRepository
     {
         public IList<string> GetWordsFrom(string dictionary)
         {
