@@ -5,7 +5,7 @@ namespace NTestDataBuilder.DataSources
 {
     public interface IDataSource<T> 
     {
-        IList<T> List { get; }
+        IList<T> Data { get; }
         IGenerator Generator { get; }
         T Next();
     }

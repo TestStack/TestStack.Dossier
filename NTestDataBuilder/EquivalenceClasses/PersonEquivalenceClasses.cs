@@ -1,33 +1,75 @@
-﻿using NTestDataBuilder.DataSources;
+﻿using NTestDataBuilder.DataSources.Person;
 
 namespace NTestDataBuilder.EquivalenceClasses
 {
     /// <summary>
     /// Extension methods that describe equivalence classes for generating anonymous person-related values.
     /// </summary>
-    public static class PersonEquivalenceClasses
+    public static class NameEquivalenceClasses
     {
-        private static FirstNameSource _firstNameSource;
-        private static LastNameSource _lastNameSource;
-        private static FullNameSource _fullNameSource;
-        private static CompanySource _companySource;
-        private static StreetSource _streetSource;
-        private static CitySource _citySource;
-        private static CountySource _countySource;
-        private static PostCodeSource _postCodeSource;
-        private static PhoneSource _phoneSource;
-        private static EmailSource _emailSource;
-        private static WebsiteSource _websiteSource;
+        private static PersonEmailAddressSource _personEmailAddressSource;
+        private static PersonLanguageSource _personLanguageSource;
+        private static PersonNameFirstFemaleSource _personNameFirstFemaleSource;
+        private static PersonNameFirstSource _personNameFirstSource;
+        private static PersonNameFullSource _personNameFullSource;
+        private static PersonNameLastSource _personNameLastSource;
+        private static PersonNameFirstMaleSource _personNameFirstMaleSource;
+        private static PersonNameSuffixSource _personNameSuffixSource;
+        private static PersonNameTitleSource _personNameTitleSource;
 
         /// <summary>
-        /// Generate and return a first name.
+        /// Generate and return an email address.
         /// </summary>
         /// <param name="fixture">The fixture to generate a string for</param>
         /// <returns>The generated string</returns>
-        public static string FirstName(this AnonymousValueFixture fixture)
+        public static string PersonEmailAddress(this AnonymousValueFixture fixture)
         {
-            if(_firstNameSource == null) _firstNameSource = new FirstNameSource();
-            return _firstNameSource.Next();
+            if (_personEmailAddressSource == null) _personEmailAddressSource = new PersonEmailAddressSource();
+            return _personEmailAddressSource.Next();
+        }
+
+        /// <summary>
+        /// Generate and return a language name.
+        /// </summary>
+        /// <param name="fixture">The fixture to generate a string for</param>
+        /// <returns>The generated string</returns>
+        public static string PersonLanguage(this AnonymousValueFixture fixture)
+        {
+            if (_personLanguageSource == null) _personLanguageSource = new PersonLanguageSource();
+            return _personLanguageSource.Next();
+        }
+
+        /// <summary>
+        /// Generate and return a female first name.
+        /// </summary>
+        /// <param name="fixture">The fixture to generate a string for</param>
+        /// <returns>The generated string</returns>
+        public static string PersonNameFirstFemale(this AnonymousValueFixture fixture)
+        {
+            if (_personNameFirstFemaleSource == null) _personNameFirstFemaleSource = new PersonNameFirstFemaleSource();
+            return _personNameFirstFemaleSource.Next();
+        }
+
+        /// <summary>
+        /// Generate and return a male or female first name.
+        /// </summary>
+        /// <param name="fixture">The fixture to generate a string for</param>
+        /// <returns>The generated string</returns>
+        public static string PersonNameFirst(this AnonymousValueFixture fixture)
+        {
+            if (_personNameFirstSource == null) _personNameFirstSource = new PersonNameFirstSource();
+            return _personNameFirstSource.Next();
+        }
+
+        /// <summary>
+        /// Generate and return a male or female full name (first and last names).
+        /// </summary>
+        /// <param name="fixture">The fixture to generate a string for</param>
+        /// <returns>The generated string</returns>
+        public static string PersonNameFull(this AnonymousValueFixture fixture)
+        {
+            if (_personNameFullSource == null) _personNameFullSource = new PersonNameFullSource();
+            return _personNameFullSource.Next();
         }
 
         /// <summary>
@@ -35,110 +77,45 @@ namespace NTestDataBuilder.EquivalenceClasses
         /// </summary>
         /// <param name="fixture">The fixture to generate a string for</param>
         /// <returns>The generated string</returns>
-        public static string LastName(this AnonymousValueFixture fixture)
+        public static string PersonNameLast(this AnonymousValueFixture fixture)
         {
-            if (_lastNameSource == null) _lastNameSource = new LastNameSource();
-            return _lastNameSource.Next();
+            if (_personNameLastSource == null) _personNameLastSource = new PersonNameLastSource();
+            return _personNameLastSource.Next();
         }
 
         /// <summary>
-        /// Generate and return a first and last name.
+        /// Generate and return a male first name.
         /// </summary>
         /// <param name="fixture">The fixture to generate a string for</param>
         /// <returns>The generated string</returns>
-        public static string FullName(this AnonymousValueFixture fixture)
+        public static string PersonNameFirstMale(this AnonymousValueFixture fixture)
         {
-            if (_fullNameSource == null) _fullNameSource = new FullNameSource();
-            return _fullNameSource.Next();
+            if (_personNameFirstMaleSource == null) _personNameFirstMaleSource = new PersonNameFirstMaleSource();
+            return _personNameFirstMaleSource.Next();
         }
 
         /// <summary>
-        /// Generate and return a company name.
+        /// Generate and return name suffix.
         /// </summary>
         /// <param name="fixture">The fixture to generate a string for</param>
         /// <returns>The generated string</returns>
-        public static string Company(this AnonymousValueFixture fixture)
+        public static string PersonNameSuffix(this AnonymousValueFixture fixture)
         {
-            if (_companySource == null) _companySource = new CompanySource();
-            return _companySource.Next();
+            if (_personNameSuffixSource == null) _personNameSuffixSource = new PersonNameSuffixSource();
+            return _personNameSuffixSource.Next();
         }
 
         /// <summary>
-        /// Generate and return a UK street name.
+        /// Generate and return a name title.
         /// </summary>
         /// <param name="fixture">The fixture to generate a string for</param>
         /// <returns>The generated string</returns>
-        public static string Street(this AnonymousValueFixture fixture)
+        public static string PersonNameTitle(this AnonymousValueFixture fixture)
         {
-            if (_streetSource == null) _streetSource = new StreetSource();
-            return _streetSource.Next();
+            if (_personNameTitleSource == null) _personNameTitleSource = new PersonNameTitleSource();
+            return _personNameTitleSource.Next();
         }
 
-        /// <summary>
-        /// Generate and return a city name.
-        /// </summary>
-        /// <param name="fixture">The fixture to generate a string for</param>
-        /// <returns>The generated string</returns>
-        public static string City(this AnonymousValueFixture fixture)
-        {
-            if (_citySource == null) _citySource = new CitySource();
-            return _citySource.Next();
-        }
-
-        /// <summary>
-        /// Generate and return a UK county name.
-        /// </summary>
-        /// <param name="fixture">The fixture to generate a string for</param>
-        /// <returns>The generated string</returns>
-        public static string County(this AnonymousValueFixture fixture)
-        {
-            if (_countySource == null) _countySource = new CountySource();
-            return _countySource.Next();
-        }
-
-        /// <summary>
-        /// Generate and return a UK post code.
-        /// </summary>
-        /// <param name="fixture">The fixture to generate a string for</param>
-        /// <returns>The generated string</returns>
-        public static string PostCode(this AnonymousValueFixture fixture)
-        {
-            if (_postCodeSource == null) _postCodeSource = new PostCodeSource();
-            return _postCodeSource.Next();
-        }
-
-        /// <summary>
-        /// Generate and return a UK phone number.
-        /// </summary>
-        /// <param name="fixture">The fixture to generate a string for</param>
-        /// <returns>The generated string</returns>
-        public static string Phone(this AnonymousValueFixture fixture)
-        {
-            if (_phoneSource == null) _phoneSource = new PhoneSource();
-            return _phoneSource.Next();
-        }
-
-        /// <summary>
-        /// Generate and return an email.
-        /// </summary>
-        /// <param name="fixture">The fixture to generate a string for</param>
-        /// <returns>The generated string</returns>
-        public static string Email(this AnonymousValueFixture fixture)
-        {
-            if (_emailSource == null) _emailSource = new EmailSource();
-            return _emailSource.Next();
-        }
-
-        /// <summary>
-        /// Generate and return a website.
-        /// </summary>
-        /// <param name="fixture">The fixture to generate a string for</param>
-        /// <returns>The generated string</returns>
-        public static string Website(this AnonymousValueFixture fixture)
-        {
-            if (_websiteSource == null) _websiteSource = new WebsiteSource();
-            return _websiteSource.Next();
-        }
     }
 
 }

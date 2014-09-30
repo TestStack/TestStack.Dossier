@@ -53,10 +53,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataSources\DataSourceTests.cs" />
+    <Compile Include="DataSources\Dictionaries\CacheTests.cs" />
+    <Compile Include="DataSources\Dictionaries\FileDictionaryRepositoryIntegrationTests.cs" />
+    <Compile Include="DataSources\Dictionaries\FileDictionarySourceTests.cs" />
+    <Compile Include="DataSources\Dictionaries\Resources\FileDataConventions.cs" />
     <Compile Include="DataSources\Generators\RandomGeneratorTests.cs" />
     <Compile Include="DataSources\Generators\SequentiaGeneratorTests.cs" />
-    <Compile Include="DataSources\PersonSourceTests.cs" />
-    <Compile Include="EquivalenceClasses\PersonEquivalenceClassesTests.cs" />
+    <Compile Include="DataSources\DataSourceConventionTests.cs" />
+    <Compile Include="EquivalenceClasses\DictionaryEquivalenceClassesTests.cs" />
     <Compile Include="EquivalenceClasses\StringEquivalenceClassesTests.cs" />
     <Compile Include="AsProxyTests.cs" />
     <Compile Include="BuildListTests.cs" />
@@ -85,6 +89,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Content Include="SampleDictionaryFile.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
