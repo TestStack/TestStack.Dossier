@@ -74,6 +74,7 @@
     <Compile Include="DataSources\Person\PersonNameFirstMaleSource.cs" />
     <Compile Include="DataSources\Person\PersonNameSuffixSource.cs" />
     <Compile Include="DataSources\Person\PersonNameTitleSource.cs" />
+    <Compile Include="DummyContext.cs" />
     <Compile Include="EquivalenceClasses\GeographyEquivalenceClassescs.cs" />
     <Compile Include="EquivalenceClasses\PersonEquivalenceClasses.cs" />
     <Compile Include="DataSources\Generators\IGenerator.cs" />

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Dynamic;
 using System.Linq;
 using System.Linq.Expressions;
 using NTestDataBuilder.Suppliers;
@@ -32,7 +31,14 @@ namespace NTestDataBuilder
         {
             LocalValueSuppliers = new List<IAnonymousValueSupplier>();
             Fixture = new Fixture();
+            RegexGenerator = new RegularExpressionGenerator();
         }
+
+        /// <summary>
+        /// An AutoFixture RegularExpressionGenerator instance that can be used to generate
+        ///   strings matching a regex pattern.
+        /// </summary>
+        public RegularExpressionGenerator RegexGenerator { get; private set; }
 
         /// <summary>
         /// An AutoFixture Fixture instance that is scoped to this anonymous value fixture

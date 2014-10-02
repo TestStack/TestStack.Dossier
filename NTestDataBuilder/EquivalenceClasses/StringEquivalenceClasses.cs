@@ -1,4 +1,5 @@
 ﻿using Ploeh.AutoFixture;
+using Ploeh.AutoFixture.Kernel;
 
 namespace NTestDataBuilder.EquivalenceClasses
 {
@@ -15,6 +16,16 @@ namespace NTestDataBuilder.EquivalenceClasses
         public static string String(this AnonymousValueFixture fixture)
         {
             return fixture.Fixture.Create<string>();
+        }
+
+        /// <summary>
+        /// Generate and return a string.
+        /// </summary>
+        /// <param name="fixture">The fixture to generate a string for</param>
+        /// <returns>The generated string</returns>
+        public static string StringMatching(this AnonymousValueFixture fixture, string regexPattern)
+        {
+            return fixture.RegexGenerator.Create(new RegularExpressionRequest(regexPattern), new DummyContext()).ToString();
         }
 
         /// <summary>
