@@ -30,5 +30,23 @@ namespace NTestDataBuilder.Tests
             Assert.That(customer.LastName, Is.EqualTo("Kocaj"));
             Assert.That(customer.YearJoined, Is.EqualTo(2010));
         }
+
+        [Test]
+        public void GivenBuilderWithAlterations_WhenCallingBuild_ThenReturnAnAlteredObject()
+        {
+            bool altered = false;
+            var builder = new CustomerBuilder()
+                .WithFirstName("Matt")
+                .WithLastName("Kocaj")
+                .WhoJoinedIn(2010)
+                .WithAlteration(x => { altered = true; return x; });
+
+            var customer = builder.Build();
+
+            Assert.That(customer.FirstName, Is.EqualTo("Matt"));
+            Assert.That(customer.LastName, Is.EqualTo("Kocaj"));
+            Assert.That(customer.YearJoined, Is.EqualTo(2010));
+            Assert.IsTrue(altered);
+        }
     }
 }
