@@ -70,5 +70,23 @@ namespace NTestDataBuilder.Tests.EquivalenceClasses
             s2.ShouldEndWith("3nd");
             s3.ShouldEndWith("Something Else");
         }
+
+        [Fact]
+        public void WhenGettingAnyStringOfASpecificLength_ThenReturnDifferentStringsOfThatLengthEveryTime()
+        {
+            var s1 = Any.StringOfLength(5);
+            var s2 = Any.StringOfLength(5);
+            var s3 = Any.StringOfLength(1005);
+
+            s1.ShouldBeOfType<string>();
+            s2.ShouldBeOfType<string>();
+            s3.ShouldBeOfType<string>();
+            s1.ShouldNotBe(s2);
+            s1.ShouldNotBe(s3);
+            s2.ShouldNotBe(s3);
+            s1.Length.ShouldBe(5);
+            s2.Length.ShouldBe(5);
+            s3.Length.ShouldBe(1005);
+        }
     }
 }
