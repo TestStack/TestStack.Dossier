@@ -43,7 +43,7 @@ namespace NTestDataBuilder
                 return proxy;
             }
 
-            return BuildObject();
+            return Alter(BuildObject());
         }
 
         /// <summary>
@@ -68,6 +68,13 @@ namespace NTestDataBuilder
         /// </summary>
         /// <param name="proxy">The proxy object</param>
         protected virtual void AlterProxy(TObject proxy) {}
+
+        /// <summary>
+        /// Alter the object just after it has been built and before it's returned from .Build().
+        /// This allows you to write base-class builders which encapsulate common logic.
+        /// </summary>
+        /// <param name="obj"></param>
+        protected virtual TObject Alter(TObject obj) { return obj; }
         
         /// <summary>
         /// Records the given value for the given property from <see cref="TObject"/>.

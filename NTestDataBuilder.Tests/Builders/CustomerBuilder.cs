@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using FizzWare.NBuilder;
 using NTestDataBuilder.Tests.Entities;
+using System;
 
 namespace NTestDataBuilder.Tests.Builders
 {
@@ -44,6 +45,12 @@ namespace NTestDataBuilder.Tests.Builders
             return this;
         }
 
+        public CustomerBuilder WithAlteration(Func<Customer, Customer> alteration)
+        {
+            OnAlter += (c) => alteration(c);
+            return this;
+        }
+
         protected override Customer BuildObject()
         {
             return new Customer(
@@ -52,5 +59,10 @@ namespace NTestDataBuilder.Tests.Builders
                 Get(x => x.YearJoined)
             );
         }
+
+        protected override Customer Alter(Customer c) { return OnAlter == null ? c :  OnAlter(c); }
+
+        public delegate Customer AlterEventDelegate(Customer c);
+        public event AlterEventDelegate OnAlter;
     }
 }
