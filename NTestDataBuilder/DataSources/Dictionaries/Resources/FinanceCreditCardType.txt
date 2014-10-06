@@ -1,0 +1,16 @@
+americanexpress
+bankcard
+china-unionpay
+diners-club-carte-blanche
+diners-club-enroute
+diners-club-international
+diners-club-us-ca
+instapayment
+jcb
+laser
+maestro
+mastercard
+solo
+switch
+visa
+visa-electron

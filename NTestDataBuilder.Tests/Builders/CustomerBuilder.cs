@@ -17,31 +17,21 @@ namespace NTestDataBuilder.Tests.Builders
         }
     }
 
-    class CustomerBuilder : TestDataBuilder<Customer, CustomerBuilder>
+    public class CustomerBuilder : TestDataBuilder<Customer, CustomerBuilder>
     {
-        public CustomerBuilder()
+        public virtual CustomerBuilder WithFirstName(string firstName)
         {
-            WithFirstName("Rob");
-            WithLastName("Moore");
-            WhoJoinedIn(2013);
+            return Set(x => x.FirstName, firstName);
         }
 
-        public CustomerBuilder WithFirstName(string firstName)
+        public virtual CustomerBuilder WithLastName(string lastName)
         {
-            Set(x => x.FirstName, firstName);
-            return this;
+            return Set(x => x.LastName, lastName);
         }
 
-        public CustomerBuilder WithLastName(string lastName)
+        public virtual CustomerBuilder WhoJoinedIn(int yearJoined)
         {
-            Set(x => x.LastName, lastName);
-            return this;
-        }
-
-        public CustomerBuilder WhoJoinedIn(int yearJoined)
-        {
-            Set(x => x.YearJoined, yearJoined);
-            return this;
+            return Set(x => x.YearJoined, yearJoined);
         }
 
         protected override Customer BuildObject()

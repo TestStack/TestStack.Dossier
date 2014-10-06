@@ -1,43 +1,43 @@
 ﻿using NTestDataBuilder.Tests.Builders;
-using NUnit.Framework;
+using Shouldly;
+using Xunit;
 
 namespace NTestDataBuilder.Tests
 {
-    class GetOrDefaultTests
+    public class GetOrDefaultTests
     {
-        private BasicCustomerBuilder _b;
+        private readonly BasicCustomerBuilder _b;
         const string SetValue = "Value";
 
-        [SetUp]
-        public void Setup()
+        public GetOrDefaultTests()
         {
             _b = new BasicCustomerBuilder();
         }
 
-        [Test]
+        [Fact]
         public void GivenAValueHasBeenSetAgainstAProperty_WhenRetrievingTheValueForThatProperty_ThenTheSetValueIsReturned()
         {
             _b.Set(x => x.FirstName, SetValue);
 
             var retrieved = _b.GetOrDefault(x => x.FirstName);
 
-            Assert.That(retrieved, Is.EqualTo(SetValue));
+            retrieved.ShouldBe(SetValue);
         }
 
-        [Test]
+        [Fact]
         public void GivenNoValueHasBeenSetForAStringProperty_WhenRetrievingTheValueForThatProperty_ThenReturnNull()
         {
             var retrieved = _b.GetOrDefault(x => x.FirstName);
 
-            Assert.That(retrieved, Is.EqualTo(null));
+            retrieved.ShouldBe(null);
         }
 
-        [Test]
+        [Fact]
         public void GivenNoValueHasBeenSetForAnIntProperty_WhenRetrievingTheValueForThatProperty_ThenReturn0()
         {
             var retrieved = _b.GetOrDefault(x => x.YearJoined);
 
-            Assert.That(retrieved, Is.EqualTo(0));
+            retrieved.ShouldBe(0);
         }
     }
 }

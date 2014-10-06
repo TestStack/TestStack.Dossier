@@ -1,0 +1,468 @@
+St. Stephens Ward
+Abbey Ward
+East Southbourne and Tuckton W
+Hawerby cum Beesby
+Greets Green and Lyng Ward
+Desborough
+Bargate Ward
+Chirton Ward
+Staple Hill Ward
+Parwich
+Wilmington
+Loundsley Green Ward
+Dee Ward
+Broxburn, Uphall and Winchburg
+Weston-Super-Mare
+Carbrooke
+New Milton
+Parkham
+Darnall Ward
+Marldon
+Prestatyn Community
+Lye and Stourbridge North Ward
+Warlingham
+Newport
+Chichester
+Steornabhagh a Deas Ward
+South Ward
+Newquay
+Brimpton
+Shard End Ward
+Letchworth South West Ward
+Longhill Ward
+Franche Ward
+Whittington
+Cockerton West Ward
+Castle Ward
+Devizes
+Colnbrook with Poyle
+Aldridge Central and South War
+East Putney Ward
+Sawston
+Wakefield North Ward
+St. Enoder
+Ryde
+Laindon Park Ward
+Lymington and Pennington
+Aylesbury
+Burmantofts and Richmond Hill 
+Howard Town Ward
+Farnham
+Beeston West Ward
+Wollaton West Ward
+Llangeler Community
+Brockley Ward
+Meads Ward
+St. Ive
+Norton Canes
+Bulwell Ward
+Treorchy Community
+Maybury and Sheerwater Ward
+Westgate Ward
+Conisbrough and Denaby Ward
+Newbold and Brownsover Ward
+Middlewich
+St. Marys Ward
+Gresham Ward
+Aldborough Ward
+Royal Hospital Ward
+Woodstock Ward
+Dunblane and Bridge of Allan W
+Kempshott Ward
+City and Hunslet Ward
+Ruckinge
+Abbey Road Ward
+Prittlewell Ward
+Kirkby Stephen
+Eaton Park Ward
+Bishop Auckland
+Falmouth
+Malmesbury
+West End Ward
+Town Ward
+Crompton Ward
+Stroud
+Overton Ward
+Midway Ward
+Washington East Ward
+Walkergate Ward
+Stratfield Mortimer
+Selston
+Govan Ward
+Millwall Ward
+Sefton
+Lancing
+St. Gluvias
+Hilton
+Brooklands Ward
+Eccleston Ward
+St. Georges Hill Ward
+Launcells
+Renfrew South & Gallowhill War
+Astley Bridge Ward
+Shiney Row Ward
+Bintree
+Woodhall Farm Ward
+Stanhope
+North Tawton
+Catterick
+Kilmersdon
+Central Ward
+Filwood Ward
+Central Buchan Ward
+Smallbridge and Firgrove Ward
+Lavenham
+Saffron Walden
+Cilybebyll Community
+Birchington
+Forth Ward
+Belvedere Ward
+Acton Central Ward
+Walton Ward
+Caversham Ward
+Abingdon on Thames
+Northgate Ward
+Tynemouth Ward
+Eccleshall
+Linlithgow Ward
+Layton Ward
+Blackheath Westcombe Ward
+Moulsham and Central Ward
+Great Dunmow
+Gweek
+Stretford Ward
+Orsett Ward
+Hatton
+Barrowford
+Bellingham
+George St
+South Jesmond Ward
+Barlow
+St. Johns Ward
+Bodmin
+Knightsbridge and Belgravia Wa
+Elgin City South Ward
+Halstead
+Fawley
+Hartshill
+Kensington and Fairfield Ward
+West Bromwich Central Ward
+Rowley Ward
+Sutton Trinity Ward
+Shepway South Ward
+Everton Ward
+Heaton Ward
+Gillingham North Ward
+Bangor Community
+Butterwick
+Deepdale Ward
+Walney North Ward
+Scarcroft
+Penryn
+Tenterden
+Haverstock Ward
+Kilpatrick Ward
+Astley Mosley Common Ward
+St. Peters Ward
+Cyfarthfa Community
+Baguley Ward
+Crawcrook and Greenside Ward
+Southey Ward
+Trossachs and Teith Ward
+Chapel-en-le-Frith
+Kings Norton Ward
+Mid and Upper Nithsdale Ward
+Amersham
+North Heywood Ward
+Little Hereford
+Canning Town North Ward
+Springfield Ward
+Bontnewydd Community
+Sheviock
+Peterlee
+Shrub End Ward
+Twickenham Riverside Ward
+Coleshill
+Crystal Palace Ward
+Bowes
+Halliwell Ward
+Wareham St. Martin
+Finedon
+Caerphilly Community
+Old Newton with Dagworth
+Crowle and Ealand
+Milton Regis Ward
+St. Michaels and Wicksteed War
+Howe of Fife and Tay Coast War
+Shipston on Stour
+Strood South Ward
+Newton-with-Clifton
+Llanelli Rural Community
+Newington Ward
+Much Wenlock
+Churchdown
+Werrington South Ward
+Hollington Ward
+Northfleet South Ward
+Steyning
+Holbrook Ward
+Woodhouse Ward
+Keighley
+Deal
+Heanor and Loscoe
+North Horsham
+Hickling
+Edmonton Green Ward
+Westbury
+Harefield Ward
+Moulsecoomb and Bevendean Ward
+Horfield Ward
+Cleator Moor
+Penmaenmawr Community
+Parsons Green and Walham Ward
+Cressington Ward
+Uckfield
+Acton Trussell and Bednall
+Denwick
+Beaminster
+Hereford
+Loughborough Ashby Ward
+Wimbledon Park Ward
+Hyde Werneth Ward
+Darton West Ward
+Rock
+Soho Ward
+Oakridge and Castlefield Ward
+Irvine East Ward
+Springfields and Trent Vale Wa
+Ise Lodge Ward
+Tatsfield
+Kings Hill
+Childs Hill Ward
+Little Ness
+Goldsmid Ward
+Cherryfield Ward
+Wakefield East Ward
+Nith Ward
+Holywell Community
+Lamport
+Chadderton Central Ward
+Penge and Cator Ward
+Warminster
+Redhill Ward
+East Kilbride West Ward
+Tiffield
+Londesborough
+Whitchurch Urban
+Ponteland
+Appleton Wiske
+Barnham
+Stutton with Hazlewood
+Holyrood Ward
+East Sheen Ward
+Byker Ward
+Llangristiolus Community
+Neilston, Uplawmoor and Newton
+Little Parndon and Hare Street
+Read
+Blantyre Ward
+Kirk Hammerton
+Custom House Ward
+Nonington
+Foleshill Ward
+West Wickham Ward
+Woodham Ward
+Wombourne
+Trowbridge
+St. Andrews Ward
+Pinhoe Ward
+Gaer Community
+Headley
+St. Margarets with St. Nichola
+Dunbar and East Linton Ward
+Bunhill Ward
+Chorlton Park Ward
+Edgeley and Cheadle Heath Ward
+Cotham Ward
+Greenlands Ward
+Boothen and Oak Hill Ward
+Stoneygate Ward
+Trelawnyd and Gwaenysgor Commu
+Cobham and Downside Ward
+Leighton-Linslade
+Hetton
+Hodge Hill Ward
+Little Clacton
+Aldbrough
+Coatbridge South Ward
+Redlands Ward
+St. Helier Ward
+Victoria Ward
+Wheatley Ward
+Windlesham
+Saint Annes on the Sea
+Sutton Vesey Ward
+Reydon
+Ruddington
+Kingston Bagpuize with Southmo
+Manor Castle Ward
+Shenley
+Pontefract North Ward
+Bellshill Ward
+Rhoose Community
+Grovehill Ward
+Sharston Ward
+Lobley Hill and Bensham Ward
+Tibberton
+Stretton
+Addlestone Bourneside Ward
+Chester-le-Street North and Ea
+Orford Ward
+Brympton
+Ashford Common Ward
+Hove Park Ward
+Clayton-le-Moors Ward
+Harrow Weald Ward
+Temple Newsam Ward
+Great Barr with Yew Tree Ward
+Barnfield Ward
+Calstock
+Little Missenden
+Tonge with the Haulgh Ward
+Berkhamsted
+Prestbury
+East Finchley Ward
+Lancaster Gate Ward
+Iwade
+Calton Ward
+Wilsden
+Llwyn-y-Pia Community
+Clackmannanshire South Ward
+Corporation Park Ward
+Cirencester
+Mossend and Holytown Ward
+Heath Town Ward
+Long Preston
+Seaham
+St. Austell
+Aveton Gifford
+Trotton with Chithurst
+Speke-Garston Ward
+Leatherhead South Ward
+Kirkintilloch East and Twechar
+Loughborough Hastings Ward
+Alphington Ward
+Woodford cum Membris
+Billesley Ward
+Milton Ward
+Mossley
+Dingwall and Seaforth Ward
+Broomhill Ward
+Frimley Green Ward
+Littleborough Lakeside Ward
+Girvan and South Carrick Ward
+Leigh-on-Sea
+Wonersh
+Stainburn
+Earlestown Ward
+Blyth
+Upper Rawcliffe-with-Tarnacre
+Northwood Ward
+Shrewsbury
+Empress Ward
+Hartburn Ward
+West Garioch Ward
+Roundway
+Castleford Central and Glassho
+Melton Dorian Ward
+Patching Hall Ward
+Sunningdale
+Leek
+Churchill Ward
+Aspley Ward
+Callington
+Ravenshead
+Church Langley Ward
+Midlothian West Ward
+Grangemouth Ward
+Rhos-on-Sea Community
+Kingswells
+Warwick
+Inverclyde South Ward
+Hamilton South Ward
+Kinross-shire Ward
+Daybrook Ward
+Ravensthorpe Ward
+Silloth-on-Solway
+Milton
+Llantrisant Community
+Lansdown Ward
+Fowlmere
+Audley Ward
+Warham
+Mildmay Ward
+Radcliffe West Ward
+Murdostoun Ward
+Eastbrook Ward
+Ipplepen
+Stowting
+Werrington
+Banchory and Mid Deeside Ward
+Madeley
+Kincorth
+Benwell and Scotswood Ward
+Rothwell Ward
+Markhouse Ward
+Stokenham
+High Barnet Ward
+Hexham
+Shorne
+Stannington Ward
+Market Rasen
+Tadworth and Walton Ward
+Moreton Morrell
+Launceston
+Henllan Community
+Glastonbury
+Thorpe Hamlet Ward
+Yalding
+Moordown Ward
+Over Kellet
+Staina Ward
+Portobello
+Brixham
+Windle Ward
+Newmarket
+Rainham South Ward
+Gwersyllt Community
+Walcot Ward
+Longford Ward
+Yealmpton
+Shiphay-with-the-Willows Ward
+Southam
+Almond Ward
+Hylands Ward
+Dormers Wells Ward
+Mortehoe
+Parr Ward
+Hucknall North Ward
+Kilbirnie and Beith Ward
+Liscard Ward
+Seven Sisters Ward
+Fareham South Ward
+Sutton cum Duckmanton
+Whitley Ward
+Shirley Ward
+Holbrook
+North East Ward
+Plymstock Dunstone Ward
+Batchwood Ward
+Salvington Ward
+Hailsham
+Park Ward
+Ballochmyle Ward
+Priory Heath Ward
+Farnworth Ward
+Inverness Ness-Side Ward
+Consett North ED
+Tanworth-in-Arden

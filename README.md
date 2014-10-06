@@ -1,7 +1,7 @@
 ﻿NTestDataBuilder
 ================
 
-NTestDataBuilder provides you with the code instructure to easily and quickly generate test fixture data for your automated tests in a terse, readable and maintainable way using the Test Data Builder pattern.
+NTestDataBuilder provides you with the code infrastructure to easily and quickly generate test fixture data for your automated tests in a terse, readable and maintainable way using the Test Data Builder pattern.
 
 For more information please see the [blog post](http://robdmoore.id.au/blog/2013/05/26/test-data-generation-the-right-way-object-mother-test-data-builders-nsubstitute-nbuilder/) that gives the theory behind the approach this library was intended for and the [presentation and example code](https://github.com/robdmoore/TestFixtureDataGenerationPresentation) that gives a concrete example of the usage of the library (and the theory behind it).
 
@@ -56,20 +56,17 @@ How do I get started?
 
         public CustomerBuilder WithFirstName(string firstName)
         {
-            Set(x => x.FirstName, firstName);
-            return this;
+            return Set(x => x.FirstName, firstName);
         }
 
         public CustomerBuilder WithLastName(string lastName)
         {
-            Set(x => x.LastName, lastName);
-            return this;
+            return Set(x => x.LastName, lastName);
         }
 
         public CustomerBuilder WhoJoinedIn(int yearJoined)
         {
-            Set(x => x.YearJoined, yearJoined);
-            return this;
+            return Set(x => x.YearJoined, yearJoined);
         }
 
         protected override Customer BuildObject()
