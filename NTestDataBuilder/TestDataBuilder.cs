@@ -122,7 +122,7 @@ namespace NTestDataBuilder
             return Builder<TBuilder>.CreateListOfSize(size);
         }
 
-        public static NTestDataBuilder.Lists.ListBuilder<TObject, TBuilder> ListOFSize(int size)
+        public static ListBuilder<TObject, TBuilder> ListOfSize(int size)
         {
             return new ListBuilder<TObject, TBuilder>(size);
         } 

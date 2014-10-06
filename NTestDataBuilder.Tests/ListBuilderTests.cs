@@ -13,7 +13,7 @@ namespace NTestDataBuilder.Tests
         public void WhenBuildingAListOfObjects_ThenThenTheListIsBuiltAndModifiedCorrectly()
         {
             var i = 0;
-            var customers = CustomerBuilder.ListOFSize(5)
+            var customers = CustomerBuilder.ListOfSize(5)
                 .TheFirst(1).WithFirstName("First")
                 .TheNext(1).WithLastName("Next Last")
                 .TheLast(1).WithLastName("Last Last")
