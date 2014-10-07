@@ -6,7 +6,7 @@ using Ploeh.AutoFixture;
 namespace NTestDataBuilder.EquivalenceClasses
 {
     /// <summary>
-    /// Extension methods that describe equivalence classes for generating anonymous string values.
+    /// Extension methods that describe equivalence classes for generating anonymous integer values.
     /// </summary>
     public static class IntegerEquivalenceClasses
     {
