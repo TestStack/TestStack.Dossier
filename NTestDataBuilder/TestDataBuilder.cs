@@ -78,7 +78,7 @@ namespace NTestDataBuilder
         public TBuilder Set<TValue>(Expression<Func<TObject, TValue>> property, TValue value)
         {
             _properties[GetPropertyName(property)] = value;
-            return (TBuilder)this;
+            return this as TBuilder;
         }
 
         /// <summary>
