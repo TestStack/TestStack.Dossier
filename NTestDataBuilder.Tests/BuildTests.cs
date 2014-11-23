@@ -30,5 +30,19 @@ namespace NTestDataBuilder.Tests
             Assert.That(customer.LastName, Is.EqualTo("Kocaj"));
             Assert.That(customer.YearJoined, Is.EqualTo(2010));
         }
+
+        [Test]
+        public void GivenBuilder_WhenCallingSet_ShouldOverrideValues()
+        {
+            var builder = new CustomerBuilder()
+                .Set(x => x.FirstName, "Pi")
+                .Set(x => x.LastName, "Lanningham")
+                .Set(x => x.YearJoined, 2014);
+
+            var customer = builder.Build();
+            Assert.That(customer.FirstName, Is.EqualTo("Pi"));
+            Assert.That(customer.LastName, Is.EqualTo("Lanningham"));
+            Assert.That(customer.YearJoined, Is.EqualTo(2014));
+        }
     }
 }
