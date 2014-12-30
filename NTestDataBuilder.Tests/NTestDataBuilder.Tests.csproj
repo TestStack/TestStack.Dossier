@@ -31,9 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FizzWare.NBuilder">
-      <HintPath>..\packages\NBuilder.3.0.1.1\lib\FizzWare.NBuilder.dll</HintPath>
-    </Reference>
     <Reference Include="NSubstitute, Version=1.7.2.0, Culture=neutral, PublicKeyToken=92dd2e9066daa5ca, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\NSubstitute.1.7.2.0\lib\NET40\NSubstitute.dll</HintPath>
@@ -69,13 +66,11 @@
     <Compile Include="Builders\CustomerBuilder.cs" />
     <Compile Include="Builders\ProxyAlteringCustomerBuilder.cs" />
     <Compile Include="BuildTests.cs" />
-    <Compile Include="CreateListTests.cs" />
     <Compile Include="Entities\Company.cs" />
     <Compile Include="Entities\Customer.cs" />
     <Compile Include="GetAnonymousTests.cs" />
     <Compile Include="GetOrDefaultTests.cs" />
     <Compile Include="GetSetTests.cs" />
-    <Compile Include="ListBuilderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProxyBuilderTests.cs" />
     <Compile Include="TestHelpers\StaticAnonymousValueSupplier.cs" />

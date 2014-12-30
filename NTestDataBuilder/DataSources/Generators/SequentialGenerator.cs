@@ -8,8 +8,13 @@ namespace NTestDataBuilder.DataSources.Generators
     public class SequentialGenerator : IGenerator
     {
         private int _currentListIndex;
+        /// <inheritdoc />
         public int StartIndex { get; set; }
+        /// <inheritdoc />
         public int ListSize { get; set; }
+        /// <summary>
+        /// Whether or not the list should be unique
+        /// </summary>
         public bool ListShouldBeUnique { get; private set; }
 
         /// <summary>
@@ -23,6 +28,7 @@ namespace NTestDataBuilder.DataSources.Generators
         /// </summary>
         /// <param name="startIndex">The first index that can be selected in a list. Ranges from 0 to one less than the number of items in the list</param>
         /// <param name="listSize">The number of items in the list</param>
+        /// <param name="listShouldBeUnique">Whether or not the generated list should be guaranteed to be unique or the range of values can be looped through infinitely</param>
         public SequentialGenerator(int startIndex, int listSize, bool listShouldBeUnique = false)
         {
             if (startIndex < 0) throw new ArgumentException("startIndex must be zero or more");

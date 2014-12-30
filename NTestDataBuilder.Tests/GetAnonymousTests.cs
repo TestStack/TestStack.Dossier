@@ -1,6 +1,5 @@
-﻿using FizzWare.NBuilder;
+﻿using NTestDataBuilder.Lists;
 using NTestDataBuilder.Tests.Builders;
-using NTestDataBuilder.Tests.Entities;
 using NTestDataBuilder.Tests.TestHelpers;
 using Shouldly;
 using Xunit;
@@ -9,7 +8,7 @@ namespace NTestDataBuilder.Tests
 {
     public class GetAnonymousTests
     {
-        private BasicCustomerBuilder _b;
+        private readonly BasicCustomerBuilder _b;
 
         public GetAnonymousTests()
         {
@@ -69,8 +68,8 @@ namespace NTestDataBuilder.Tests
         {
             AnonymousValueFixture.GlobalValueSuppliers.Add(new YearValueSupplier());
             var customers = CustomerBuilder.CreateListOfSize(5)
-                .TheLast(1).With(b => b.WhoJoinedIn(1990))
-                .BuildList<Customer, CustomerBuilder>();
+                .TheLast(1).WhoJoinedIn(1990)
+                .BuildList();
 
             customers[0].YearJoined.ShouldBe(2000);
             customers[1].YearJoined.ShouldBe(2001);

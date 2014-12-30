@@ -8,7 +8,9 @@ namespace NTestDataBuilder.DataSources.Generators
     public class RandomGenerator : IGenerator
     {
         private readonly Random _random;
+        /// <inheritdoc />
         public int StartIndex { get; set; }
+        /// <inheritdoc />
         public int ListSize { get; set; }
 
         /// <summary>

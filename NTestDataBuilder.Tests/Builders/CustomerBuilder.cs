@@ -1,22 +1,7 @@
-﻿using System.Collections.Generic;
-using FizzWare.NBuilder;
-using NTestDataBuilder.Tests.Entities;
+﻿using NTestDataBuilder.Tests.Entities;
 
 namespace NTestDataBuilder.Tests.Builders
 {
-    static class CustomerBuilderExtensions
-    {
-        public static IList<Customer> BuildList(this IOperable<CustomerBuilder> list)
-        {
-            return list.BuildList<Customer, CustomerBuilder>();
-        }
-
-        public static IList<Customer> BuildList(this IListBuilder<CustomerBuilder> list)
-        {
-            return list.BuildList<Customer, CustomerBuilder>();
-        }
-    }
-
     public class CustomerBuilder : TestDataBuilder<Customer, CustomerBuilder>
     {
         public virtual CustomerBuilder WithFirstName(string firstName)

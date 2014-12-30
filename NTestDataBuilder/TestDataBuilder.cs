@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using FizzWare.NBuilder;
 using NTestDataBuilder.Lists;
 
 namespace NTestDataBuilder
@@ -28,7 +27,7 @@ namespace NTestDataBuilder
         }
 
         /// <summary>
-        /// Generate anonymous data using this fixture.
+        /// Generate anonymous data using this fixture - one instance per builder instance.
         /// </summary>
         public AnonymousValueFixture Any { get; private set; }
 
@@ -49,7 +48,7 @@ namespace NTestDataBuilder
         }
 
         /// <summary>
-        /// Build the actual object
+        /// Build the actual object - override this and call the constructor and any other methods.
         /// </summary>
         /// <returns>The built object</returns>
         protected abstract TObject BuildObject();
@@ -72,7 +71,7 @@ namespace NTestDataBuilder
         protected virtual void AlterProxy(TObject proxy) {}
         
         /// <summary>
-        /// Records the given value for the given property from {TObject}.
+        /// Records the given value for the given property from {TObject} and returns the builder to allow chaining.
         /// </summary>
         /// <typeparam name="TValue">The type of the property</typeparam>
         /// <param name="property">A lambda expression specifying the property to record a value for</param>
@@ -84,11 +83,12 @@ namespace NTestDataBuilder
         }
 
         /// <summary>
-        /// Gets the recorded value for the given property from {TObject}.
+        /// Gets the recorded value for the given property from {TObject} or an anonymous
+        ///  value if there isn't one specified.
         /// </summary>
         /// <typeparam name="TValue">The type of the property</typeparam>
         /// <param name="property">A lambda expression specifying the property to retrieve the recorded value for</param>
-        /// <returns>The recorded value of the property</returns>
+        /// <returns>The recorded value of the property or an anonymous value for it</returns>
         public TValue Get<TValue>(Expression<Func<TObject, TValue>> property)
         {
             if (!Has(property))
@@ -112,17 +112,13 @@ namespace NTestDataBuilder
         }
 
         /// <summary>
-        /// Creates an NBuilder list builder expression that allows you to create a list of builders.
-        /// When you are done call .Build().Select(b => b.Build()) to get the list of entities.
+        /// Creates an list builder expression that allows you to create a list of entities.
+        /// You can call .First(x), .Last(x), etc. methods followed by chained builder method calls.
+        /// When you are done call .BuildList() to get the list of entities.
         /// </summary>
         /// <param name="size">The size of list</param>
-        /// <returns>The NBuilder list builder for a list of {TBuilder} of the specified size</returns>
-        public static IListBuilder<TBuilder> CreateListOfSize(int size)
-        {
-            return Builder<TBuilder>.CreateListOfSize(size);
-        }
-
-        public static ListBuilder<TObject, TBuilder> ListOfSize(int size)
+        /// <returns>The list builder for a list of {TBuilder} of the specified size</returns>
+        public static ListBuilder<TObject, TBuilder> CreateListOfSize(int size)
         {
             return new ListBuilder<TObject, TBuilder>(size);
         } 
