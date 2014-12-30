@@ -4,7 +4,7 @@ using NTestDataBuilder.Tests.Entities;
 
 namespace NTestDataBuilder.Tests.Builders
 {
-    class BasicCustomerBuilder : TestDataBuilder<Customer, BasicCustomerBuilder>
+    public class BasicCustomerBuilder : TestDataBuilder<Customer, BasicCustomerBuilder>
     {
         protected override Customer BuildObject()
         {

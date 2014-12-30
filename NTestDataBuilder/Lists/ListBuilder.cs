@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Castle.DynamicProxy;
-using FizzWare.NBuilder;
 
 namespace NTestDataBuilder.Lists
 {
