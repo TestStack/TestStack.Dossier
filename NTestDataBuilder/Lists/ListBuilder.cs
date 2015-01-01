@@ -1,96 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using Castle.DynamicProxy;
 
 namespace NTestDataBuilder.Lists
 {
-    public static class ListBuilderGenerator
-    {
-        static ListBuilderGenerator()
-        {
-            Generator = new ProxyGenerator(true);
-        }
-
-        public static ProxyGenerator Generator { get; private set; } 
-    }
-
-    public static class ListBuilderExtensions
-    {
-        public static TBuilder TheFirst<TObject, TBuilder>(this TestDataBuilder<TObject, TBuilder> b, int howMany)
-            where TObject : class
-            where TBuilder : TestDataBuilder<TObject, TBuilder>, new()
-        {
-            return b.ListBuilder.TheFirst(howMany);
-        }
-
-        public static TBuilder TheNext<TObject, TBuilder>(this TestDataBuilder<TObject, TBuilder> b, int howMany)
-            where TObject : class
-            where TBuilder : TestDataBuilder<TObject, TBuilder>, new()
-        {
-            return b.ListBuilder.TheNext(howMany);
-        }
-
-        public static TBuilder TheLast<TObject, TBuilder>(this TestDataBuilder<TObject, TBuilder> b, int howMany)
-            where TObject : class
-            where TBuilder : TestDataBuilder<TObject, TBuilder>, new()
-        {
-            return b.ListBuilder.TheLast(howMany);
-        }
-
-        public static TBuilder ThePrevious<TObject, TBuilder>(this TestDataBuilder<TObject, TBuilder> b, int howMany)
-            where TObject : class
-            where TBuilder : TestDataBuilder<TObject, TBuilder>, new()
-        {
-            return b.ListBuilder.ThePrevious(howMany);
-        }
-
-        public static TBuilder All<TObject, TBuilder>(this TestDataBuilder<TObject, TBuilder> b)
-            where TObject : class
-            where TBuilder : TestDataBuilder<TObject, TBuilder>, new()
-        {
-            return b.ListBuilder.All();
-        }
-
-        public static ListBuilder<TObject, TBuilder> With<TObject, TBuilder>(this TestDataBuilder<TObject, TBuilder> b, Func<TBuilder, TBuilder> modifier)
-            where TObject : class
-            where TBuilder : TestDataBuilder<TObject, TBuilder>, new()
-        {
-            return b.ListBuilder.With(modifier);
-        }
-
-        public static IList<TObject> BuildList<TObject, TBuilder>(this TestDataBuilder<TObject, TBuilder> b)
-            where TObject : class
-            where TBuilder : TestDataBuilder<TObject, TBuilder>, new()
-        {
-            return b.ListBuilder.BuildList();
-        }
-    }
-
-    public class ListBuilderInterceptor<TObject, TBuilder> : IInterceptor
-        where TBuilder : TestDataBuilder<TObject, TBuilder>, new()
-        where TObject : class
-    {
-        private readonly ListBuilder<TObject, TBuilder> _builder;
-
-        public ListBuilderInterceptor(ListBuilder<TObject, TBuilder> builder)
-        {
-            _builder = builder;
-        }
-
-        public void Intercept(IInvocation invocation)
-        {
-            if (invocation.Method.ReturnType != typeof (TBuilder))
-            {
-                throw new InvalidOperationException("Non-fluent builder method invoked while creating a list of builders: " + invocation.Method.Name);
-            }
-
-            _builder.Execute(invocation);
-            invocation.ReturnValue = _builder.BuilderProxy;
-        }
-    }
-
+    /// <summary>
+    /// Class that builds lists of objects by proxying a list of object builders.
+    /// </summary>
+    /// <typeparam name="TObject">The type of object being built</typeparam>
+    /// <typeparam name="TBuilder">The type of builder that is building the object</typeparam>
     public class ListBuilder<TObject, TBuilder>
         where TBuilder : TestDataBuilder<TObject, TBuilder>, new()
         where TObject : class
@@ -99,7 +18,7 @@ namespace NTestDataBuilder.Lists
         private int _count = 0;
         private readonly List<TBuilder> _list;
 
-        public ListBuilder(int size)
+        internal ListBuilder(int size)
         {
             BuilderProxy = (TBuilder) ListBuilderGenerator.Generator
                 .CreateClassProxy(typeof (TBuilder), new ProxyGenerationOptions(new EnsureAllMethodsVirtual()), new ListBuilderInterceptor<TObject, TBuilder>(this));
@@ -109,8 +28,14 @@ namespace NTestDataBuilder.Lists
                 _list.Add(new TBuilder());
         }
 
-        public TBuilder BuilderProxy { get; private set; }
+        internal TBuilder BuilderProxy { get; private set; }
 
+        /// <summary>
+        /// Will target the first x objects (as specified) for subsequent builder calls (or .With call).
+        /// You can combine this with .TheNext(y) to target the next y after the first x.
+        /// </summary>
+        /// <param name="howMany">The first {howMany} objects should be targeted?</param>
+        /// <returns>The builder proxy so that calls can continue to be chained</returns>
         public TBuilder TheFirst(int howMany)
         {
             _start = 0;
@@ -118,6 +43,11 @@ namespace NTestDataBuilder.Lists
             return BuilderProxy;
         }
 
+        /// <summary>
+        /// Will target the next x objects (as specified) for subsequent builder calls (or .With call).
+        /// </summary>
+        /// <param name="howMany">The next {howMany} objects should be targeted?</param>
+        /// <returns>The builder proxy so that calls can continue to be chained</returns>
         public TBuilder TheNext(int howMany)
         {
             _start += _count;
@@ -125,13 +55,12 @@ namespace NTestDataBuilder.Lists
             return BuilderProxy;
         }
 
-        public TBuilder ThePrevious(int howMany)
-        {
-            _start -= howMany;
-            _count = howMany;
-            return BuilderProxy;
-        }
-
+        /// <summary>
+        /// Will target the last x objects (as specified) for subsequent builder calls (or .With call).
+        /// You can combine this with .ThePrevious(y) to target the previous y after the last x.
+        /// </summary>
+        /// <param name="howMany">The last {howMany} objects should be targeted?</param>
+        /// <returns>The builder proxy so that calls can continue to be chained</returns>
         public TBuilder TheLast(int howMany)
         {
             _start = _list.Count - howMany;
@@ -139,6 +68,22 @@ namespace NTestDataBuilder.Lists
             return BuilderProxy;
         }
 
+        /// <summary>
+        /// Will target the previous x objects (as specified) for subsequent builder calls (or .With call).
+        /// </summary>
+        /// <param name="howMany">The previous {howMany} objects should be targeted?</param>
+        /// <returns>The builder proxy so that calls can continue to be chained</returns>
+        public TBuilder ThePrevious(int howMany)
+        {
+            _start -= howMany;
+            _count = howMany;
+            return BuilderProxy;
+        }
+
+        /// <summary>
+        /// Will target all objects for subsequent builder calls (or .With call).
+        /// </summary>
+        /// <returns>The builder proxy so that calls can continue to be chained</returns>
         public TBuilder All()
         {
             _start = 0;
@@ -146,6 +91,11 @@ namespace NTestDataBuilder.Lists
             return BuilderProxy;
         }
 
+        /// <summary>
+        /// Will apply the given lambda expression to all builders that are currently targeted (e.g. via .TheFirst, .TheNext, etc. calls).
+        /// </summary>
+        /// <param name="modifier">The lambda expression to apply to the targeted builders</param>
+        /// <returns>The builder proxy so that calls can continue to be chained</returns>
         public ListBuilder<TObject, TBuilder> With(Func<TBuilder, TBuilder> modifier)
         {
             _list.Skip(_start)
@@ -155,6 +105,10 @@ namespace NTestDataBuilder.Lists
             return this;
         }
 
+        /// <summary>
+        /// Builds the list of objects by processing all of the builder calls and then calling .Build on all the builders.
+        /// </summary>
+        /// <returns>The list of generated objects</returns>
         public IList<TObject> BuildList()
         {
             return _list.Select(b => b.Build()).ToArray();
@@ -166,25 +120,6 @@ namespace NTestDataBuilder.Lists
                 .Take(_count)
                 .ToList()
                 .ForEach(b => invocation.Method.Invoke(b, invocation.Arguments));
-        }
-    }
-
-    public class EnsureAllMethodsVirtual : IProxyGenerationHook
-    {
-        public void MethodsInspected()
-        {
-        }
-
-        public void NonProxyableMemberNotification(Type type, MemberInfo memberInfo)
-        {
-            if (new[]{"get_Any", "Build", "AsProxy", "Get", "GetOrDefault", "Set", "Has", "get_ListBuilder", "set_ListBuilder"}.Contains(memberInfo.Name))
-                return;
-            throw new InvalidOperationException(string.Format("Tried to build a list with a builder who has non-virtual method. Please make {0} on type {1} virtual.", memberInfo.Name, type.Name));
-        }
-
-        public bool ShouldInterceptMethod(Type type, MethodInfo methodInfo)
-        {
-            return true;
         }
     }
 }
