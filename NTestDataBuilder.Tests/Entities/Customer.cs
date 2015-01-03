@@ -6,7 +6,7 @@ namespace NTestDataBuilder.Tests.Entities
     {
         protected Customer() {}
 
-        public Customer(string firstName, string lastName, int yearJoined)
+        public Customer(string firstName, string lastName, int yearJoined, CustomerClass customerClass)
         {
             if (string.IsNullOrEmpty(firstName))
                 throw new ArgumentNullException("firstName");
@@ -16,6 +16,7 @@ namespace NTestDataBuilder.Tests.Entities
             FirstName = firstName;
             LastName = lastName;
             YearJoined = yearJoined;
+            CustomerClass = customerClass;
         }
 
         public virtual int CustomerForHowManyYears(DateTime since)
@@ -28,5 +29,6 @@ namespace NTestDataBuilder.Tests.Entities
         public virtual string FirstName { get; private set; }
         public virtual string LastName { get; private set; }
         public virtual int YearJoined { get; private set; }
+        public virtual CustomerClass CustomerClass { get; private set; }
     }
 }

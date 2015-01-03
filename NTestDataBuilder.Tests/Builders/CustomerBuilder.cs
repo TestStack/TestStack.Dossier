@@ -24,7 +24,8 @@ namespace NTestDataBuilder.Tests.Builders
             return new Customer(
                 Get(x => x.FirstName),
                 Get(x => x.LastName),
-                Get(x => x.YearJoined)
+                Get(x => x.YearJoined),
+                Get(x => x.CustomerClass)
             );
         }
     }

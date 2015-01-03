@@ -49,6 +49,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\CustomerClass.cs" />
     <Compile Include="DataSources\DataSourceTests.cs" />
     <Compile Include="DataSources\Dictionaries\CacheTests.cs" />
     <Compile Include="DataSources\Dictionaries\FileDictionaryRepositoryIntegrationTests.cs" />

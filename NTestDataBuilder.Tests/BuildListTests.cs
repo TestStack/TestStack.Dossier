@@ -84,5 +84,17 @@ namespace NTestDataBuilder.Tests
             customers[4].LastName.ShouldBe("Last Last");
             customers.ShouldAllBe(c => c.YearJoined == 1999);
         }
+
+        [Fact]
+        public void WhenBuildingEntities_ThenTheAnonymousValueFixtureIsSharedAcrossBuilders()
+        {
+            var customers = CustomerBuilder.CreateListOfSize(5).BuildList();
+
+            customers[0].CustomerClass.ShouldBe(CustomerClass.Normal);
+            customers[1].CustomerClass.ShouldBe(CustomerClass.Bronze);
+            customers[2].CustomerClass.ShouldBe(CustomerClass.Silver);
+            customers[3].CustomerClass.ShouldBe(CustomerClass.Gold);
+            customers[4].CustomerClass.ShouldBe(CustomerClass.Platinum);
+        }
     }
 }

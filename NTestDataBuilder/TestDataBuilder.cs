@@ -29,7 +29,7 @@ namespace NTestDataBuilder
         /// <summary>
         /// Generate anonymous data using this fixture - one instance per builder instance.
         /// </summary>
-        public AnonymousValueFixture Any { get; private set; }
+        public AnonymousValueFixture Any { get; internal set; }
 
         /// <summary>
         /// Build the object.
