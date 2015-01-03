@@ -58,7 +58,7 @@
     <Compile Include="DataSources\Generators\RandomGeneratorTests.cs" />
     <Compile Include="DataSources\Generators\SequentiaGeneratorTests.cs" />
     <Compile Include="DataSources\DataSourceConventionTests.cs" />
-    <Compile Include="EquivalenceClasses\DictionaryEquivalenceClassesTests.cs" />
+    <Compile Include="EquivalenceClasses\PersonEquivalenceClassesTests.cs" />
     <Compile Include="EquivalenceClasses\IntegerEquivalenceClassesTests.cs" />
     <Compile Include="EquivalenceClasses\StringEquivalenceClassesTests.cs" />
     <Compile Include="AsProxyTests.cs" />
