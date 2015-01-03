@@ -22,6 +22,7 @@ namespace NTestDataBuilder.Tests.Builders
         protected override Customer BuildObject()
         {
             return new Customer(
+                Get(x => x.Identifier),
                 Get(x => x.FirstName),
                 Get(x => x.LastName),
                 Get(x => x.YearJoined),

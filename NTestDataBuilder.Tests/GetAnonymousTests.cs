@@ -1,4 +1,5 @@
-﻿using NTestDataBuilder.Lists;
+﻿using NTestDataBuilder.DataSources.Person;
+using NTestDataBuilder.Lists;
 using NTestDataBuilder.Tests.Builders;
 using NTestDataBuilder.Tests.TestHelpers;
 using Shouldly;
@@ -49,9 +50,27 @@ namespace NTestDataBuilder.Tests
         }
 
         [Fact]
+        public void GivenNoValueHasBeenSetForAPropertyNamedFirstName_WhenRetrievingTheValueForTheProperty_ThenReturnAFirstName()
+        {
+            var firstName = _b.Get(x => x.FirstName);
+
+            new PersonNameFirstSource().Data
+                .ShouldContain(firstName);
+        }
+
+        [Fact]
+        public void GivenNoValueHasBeenSetForAPropertyNamedLastName_WhenRetrievingTheValueForTheProperty_ThenReturnALastName()
+        {
+            var lastName = _b.Get(x => x.LastName);
+
+            new PersonNameLastSource().Data
+                .ShouldContain(lastName);
+        }
+
+        [Fact]
         public void GivenNoValueHasBeenSetForAStringProperty_WhenRetrievingTheValueForThatProperty_ThenReturnPropertyNameFollowedByGuid()
         {
-            _b.Get(x => x.FirstName).ShouldMatch("^FirstName[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$");
+            _b.Get(x => x.Identifier).ShouldMatch("^Identifier[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$");
         }
 
         [Fact]

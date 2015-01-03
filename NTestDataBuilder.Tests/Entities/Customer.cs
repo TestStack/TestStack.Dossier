@@ -6,13 +6,16 @@ namespace NTestDataBuilder.Tests.Entities
     {
         protected Customer() {}
 
-        public Customer(string firstName, string lastName, int yearJoined, CustomerClass customerClass)
+        public Customer(string identifier, string firstName, string lastName, int yearJoined, CustomerClass customerClass)
         {
+            if (string.IsNullOrEmpty(identifier))
+                throw new ArgumentNullException("identifier");
             if (string.IsNullOrEmpty(firstName))
                 throw new ArgumentNullException("firstName");
             if (string.IsNullOrEmpty(lastName))
                 throw new ArgumentNullException("lastName");
 
+            Identifier = identifier;
             FirstName = firstName;
             LastName = lastName;
             YearJoined = yearJoined;
@@ -26,6 +29,7 @@ namespace NTestDataBuilder.Tests.Entities
             return since.Year - YearJoined;
         }
 
+        public virtual string Identifier { get; private set; }
         public virtual string FirstName { get; private set; }
         public virtual string LastName { get; private set; }
         public virtual int YearJoined { get; private set; }
