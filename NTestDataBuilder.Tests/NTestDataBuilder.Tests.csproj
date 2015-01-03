@@ -60,6 +60,7 @@
     <Compile Include="DataSources\DataSourceConventionTests.cs" />
     <Compile Include="EquivalenceClasses\PersonEquivalenceClassesTests.cs" />
     <Compile Include="EquivalenceClasses\IntegerEquivalenceClassesTests.cs" />
+    <Compile Include="EquivalenceClasses\EnumEquivalenceClassesTests.cs" />
     <Compile Include="EquivalenceClasses\StringEquivalenceClassesTests.cs" />
     <Compile Include="AsProxyTests.cs" />
     <Compile Include="BuildListTests.cs" />
