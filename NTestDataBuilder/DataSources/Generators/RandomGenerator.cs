@@ -35,6 +35,7 @@ namespace NTestDataBuilder.DataSources.Generators
             _random = new Random();
         }
 
+        /// <inerhitdoc />
         public int Generate()
         {
             return _random.Next(StartIndex, ListSize);

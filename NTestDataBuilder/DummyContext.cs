@@ -7,6 +7,7 @@ namespace NTestDataBuilder
     /// </summary>
     public class DummyContext : ISpecimenContext
     {
+        /// <inerhitdoc />
         public object Resolve(object request)
         {
             return null;
