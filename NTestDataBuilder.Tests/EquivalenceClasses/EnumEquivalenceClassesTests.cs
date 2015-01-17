@@ -14,7 +14,7 @@ namespace NTestDataBuilder.Tests.EquivalenceClasses
         }
 
         [Fact]
-        public void WhenGettingAnyOfEnum_ThenReturnSequentialtEnumValueEveryTimeUntilItWrapsAroundAgain()
+        public void WhenGettingAnyOfEnum_ThenReturnSequentialEnumValueEveryTimeUntilItWrapsAroundAgain()
         {
             var values = new[]
             {
