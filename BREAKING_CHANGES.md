@@ -19,7 +19,7 @@ If you want to fix a static value for a property then by all means you can still
 Version 2.0.0
 -------------
 
-The way that lists are generated no longer uses NBuilder - the new syntax is backwards compatible with NBuilder except that the namespace you need to include is different. You can also refactor your list generation to be a lot more terse, but that is optional. Any `BuildList` extension methods you created will now need to be deleted since they are no longer needed.
+The way that lists are generated no longer uses NBuilder - the new syntax is backwards compatible with NBuilder except that the namespace you need to include is different. You can also refactor your list generation to be a lot more terse, but that is optional. Any `BuildList` extension methods you created will now need to be deleted since they are no longer needed. You also need to ensure that all of the methods you call are marked virtual so the list generation can proxy those method calls.
 
 ### Reason
 In order to support a new, much terser syntax for generating lists we rewrote the list generation code ourselves. You can now do this:
@@ -44,7 +44,7 @@ You also no longer need a custom extension method for the `BuildList` method so 
 
 ### Fix
 
-Simply add the following to the files that generate lists of builders and the existing syntax should work:
+Simply add the following to the files that generate lists of builders and change your builder modification methods to be virtual and the existing syntax should work:
 
 ```
 using NTestDataBuilder.Lists;

@@ -72,6 +72,7 @@
     <Compile Include="DataSources\Person\PersonNameSuffixSource.cs" />
     <Compile Include="DataSources\Person\PersonNameTitleSource.cs" />
     <Compile Include="DummyContext.cs" />
+    <Compile Include="EquivalenceClasses\EnumEquivalenceClasses.cs" />
     <Compile Include="EquivalenceClasses\GeographyEquivalenceClassescs.cs" />
     <Compile Include="EquivalenceClasses\IntegerEquivalenceClasses.cs" />
     <Compile Include="EquivalenceClasses\PersonEquivalenceClasses.cs" />
@@ -86,6 +87,8 @@
     <Compile Include="Lists\ListBuilderGenerator.cs" />
     <Compile Include="Lists\ListBuilderInterceptor.cs" />
     <Compile Include="PropertyNameGetter.cs" />
+    <Compile Include="Suppliers\DefaultLastNameValueSupplier.cs" />
+    <Compile Include="Suppliers\DefaultFirstNameValueSupplier.cs" />
     <Compile Include="Suppliers\DefaultValueSupplier.cs" />
     <Compile Include="Suppliers\DefaultStringValueSupplier.cs" />
     <Compile Include="Suppliers\DefaultValueTypeValueSupplier.cs" />

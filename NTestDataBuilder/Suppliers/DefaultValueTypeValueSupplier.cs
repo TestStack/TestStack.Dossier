@@ -7,11 +7,13 @@ namespace NTestDataBuilder.Suppliers
     /// </summary>
     public class DefaultValueTypeValueSupplier : IAnonymousValueSupplier
     {
+        /// <inerhitdoc />
         public bool CanSupplyValue<TObject, TValue>(string propertyName)
         {
             return typeof (TValue).IsValueType;
         }
 
+        /// <inerhitdoc />
         public TValue GenerateAnonymousValue<TObject, TValue>(AnonymousValueFixture any, string propertyName)
         {
             return any.Fixture.Create<TValue>();

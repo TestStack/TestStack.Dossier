@@ -8,7 +8,7 @@ namespace NTestDataBuilder.Tests.Builders
     {
         protected override Customer BuildObject()
         {
-            return new Customer("First Name", "Last Name", 2013);
+            return new Customer("customer1", "First Name", "Last Name", 2013, CustomerClass.Normal);
         }
 
         public new BasicCustomerBuilder Set<TValue>(Expression<Func<Customer, TValue>> property, TValue value)

@@ -24,8 +24,9 @@ namespace NTestDataBuilder.Lists
                 .CreateClassProxy(typeof (TBuilder), new ProxyGenerationOptions(new EnsureAllMethodsVirtual()), new ListBuilderInterceptor<TObject, TBuilder>(this));
             BuilderProxy.ListBuilder = this;
             _list = new List<TBuilder>();
+            var fixture = new AnonymousValueFixture();
             for (var i = 0; i < size; i++)
-                _list.Add(new TBuilder());
+                _list.Add(new TBuilder {Any = fixture});
         }
 
         internal TBuilder BuilderProxy { get; private set; }

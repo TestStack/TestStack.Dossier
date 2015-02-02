@@ -41,6 +41,7 @@ namespace NTestDataBuilder.DataSources.Generators
             _currentListIndex = startIndex - 1;
         }
 
+        /// <inerhitdoc />
         public int Generate()
         {
             _currentListIndex++;
