@@ -31,6 +31,15 @@ namespace NTestDataBuilder.EquivalenceClasses
             return fixture.RegexGenerator.Create(new RegularExpressionRequest(regexPattern), new DummyContext()).ToString();
         }
 
+        class DummyContext : ISpecimenContext
+        {
+            /// <inerhitdoc />
+            public object Resolve(object request)
+            {
+                return null;
+            }
+        }
+
         /// <summary>
         /// Generate and return a string starting with the given prefix.
         /// </summary>
