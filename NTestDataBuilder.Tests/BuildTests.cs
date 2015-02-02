@@ -32,7 +32,7 @@ namespace NTestDataBuilder.Tests
             customer.YearJoined.ShouldBe(2010);
         }
 
-        [Test]
+        [Fact]
         public void GivenBuilder_WhenCallingSet_ShouldOverrideValues()
         {
             var builder = new CustomerBuilder()
@@ -41,9 +41,10 @@ namespace NTestDataBuilder.Tests
                 .Set(x => x.YearJoined, 2014);
 
             var customer = builder.Build();
-            Assert.That(customer.FirstName, Is.EqualTo("Pi"));
-            Assert.That(customer.LastName, Is.EqualTo("Lanningham"));
-            Assert.That(customer.YearJoined, Is.EqualTo(2014));
+
+            customer.FirstName.ShouldBe("Pi");
+            customer.LastName.ShouldBe("Lanningham");
+            customer.YearJoined.ShouldBe(2014);
         }
     }
 }
