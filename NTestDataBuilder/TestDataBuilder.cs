@@ -76,9 +76,10 @@ namespace NTestDataBuilder
         /// <typeparam name="TValue">The type of the property</typeparam>
         /// <param name="property">A lambda expression specifying the property to record a value for</param>
         /// <param name="value">The value to record</param>
-        protected TBuilder Set<TValue>(Expression<Func<TObject, TValue>> property, TValue value)
+        public TBuilder Set<TValue>(Expression<Func<TObject, TValue>> property, TValue value)
         {
             _properties[PropertyNameGetter.Get(property)] = value;
+            return this as TBuilder;
             return this as TBuilder;
         }
 
