@@ -134,5 +134,14 @@ namespace NTestDataBuilder
         {
             return _properties.ContainsKey(PropertyNameGetter.Get(property));
         }
+
+        /// <summary>
+        /// Returns whether or not the builder instance is a proxy for building a list or an actual builder instance.
+        /// </summary>
+        /// <returns>Whether or not the instance is a list builder proxy</returns>
+        public virtual bool IsListBuilderProxy()
+        {
+            return ListBuilder != null;
+        }
     }
 }
