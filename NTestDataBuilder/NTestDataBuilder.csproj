@@ -85,6 +85,7 @@
     <Compile Include="Lists\ListBuilderExtensions.cs" />
     <Compile Include="Lists\ListBuilderGenerator.cs" />
     <Compile Include="Lists\ListBuilderInterceptor.cs" />
+    <Compile Include="NullingExpandoObject.cs" />
     <Compile Include="PropertyNameGetter.cs" />
     <Compile Include="Suppliers\DefaultEmailValueSupplier.cs" />
     <Compile Include="Suppliers\DefaultLastNameValueSupplier.cs" />

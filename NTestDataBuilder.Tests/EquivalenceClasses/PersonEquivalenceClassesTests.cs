@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using NTestDataBuilder.DataSources;
-using NTestDataBuilder.DataSources.Geography;
 using NTestDataBuilder.DataSources.Person;
-using NTestDataBuilder.EquivalenceClasses;
-using NTestDataBuilder.EquivalenceClasses.Geo;
 using NTestDataBuilder.EquivalenceClasses.Person;
 using Shouldly;
+using Xunit;
 using Xunit.Extensions;
 
 namespace NTestDataBuilder.Tests.EquivalenceClasses
@@ -39,6 +37,21 @@ namespace NTestDataBuilder.Tests.EquivalenceClasses
             }
         }
 
+        [Fact]
+        public void WhenGettingUniqueEmail_ThenReturnUniqueEmails()
+        {
+            var source = new PersonEmailAddressSource();
+            var generatedValues = new List<string>();
+
+            for (var i = 0; i < source.Data.Count; i++)
+            {
+                generatedValues.Add(Any.UniqueEmailAddress());
+            }
+
+            generatedValues.Distinct().Count()
+                .ShouldBe(generatedValues.Count);
+        }
+
         public static IEnumerable<object[]> TestCases
         {
             get
@@ -52,12 +65,6 @@ namespace NTestDataBuilder.Tests.EquivalenceClasses
                 yield return new object[] { new PersonNameFirstMaleSource(), GenerateTestCasesForSut(Any.MaleFirstName) };
                 yield return new object[] { new PersonNameSuffixSource(), GenerateTestCasesForSut(Any.Suffix) };
                 yield return new object[] { new PersonNameTitleSource(), GenerateTestCasesForSut(Any.Title) };
-
-                yield return new object[] { new GeoContinentSource(), GenerateTestCasesForSut(Any.Continent) };
-                yield return new object[] { new GeoCountrySource(), GenerateTestCasesForSut(Any.Country) };
-                yield return new object[] { new GeoCountryCodeSource(), GenerateTestCasesForSut(Any.CountryCode) };
-                yield return new object[] { new GeoLatitudeSource(), GenerateTestCasesForSut(Any.Latitude) };
-                yield return new object[] { new GeoLongitudeSource(), GenerateTestCasesForSut(Any.Longitude) };
             }
         }
 

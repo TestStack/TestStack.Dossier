@@ -16,8 +16,8 @@ namespace NTestDataBuilder.EquivalenceClasses.Geo
         /// <summary>
         /// Generate and return a continent name.
         /// </summary>
-        /// <param name="fixture">The fixture to generate a string for</param>
-        /// <returns>The generated string</returns>
+        /// <param name="fixture">The fixture to generate a continent for</param>
+        /// <returns>The generated continent</returns>
         public static string Continent(this AnonymousValueFixture fixture)
         {
             if (_geoContinentSource == null) _geoContinentSource = new GeoContinentSource();
@@ -27,8 +27,8 @@ namespace NTestDataBuilder.EquivalenceClasses.Geo
         /// <summary>
         /// Generate and return a country name.
         /// </summary>
-        /// <param name="fixture">The fixture to generate a string for</param>
-        /// <returns>The generated string</returns>
+        /// <param name="fixture">The fixture to generate a country for</param>
+        /// <returns>The generated country</returns>
         public static string Country(this AnonymousValueFixture fixture)
         {
             if (_geoCountrySource == null) _geoCountrySource = new GeoCountrySource();
@@ -38,8 +38,8 @@ namespace NTestDataBuilder.EquivalenceClasses.Geo
         /// <summary>
         /// Generate and return a country code.
         /// </summary>
-        /// <param name="fixture">The fixture to generate a string for</param>
-        /// <returns>The generated string</returns>
+        /// <param name="fixture">The fixture to generate a country code for</param>
+        /// <returns>The generated country code</returns>
         public static string CountryCode(this AnonymousValueFixture fixture)
         {
             if (_geoCountryCodeSource == null) _geoCountryCodeSource = new GeoCountryCodeSource();
@@ -50,8 +50,8 @@ namespace NTestDataBuilder.EquivalenceClasses.Geo
         /// <summary>
         /// Generate and return a latitude coordinate.
         /// </summary>
-        /// <param name="fixture">The fixture to generate a string for</param>
-        /// <returns>The generated string</returns>
+        /// <param name="fixture">The fixture to generate a latitutde for</param>
+        /// <returns>The generated latitude</returns>
         public static string Latitude(this AnonymousValueFixture fixture)
         {
             if (_geoLatitudeSource == null) _geoLatitudeSource = new GeoLatitudeSource();
@@ -61,8 +61,8 @@ namespace NTestDataBuilder.EquivalenceClasses.Geo
         /// <summary>
         /// Generate and return a longitude coordinate.
         /// </summary>
-        /// <param name="fixture">The fixture to generate a string for</param>
-        /// <returns>The generated string</returns>
+        /// <param name="fixture">The fixture to generate a longitude for</param>
+        /// <returns>The generated longitude</returns>
         public static string Longitude(this AnonymousValueFixture fixture)
         {
             if (_geoLongitudeSource == null) _geoLongitudeSource = new GeoLongitudeSource();
