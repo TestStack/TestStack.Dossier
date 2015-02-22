@@ -80,7 +80,6 @@ namespace NTestDataBuilder
         {
             _properties[PropertyNameGetter.Get(property)] = value;
             return this as TBuilder;
-            return this as TBuilder;
         }
 
         /// <summary>
