@@ -142,5 +142,22 @@ namespace NTestDataBuilder
         {
             return ListBuilder != null;
         }
+
+        /// <summary>
+        /// Creates (and optionally modifies) a child builder class of this builder; sharing the anonymous value fixture.
+        /// </summary>
+        /// <typeparam name="TChildObject">The type of the child object being built</typeparam>
+        /// <typeparam name="TChildBuilder">The type of the builder for the child object being built</typeparam>
+        /// <param name="modifier">An optional modifier lambda expression with fluent builder method calls for the child builder</param>
+        /// <returns>The instance of the child builder</returns>
+        protected virtual TChildBuilder GetChildBuilder<TChildObject, TChildBuilder>(Func<TChildBuilder, TChildBuilder> modifier = null)
+            where TChildObject : class
+            where TChildBuilder : TestDataBuilder<TChildObject, TChildBuilder>, new()
+        {
+            var childBuilder = new TChildBuilder {Any = Any};
+            if (modifier != null)
+                modifier(childBuilder);
+            return childBuilder;
+        }
     }
 }
