@@ -14,7 +14,7 @@ namespace NTestDataBuilder
         private readonly Dictionary<string, object> _properties;
 
         /// <summary>
-        /// Create a proxy builder to proxy the given property values for the type <see cref="T"/>.
+        /// Create a proxy builder to proxy the given property values for the type {T}.
         /// </summary>
         /// <param name="properties"></param>
         public ProxyBuilder(Dictionary<string, object> properties)

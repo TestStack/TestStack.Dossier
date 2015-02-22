@@ -33,25 +33,143 @@
     <DocumentationFile>bin\Release\NTestDataBuilder.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FizzWare.NBuilder">
-      <HintPath>..\packages\NBuilder.3.0.1.1\lib\FizzWare.NBuilder.dll</HintPath>
+    <Reference Include="Castle.Core">
+      <HintPath>..\packages\Castle.Core.3.3.1\lib\net40-client\Castle.Core.dll</HintPath>
     </Reference>
-    <Reference Include="NSubstitute">
-      <HintPath>..\packages\NSubstitute.1.6.0.0\lib\NET40\NSubstitute.dll</HintPath>
+    <Reference Include="NSubstitute, Version=1.7.2.0, Culture=neutral, PublicKeyToken=92dd2e9066daa5ca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NSubstitute.1.7.2.0\lib\NET40\NSubstitute.dll</HintPath>
+    </Reference>
+    <Reference Include="Ploeh.AutoFixture">
+      <HintPath>..\packages\AutoFixture.3.20.0\lib\net40\Ploeh.AutoFixture.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnonymousValueFixture.cs" />
+    <Compile Include="DataSources\Dictionaries\Cache.cs" />
+    <Compile Include="DataSources\Dictionaries\IDictionaryRepository.cs" />
+    <Compile Include="DataSources\Dictionaries\CachedFileDictionaryRepository.cs" />
+    <Compile Include="DataSources\Dictionaries\FileDictionarySource.cs" />
+    <Compile Include="DataSources\Geography\GeoContinentSource.cs" />
+    <Compile Include="DataSources\Geography\GeoCountryCodeSource.cs" />
+    <Compile Include="DataSources\Geography\GeoCountrySource.cs" />
+    <Compile Include="DataSources\DataSource.cs" />
+    <Compile Include="DataSources\Geography\GeoLatitudeSource.cs" />
+    <Compile Include="DataSources\Geography\GeoLongitudeSource.cs" />
+    <Compile Include="DataSources\IDataSource.cs" />
+    <Compile Include="DataSources\Person\PersonEmailAddressSource.cs" />
+    <Compile Include="DataSources\Person\PersonLanguageSource.cs" />
+    <Compile Include="DataSources\Person\PersonNameFirstFemaleSource.cs" />
+    <Compile Include="DataSources\Person\PersonNameFirstSource.cs" />
+    <Compile Include="DataSources\Person\PersonNameFullSource.cs" />
+    <Compile Include="DataSources\Person\PersonNameLastSource.cs" />
+    <Compile Include="DataSources\Person\PersonNameFirstMaleSource.cs" />
+    <Compile Include="DataSources\Person\PersonNameSuffixSource.cs" />
+    <Compile Include="DataSources\Person\PersonNameTitleSource.cs" />
+    <Compile Include="EquivalenceClasses\EnumEquivalenceClasses.cs" />
+    <Compile Include="EquivalenceClasses\Geo\GeographyEquivalenceClassescs.cs" />
+    <Compile Include="EquivalenceClasses\IntegerEquivalenceClasses.cs" />
+    <Compile Include="EquivalenceClasses\Person\PersonEquivalenceClasses.cs" />
+    <Compile Include="DataSources\Generators\IGenerator.cs" />
+    <Compile Include="DataSources\Generators\RandomGenerator.cs" />
+    <Compile Include="DataSources\Generators\SequentialGenerator.cs" />
+    <Compile Include="EquivalenceClasses\StringEquivalenceClasses.cs" />
+    <Compile Include="IAnonymousValueSupplier.cs" />
+    <Compile Include="Lists\EnsureAllMethodsVirtual.cs" />
+    <Compile Include="Lists\ListBuilder.cs" />
+    <Compile Include="Lists\ListBuilderExtensions.cs" />
+    <Compile Include="Lists\ListBuilderGenerator.cs" />
+    <Compile Include="Lists\ListBuilderInterceptor.cs" />
+    <Compile Include="NullingExpandoObject.cs" />
+    <Compile Include="PropertyNameGetter.cs" />
+    <Compile Include="Suppliers\DefaultEmailValueSupplier.cs" />
+    <Compile Include="Suppliers\DefaultLastNameValueSupplier.cs" />
+    <Compile Include="Suppliers\DefaultFirstNameValueSupplier.cs" />
+    <Compile Include="Suppliers\DefaultValueSupplier.cs" />
+    <Compile Include="Suppliers\DefaultStringValueSupplier.cs" />
+    <Compile Include="Suppliers\DefaultValueTypeValueSupplier.cs" />
     <Compile Include="TestDataBuilder.cs" />
-    <Compile Include="TestDataBuilderExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProxyBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="NTestDataBuilder.nuspec" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\GeoContinent.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\GeoCountry.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\AddressAusCity.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\AddressAusCompany.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\AddressAusPhone.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\AddressAusPostCode.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\AddressAusState.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\AddressAusStateAbbreviation.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\AddressAusStreet.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\AddressAusWebsite.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\AddressUKCity.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\AddressUKCompany.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\AddressUKCounty.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\AddressUKPhone.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\AddressUKPostCode.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\AddressUKStreet.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\AddressUKWebsite.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\AddressUSCity.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\AddressUSCompany.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\AddressUSPhone.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\AddressUSSocialSecurityNumber.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\AddressUSState.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\AddressUSStateAbbreviation.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\AddressUSStreet.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\AddressUSWebsite.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\AddressUSZipCode.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\ColourHex.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\ColourName.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\CompanyIndustry.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\CompanyJobTitle.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\CompanyLocation.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\CompanyName.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\FinanceCreditCardNumber.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\FinanceCreditCardType.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\FinanceCurrency.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\FinanceCurrencyCode.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\Frequency.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\GeoCountryCode.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\GeoLatitude.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\GeoLongitude.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\IdentifierBitcoinAddress.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\IdentifierIBAN.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\IdentifierIPAddressV4.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\IdentifierIPAddressV6.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\IdentifierISBN.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\IdentifierMacAddress.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\InternetDomainCountryCodeTopLevelDomain.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\InternetDomainName.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\InternetDomainTopLevel.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\InternetURL.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\LoremIpsum.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\PersonEmailAddress.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\PersonLanguage.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\PersonNameFirst.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\PersonNameFirstFemale.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\PersonNameFirstMale.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\PersonNameFull.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\PersonNameLast.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\PersonNameSuffix.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\PersonNameTitle.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\PersonPassword.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\PersonRace.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\PersonUsername.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\ShirtSize.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,34 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using FizzWare.NBuilder;
+using NTestDataBuilder.Lists;
 
 namespace NTestDataBuilder
 {
     /// <summary>
-    /// Generates objects of type <see cref="T"/>.
-    /// </summary>
-    /// <typeparam name="T">The type of object this class generates</typeparam>
-    public interface ITestDataBuilder<out T> where T : class
-    {
-        /// <summary>
-        /// Build the object.
-        /// </summary>
-        /// <returns>The built object</returns>
-        T Build();
-    }
-
-    /// <summary>
-    /// Base class definining infrastructure for a class that generates objects of type <see cref="TObject"/>.
+    /// Base class definining infrastructure for a class that generates objects of type {TObject}.
     /// </summary>
     /// <typeparam name="TObject">The type of object this class generates</typeparam>
     /// <typeparam name="TBuilder">The type for this class, yes this is a recursive type definition</typeparam>
-    public abstract class TestDataBuilder<TObject, TBuilder> : ITestDataBuilder<TObject>
+    public abstract class TestDataBuilder<TObject, TBuilder>
         where TObject : class
-        where TBuilder : class, ITestDataBuilder<TObject>
+        where TBuilder : TestDataBuilder<TObject, TBuilder>, new()
     {
         private readonly Dictionary<string, object> _properties = new Dictionary<string, object>();
         private ProxyBuilder<TObject> _proxyBuilder;
+        internal ListBuilder<TObject, TBuilder> ListBuilder { get; set; } 
+
+        /// <summary>
+        /// Default Constructor.
+        /// </summary>
+        protected TestDataBuilder()
+        {
+            Any = new AnonymousValueFixture();
+        }
+
+        /// <summary>
+        /// Generate anonymous data using this fixture - one instance per builder instance.
+        /// </summary>
+        public AnonymousValueFixture Any { get; internal set; }
 
         /// <summary>
         /// Build the object.
@@ -47,7 +48,7 @@ namespace NTestDataBuilder
         }
 
         /// <summary>
-        /// Build the actual object
+        /// Build the actual object - override this and call the constructor and any other methods.
         /// </summary>
         /// <returns>The built object</returns>
         protected abstract TObject BuildObject();
@@ -70,44 +71,39 @@ namespace NTestDataBuilder
         protected virtual void AlterProxy(TObject proxy) {}
         
         /// <summary>
-        /// Records the given value for the given property from <see cref="TObject"/>.
+        /// Records the given value for the given property from {TObject} and returns the builder to allow chaining.
         /// </summary>
         /// <typeparam name="TValue">The type of the property</typeparam>
         /// <param name="property">A lambda expression specifying the property to record a value for</param>
         /// <param name="value">The value to record</param>
         public TBuilder Set<TValue>(Expression<Func<TObject, TValue>> property, TValue value)
         {
-            _properties[GetPropertyName(property)] = value;
+            _properties[PropertyNameGetter.Get(property)] = value;
             return this as TBuilder;
         }
 
         /// <summary>
-        /// Gets the recorded value for the given property from <see cref="TObject"/>.
+        /// Gets the recorded value for the given property from {TObject} or an anonymous
+        ///  value if there isn't one specified.
         /// </summary>
         /// <typeparam name="TValue">The type of the property</typeparam>
         /// <param name="property">A lambda expression specifying the property to retrieve the recorded value for</param>
-        /// <returns>The recorded value of the property</returns>
+        /// <returns>The recorded value of the property or an anonymous value for it</returns>
         public TValue Get<TValue>(Expression<Func<TObject, TValue>> property)
         {
             if (!Has(property))
-                throw new ArgumentException(
-                    string.Format(
-                        "No value has been recorded yet for {0}; consider using Has(x => x.{0}) to check for a value first.",
-                        GetPropertyName(property)
-                    ),
-                    "property"
-                );
+                return Any.Get(property);
 
-            return (TValue)_properties[GetPropertyName(property)];
+            return (TValue)_properties[PropertyNameGetter.Get(property)];
         }
 
         /// <summary>
-        /// Gets the recorded value for the given property from <see cref="TObject"/> or if no
-        /// value has been recorded the default value for <see cref="TValue"/>.
+        /// Gets the recorded value for the given property from {TObject} or if no
+        /// value has been recorded the default value for {TValue}.
         /// </summary>
         /// <typeparam name="TValue">The type of the property</typeparam>
         /// <param name="property">A lambda expression specifying the property to retrieve the recorded value for</param>
-        /// <returns>The recorded value of the property or teh default value for <see cref="TValue"/> if no value recorded</returns>
+        /// <returns>The recorded value of the property or teh default value for {TValue} if no value recorded</returns>
         public TValue GetOrDefault<TValue>(Expression<Func<TObject, TValue>> property)
         {
             return Has(property)
@@ -116,41 +112,52 @@ namespace NTestDataBuilder
         }
 
         /// <summary>
-        /// Creates an NBuilder list builder expression that allows you to create a list of builders.
-        /// When you are done call .Build().Select(b => b.Build()) to get the list of entities.
+        /// Creates an list builder expression that allows you to create a list of entities.
+        /// You can call .First(x), .Last(x), etc. methods followed by chained builder method calls.
+        /// When you are done call .BuildList() to get the list of entities.
         /// </summary>
         /// <param name="size">The size of list</param>
-        /// <returns>The NBuilder list builder for a list of <see cref="TBuilder"/> of the specified size</returns>
-        public static IListBuilder<TBuilder> CreateListOfSize(int size)
+        /// <returns>The list builder for a list of {TBuilder} of the specified size</returns>
+        public static ListBuilder<TObject, TBuilder> CreateListOfSize(int size)
         {
-            return Builder<TBuilder>.CreateListOfSize(size);
-        }
+            return new ListBuilder<TObject, TBuilder>(size);
+        } 
 
         /// <summary>
-        /// Returns whether or not there is currently a value recorded against the given property from <see cref="TObject"/>.
+        /// Returns whether or not there is currently an explicit value recorded against the given property from {TObject}.
         /// </summary>
         /// <typeparam name="TValue">The type of the property</typeparam>
         /// <param name="property">A lambda expression specifying the property to retrieve the recorded value for</param>
         /// <returns>Whether or not there is a recorded value for the property</returns>
         protected bool Has<TValue>(Expression<Func<TObject, TValue>> property)
         {
-            return _properties.ContainsKey(GetPropertyName(property));
+            return _properties.ContainsKey(PropertyNameGetter.Get(property));
         }
 
-        private static string GetPropertyName<TValue>(Expression<Func<TObject, TValue>> property)
+        /// <summary>
+        /// Returns whether or not the builder instance is a proxy for building a list or an actual builder instance.
+        /// </summary>
+        /// <returns>Whether or not the instance is a list builder proxy</returns>
+        public virtual bool IsListBuilderProxy()
         {
-            var memExp = property.Body as MemberExpression;
-            if (memExp == null)
-                throw new ArgumentException(
-                    string.Format(
-                        "Given property expression ({0}) didn't specify a property on {1}",
-                        property,
-                        typeof(TObject).Name
-                    ),
-                    "property"
-                );
+            return ListBuilder != null;
+        }
 
-            return memExp.Member.Name;
+        /// <summary>
+        /// Creates (and optionally modifies) a child builder class of this builder; sharing the anonymous value fixture.
+        /// </summary>
+        /// <typeparam name="TChildObject">The type of the child object being built</typeparam>
+        /// <typeparam name="TChildBuilder">The type of the builder for the child object being built</typeparam>
+        /// <param name="modifier">An optional modifier lambda expression with fluent builder method calls for the child builder</param>
+        /// <returns>The instance of the child builder</returns>
+        protected virtual TChildBuilder GetChildBuilder<TChildObject, TChildBuilder>(Func<TChildBuilder, TChildBuilder> modifier = null)
+            where TChildObject : class
+            where TChildBuilder : TestDataBuilder<TChildObject, TChildBuilder>, new()
+        {
+            var childBuilder = new TChildBuilder {Any = Any};
+            if (modifier != null)
+                modifier(childBuilder);
+            return childBuilder;
         }
     }
 }

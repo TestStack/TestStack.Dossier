@@ -1,22 +1,23 @@
 ﻿using NTestDataBuilder.Tests.Builders;
 using NTestDataBuilder.Tests.Entities;
-using NUnit.Framework;
+using Shouldly;
+using Xunit;
 
 namespace NTestDataBuilder.Tests
 {
-    class BuildTests
+    public class BuildTests
     {
-        [Test]
+        [Fact]
         public void GivenBasicBuilder_WhenCallingBuild_ThenReturnAnObject()
         {
             var builder = new BasicCustomerBuilder();
 
             var customer = builder.Build();
 
-            Assert.That(customer, Is.TypeOf<Customer>());
+            customer.ShouldBeOfType<Customer>();
         }
 
-        [Test]
+        [Fact]
         public void GivenBuilderWithMethodCalls_WhenCallingBuild_ThenReturnAnObjectWithTheConfiguredParameters()
         {
             var builder = new CustomerBuilder()
@@ -26,12 +27,12 @@ namespace NTestDataBuilder.Tests
 
             var customer = builder.Build();
 
-            Assert.That(customer.FirstName, Is.EqualTo("Matt"));
-            Assert.That(customer.LastName, Is.EqualTo("Kocaj"));
-            Assert.That(customer.YearJoined, Is.EqualTo(2010));
+            customer.FirstName.ShouldBe("Matt");
+            customer.LastName.ShouldBe("Kocaj");
+            customer.YearJoined.ShouldBe(2010);
         }
 
-        [Test]
+        [Fact]
         public void GivenBuilder_WhenCallingSet_ShouldOverrideValues()
         {
             var builder = new CustomerBuilder()
@@ -40,9 +41,10 @@ namespace NTestDataBuilder.Tests
                 .Set(x => x.YearJoined, 2014);
 
             var customer = builder.Build();
-            Assert.That(customer.FirstName, Is.EqualTo("Pi"));
-            Assert.That(customer.LastName, Is.EqualTo("Lanningham"));
-            Assert.That(customer.YearJoined, Is.EqualTo(2014));
+
+            customer.FirstName.ShouldBe("Pi");
+            customer.LastName.ShouldBe("Lanningham");
+            customer.YearJoined.ShouldBe(2014);
         }
     }
 }

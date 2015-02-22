@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTestDataBuilder", "NTestDataBuilder\NTestDataBuilder.csproj", "{01E4EE61-AB1A-4177-8B6C-D50205D167A9}"
 EndProject
@@ -9,6 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTestDataBuilder.Tests", "N
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BC8508D1-6FCB-46B2-9C14-F41F6AD76B09}"
 	ProjectSection(SolutionItems) = preProject
+		BREAKING_CHANGES.md = BREAKING_CHANGES.md
 		LICENSE = LICENSE
 		logo.png = logo.png
 		README.md = README.md
