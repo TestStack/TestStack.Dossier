@@ -1,6 +1,6 @@
 ﻿using NTestDataBuilder.DataSources.Person;
 
-namespace NTestDataBuilder.EquivalenceClasses
+namespace NTestDataBuilder.EquivalenceClasses.Person
 {
     /// <summary>
     /// Extension methods that describe equivalence classes for generating anonymous person-related values.
@@ -22,7 +22,7 @@ namespace NTestDataBuilder.EquivalenceClasses
         /// </summary>
         /// <param name="fixture">The fixture to generate a string for</param>
         /// <returns>The generated string</returns>
-        public static string PersonEmailAddress(this AnonymousValueFixture fixture)
+        public static string EmailAddress(this AnonymousValueFixture fixture)
         {
             if (_personEmailAddressSource == null) _personEmailAddressSource = new PersonEmailAddressSource();
             return _personEmailAddressSource.Next();
@@ -33,7 +33,7 @@ namespace NTestDataBuilder.EquivalenceClasses
         /// </summary>
         /// <param name="fixture">The fixture to generate a string for</param>
         /// <returns>The generated string</returns>
-        public static string PersonLanguage(this AnonymousValueFixture fixture)
+        public static string Language(this AnonymousValueFixture fixture)
         {
             if (_personLanguageSource == null) _personLanguageSource = new PersonLanguageSource();
             return _personLanguageSource.Next();
@@ -44,7 +44,7 @@ namespace NTestDataBuilder.EquivalenceClasses
         /// </summary>
         /// <param name="fixture">The fixture to generate a string for</param>
         /// <returns>The generated string</returns>
-        public static string PersonNameFirstFemale(this AnonymousValueFixture fixture)
+        public static string FemaleFirstName(this AnonymousValueFixture fixture)
         {
             if (_personNameFirstFemaleSource == null) _personNameFirstFemaleSource = new PersonNameFirstFemaleSource();
             return _personNameFirstFemaleSource.Next();
@@ -55,7 +55,7 @@ namespace NTestDataBuilder.EquivalenceClasses
         /// </summary>
         /// <param name="fixture">The fixture to generate a string for</param>
         /// <returns>The generated string</returns>
-        public static string PersonNameFirst(this AnonymousValueFixture fixture)
+        public static string FirstName(this AnonymousValueFixture fixture)
         {
             if (_personNameFirstSource == null) _personNameFirstSource = new PersonNameFirstSource();
             return _personNameFirstSource.Next();
@@ -66,7 +66,7 @@ namespace NTestDataBuilder.EquivalenceClasses
         /// </summary>
         /// <param name="fixture">The fixture to generate a string for</param>
         /// <returns>The generated string</returns>
-        public static string PersonNameFull(this AnonymousValueFixture fixture)
+        public static string FullName(this AnonymousValueFixture fixture)
         {
             if (_personNameFullSource == null) _personNameFullSource = new PersonNameFullSource();
             return _personNameFullSource.Next();
@@ -77,7 +77,7 @@ namespace NTestDataBuilder.EquivalenceClasses
         /// </summary>
         /// <param name="fixture">The fixture to generate a string for</param>
         /// <returns>The generated string</returns>
-        public static string PersonNameLast(this AnonymousValueFixture fixture)
+        public static string LastName(this AnonymousValueFixture fixture)
         {
             if (_personNameLastSource == null) _personNameLastSource = new PersonNameLastSource();
             return _personNameLastSource.Next();
@@ -88,7 +88,7 @@ namespace NTestDataBuilder.EquivalenceClasses
         /// </summary>
         /// <param name="fixture">The fixture to generate a string for</param>
         /// <returns>The generated string</returns>
-        public static string PersonNameFirstMale(this AnonymousValueFixture fixture)
+        public static string MaleFirstName(this AnonymousValueFixture fixture)
         {
             if (_personNameFirstMaleSource == null) _personNameFirstMaleSource = new PersonNameFirstMaleSource();
             return _personNameFirstMaleSource.Next();
@@ -99,7 +99,7 @@ namespace NTestDataBuilder.EquivalenceClasses
         /// </summary>
         /// <param name="fixture">The fixture to generate a string for</param>
         /// <returns>The generated string</returns>
-        public static string PersonNameSuffix(this AnonymousValueFixture fixture)
+        public static string Suffix(this AnonymousValueFixture fixture)
         {
             if (_personNameSuffixSource == null) _personNameSuffixSource = new PersonNameSuffixSource();
             return _personNameSuffixSource.Next();
@@ -110,7 +110,7 @@ namespace NTestDataBuilder.EquivalenceClasses
         /// </summary>
         /// <param name="fixture">The fixture to generate a string for</param>
         /// <returns>The generated string</returns>
-        public static string PersonNameTitle(this AnonymousValueFixture fixture)
+        public static string Title(this AnonymousValueFixture fixture)
         {
             if (_personNameTitleSource == null) _personNameTitleSource = new PersonNameTitleSource();
             return _personNameTitleSource.Next();

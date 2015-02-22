@@ -1,4 +1,5 @@
 ﻿using NTestDataBuilder.EquivalenceClasses;
+using NTestDataBuilder.EquivalenceClasses.Person;
 
 namespace NTestDataBuilder.Suppliers
 {
@@ -16,7 +17,7 @@ namespace NTestDataBuilder.Suppliers
         /// <inheritdoc />
         public TValue GenerateAnonymousValue<TObject, TValue>(AnonymousValueFixture any, string propertyName)
         {
-            return (TValue) (object) any.PersonNameFirst();
+            return (TValue) (object) any.FirstName();
         }
     }
 }
