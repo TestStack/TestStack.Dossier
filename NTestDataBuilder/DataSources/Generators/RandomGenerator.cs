@@ -7,7 +7,7 @@ namespace NTestDataBuilder.DataSources.Generators
     /// </summary>
     public class RandomGenerator : IGenerator
     {
-        private readonly Random _random;
+        private static readonly Random Random = new Random();
         /// <inheritdoc />
         public int StartIndex { get; set; }
         /// <inheritdoc />
@@ -32,13 +32,12 @@ namespace NTestDataBuilder.DataSources.Generators
 
             StartIndex = startIndex;
             ListSize = listSize;
-            _random = new Random();
         }
 
         /// <inerhitdoc />
         public int Generate()
         {
-            return _random.Next(StartIndex, ListSize);
+            return Random.Next(StartIndex, ListSize);
         }
     }
 }
