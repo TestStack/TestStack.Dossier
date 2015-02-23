@@ -49,6 +49,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChildBuilderTests.cs" />
     <Compile Include="Entities\CustomerClass.cs" />
     <Compile Include="DataSources\DataSourceTests.cs" />
     <Compile Include="DataSources\Dictionaries\CacheTests.cs" />
@@ -58,6 +59,7 @@
     <Compile Include="DataSources\Generators\RandomGeneratorTests.cs" />
     <Compile Include="DataSources\Generators\SequentiaGeneratorTests.cs" />
     <Compile Include="DataSources\DataSourceConventionTests.cs" />
+    <Compile Include="EquivalenceClasses\GeoEquivalenceClassesTests.cs" />
     <Compile Include="EquivalenceClasses\PersonEquivalenceClassesTests.cs" />
     <Compile Include="EquivalenceClasses\IntegerEquivalenceClassesTests.cs" />
     <Compile Include="EquivalenceClasses\EnumEquivalenceClassesTests.cs" />

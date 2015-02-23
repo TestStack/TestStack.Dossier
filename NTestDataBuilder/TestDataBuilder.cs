@@ -80,7 +80,6 @@ namespace NTestDataBuilder
         {
             _properties[PropertyNameGetter.Get(property)] = value;
             return this as TBuilder;
-            return this as TBuilder;
         }
 
         /// <summary>
@@ -133,6 +132,32 @@ namespace NTestDataBuilder
         protected bool Has<TValue>(Expression<Func<TObject, TValue>> property)
         {
             return _properties.ContainsKey(PropertyNameGetter.Get(property));
+        }
+
+        /// <summary>
+        /// Returns whether or not the builder instance is a proxy for building a list or an actual builder instance.
+        /// </summary>
+        /// <returns>Whether or not the instance is a list builder proxy</returns>
+        public virtual bool IsListBuilderProxy()
+        {
+            return ListBuilder != null;
+        }
+
+        /// <summary>
+        /// Creates (and optionally modifies) a child builder class of this builder; sharing the anonymous value fixture.
+        /// </summary>
+        /// <typeparam name="TChildObject">The type of the child object being built</typeparam>
+        /// <typeparam name="TChildBuilder">The type of the builder for the child object being built</typeparam>
+        /// <param name="modifier">An optional modifier lambda expression with fluent builder method calls for the child builder</param>
+        /// <returns>The instance of the child builder</returns>
+        protected virtual TChildBuilder GetChildBuilder<TChildObject, TChildBuilder>(Func<TChildBuilder, TChildBuilder> modifier = null)
+            where TChildObject : class
+            where TChildBuilder : TestDataBuilder<TChildObject, TChildBuilder>, new()
+        {
+            var childBuilder = new TChildBuilder {Any = Any};
+            if (modifier != null)
+                modifier(childBuilder);
+            return childBuilder;
         }
     }
 }

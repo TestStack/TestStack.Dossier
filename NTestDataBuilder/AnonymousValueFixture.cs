@@ -18,6 +18,7 @@ namespace NTestDataBuilder
             GlobalValueSuppliers = new List<IAnonymousValueSupplier>();
             DefaultValueSuppliers = new IAnonymousValueSupplier[]
             {
+                new DefaultEmailValueSupplier(),
                 new DefaultFirstNameValueSupplier(),
                 new DefaultLastNameValueSupplier(),
                 new DefaultStringValueSupplier(),
@@ -33,6 +34,7 @@ namespace NTestDataBuilder
         {
             LocalValueSuppliers = new List<IAnonymousValueSupplier>();
             Fixture = new Fixture();
+            Bag = new NullingExpandoObject();
             RegexGenerator = new RegularExpressionGenerator();
         }
 
@@ -47,6 +49,11 @@ namespace NTestDataBuilder
         ///   and can be used to generate anonymous values using AutoFixture.
         /// </summary>
         public Fixture Fixture { get; private set; }
+
+        /// <summary>
+        /// Dynamic bag of objects that can be used by equivalence classes / anonymous value suppliers to store state.
+        /// </summary>
+        public dynamic Bag { get; private set; }
 
         /// <summary>
         /// Ordered, immutable collection of default anonymous value suppliers to interrogate when automatically generating an anonymous value.

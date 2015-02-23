@@ -4,21 +4,20 @@ using NTestDataBuilder.EquivalenceClasses.Person;
 namespace NTestDataBuilder.Suppliers
 {
     /// <summary>
-    /// Supplies default anonymous value for last names.
+    /// Supplies default anonymous value for email addresses.
     /// </summary>
-    public class DefaultLastNameValueSupplier : IAnonymousValueSupplier
+    public class DefaultEmailValueSupplier : IAnonymousValueSupplier
     {
         /// <inheritdoc />
         public bool CanSupplyValue<TObject, TValue>(string propertyName)
         {
-            return typeof (TValue) == typeof(string) &&
-                (propertyName.ToLower() == "lastname" || propertyName.ToLower() == "surname");
+            return typeof (TValue) == typeof(string) && propertyName.ToLower().Contains("email");
         }
 
         /// <inheritdoc />
         public TValue GenerateAnonymousValue<TObject, TValue>(AnonymousValueFixture any, string propertyName)
         {
-            return (TValue) (object) any.LastName();
+            return (TValue) (object) any.EmailAddress();
         }
     }
 }

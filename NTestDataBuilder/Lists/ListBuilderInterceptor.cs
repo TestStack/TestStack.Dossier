@@ -16,6 +16,12 @@ namespace NTestDataBuilder.Lists
 
         public void Intercept(IInvocation invocation)
         {
+            if (invocation.Method.Name == "IsListBuilderProxy")
+            {
+                invocation.Proceed();
+                return;
+            }
+
             if (invocation.Method.ReturnType != typeof (TBuilder))
             {
                 throw new InvalidOperationException("Non-fluent builder method invoked while creating a list of builders: " + invocation.Method.Name);

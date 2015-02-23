@@ -72,9 +72,9 @@
     <Compile Include="DataSources\Person\PersonNameSuffixSource.cs" />
     <Compile Include="DataSources\Person\PersonNameTitleSource.cs" />
     <Compile Include="EquivalenceClasses\EnumEquivalenceClasses.cs" />
-    <Compile Include="EquivalenceClasses\GeographyEquivalenceClassescs.cs" />
+    <Compile Include="EquivalenceClasses\Geo\GeographyEquivalenceClassescs.cs" />
     <Compile Include="EquivalenceClasses\IntegerEquivalenceClasses.cs" />
-    <Compile Include="EquivalenceClasses\PersonEquivalenceClasses.cs" />
+    <Compile Include="EquivalenceClasses\Person\PersonEquivalenceClasses.cs" />
     <Compile Include="DataSources\Generators\IGenerator.cs" />
     <Compile Include="DataSources\Generators\RandomGenerator.cs" />
     <Compile Include="DataSources\Generators\SequentialGenerator.cs" />
@@ -85,7 +85,9 @@
     <Compile Include="Lists\ListBuilderExtensions.cs" />
     <Compile Include="Lists\ListBuilderGenerator.cs" />
     <Compile Include="Lists\ListBuilderInterceptor.cs" />
+    <Compile Include="NullingExpandoObject.cs" />
     <Compile Include="PropertyNameGetter.cs" />
+    <Compile Include="Suppliers\DefaultEmailValueSupplier.cs" />
     <Compile Include="Suppliers\DefaultLastNameValueSupplier.cs" />
     <Compile Include="Suppliers\DefaultFirstNameValueSupplier.cs" />
     <Compile Include="Suppliers\DefaultValueSupplier.cs" />

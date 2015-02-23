@@ -12,6 +12,22 @@ namespace NTestDataBuilder.Tests
     public class BuildListTests
     {
         [Fact]
+        public void GivenANormalBuilderInstance_WhenCallingIsListBuilderProxy_ThenReturnFalse()
+        {
+            var builder = new BasicCustomerBuilder();
+
+            builder.IsListBuilderProxy().ShouldBe(false);
+        }
+
+        [Fact]
+        public void GivenAListBuilderProxyInstance_WhenCallingIsListBuilderProxy_ThenReturnTrue()
+        {
+            var builder = BasicCustomerBuilder.CreateListOfSize(1).TheFirst(1);
+
+            builder.IsListBuilderProxy().ShouldBe(true);
+        }
+
+        [Fact]
         public void GivenListOfBuilders_WhenCallingBuildList_ThenAListOfEntitiesOfTheRightSizeShouldBeReturned()
         {
             var builders = BasicCustomerBuilder.CreateListOfSize(5);
