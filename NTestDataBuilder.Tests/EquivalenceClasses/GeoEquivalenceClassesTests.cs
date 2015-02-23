@@ -20,7 +20,7 @@ namespace NTestDataBuilder.Tests.EquivalenceClasses
 
         [Theory]
         [PropertyData("TestCases")]
-        public void WhenGettingAnyPersonData_ThenReturnRandomPersonDataWhichIsReasonablyUnique(DataSource<string> source,
+        public void WhenGettingAnyGeoData_ThenReturnRandomGeoDataWhichIsReasonablyUnique(DataSource<string> source,
             List<string> testCases)
         {
             foreach (var testCase in testCases)

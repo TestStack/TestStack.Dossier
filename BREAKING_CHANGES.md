@@ -50,7 +50,7 @@ Simply add the following to the files that generate lists of builders and change
 using NTestDataBuilder.Lists;
 ```
 
-Assuming you aren't using NBuilder for anything other than generating lists of entities with NTestDataBuilder 1.0 wou should be abke to do a global find and replace against `using FizzWare.NBuilder;`.
+Assuming you aren't using NBuilder for anything other than generating lists of entities with NTestDataBuilder 1.0 you should be abke to do a global find and replace against `using FizzWare.NBuilder;`.
 
 If you uninstall the NBuilder package then you will need to remove the using statements for that library too.
 
