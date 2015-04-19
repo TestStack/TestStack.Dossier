@@ -10,3 +10,5 @@ _ReSharper.*
 *.log
 packages
 *.DotSettings
+*.ncrunchproject
+*.ncrunchsolution
