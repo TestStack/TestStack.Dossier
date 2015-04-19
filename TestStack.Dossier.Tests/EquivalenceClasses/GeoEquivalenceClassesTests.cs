@@ -6,6 +6,7 @@ using TestStack.Dossier.DataSources;
 using TestStack.Dossier.DataSources.Geography;
 using TestStack.Dossier.EquivalenceClasses.Geo;
 using Xunit;
+using Xunit.Extensions;
 
 namespace TestStack.Dossier.Tests.EquivalenceClasses
 {
@@ -19,7 +20,7 @@ namespace TestStack.Dossier.Tests.EquivalenceClasses
         }
 
         [Theory]
-        [MemberData("TestCases")]
+        [PropertyData("TestCases")]
         public void WhenGettingAnyGeoData_ThenReturnRandomGeoDataWhichIsReasonablyUnique(DataSource<string> source,
             List<string> testCases)
         {

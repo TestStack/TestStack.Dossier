@@ -5,13 +5,14 @@ using TestStack.Dossier.DataSources;
 using TestStack.Dossier.DataSources.Geography;
 using TestStack.Dossier.DataSources.Person;
 using Xunit;
+using Xunit.Extensions;
 
 namespace TestStack.Dossier.Tests.DataSources
 {
     public class DataSourceConventionTests
     {
         [Theory]
-        [MemberData("TestCases")]
+        [PropertyData("TestCases")]
         public void DataSourceConventions(DataSource<string> sut, int expectedCount)
         {
             var collection = sut.Data.ToList();
