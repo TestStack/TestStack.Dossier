@@ -98,7 +98,7 @@
     <Compile Include="ProxyBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="NTestDataBuilder.nuspec" />
+    <None Include="TestStack.Dossier.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
