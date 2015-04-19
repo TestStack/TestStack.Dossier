@@ -10,7 +10,7 @@ namespace NTestDataBuilder.EquivalenceClasses.Person
     public static class NameEquivalenceClasses
     {
         private static PersonEmailAddressSource _personEmailAddressSource;
-        private static PersonEmailAddressSource _personUniqueEmailAddressSource;
+        private static PersonEmailAddressSource _uniquePersonEmailAddressSource;
         private static PersonLanguageSource _personLanguageSource;
         private static PersonNameFirstFemaleSource _personNameFirstFemaleSource;
         private static PersonNameFirstSource _personNameFirstSource;
@@ -38,13 +38,14 @@ namespace NTestDataBuilder.EquivalenceClasses.Person
         /// <returns>The generated unique email</returns>
         public static string UniqueEmailAddress(this AnonymousValueFixture fixture)
         {
-            if (fixture.Bag.UniqueEmailAddressSource == null)
+            if (_uniquePersonEmailAddressSource == null)
             {
+                if (_personEmailAddressSource == null) _personEmailAddressSource = new PersonEmailAddressSource();
                 var generator = new SequentialGenerator(0, _personEmailAddressSource.Data.Count, listShouldBeUnique: true);
-                fixture.Bag.UniqueEmailAddressSource = new PersonEmailAddressSource(generator);
+                _uniquePersonEmailAddressSource = new PersonEmailAddressSource(generator);
             }
 
-            return fixture.Bag.UniqueEmailAddressSource.Next();
+            return _uniquePersonEmailAddressSource.Next();
         }
 
         /// <summary>
