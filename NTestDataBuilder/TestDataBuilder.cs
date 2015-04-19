@@ -16,7 +16,11 @@ namespace NTestDataBuilder
     {
         private readonly Dictionary<string, object> _properties = new Dictionary<string, object>();
         private ProxyBuilder<TObject> _proxyBuilder;
-        internal ListBuilder<TObject, TBuilder> ListBuilder { get; set; } 
+
+        /// <summary>
+        /// The list builder instance (if this ia a list builder proxy).
+        /// </summary>
+        public ListBuilder<TObject, TBuilder> ListBuilder { get; internal set; } 
 
         /// <summary>
         /// Default Constructor.

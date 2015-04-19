@@ -38,12 +38,14 @@ namespace NTestDataBuilder.Tests.EquivalenceClasses
         }
 
         [Fact]
-        public void WhenGettingUniqueEmail_ThenReturnUniqueEmails()
+        public void WhenGettingUniqueEmail_ThenReturnUniqueEmailsAcrossFixtureInstances()
         {
             var source = new PersonEmailAddressSource();
             var generatedValues = new List<string>();
+            var any2 = new AnonymousValueFixture();
 
-            for (var i = 0; i < source.Data.Count; i++)
+            generatedValues.Add(any2.UniqueEmailAddress());
+            for (var i = 0; i < source.Data.Count - 1; i++)
             {
                 generatedValues.Add(Any.UniqueEmailAddress());
             }
