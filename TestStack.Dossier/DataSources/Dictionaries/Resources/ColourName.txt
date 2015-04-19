@@ -1,0 +1,255 @@
+Alabaster
+Aquamarine
+Aqua
+Amethyst
+Amber
+Alice blue
+Alizarin
+Amaranth
+Apricot
+Army green
+Asparagus
+Atomic tagerine
+Auburn
+Azure
+Black
+Blue
+Brown
+Blood red
+Burgandy
+Beige
+Baby Blue
+Bronze
+Bistre
+Bue-green
+Blue-violet
+Bondi blue
+Brass
+Bright pink
+Bright blue
+Bright green
+Bright-ect.
+Brillian rose
+Buff
+Burnt orange
+Burnt sienna
+Burnt umber
+Creme
+Camouflage green
+Caput Mortuum
+Cardinal red
+Carmine
+Carnation pink
+Carolina Blue
+Carrot orange
+Celadon
+Cerise
+Cerulean blue
+Chartreuse
+Cherry blossom
+Chestnut
+Chocolate
+Cinnabar
+Cinnamon
+Colbalt
+Columbia Blue
+Copper
+Copper rose
+Coral
+Coral red
+Corn
+Cornflower blue
+Cosmic latte
+Crimson
+Cyan
+Dark blue
+Dark brown
+Dark coral
+Dark-ect.
+Deep fuchsia
+Deep lilac
+Deep peach
+Deep-ect.
+Denim
+Dodge blue
+Ecru
+Egyptian Blue
+Electric blue
+Electric green
+Electric indigo
+Emerald
+Eggplant
+Falu red
+Fern green
+Firebrick
+Flax
+Forest green
+French Rose
+Fuchsia
+Fuschia pink
+Gamboge
+Gold
+Golden Brown
+Golden Yellow
+Goldenrod
+Grey-asparagus
+Green
+Grey
+Han purple
+Harequin
+Heliotrope
+Hollywood Cerise
+Hot magenta
+Hot Pink
+Indigo
+International Klein boue
+International orange
+Islamic green
+Ivory
+Ice white
+Iridescent blue
+Iridescent pink
+Iridescent-ect.
+Indian red
+Jade
+Kelly green
+Khaki
+Lavander
+Lavender blue
+Lavender blush
+Lavender grey
+Lavender-ect.
+Lawn green
+Lemon
+Lemon chiffon
+Light blue
+Light pink
+Light green
+Light-ect.
+Lilac
+Lime green
+Linen
+Magenta
+Magic mint
+Magnolia
+Malachite
+Maroon
+Maya blue
+Mauve
+Mauve Taupe
+Medium blue
+Medium carmine
+Medium-ect.
+Mint green
+Midnight blue
+Misty rose
+Moss green
+Mountbatten pink
+Mustard
+Myrtle
+Navy blue
+Navajo white
+Ochre
+Office green
+Old Gold
+Old Lace
+Old Lavender
+Old rose
+Olive
+Olive drab
+Olivine
+Orange
+Orange peel
+Orange red
+Orchid
+Pale blue
+Pale carmine
+Pale chestnut
+Pale-ect.
+Papaya whip
+Pastel green
+Pastel pink
+Pastel-ect
+Peach
+Peach-orange
+Peach-yellow
+Pear
+Periwinkle
+Persian blue
+Persian green
+Persian-ect.
+Persimmon
+Pine green
+Pink
+Pink-orange
+Platinum
+Plum
+Powder blue
+Puce
+Prussian blue
+Psychedelic purple
+Pumpkin
+Purple
+Purple-blue
+Purple Taupe
+Raw umber
+Razzmatazz
+Red
+Red-violet
+Rich carmine
+Robin egg blue
+Rose
+Rose Madder
+Rose taupe
+Rolay purple
+Ruby
+Russet
+Rust
+Safety orange
+Saffron
+Salmon
+Sandy brown
+Sangria
+Sapphire
+Scarlet
+School bus yellow
+Sea green
+Seashell
+Selective yellow
+Sepia
+Shamrock green
+Shocking pink
+Silver
+Sky blue
+Slate grey
+Smalt
+Spring bud
+Spring green
+Steel blue
+Tan
+Tangerine
+Tangerine yellow
+Taupe
+Tea green
+Tea rose
+Teal
+Tenne
+Terra cotta
+Thistle
+Tomato
+Turquoise
+Tyrain purple
+Ultramarine
+United Nations blue
+Vegas gold
+Vermilion
+Violet
+Viridian
+Wheat
+White
+Wisteria
+Winter grey
+Yellow
+Yellow-green
+Yellow-red
+Zinnwaldite
