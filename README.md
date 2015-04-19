@@ -1,10 +1,12 @@
-# Dossier
+# TestStack.Dossier
 
-Dossier provides you with the code infrastructure to easily and quickly generate test fixture data for your automated tests in a terse, readable and maintainable way using the Test Data Builder pattern.
+TestStack.Dossier provides you with the code infrastructure to easily and quickly generate test fixture data for your automated tests in a terse, readable and maintainable way using the Test Data Builder pattern.
 
 For more information please see the [blog post](http://robdmoore.id.au/blog/2013/05/26/test-data-generation-the-right-way-object-mother-test-data-builders-nsubstitute-nbuilder/) that gives the theory behind the approach this library was intended for and the [presentation and example code](https://github.com/robdmoore/TestFixtureDataGenerationPresentation) that gives a concrete example of the usage of the library (and the theory behind it).
 
-Dossier is integrated with NSubstitute for proxy/mock/substitute object generation and AutoFixture for anonymous value generation. Version 1 was integrated with NBuilder for list generation, but that is now replaced with internal code that uses Castle Dynamic Proxy (il-merged into the dll) for an even terser syntax.
+TestStack.Dossier is integrated with NSubstitute for proxy/mock/substitute object generation and AutoFixture for anonymous value generation. Version 1 was integrated with NBuilder for list generation, but that is now replaced with internal code that uses Castle Dynamic Proxy (il-merged into the dll) for an even terser syntax.
+
+Prior to v2.0 this library was known as NTestDataBuilder.
 
 ## How do I get started?
 
@@ -187,10 +189,10 @@ If you need to alter the proxy before calling `Build` to add complex behaviours 
 
 *Remember that when using proxy objects of real classes that you need to mark properties and methods as virtual and have a protected empty constructor.*
 
-Why does Dossier have NSubstitute and AutoFixture as dependencies?
+Why does TestStack.Dossier have NSubstitute and AutoFixture as dependencies?
 ------------------------------------------------------------------------
 
-Dossier is an opinionated framework and as such prescribes how to build your fixture data, including how to build lists, anonymous data and mock objects. Because of this we have decided to bundle it with the best of breed libraries for this purpose: AutoFixture and NSubstitute.
+TestStack.Dossier is an opinionated framework and as such prescribes how to build your fixture data, including how to build lists, anonymous data and mock objects. Because of this we have decided to bundle it with the best of breed libraries for this purpose: AutoFixture and NSubstitute.
 
 This allows for this library to provide a rich value-add on top of the basics of tracking properties in a dictionary in the `TestDataBuilder` base class. If you want to use different libraries or want a cut down version that doesn't come with NSubstitute or AutoFixture and the extra functionality they bring then take the `TestDataBuilder.cs` file and cut out the bits you don't want - open source ftw :).
 
