@@ -115,6 +115,15 @@ namespace TestStack.Dossier.Lists
             return _list.Select(b => b.Build()).ToArray();
         }
 
+        /// <summary>
+        /// Builds the list of objects with implicit conversion operator.
+        /// </summary>
+        /// <returns>The built object</returns>
+        public static implicit operator List<TObject>(ListBuilder<TObject, TBuilder> builder)
+        {
+            return builder.BuildList().ToList();
+        }
+        
         internal void Execute(IInvocation invocation)
         {
             _list.Skip(_start)

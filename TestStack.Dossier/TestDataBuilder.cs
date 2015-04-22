@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using TestStack.Dossier.Lists;
 
@@ -49,6 +50,24 @@ namespace TestStack.Dossier
             }
 
             return BuildObject();
+        }
+
+        /// <summary>
+        /// Builds the object with implicit conversion operator.
+        /// </summary>
+        /// <returns>The built object</returns>
+        public static implicit operator TObject(TestDataBuilder<TObject, TBuilder> builder)
+        {
+            return builder.Build();
+        }
+
+        /// <summary>
+        /// Builds the list of objects with implicit conversion operator.
+        /// </summary>
+        /// <returns>The built object</returns>
+        public static implicit operator List<TObject>(TestDataBuilder<TObject, TBuilder> builder)
+        {
+            return builder.ListBuilder;
         }
 
         /// <summary>
