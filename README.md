@@ -143,6 +143,26 @@ Then you either need to:
 * Make your builder class public
 * Add the following to your `AssemblyInfo.cs` file: `[assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]`
 
+Create Entities Implicitly
+--------------------------
+In the previous examples, you have seen how to create entities *explicitly*, by calling the `Build()` and `BuildList()` methods. For the ultimate in terseness, you can omit these methods, and Dossier will *implicitly* call them for you. The one caveat is that you must explicitly declare the variable type rather than using the `var` keyword.
+
+So, to create a single entity:
+
+	Customer customer = new CustomerBuilder();
+
+	Customer customer = new CustomerBuilder()
+        .WithFirstName("Matt")
+        .WithLastName("Kocaj")
+        .WhoJoinedIn(2010);
+
+Or to create a list of entities:
+
+	List<Customer> entities = BasicCustomerBuilder.CreateListOfSize(5);
+
+    List<Customer> data = CustomerBuilder.CreateListOfSize(3)
+        .All().With(b => b.WithFirstName(generator.Generate().ToString()));
+
 Anonymous Values and Equivalence Classes
 ----------------------------------------
 

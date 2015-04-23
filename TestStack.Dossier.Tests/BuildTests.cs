@@ -8,7 +8,7 @@ namespace TestStack.Dossier.Tests
     public class BuildTests
     {
         [Fact]
-        public void GivenBasicBuilder_WhenCallingBuild_ThenReturnAnObject()
+        public void GivenBasicBuilder_WhenCallingBuildExplicitly_ThenReturnAnObject()
         {
             var builder = new BasicCustomerBuilder();
 
@@ -18,7 +18,7 @@ namespace TestStack.Dossier.Tests
         }
 
         [Fact]
-        public void GivenBuilderWithMethodCalls_WhenCallingBuild_ThenReturnAnObjectWithTheConfiguredParameters()
+        public void GivenBuilderWithMethodCalls_WhenCallingBuildExplicitly_ThenReturnAnObjectWithTheConfiguredParameters()
         {
             var builder = new CustomerBuilder()
                 .WithFirstName("Matt")
@@ -33,7 +33,7 @@ namespace TestStack.Dossier.Tests
         }
 
         [Fact]
-        public void GivenBuilder_WhenCallingSet_ShouldOverrideValues()
+        public void GivenBuilder_WhenCallingSetExplicitly_ShouldOverrideValues()
         {
             var builder = new CustomerBuilder()
                 .Set(x => x.FirstName, "Pi")
@@ -41,6 +41,40 @@ namespace TestStack.Dossier.Tests
                 .Set(x => x.YearJoined, 2014);
 
             var customer = builder.Build();
+
+            customer.FirstName.ShouldBe("Pi");
+            customer.LastName.ShouldBe("Lanningham");
+            customer.YearJoined.ShouldBe(2014);
+        }
+
+        [Fact]
+        public void GivenBasicBuilder_WhenCallingBuildImplicitly_ThenReturnAnObject()
+        {
+            Customer customer = new BasicCustomerBuilder(); 
+
+            customer.ShouldBeOfType<Customer>();
+        }
+
+        [Fact]
+        public void GivenBuilderWithMethodCalls_WhenCallingBuildImplicitly_ThenReturnAnObjectWithTheConfiguredParameters()
+        {
+            Customer customer = new CustomerBuilder()
+                .WithFirstName("Matt")
+                .WithLastName("Kocaj")
+                .WhoJoinedIn(2010);
+
+            customer.FirstName.ShouldBe("Matt");
+            customer.LastName.ShouldBe("Kocaj");
+            customer.YearJoined.ShouldBe(2010);
+        }
+
+        [Fact]
+        public void GivenBuilder_WhenCallingSetImplicitly_ShouldOverrideValues()
+        {
+            Customer customer = new CustomerBuilder()
+                .Set(x => x.FirstName, "Pi")
+                .Set(x => x.LastName, "Lanningham")
+                .Set(x => x.YearJoined, 2014);
 
             customer.FirstName.ShouldBe("Pi");
             customer.LastName.ShouldBe("Lanningham");
