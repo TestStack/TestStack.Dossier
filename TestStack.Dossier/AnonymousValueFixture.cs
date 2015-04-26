@@ -82,7 +82,7 @@ namespace TestStack.Dossier
         /// <returns>The anonymous value, taking into account any registered conventions</returns>
         public T Get<TObject, T>(Expression<Func<TObject, T>> property)
         {
-            var propertyName = PropertyNameGetter.Get(property);
+            var propertyName = Reflector.GetPropertyFor(property);
             var valueSupplier = LocalValueSuppliers
                 .Concat(GlobalValueSuppliers)
                 .Concat(DefaultValueSuppliers)

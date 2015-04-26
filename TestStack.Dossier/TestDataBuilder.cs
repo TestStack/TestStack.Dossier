@@ -79,7 +79,7 @@ namespace TestStack.Dossier
         {
             var model = Any.Fixture.Create<TObject>();
 
-            var properties = typeof (TObject).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+            var properties = Reflector.GetSettablePropertiesFor<TObject>();
             foreach (var property in properties)
             {
                 var val = Get(property.PropertyType, property.Name);
@@ -114,7 +114,7 @@ namespace TestStack.Dossier
         /// <param name="value">The value to record</param>
         public TBuilder Set<TValue>(Expression<Func<TObject, TValue>> property, TValue value)
         {
-            _properties[PropertyNameGetter.Get(property)] = value;
+            _properties[Reflector.GetPropertyFor(property)] = value;
             return this as TBuilder;
         }
 
@@ -130,7 +130,7 @@ namespace TestStack.Dossier
             if (!Has(property))
                 return Any.Get(property);
 
-            return (TValue)_properties[PropertyNameGetter.Get(property)];
+            return (TValue)_properties[Reflector.GetPropertyFor(property)];
         }
 
         public object Get(Type type, string propertyName)
@@ -174,7 +174,7 @@ namespace TestStack.Dossier
         /// <returns>Whether or not there is a recorded value for the property</returns>
         protected bool Has<TValue>(Expression<Func<TObject, TValue>> property)
         {
-            return Has(PropertyNameGetter.Get(property));
+            return Has(Reflector.GetPropertyFor(property));
         }
 
         /// <summary>
