@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnonymousValueFixture.cs" />
+    <Compile Include="Builder.cs" />
     <Compile Include="DataSources\Dictionaries\Cache.cs" />
     <Compile Include="DataSources\Dictionaries\IDictionaryRepository.cs" />
     <Compile Include="DataSources\Dictionaries\CachedFileDictionaryRepository.cs" />

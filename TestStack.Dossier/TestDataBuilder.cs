@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
+using Ploeh.AutoFixture;
 using TestStack.Dossier.Lists;
 
 namespace TestStack.Dossier
@@ -71,10 +72,22 @@ namespace TestStack.Dossier
         }
 
         /// <summary>
-        /// Build the actual object - override this and call the constructor and any other methods.
+        /// Build the actual object - you can optionally override this and call the constructor and any other methods.
         /// </summary>
         /// <returns>The built object</returns>
-        protected abstract TObject BuildObject();
+        protected virtual TObject BuildObject()
+        {
+            var model = Any.Fixture.Create<TObject>();
+
+            var properties = typeof (TObject).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+            foreach (var property in properties)
+            {
+                var val = Get(property.PropertyType, property.Name);
+                property.SetValue(model, val, null);
+            }
+            
+            return model;
+        }
 
         /// <summary>
         /// Return an NSubstitute proxy object when .Build() is called rather than a real object.
@@ -120,6 +133,13 @@ namespace TestStack.Dossier
             return (TValue)_properties[PropertyNameGetter.Get(property)];
         }
 
+        public object Get(Type type, string propertyName)
+        {
+            if (!Has(propertyName))
+                return Any.Get(type, propertyName);
+            return _properties[propertyName];
+        } 
+
         /// <summary>
         /// Gets the recorded value for the given property from {TObject} or if no
         /// value has been recorded the default value for {TValue}.
@@ -154,7 +174,17 @@ namespace TestStack.Dossier
         /// <returns>Whether or not there is a recorded value for the property</returns>
         protected bool Has<TValue>(Expression<Func<TObject, TValue>> property)
         {
-            return _properties.ContainsKey(PropertyNameGetter.Get(property));
+            return Has(PropertyNameGetter.Get(property));
+        }
+
+        /// <summary>
+        /// Returns whether or not there is currently an explicit value recorded against the given property from {TObject}.
+        /// </summary>
+        /// <param name="propertyName">A string specifying the name of the property to retrieve the recorded value for</param>
+        /// <returns>Whether or not there is a recorded value for the property</returns>
+        protected bool Has(string propertyName)
+        {
+            return _properties.ContainsKey(propertyName);
         }
 
         /// <summary>

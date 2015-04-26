@@ -90,5 +90,15 @@ namespace TestStack.Dossier
 
             return valueSupplier.GenerateAnonymousValue<TObject, T>(this, propertyName);
         }
+
+        public object Get(Type type, string propertyName)
+        {
+            var valueSupplier = LocalValueSuppliers
+                .Concat(GlobalValueSuppliers)
+                .Concat(DefaultValueSuppliers)
+                .First(s => s.CanSupplyValue(type,propertyName));
+
+            return valueSupplier.GenerateAnonymousValue(this, type, propertyName);
+        }
     }
 }

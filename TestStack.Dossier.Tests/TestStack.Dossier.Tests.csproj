@@ -54,6 +54,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BuilderBuildListTests.cs" />
+    <Compile Include="BuilderBuildTests.cs" />
     <Compile Include="ChildBuilderTests.cs" />
     <Compile Include="Entities\CustomerClass.cs" />
     <Compile Include="DataSources\DataSourceTests.cs" />

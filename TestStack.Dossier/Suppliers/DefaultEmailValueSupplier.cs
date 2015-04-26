@@ -1,4 +1,5 @@
-﻿using TestStack.Dossier.EquivalenceClasses.Person;
+﻿using System;
+using TestStack.Dossier.EquivalenceClasses.Person;
 
 namespace TestStack.Dossier.Suppliers
 {
@@ -10,13 +11,25 @@ namespace TestStack.Dossier.Suppliers
         /// <inheritdoc />
         public bool CanSupplyValue<TObject, TValue>(string propertyName)
         {
-            return typeof (TValue) == typeof(string) && propertyName.ToLower().Contains("email");
+            return CanSupplyValue(typeof(string), propertyName);
+        }
+
+        /// <inheritdoc />
+        public bool CanSupplyValue(Type type, string propertyName)
+        {
+            return type == typeof(string) && propertyName.ToLower().Contains("email");
         }
 
         /// <inheritdoc />
         public TValue GenerateAnonymousValue<TObject, TValue>(AnonymousValueFixture any, string propertyName)
         {
             return (TValue) (object) any.EmailAddress();
+        }
+
+        /// <inheritdoc />
+        public object GenerateAnonymousValue(AnonymousValueFixture any, Type type, string propertyName)
+        {
+            return any.EmailAddress();
         }
     }
 }
