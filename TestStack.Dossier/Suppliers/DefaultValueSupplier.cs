@@ -8,12 +8,6 @@ namespace TestStack.Dossier.Suppliers
     public class DefaultValueSupplier : IAnonymousValueSupplier
     {
         /// <inheritdoc />
-        public bool CanSupplyValue<TObject, TValue>(string propertyName)
-        {
-            return true;
-        }
-
-        /// <inheritdoc />
         public bool CanSupplyValue(Type type, string propertyName)
         {
             return true;

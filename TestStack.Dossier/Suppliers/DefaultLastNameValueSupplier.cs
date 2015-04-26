@@ -9,13 +9,6 @@ namespace TestStack.Dossier.Suppliers
     public class DefaultLastNameValueSupplier : IAnonymousValueSupplier
     {
         /// <inheritdoc />
-        public bool CanSupplyValue<TObject, TValue>(string propertyName)
-        {
-            return typeof (TValue) == typeof(string) &&
-                (propertyName.ToLower() == "lastname" || propertyName.ToLower() == "surname");
-        }
-
-        /// <inheritdoc />
         public bool CanSupplyValue(Type type, string propertyName)
         {
             return type == typeof(string) &&

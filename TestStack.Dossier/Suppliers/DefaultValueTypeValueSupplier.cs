@@ -11,12 +11,6 @@ namespace TestStack.Dossier.Suppliers
     public class DefaultValueTypeValueSupplier : IAnonymousValueSupplier
     {
         /// <inerhitdoc />
-        public bool CanSupplyValue<TObject, TValue>(string propertyName)
-        {
-            return typeof (TValue).IsValueType;
-        }
-
-        /// <inerhitdoc />
         public bool CanSupplyValue(Type type, string propertyName)
         {
             return type.IsValueType;

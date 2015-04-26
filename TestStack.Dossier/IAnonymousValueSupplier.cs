@@ -10,15 +10,6 @@ namespace TestStack.Dossier
         /// <summary>
         /// Returns whether or not this supplier can supply an anonymous value for the given property.
         /// </summary>
-        /// <typeparam name="TObject">The type that the property is enclosed in</typeparam>
-        /// <typeparam name="TValue">The type of the target property - the anonymous value will need to be of this type</typeparam>
-        /// <param name="propertyName">The name of the property to generate a value for</param>
-        /// <returns>Whether or not this supplier can supply an anonymous value</returns>
-        bool CanSupplyValue<TObject, TValue>(string propertyName);
-
-        /// <summary>
-        /// Returns whether or not this supplier can supply an anonymous value for the given property.
-        /// </summary>
         /// <param name="type">The type of the property to generate a value for</param>
         /// <param name="propertyName">The name of the property to generate a value for</param>
         /// <returns>Whether or not this supplier can supply an anonymous value</returns>

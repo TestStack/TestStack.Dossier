@@ -9,12 +9,6 @@ namespace TestStack.Dossier.Suppliers
     public class DefaultFirstNameValueSupplier : IAnonymousValueSupplier
     {
         /// <inheritdoc />
-        public bool CanSupplyValue<TObject, TValue>(string propertyName)
-        {
-            return CanSupplyValue(typeof (TValue), propertyName);
-        }
-
-        /// <inheritdoc />
         public bool CanSupplyValue(Type type, string propertyName)
         {
             return type == typeof(string) && propertyName.ToLower() == "firstname";

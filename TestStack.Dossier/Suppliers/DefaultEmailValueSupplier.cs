@@ -9,12 +9,6 @@ namespace TestStack.Dossier.Suppliers
     public class DefaultEmailValueSupplier : IAnonymousValueSupplier
     {
         /// <inheritdoc />
-        public bool CanSupplyValue<TObject, TValue>(string propertyName)
-        {
-            return CanSupplyValue(typeof(string), propertyName);
-        }
-
-        /// <inheritdoc />
         public bool CanSupplyValue(Type type, string propertyName)
         {
             return type == typeof(string) && propertyName.ToLower().Contains("email");

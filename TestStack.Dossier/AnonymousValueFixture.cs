@@ -86,7 +86,7 @@ namespace TestStack.Dossier
             var valueSupplier = LocalValueSuppliers
                 .Concat(GlobalValueSuppliers)
                 .Concat(DefaultValueSuppliers)
-                .First(s => s.CanSupplyValue<TObject, T>(propertyName));
+                .First(s => s.CanSupplyValue(typeof(T), propertyName));
 
             return valueSupplier.GenerateAnonymousValue<TObject, T>(this, propertyName);
         }

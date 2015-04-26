@@ -9,12 +9,6 @@ namespace TestStack.Dossier.Suppliers
     public class DefaultStringValueSupplier : IAnonymousValueSupplier
     {
         /// <inheritdoc />
-        public bool CanSupplyValue<TObject, TValue>(string propertyName)
-        {
-            return typeof (TValue) == typeof(string);
-        }
-
-        /// <inheritdoc />
         public bool CanSupplyValue(Type type, string propertyName)
         {
             return type == typeof(string);
