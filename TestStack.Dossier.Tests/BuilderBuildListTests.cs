@@ -1,20 +1,23 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Shouldly;
 using TestStack.Dossier.DataSources.Generators;
 using TestStack.Dossier.Lists;
 using TestStack.Dossier.Tests.Builders;
-using TestStack.Dossier.Tests.Entities;
+using TestStack.Dossier.Tests.Stubs.ViewModels;
 using Xunit;
 
 namespace TestStack.Dossier.Tests
 {
     public class BuilderBuildListTests
     {
+        private DateTime _enrollmentDate = new DateTime(2004, 9, 9);
+
         [Fact]
         public void GivenANormalBuilderInstance_WhenCallingIsListBuilderProxy_ThenReturnFalse()
         {
-            var builder = Builder<Customer>.CreateNew();
+            var builder = Builder<StudentViewModel>.CreateNew();
 
             builder.IsListBuilderProxy().ShouldBe(false);
         }
@@ -22,7 +25,7 @@ namespace TestStack.Dossier.Tests
         [Fact]
         public void GivenAListBuilderProxyInstance_WhenCallingIsListBuilderProxy_ThenReturnTrue()
         {
-            var builder = Builder<Customer>.CreateListOfSize(1).TheFirst(1);
+            var builder = Builder<StudentViewModel>.CreateListOfSize(1).TheFirst(1);
 
             builder.IsListBuilderProxy().ShouldBe(true);
         }
@@ -30,7 +33,7 @@ namespace TestStack.Dossier.Tests
         [Fact]
         public void GivenListOfBuilders_WhenCallingBuildListExplicitly_ThenAListOfEntitiesOfTheRightSizeShouldBeReturned()
         {
-            var builders = Builder<Customer>.CreateListOfSize(5);
+            var builders = Builder<StudentViewModel>.CreateListOfSize(5);
 
             var entities = builders.BuildList();
 
@@ -40,7 +43,7 @@ namespace TestStack.Dossier.Tests
         [Fact]
         public void GivenListOfBuilders_WhenCallingBuildListImplicitly_ThenAListOfEntitiesOfTheRightSizeShouldBeReturned()
         {
-            List<Customer> entities = Builder<Customer>.CreateListOfSize(5);
+            List<StudentViewModel> entities = Builder<StudentViewModel>.CreateListOfSize(5);
 
             entities.Count.ShouldBe(5);
         }
@@ -48,62 +51,44 @@ namespace TestStack.Dossier.Tests
         [Fact]
         public void GivenListOfBuilders_WhenCallingBuildListExplicitly_ThenAListOfEntitiesOfTheRightTypeShouldBeReturned()
         {
-            var builders = Builder<Customer>.CreateListOfSize(5);
+            var builders = Builder<StudentViewModel>.CreateListOfSize(5);
 
             var entities = builders.BuildList();
 
-            entities.ShouldBeAssignableTo<IList<Customer>>();
+            entities.ShouldBeAssignableTo<IList<StudentViewModel>>();
         }
 
         [Fact]
         public void GivenListOfBuilders_WhenCallingBuildListImplicitly_ThenAListOfEntitiesOfTheRightTypeShouldBeReturned()
         {
-            List<Customer> entities = Builder<Customer>.CreateListOfSize(5);
+            List<StudentViewModel> entities = Builder<StudentViewModel>.CreateListOfSize(5);
 
-            entities.ShouldBeAssignableTo<IList<Customer>>();
+            entities.ShouldBeAssignableTo<IList<StudentViewModel>>();
         }
 
         [Fact]
         public void GivenListOfBuilders_WhenCallingBuildListExplicitly_ThenAListOfUniqueEntitiesShouldBeReturned()
         {
-            var builders = Builder<Customer>.CreateListOfSize(5);
+            var builders = Builder<StudentViewModel>.CreateListOfSize(5);
 
             var entities = builders.BuildList();
 
-            entities[0].ShouldNotBe(entities[1]);
-            entities[0].ShouldNotBe(entities[2]);
-            entities[0].ShouldNotBe(entities[3]);
-            entities[0].ShouldNotBe(entities[4]);
-            entities[1].ShouldNotBe(entities[2]);
-            entities[1].ShouldNotBe(entities[3]);
-            entities[1].ShouldNotBe(entities[4]);
-            entities[2].ShouldNotBe(entities[3]);
-            entities[2].ShouldNotBe(entities[4]);
-            entities[3].ShouldNotBe(entities[4]);
+            entities.ShouldBeUnique();
         }
 
         [Fact]
         public void GivenListOfBuilders_WhenCallingBuildListImplicitly_ThenAListOfUniqueEntitiesShouldBeReturned()
         {
-            List<Customer> entities = Builder<Customer>.CreateListOfSize(5);
+            List<StudentViewModel> entities = Builder<StudentViewModel>.CreateListOfSize(5);
 
-            entities[0].ShouldNotBe(entities[1]);
-            entities[0].ShouldNotBe(entities[2]);
-            entities[0].ShouldNotBe(entities[3]);
-            entities[0].ShouldNotBe(entities[4]);
-            entities[1].ShouldNotBe(entities[2]);
-            entities[1].ShouldNotBe(entities[3]);
-            entities[1].ShouldNotBe(entities[4]);
-            entities[2].ShouldNotBe(entities[3]);
-            entities[2].ShouldNotBe(entities[4]);
-            entities[3].ShouldNotBe(entities[4]);
+            entities.ShouldBeUnique();
         }
 
         [Fact]
         public void GivenListOfBuildersWithCustomisation_WhenBuildingEntitiesExplicitly_ThenTheCustomisationShouldTakeEffect()
         {
             var generator = new SequentialGenerator(0, 100);
-            var list = CustomerBuilder.CreateListOfSize(3)
+            var list = StudentViewModelBuilder.CreateListOfSize(3)
                 .All().With(b => b.WithFirstName(generator.Generate().ToString()));
 
             var data = list.BuildList();
@@ -117,7 +102,7 @@ namespace TestStack.Dossier.Tests
         {
             var generator = new SequentialGenerator(0, 100);
 
-            List<Customer> data = CustomerBuilder.CreateListOfSize(3)
+            List<StudentViewModel> data = StudentViewModelBuilder.CreateListOfSize(3)
                 .All().With(b => b.WithFirstName(generator.Generate().ToString()));
 
             data.Select(c => c.FirstName).ToArray()
@@ -128,67 +113,59 @@ namespace TestStack.Dossier.Tests
         public void GivenListOfBuildersWithARangeOfCustomisationMethods_WhenBuildingEntitiesExplicitly_ThenThenTheListIsBuiltAndModifiedCorrectly()
         {
             var i = 0;
-            var customers = CustomerBuilder.CreateListOfSize(5)
+            var studentViewModels = StudentViewModelBuilder.CreateListOfSize(5)
                 .TheFirst(1).WithFirstName("First")
                 .TheNext(1).WithLastName("Next Last")
                 .TheLast(1).WithLastName("Last Last")
                 .ThePrevious(2).With(b => b.WithLastName("last" + (++i).ToString()))
-                .All().WhoJoinedIn(1999)
+                .All().WhoEntrolledIn(_enrollmentDate)
                 .BuildList();
 
-            customers.ShouldBeAssignableTo<IList<Customer>>();
-            customers.Count.ShouldBe(5);
-            customers[0].FirstName.ShouldBe("First");
-            customers[1].LastName.ShouldBe("Next Last");
-            customers[2].LastName.ShouldBe("last1");
-            customers[3].LastName.ShouldBe("last2");
-            customers[4].LastName.ShouldBe("Last Last");
-            customers.ShouldAllBe(c => c.YearJoined == 1999);
+            studentViewModels.ShouldBeAssignableTo<IList<StudentViewModel>>();
+            studentViewModels.Count.ShouldBe(5);
+            studentViewModels[0].FirstName.ShouldBe("First");
+            studentViewModels[1].LastName.ShouldBe("Next Last");
+            studentViewModels[2].LastName.ShouldBe("last1");
+            studentViewModels[3].LastName.ShouldBe("last2");
+            studentViewModels[4].LastName.ShouldBe("Last Last");
+            studentViewModels.ShouldAllBe(c => c.EnrollmentDate == _enrollmentDate);
         }
 
         [Fact]
         public void GivenListOfBuildersWithARangeOfCustomisationMethods_WhenBuildingEntitiesImplicitly_ThenThenTheListIsBuiltAndModifiedCorrectly()
         {
             var i = 0;
-            List<Customer> customers = CustomerBuilder.CreateListOfSize(5)
+            List<StudentViewModel> studentViewModels = StudentViewModelBuilder.CreateListOfSize(5)
                 .TheFirst(1).WithFirstName("First")
                 .TheNext(1).WithLastName("Next Last")
                 .TheLast(1).WithLastName("Last Last")
                 .ThePrevious(2).With(b => b.WithLastName("last" + (++i).ToString()))
-                .All().WhoJoinedIn(1999);
+                .All().WhoEntrolledIn(_enrollmentDate);
 
-            customers.ShouldBeAssignableTo<IList<Customer>>();
-            customers.Count.ShouldBe(5);
-            customers[0].FirstName.ShouldBe("First");
-            customers[1].LastName.ShouldBe("Next Last");
-            customers[2].LastName.ShouldBe("last1");
-            customers[3].LastName.ShouldBe("last2");
-            customers[4].LastName.ShouldBe("Last Last");
-            customers.ShouldAllBe(c => c.YearJoined == 1999);
+            studentViewModels.ShouldBeAssignableTo<IList<StudentViewModel>>();
+            studentViewModels.Count.ShouldBe(5);
+            studentViewModels[0].FirstName.ShouldBe("First");
+            studentViewModels[1].LastName.ShouldBe("Next Last");
+            studentViewModels[2].LastName.ShouldBe("last1");
+            studentViewModels[3].LastName.ShouldBe("last2");
+            studentViewModels[4].LastName.ShouldBe("Last Last");
+            studentViewModels.ShouldAllBe(c => c.EnrollmentDate == _enrollmentDate);
         }
 
         [Fact]
         public void WhenBuildingEntitiesExplicitly_ThenTheAnonymousValueFixtureIsSharedAcrossBuilders()
         {
-            var customers = CustomerBuilder.CreateListOfSize(5).BuildList();
+            var studentViewModels = StudentViewModelBuilder.CreateListOfSize(5).BuildList();
 
-            customers[0].CustomerClass.ShouldBe(CustomerClass.Normal);
-            customers[1].CustomerClass.ShouldBe(CustomerClass.Bronze);
-            customers[2].CustomerClass.ShouldBe(CustomerClass.Silver);
-            customers[3].CustomerClass.ShouldBe(CustomerClass.Gold);
-            customers[4].CustomerClass.ShouldBe(CustomerClass.Platinum);
+            studentViewModels.Select(x => x.Grade).ShouldBeUnique();
         }
 
         [Fact]
         public void WhenBuildingEntitiesImplicitly_ThenTheAnonymousValueFixtureIsSharedAcrossBuilders()
         {
-            List<Customer> customers = CustomerBuilder.CreateListOfSize(5);
+            List<StudentViewModel> studentViewModels = StudentViewModelBuilder.CreateListOfSize(5);
 
-            customers[0].CustomerClass.ShouldBe(CustomerClass.Normal);
-            customers[1].CustomerClass.ShouldBe(CustomerClass.Bronze);
-            customers[2].CustomerClass.ShouldBe(CustomerClass.Silver);
-            customers[3].CustomerClass.ShouldBe(CustomerClass.Gold);
-            customers[4].CustomerClass.ShouldBe(CustomerClass.Platinum);
+            studentViewModels.Select(x => x.Grade).ShouldBeUnique();
         }
     }
 }

@@ -79,7 +79,7 @@ Prior to v2.0 this library was known as NTestDataBuilder.
 		    }
 		}
 
-Note that you can optionally override the `BuildObject` method if you want full control over how your object is constructed, for example if you want to use a particular constructor. If you don't provide this then Dossier will create the object for you.
+Note that overriding the BuildObject is optional. It can be useful to do this if you want full control over how your object is constructed, for example if you want to use a particular constructor. If you don't choose to override this method then Dossier will create the object for you.
 
 3. Use the builder in a test, e.g.
 

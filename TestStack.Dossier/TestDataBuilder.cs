@@ -82,8 +82,11 @@ namespace TestStack.Dossier
             var properties = Reflector.GetSettablePropertiesFor<TObject>();
             foreach (var property in properties)
             {
-                var val = Get(property.PropertyType, property.Name);
-                property.SetValue(model, val, null);
+                if (property.CanWrite)
+                {
+                    var val = Get(property.PropertyType, property.Name);
+                    property.SetValue(model, val, null);
+                }
             }
             
             return model;
@@ -114,7 +117,7 @@ namespace TestStack.Dossier
         /// <param name="value">The value to record</param>
         public TBuilder Set<TValue>(Expression<Func<TObject, TValue>> property, TValue value)
         {
-            _properties[Reflector.GetPropertyFor(property)] = value;
+            _properties[Reflector.GetPropertyNameFor(property)] = value;
             return this as TBuilder;
         }
 
@@ -130,7 +133,7 @@ namespace TestStack.Dossier
             if (!Has(property))
                 return Any.Get(property);
 
-            return (TValue)_properties[Reflector.GetPropertyFor(property)];
+            return (TValue)_properties[Reflector.GetPropertyNameFor(property)];
         }
 
         public object Get(Type type, string propertyName)
@@ -174,7 +177,7 @@ namespace TestStack.Dossier
         /// <returns>Whether or not there is a recorded value for the property</returns>
         protected bool Has<TValue>(Expression<Func<TObject, TValue>> property)
         {
-            return Has(Reflector.GetPropertyFor(property));
+            return Has(Reflector.GetPropertyNameFor(property));
         }
 
         /// <summary>

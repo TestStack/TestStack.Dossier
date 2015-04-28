@@ -1,6 +1,7 @@
 ﻿using Shouldly;
 using TestStack.Dossier.Tests.Builders;
-using TestStack.Dossier.Tests.Entities;
+using TestStack.Dossier.Tests.Stubs.Entities;
+using TestStack.Dossier.Tests.Stubs.ViewModels;
 using Xunit;
 
 namespace TestStack.Dossier.Tests
@@ -51,6 +52,19 @@ namespace TestStack.Dossier.Tests
             customer.FirstName.ShouldBe("Pi");
             customer.LastName.ShouldBe("Lanningham");
             customer.YearJoined.ShouldBe(2014);
+        }
+
+        [Fact]
+        public void GivenBuilder_WhenBuildingObjectWithCtorAndPrivateSetters_ShouldSetPrivateSetters()
+        {
+            InstructorViewModel instructor = Builder<InstructorViewModel>.CreateNew()
+                .Set(x => x.FirstName, "Pi")
+                .Set(x => x.LastName, "Lanningham")
+                .Set(x => x.Id, 5);
+
+            instructor.FirstName.ShouldBe("Pi");
+            instructor.LastName.ShouldBe("Lanningham");
+            instructor.Id.ShouldBe(5);
         }
     }
 }

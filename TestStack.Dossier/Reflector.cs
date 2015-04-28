@@ -6,7 +6,7 @@ namespace TestStack.Dossier
 {
     internal static class Reflector
     {
-        public static string GetPropertyFor<TObject, TValue>(Expression<Func<TObject, TValue>> property)
+        public static string GetPropertyNameFor<TObject, TValue>(Expression<Func<TObject, TValue>> property)
         {
             var memExp = property.Body as MemberExpression;
             if (memExp == null)

@@ -1,4 +1,4 @@
-﻿namespace TestStack.Dossier.Tests.Entities
+﻿namespace TestStack.Dossier.Tests.Stubs.Entities
 {
     public class Company
     {
