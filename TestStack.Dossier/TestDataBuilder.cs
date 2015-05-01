@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Reflection;
-using Ploeh.AutoFixture;
 using TestStack.Dossier.Lists;
+using TestStack.Dossier.ObjectBuilders;
 
 namespace TestStack.Dossier
 {
@@ -78,17 +76,9 @@ namespace TestStack.Dossier
         /// <returns>The built object</returns>
         protected virtual TObject BuildObject()
         {
-            var model = Any.Fixture.Create<TObject>();
-
-            var properties = Reflector.GetSettablePropertiesFor<TObject>();
-            foreach (var property in properties)
-            {
-                if (property.CanWrite)
-                {
-                    var val = Get(property.PropertyType, property.Name);
-                    property.SetValue(model, val, null);
-                }
-            }
+            var model = FactoryRegistry
+                .Get<AllPropertiesObjectBuilder>()
+                .BuildObject(this);
             
             return model;
         }
@@ -126,7 +116,7 @@ namespace TestStack.Dossier
         /// Gets the recorded value for the given property from {TObject} or an anonymous
         ///  value if there isn't one specified.
         /// </summary>
-        /// <typeparam name="TValue">The type of the property</typeparam>
+        /// <typeparam name="TValue">The type of the property.</typeparam>
         /// <param name="property">A lambda expression specifying the property to retrieve the recorded value for</param>
         /// <returns>The recorded value of the property or an anonymous value for it</returns>
         public TValue Get<TValue>(Expression<Func<TObject, TValue>> property)
@@ -137,6 +127,13 @@ namespace TestStack.Dossier
             return (TValue)_properties[Reflector.GetPropertyNameFor(property)];
         }
 
+        /// <summary>
+        /// Gets the recorded value for the given property from {type} or an anonymous
+        ///  value if there isn't one specified.
+        /// </summary>
+        /// <param name="type">The type of the property.</param>
+        /// <param name="propertyName">The property name.</param>
+        /// <returns></returns>
         public object Get(Type type, string propertyName)
         {
             if (!Has(propertyName))
@@ -215,49 +212,6 @@ namespace TestStack.Dossier
             if (modifier != null)
                 modifier(childBuilder);
             return childBuilder;
-        }
-
-        /// <summary>
-        /// Builds the object using the constructor with the most arguments.
-        /// </summary>
-        /// <returns></returns>
-        protected virtual TObject BuildByConstructor()
-        {
-            var longestConstructor = typeof (TObject)
-                .GetConstructors()
-                .OrderByDescending(x => x.GetParameters().Length)
-                .FirstOrDefault();
-
-            if (longestConstructor == null) throw new ObjectCreationException();
-
-            var parameterValues = longestConstructor
-                .GetParameters()
-                .Select(x => CallGetWithType(x.Name, x.ParameterType));
-
-            return (TObject) longestConstructor.Invoke(parameterValues.ToArray());
-        }
-
-        private object CallGetWithType(string propertyName, Type propertyType)
-        {
-            // Make a Func<TObj, TPropertyType>
-            var expressionDelegateType = typeof(Func<,>).MakeGenericType(typeof(TObject), propertyType);
-
-            // Make an expression parameter of type TObj
-            var tObjParameterType = Expression.Parameter(typeof(TObject));
-
-            var valueStoredInBuilder = typeof(TBuilder)
-                .GetMethods()
-                .First(method => method.Name == "Get" && method.ContainsGenericParameters && method.GetGenericArguments().Length ==1)
-                .MakeGenericMethod(propertyType)
-                .Invoke(this, new object[]
-            {
-                Expression.Lambda(
-                    expressionDelegateType,
-                    Expression.Property(tObjParameterType, propertyName),
-                    tObjParameterType)
-            });
-
-            return valueStoredInBuilder;
         }
     }
 }

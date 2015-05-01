@@ -1,4 +1,5 @@
-﻿using TestStack.Dossier.Tests.Stubs.Entities;
+﻿using TestStack.Dossier.ObjectBuilders;
+using TestStack.Dossier.Tests.Stubs.Entities;
 
 namespace TestStack.Dossier.Tests.Builders
 {
@@ -6,7 +7,7 @@ namespace TestStack.Dossier.Tests.Builders
     {
         protected override Customer BuildObject()
         {
-            return BuildByConstructor();
+            return FactoryRegistry.Get<ConstructorObjectBuilder>().BuildObject(this);
         }
 
         public AutoConstructorCustomerBuilder WithFirstName(string firstName)
