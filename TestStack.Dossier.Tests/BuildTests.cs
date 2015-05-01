@@ -80,5 +80,19 @@ namespace TestStack.Dossier.Tests
             customer.LastName.ShouldBe("Lanningham");
             customer.YearJoined.ShouldBe(2014);
         }
+
+        [Fact]
+        public void GivenBuilderUsingConstructorReflection_WhenCallingBuildExplicitly_ShouldOverrideValues()
+        {
+            Customer customer = new AutoConstructorCustomerBuilder()
+                .WithFirstName("Bruce")
+                .WithLastName("Wayne")
+                .WhoJoinedIn(2012)
+                .Build();
+
+            customer.FirstName.ShouldBe("Bruce");
+            customer.LastName.ShouldBe("Wayne");
+            customer.YearJoined.ShouldBe(2012);
+        }
     }
 }
