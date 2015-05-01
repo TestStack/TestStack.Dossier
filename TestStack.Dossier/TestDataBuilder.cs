@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using Ploeh.AutoFixture;
 using TestStack.Dossier.Lists;
 
 namespace TestStack.Dossier
@@ -15,7 +16,7 @@ namespace TestStack.Dossier
         where TObject : class
         where TBuilder : TestDataBuilder<TObject, TBuilder>, new()
     {
-        private readonly Dictionary<string, object> _properties = new Dictionary<string, object>();
+        private readonly Dictionary<string, object> _properties = new Dictionary<string, object>(StringComparer.InvariantCultureIgnoreCase);
         private ProxyBuilder<TObject> _proxyBuilder;
 
         /// <summary>
@@ -117,7 +118,7 @@ namespace TestStack.Dossier
             if (!Has(property))
                 return Any.Get(property);
 
-            return (TValue)_properties[PropertyNameGetter.Get(property)];
+            return (TValue) _properties[PropertyNameGetter.Get(property)];
         }
 
         /// <summary>
@@ -181,6 +182,48 @@ namespace TestStack.Dossier
             if (modifier != null)
                 modifier(childBuilder);
             return childBuilder;
+        }
+
+        /// <summary>
+        /// Builds the object using the constructor with the most arguments.
+        /// </summary>
+        /// <returns></returns>
+        protected TObject BuildByConstructor()
+        {
+            var longestConstructor = typeof (TObject)
+                .GetConstructors()
+                .OrderByDescending(x => x.GetParameters().Length)
+                .FirstOrDefault();
+
+            if (longestConstructor == null) throw new ObjectCreationException();
+
+            var parameterValues = longestConstructor
+                .GetParameters()
+                .Select(x => CallGetWithType(x.Name, x.ParameterType));
+
+            return (TObject) longestConstructor.Invoke(parameterValues.ToArray());
+        }
+
+        private object CallGetWithType(string propertyName, Type propertyType)
+        {
+            // Make a Func<TObj, TPropertyType>
+            var expressionDelegateType = typeof(Func<,>).MakeGenericType(typeof(TObject), propertyType);
+
+            // Make an expression parameter of type TObj
+            var tObjParameterType = Expression.Parameter(typeof(TObject));
+
+            var valueStoredInBuilder = typeof(TBuilder)
+                .GetMethod("Get")
+                .MakeGenericMethod(propertyType)
+                .Invoke(this, new object[]
+            {
+                Expression.Lambda(
+                    expressionDelegateType,
+                    Expression.Property(tObjParameterType, propertyName),
+                    tObjParameterType)
+            });
+
+            return valueStoredInBuilder;
         }
     }
 }
