@@ -7,7 +7,7 @@ namespace TestStack.Dossier.ObjectBuilders
     /// <summary>
     /// A static registry of object builder factories.
     /// </summary>
-    public static class FactoryRegistry
+    public static class ObjectBuilderRegistry
     {
         private static List<Tuple<Type, IObjectBuilder>> _factories = new List<Tuple<Type, IObjectBuilder>>
         {

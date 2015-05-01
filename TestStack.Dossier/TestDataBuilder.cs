@@ -76,7 +76,7 @@ namespace TestStack.Dossier
         /// <returns>The built object</returns>
         protected virtual TObject BuildObject()
         {
-            var model = FactoryRegistry
+            var model = ObjectBuilderRegistry
                 .Get<AllPropertiesObjectBuilder>()
                 .BuildObject(this);
             

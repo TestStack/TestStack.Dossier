@@ -82,7 +82,7 @@
     <Compile Include="EquivalenceClasses\StringEquivalenceClasses.cs" />
     <Compile Include="ObjectBuilders\AutoFixtureObjectBuilder.cs" />
     <Compile Include="ObjectBuilders\ConstructorObjectBuilder.cs" />
-    <Compile Include="ObjectBuilders\FactoryRegistry.cs" />
+    <Compile Include="ObjectBuilders\ObjectBuilderRegistry.cs" />
     <Compile Include="ObjectBuilders\AllPropertiesObjectBuilder.cs" />
     <Compile Include="ObjectBuilders\PublicPropertiesObjectBuilder.cs" />
     <Compile Include="IAnonymousValueSupplier.cs" />

@@ -7,7 +7,7 @@ namespace TestStack.Dossier.Tests.Builders
     {
         protected override Customer BuildObject()
         {
-            return FactoryRegistry.Get<ConstructorObjectBuilder>().BuildObject(this);
+            return ObjectBuilderRegistry.Get<ConstructorObjectBuilder>().BuildObject(this);
         }
 
         public AutoConstructorCustomerBuilder WithFirstName(string firstName)
