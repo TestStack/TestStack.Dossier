@@ -1,11 +1,11 @@
 using Ploeh.AutoFixture;
 
-namespace TestStack.Dossier.ObjectBuilders
+namespace TestStack.Dossier.BuildStrategies
 {
     /// <summary>
     /// Creates an instance of an object by setting all public and private properties.
     /// </summary>
-    public class AllPropertiesObjectBuilder : IObjectBuilder
+    public class AllProperties : IBuildStrategy
     {
         /// <inheritdoc />
         public TObject BuildObject<TObject, TBuilder>(TestDataBuilder<TObject, TBuilder> builder)

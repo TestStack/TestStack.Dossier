@@ -3,12 +3,12 @@ using System.Linq;
 using System.Linq.Expressions;
 using Ploeh.AutoFixture;
 
-namespace TestStack.Dossier.ObjectBuilders
+namespace TestStack.Dossier.BuildStrategies
 {
     /// <summary>
     /// Builds the object using the constructor with the most arguments.
     /// </summary>
-    public class ConstructorObjectBuilder : IObjectBuilder
+    public class UseConstructor : IBuildStrategy
     {
         /// <inheritdoc />
         public TObject BuildObject<TObject, TBuilder>(TestDataBuilder<TObject, TBuilder> builder)

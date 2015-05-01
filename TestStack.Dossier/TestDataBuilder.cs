@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using TestStack.Dossier.BuildStrategies;
 using TestStack.Dossier.Lists;
-using TestStack.Dossier.ObjectBuilders;
 
 namespace TestStack.Dossier
 {
@@ -76,8 +76,8 @@ namespace TestStack.Dossier
         /// <returns>The built object</returns>
         protected virtual TObject BuildObject()
         {
-            var model = ObjectBuilderRegistry
-                .Get<AllPropertiesObjectBuilder>()
+            var model = BuilderStrategy
+                .Apply<AllProperties>()
                 .BuildObject(this);
             
             return model;
