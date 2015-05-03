@@ -80,11 +80,10 @@
     <Compile Include="DataSources\Generators\RandomGenerator.cs" />
     <Compile Include="DataSources\Generators\SequentialGenerator.cs" />
     <Compile Include="EquivalenceClasses\StringEquivalenceClasses.cs" />
-    <Compile Include="BuildStrategies\AutoFixture.cs" />
-    <Compile Include="BuildStrategies\UseConstructor.cs" />
-    <Compile Include="BuildStrategies\BuilderStrategy.cs" />
-    <Compile Include="BuildStrategies\AllProperties.cs" />
-    <Compile Include="BuildStrategies\PublicProperties.cs" />
+    <Compile Include="Factories\AutoFixtureFactory.cs" />
+    <Compile Include="Factories\ConstructorFactory.cs" />
+    <Compile Include="Factories\AllPropertiesFactory.cs" />
+    <Compile Include="Factories\PublicPropertiesFactory.cs" />
     <Compile Include="IAnonymousValueSupplier.cs" />
     <Compile Include="Lists\EnsureAllMethodsVirtual.cs" />
     <Compile Include="Lists\ListBuilder.cs" />
@@ -92,7 +91,7 @@
     <Compile Include="Lists\ListBuilderGenerator.cs" />
     <Compile Include="Lists\ListBuilderInterceptor.cs" />
     <Compile Include="NullingExpandoObject.cs" />
-    <Compile Include="BuildStrategies\IBuildStrategy.cs" />
+    <Compile Include="Factories\IFactory.cs" />
     <Compile Include="Reflector.cs" />
     <Compile Include="Suppliers\DefaultEmailValueSupplier.cs" />
     <Compile Include="Suppliers\DefaultLastNameValueSupplier.cs" />

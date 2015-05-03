@@ -1,9 +1,9 @@
-namespace TestStack.Dossier.BuildStrategies
+namespace TestStack.Dossier.Factories
 {
     /// <summary>
     /// Interface for object building strategies
     /// </summary>
-    public interface IBuildStrategy
+    public interface IFactory
     {
         /// <summary>
         /// Takes a builder and generates an object of the specified type.

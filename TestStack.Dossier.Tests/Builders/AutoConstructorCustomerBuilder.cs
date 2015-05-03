@@ -1,14 +1,12 @@
-﻿using TestStack.Dossier.BuildStrategies;
+﻿using TestStack.Dossier.Factories;
 using TestStack.Dossier.Tests.Stubs.Entities;
 
 namespace TestStack.Dossier.Tests.Builders
 {
     class AutoConstructorCustomerBuilder : TestDataBuilder<Customer, AutoConstructorCustomerBuilder>
     {
-        protected override Customer BuildObject()
-        {
-            return BuilderStrategy.Apply<UseConstructor>().BuildObject(this);
-        }
+        public AutoConstructorCustomerBuilder() 
+            : base(new ConstructorFactory()) { }
 
         public AutoConstructorCustomerBuilder WithFirstName(string firstName)
         {

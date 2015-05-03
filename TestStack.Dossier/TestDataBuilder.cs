@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using TestStack.Dossier.BuildStrategies;
+using TestStack.Dossier.Factories;
 using TestStack.Dossier.Lists;
 
 namespace TestStack.Dossier
@@ -15,6 +15,7 @@ namespace TestStack.Dossier
         where TObject : class
         where TBuilder : TestDataBuilder<TObject, TBuilder>, new()
     {
+        private readonly IFactory _factory;
         private readonly Dictionary<string, object> _properties = new Dictionary<string, object>(StringComparer.InvariantCultureIgnoreCase);
         private ProxyBuilder<TObject> _proxyBuilder;
 
@@ -27,7 +28,16 @@ namespace TestStack.Dossier
         /// Default Constructor.
         /// </summary>
         protected TestDataBuilder()
+            : this(new AllPropertiesFactory())
         {
+        }
+
+        /// <summary>
+        /// Allow object builder factory to be passed in
+        /// </summary>
+        protected TestDataBuilder(IFactory factory)
+        {
+            _factory = factory;
             Any = new AnonymousValueFixture();
         }
 
@@ -76,9 +86,7 @@ namespace TestStack.Dossier
         /// <returns>The built object</returns>
         protected virtual TObject BuildObject()
         {
-            var model = BuilderStrategy
-                .Apply<AllProperties>()
-                .BuildObject(this);
+            var model = _factory.BuildObject(this);
             
             return model;
         }

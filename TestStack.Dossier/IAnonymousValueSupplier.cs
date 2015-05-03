@@ -28,8 +28,7 @@ namespace TestStack.Dossier
         /// <summary>
         /// Return an anonymous value for the given property and fixture.
         /// </summary>
-        /// <typeparam name="TObject">The type that the property is enclosed in</typeparam>
-        /// <typeparam name="TValue">The type of the target property - the required anonymous value is of this type</typeparam>
+        /// <param name="type">The type that the property is enclosed in</param>
         /// <param name="any">Anonymous value fixture</param>
         /// <param name="propertyName">The name of the property to return an anonymous value for</param>
         /// <returns>The anonymous value</returns>

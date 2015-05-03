@@ -1,14 +1,15 @@
 using System;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 using Ploeh.AutoFixture;
 
-namespace TestStack.Dossier.BuildStrategies
+namespace TestStack.Dossier.Factories
 {
     /// <summary>
     /// Builds the object using the constructor with the most arguments.
     /// </summary>
-    public class UseConstructor : IBuildStrategy
+    public class ConstructorFactory : IFactory
     {
         /// <inheritdoc />
         public TObject BuildObject<TObject, TBuilder>(TestDataBuilder<TObject, TBuilder> builder)
@@ -24,24 +25,22 @@ namespace TestStack.Dossier.BuildStrategies
 
             var parameterValues = longestConstructor
                 .GetParameters()
-                .Select(x => CallGetWithType(x.Name, x.ParameterType, typeof(TObject), typeof(TBuilder)));
+                .Select(x => CallGetWithType(x.Name, x.ParameterType, typeof(TObject), typeof(TBuilder), builder));
 
             return (TObject)longestConstructor.Invoke(parameterValues.ToArray());
         }
 
-        private object CallGetWithType(string propertyName, Type propertyType, Type objectType, Type builderType)
+        private static object CallGetWithType(string propertyName, Type propertyType, Type objectType, Type builderType, object builder)
         {
             // Make a Func<TObj, TPropertyType>
             var expressionDelegateType = typeof(Func<,>).MakeGenericType(objectType, propertyType);
-
-            // Make an expression parameter of type TObj
             var tObjParameterType = Expression.Parameter(objectType);
 
-            var valueStoredInBuilder = builderType
+            var closedGenericGetMethod = builderType
                 .GetMethods()
-                .First(method => method.Name == "Get" && method.ContainsGenericParameters && method.GetGenericArguments().Length == 1)
-                .MakeGenericMethod(propertyType)
-                .Invoke(this, new object[]
+                .First(IsGenericGetMethod()) 
+                .MakeGenericMethod(propertyType);
+            var valueStoredInBuilder = closedGenericGetMethod.Invoke(builder, new object[]
                 {
                     Expression.Lambda(
                         expressionDelegateType,
@@ -52,5 +51,9 @@ namespace TestStack.Dossier.BuildStrategies
             return valueStoredInBuilder;
         }
 
+        private static Func<MethodInfo, bool> IsGenericGetMethod()
+        {
+            return method => method.Name == "Get" && method.ContainsGenericParameters && method.GetGenericArguments().Length == 1;
+        }
     }
 }
