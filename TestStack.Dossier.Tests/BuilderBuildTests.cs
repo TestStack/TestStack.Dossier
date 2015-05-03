@@ -1,4 +1,5 @@
-﻿using Shouldly;
+﻿using System;
+using Shouldly;
 using TestStack.Dossier.Tests.Builders;
 using TestStack.Dossier.Tests.Stubs.Entities;
 using TestStack.Dossier.Tests.Stubs.ViewModels;
@@ -57,14 +58,15 @@ namespace TestStack.Dossier.Tests
         [Fact]
         public void GivenBuilder_WhenBuildingObjectWithCtorAndPrivateSetters_ShouldSetPrivateSetters()
         {
+            var id = Guid.NewGuid();
             InstructorViewModel instructor = Builder<InstructorViewModel>.CreateNew()
                 .Set(x => x.FirstName, "Pi")
                 .Set(x => x.LastName, "Lanningham")
-                .Set(x => x.Id, 5);
+                .Set(x => x.Id, id);
 
             instructor.FirstName.ShouldBe("Pi");
             instructor.LastName.ShouldBe("Lanningham");
-            instructor.Id.ShouldBe(5);
+            instructor.Id.ShouldBe(id);
         }
     }
 }

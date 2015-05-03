@@ -9,17 +9,6 @@ namespace TestStack.Dossier
     public class Builder<T> : TestDataBuilder<T, Builder<T>>
         where T : class
     {
-        /// <inheritdoc />
-        public Builder() 
-            : this(new AllPropertiesFactory())
-        {
-            
-        }
-
-        /// <inheritdoc />
-        public Builder(IFactory factory) 
-            : base(factory) { }
-
         /// <summary>
         /// Initialises a new Builder.
         /// </summary>
@@ -30,7 +19,7 @@ namespace TestStack.Dossier
             {
                 factory = new AllPropertiesFactory();
             }
-            return new Builder<T>(factory);
+            return new Builder<T> {Factory = factory};
         } 
     }
 }

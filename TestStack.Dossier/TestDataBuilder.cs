@@ -15,9 +15,13 @@ namespace TestStack.Dossier
         where TObject : class
         where TBuilder : TestDataBuilder<TObject, TBuilder>, new()
     {
-        private readonly IFactory _factory;
         private readonly Dictionary<string, object> _properties = new Dictionary<string, object>(StringComparer.InvariantCultureIgnoreCase);
         private ProxyBuilder<TObject> _proxyBuilder;
+
+        /// <summary>
+        /// The factory used to create the instance of TObject.
+        /// </summary>
+        public IFactory Factory;
 
         /// <summary>
         /// The list builder instance (if this ia a list builder proxy).
@@ -37,7 +41,7 @@ namespace TestStack.Dossier
         /// </summary>
         protected TestDataBuilder(IFactory factory)
         {
-            _factory = factory;
+            Factory = factory;
             Any = new AnonymousValueFixture();
         }
 
@@ -86,7 +90,7 @@ namespace TestStack.Dossier
         /// <returns>The built object</returns>
         protected virtual TObject BuildObject()
         {
-            var model = _factory.BuildObject(this);
+            var model = Factory.BuildObject(this);
             
             return model;
         }

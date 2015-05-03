@@ -60,6 +60,7 @@
     <Compile Include="Builders\StudentViewModelBuilder.cs" />
     <Compile Include="Builders\AutoConstructorCustomerBuilder.cs" />
     <Compile Include="ChildBuilderTests.cs" />
+    <Compile Include="Factories\FactoryTests.cs" />
     <Compile Include="Stubs\Entities\Company.cs" />
     <Compile Include="Stubs\Entities\Customer.cs" />
     <Compile Include="Stubs\Entities\CustomerClass.cs" />

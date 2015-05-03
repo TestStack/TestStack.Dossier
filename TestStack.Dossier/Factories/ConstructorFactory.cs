@@ -12,7 +12,7 @@ namespace TestStack.Dossier.Factories
     public class ConstructorFactory : IFactory
     {
         /// <inheritdoc />
-        public TObject BuildObject<TObject, TBuilder>(TestDataBuilder<TObject, TBuilder> builder)
+        public virtual TObject BuildObject<TObject, TBuilder>(TestDataBuilder<TObject, TBuilder> builder)
             where TObject : class
             where TBuilder : TestDataBuilder<TObject, TBuilder>, new()
         {
