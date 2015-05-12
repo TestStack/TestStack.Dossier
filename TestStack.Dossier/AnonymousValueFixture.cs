@@ -91,6 +91,12 @@ namespace TestStack.Dossier
             return valueSupplier.GenerateAnonymousValue<TObject, T>(this, propertyName);
         }
 
+        /// <summary>
+        /// Automatically generate an anonymous value for the given property expression.
+        /// </summary>
+        /// <param name="type">The type of the property</param>
+        /// <param name="propertyName">The name of the property</param>
+        /// <returns>The anonymous value, taking into account any registered conventions</returns>
         public object Get(Type type, string propertyName)
         {
             var valueSupplier = LocalValueSuppliers

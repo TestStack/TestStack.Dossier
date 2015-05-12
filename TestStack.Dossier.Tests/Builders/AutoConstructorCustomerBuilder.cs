@@ -5,9 +5,6 @@ namespace TestStack.Dossier.Tests.Builders
 {
     class AutoConstructorCustomerBuilder : TestDataBuilder<Customer, AutoConstructorCustomerBuilder>
     {
-        public AutoConstructorCustomerBuilder() 
-            : base(new ConstructorFactory()) { }
-
         public AutoConstructorCustomerBuilder WithFirstName(string firstName)
         {
             return Set(x => x.FirstName, firstName);
@@ -21,6 +18,11 @@ namespace TestStack.Dossier.Tests.Builders
         public AutoConstructorCustomerBuilder WhoJoinedIn(int year)
         {
             return Set(x => x.YearJoined, year);
+        }
+
+        protected override Customer BuildObject()
+        {
+            return BuildUsing<ConstructorFactory>();
         }
     }
 }

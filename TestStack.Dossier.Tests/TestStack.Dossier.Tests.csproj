@@ -99,18 +99,18 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TestStack.Dossier\TestStack.Dossier.csproj">
-      <Project>{01e4ee61-ab1a-4177-8b6c-d50205d167a9}</Project>
-      <Name>TestStack.Dossier</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="SampleDictionaryFile.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TestStack.Dossier\TestStack.Dossier.csproj">
+      <Project>{01e4ee61-ab1a-4177-8b6c-d50205d167a9}</Project>
+      <Name>TestStack.Dossier</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -19,12 +19,7 @@ namespace TestStack.Dossier
         private ProxyBuilder<TObject> _proxyBuilder;
 
         /// <summary>
-        /// The factory used to create the instance of TObject.
-        /// </summary>
-        public IFactory Factory;
-
-        /// <summary>
-        /// The list builder instance (if this ia a list builder proxy).
+        /// The list builder instance (if this is a a list builder proxy).
         /// </summary>
         public ListBuilder<TObject, TBuilder> ListBuilder { get; internal set; } 
 
@@ -32,16 +27,7 @@ namespace TestStack.Dossier
         /// Default Constructor.
         /// </summary>
         protected TestDataBuilder()
-            : this(new AllPropertiesFactory())
         {
-        }
-
-        /// <summary>
-        /// Allow object builder factory to be passed in
-        /// </summary>
-        protected TestDataBuilder(IFactory factory)
-        {
-            Factory = factory;
             Any = new AnonymousValueFixture();
         }
 
@@ -85,14 +71,21 @@ namespace TestStack.Dossier
         }
 
         /// <summary>
-        /// Build the actual object - you can optionally override this and call the constructor and any other methods.
+        /// Build the actual object - you can call the <see cref="BuildUsing{TFactory}"/> method to quickly build a builder.
         /// </summary>
         /// <returns>The built object</returns>
-        protected virtual TObject BuildObject()
+        protected abstract TObject BuildObject();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="TFactory"></typeparam>
+        /// <returns></returns>
+        protected TObject BuildUsing<TFactory>()
+            where TFactory : IFactory, new()
         {
-            var model = Factory.BuildObject(this);
-            
-            return model;
+            var factory = new TFactory();
+            return factory.BuildObject(this);
         }
 
         /// <summary>

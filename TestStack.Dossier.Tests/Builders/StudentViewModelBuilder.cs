@@ -1,4 +1,5 @@
 ﻿using System;
+using TestStack.Dossier.Factories;
 using TestStack.Dossier.Tests.Stubs.ViewModels;
 
 namespace TestStack.Dossier.Tests.Builders
@@ -18,6 +19,11 @@ namespace TestStack.Dossier.Tests.Builders
         public virtual StudentViewModelBuilder WhoEntrolledIn(DateTime enrollmentDate)
         {
             return Set(x => x.EnrollmentDate, enrollmentDate);
+        }
+
+        protected override StudentViewModel BuildObject()
+        {
+            return BuildUsing<AllPropertiesFactory>();
         }
     }
 }
