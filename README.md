@@ -225,6 +225,39 @@ The `BuildUsing` method takes an instance of `IFactory`, of which you can create
 * `CallConstructorFactory` - Calls the longest constructor with builder values (or anonymous values if none set) based on case-insensitive match of constructor parameter names against property names
 * `AutoFixtureFactory` - Asks AutoFixture to create an anonymous instance of the class (note: does **not** use any builder values or anonymous values from Dossier)
 
+Propogating the anonymous value fixture across builders
+-------------------------------------------------------
+
+Within a particular instance of `AnonymousValueFixture`, which is created for every builder, any generators that return a sequence of values (e.g. unique values) will be maintained. If you want to ensure that the same anonymous value fixture is used across multiple related builders then:
+
+* Using `CreateListOfSize` will automatically propagate the anonymous value fixture across builders
+* Call the `GetChildBuilder<TChildObject, TChildBuilder>(Func<TChildBuilder, TChildBuilder> modifier = null)` method from within your custom builder, e.g.:
+
+        public MyCustomBuilder WithSomeValue(Func<SomeBuilder, SomeBuilder> modifier = null)
+        {
+            return Set(x => x.SomeValue, GetChildBuilder<SomeObject, SomeBuilder>(modifier));
+        }
+* If using `Builder<T>` then call the `SetUsingBuilder` method, e.g.:
+
+        // Uses Builder<T>
+        Builder<StudentViewModel>.CreateNew()
+            .SetUsingBuilder(x => x.Address)
+            .Build()
+        // Uses Builder<T>, includes customisation
+        Builder<StudentViewModel>.CreateNew()
+            .SetUsingBuilder(x => x.Address, b => b.Set(y => y.Street, "A street"))
+            .Build()
+        // Uses AddressBuilder
+        Builder<StudentViewModel>.CreateNew()
+            .SetUsingBuilder<AddressViewModel, AddressViewModelBuilder>(x => x.Address)
+            .Build()
+        // Uses AddressBuilder, includes customisation
+        Builder<StudentViewModel>.CreateNew()
+            .SetUsingBuilder<AddressViewModel, AddressViewModelBuilder>(x => x.Address, b => b.Set(y => y.Street, "A street"))
+            .Build()
+
+There is currently no way to share an anonymous value fixture across unrelated builder instances. If this is something you need please raise an issue so we can discuss your requirement.
+
 Anonymous Values and Equivalence Classes
 ----------------------------------------
 

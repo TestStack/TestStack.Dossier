@@ -68,12 +68,12 @@ namespace TestStack.Dossier.Tests
     {
         public ParentBuilder()
         {
-            Set(x => x.Child, new ChildBuilder().Build());
+            Set(x => x.Child, new ChildBuilder());
         }
 
         public ParentBuilder WithChildBuilder(Func<ChildBuilder, ChildBuilder> modifier = null)
         {
-            return Set(x => x.Child, GetChildBuilder<ChildObject, ChildBuilder>(modifier).Build());
+            return Set(x => x.Child, GetChildBuilder<ChildObject, ChildBuilder>(modifier));
         }
 
         protected override ParentObject BuildObject()
