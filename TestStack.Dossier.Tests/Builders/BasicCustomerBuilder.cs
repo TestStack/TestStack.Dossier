@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq.Expressions;
-using TestStack.Dossier.Tests.Entities;
+using TestStack.Dossier.Tests.Stubs.Entities;
 
 namespace TestStack.Dossier.Tests.Builders
 {

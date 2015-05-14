@@ -1,4 +1,6 @@
-﻿namespace TestStack.Dossier
+﻿using System;
+
+namespace TestStack.Dossier
 {
     /// <summary>
     /// Inheritors can supply an anonymous value.
@@ -8,11 +10,10 @@
         /// <summary>
         /// Returns whether or not this supplier can supply an anonymous value for the given property.
         /// </summary>
-        /// <typeparam name="TObject">The type that the property is enclosed in</typeparam>
-        /// <typeparam name="TValue">The type of the target property - the anonymous value will need to be of this type</typeparam>
+        /// <param name="type">The type of the property to generate a value for</param>
         /// <param name="propertyName">The name of the property to generate a value for</param>
         /// <returns>Whether or not this supplier can supply an anonymous value</returns>
-        bool CanSupplyValue<TObject, TValue>(string propertyName);
+        bool CanSupplyValue(Type type, string propertyName);
 
         /// <summary>
         /// Return an anonymous value for the given property and fixture.
@@ -23,5 +24,14 @@
         /// <param name="propertyName">The name of the property to return an anonymous value for</param>
         /// <returns>The anonymous value</returns>
         TValue GenerateAnonymousValue<TObject, TValue>(AnonymousValueFixture any, string propertyName);
+
+        /// <summary>
+        /// Return an anonymous value for the given property and fixture.
+        /// </summary>
+        /// <param name="type">The type that the property is enclosed in</param>
+        /// <param name="any">Anonymous value fixture</param>
+        /// <param name="propertyName">The name of the property to return an anonymous value for</param>
+        /// <returns>The anonymous value</returns>
+        object GenerateAnonymousValue(AnonymousValueFixture any, Type type, string propertyName);
     }
 }

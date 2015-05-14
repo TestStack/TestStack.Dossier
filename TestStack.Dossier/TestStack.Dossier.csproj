@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnonymousValueFixture.cs" />
+    <Compile Include="Builder.cs" />
     <Compile Include="DataSources\Dictionaries\Cache.cs" />
     <Compile Include="DataSources\Dictionaries\IDictionaryRepository.cs" />
     <Compile Include="DataSources\Dictionaries\CachedFileDictionaryRepository.cs" />
@@ -79,6 +80,10 @@
     <Compile Include="DataSources\Generators\RandomGenerator.cs" />
     <Compile Include="DataSources\Generators\SequentialGenerator.cs" />
     <Compile Include="EquivalenceClasses\StringEquivalenceClasses.cs" />
+    <Compile Include="Factories\AutoFixtureFactory.cs" />
+    <Compile Include="Factories\ConstructorFactory.cs" />
+    <Compile Include="Factories\AllPropertiesFactory.cs" />
+    <Compile Include="Factories\PublicPropertiesFactory.cs" />
     <Compile Include="IAnonymousValueSupplier.cs" />
     <Compile Include="Lists\EnsureAllMethodsVirtual.cs" />
     <Compile Include="Lists\ListBuilder.cs" />
@@ -86,7 +91,8 @@
     <Compile Include="Lists\ListBuilderGenerator.cs" />
     <Compile Include="Lists\ListBuilderInterceptor.cs" />
     <Compile Include="NullingExpandoObject.cs" />
-    <Compile Include="PropertyNameGetter.cs" />
+    <Compile Include="Factories\IFactory.cs" />
+    <Compile Include="Reflector.cs" />
     <Compile Include="Suppliers\DefaultEmailValueSupplier.cs" />
     <Compile Include="Suppliers\DefaultLastNameValueSupplier.cs" />
     <Compile Include="Suppliers\DefaultFirstNameValueSupplier.cs" />

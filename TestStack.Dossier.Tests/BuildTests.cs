@@ -1,6 +1,6 @@
 ﻿using Shouldly;
 using TestStack.Dossier.Tests.Builders;
-using TestStack.Dossier.Tests.Entities;
+using TestStack.Dossier.Tests.Stubs.Entities;
 using Xunit;
 
 namespace TestStack.Dossier.Tests
@@ -79,6 +79,20 @@ namespace TestStack.Dossier.Tests
             customer.FirstName.ShouldBe("Pi");
             customer.LastName.ShouldBe("Lanningham");
             customer.YearJoined.ShouldBe(2014);
+        }
+
+        [Fact]
+        public void GivenBuilderUsingConstructorReflection_WhenCallingBuildExplicitly_ShouldOverrideValues()
+        {
+            Customer customer = new AutoConstructorCustomerBuilder()
+                .WithFirstName("Bruce")
+                .WithLastName("Wayne")
+                .WhoJoinedIn(2012)
+                .Build();
+
+            customer.FirstName.ShouldBe("Bruce");
+            customer.LastName.ShouldBe("Wayne");
+            customer.YearJoined.ShouldBe(2012);
         }
     }
 }

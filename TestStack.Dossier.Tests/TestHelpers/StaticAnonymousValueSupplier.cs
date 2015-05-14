@@ -1,4 +1,6 @@
-﻿namespace TestStack.Dossier.Tests.TestHelpers
+﻿using System;
+
+namespace TestStack.Dossier.Tests.TestHelpers
 {
     public class StaticAnonymousValueSupplier : IAnonymousValueSupplier
     {
@@ -14,9 +16,19 @@
             return typeof(TValue) == _valueToSupply.GetType();
         }
 
+        public bool CanSupplyValue(Type type, string propertyName)
+        {
+            return type == _valueToSupply.GetType();
+        }
+
         public TValue GenerateAnonymousValue<TObject, TValue>(AnonymousValueFixture any, string propertyName)
         {
             return (TValue) _valueToSupply;
+        }
+
+        public object GenerateAnonymousValue(AnonymousValueFixture any, Type type, string propertyName)
+        {
+            return _valueToSupply;
         }
     }
 }

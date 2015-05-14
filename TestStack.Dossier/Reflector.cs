@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Linq.Expressions;
+using System.Reflection;
 
 namespace TestStack.Dossier
 {
-    internal static class PropertyNameGetter
+    internal static class Reflector
     {
-        public static string Get<TObject, TValue>(Expression<Func<TObject, TValue>> property)
+        public static string GetPropertyNameFor<TObject, TValue>(Expression<Func<TObject, TValue>> property)
         {
             var memExp = property.Body as MemberExpression;
             if (memExp == null)
@@ -19,6 +20,11 @@ namespace TestStack.Dossier
                 );
 
             return memExp.Member.Name;
+        }
+
+        public static PropertyInfo[] GetSettablePropertiesFor<TObject>()
+        {
+            return typeof (TObject).GetProperties(BindingFlags.Public | BindingFlags.Instance);
         }
     }
 }

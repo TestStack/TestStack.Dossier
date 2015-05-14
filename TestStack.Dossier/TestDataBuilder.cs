@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
+using TestStack.Dossier.Factories;
 using TestStack.Dossier.Lists;
 
 namespace TestStack.Dossier
@@ -15,11 +15,11 @@ namespace TestStack.Dossier
         where TObject : class
         where TBuilder : TestDataBuilder<TObject, TBuilder>, new()
     {
-        private readonly Dictionary<string, object> _properties = new Dictionary<string, object>();
+        private readonly Dictionary<string, object> _properties = new Dictionary<string, object>(StringComparer.InvariantCultureIgnoreCase);
         private ProxyBuilder<TObject> _proxyBuilder;
 
         /// <summary>
-        /// The list builder instance (if this ia a list builder proxy).
+        /// The list builder instance (if this is a a list builder proxy).
         /// </summary>
         public ListBuilder<TObject, TBuilder> ListBuilder { get; internal set; } 
 
@@ -71,10 +71,25 @@ namespace TestStack.Dossier
         }
 
         /// <summary>
-        /// Build the actual object - override this and call the constructor and any other methods.
+        /// Build the actual object - you can call the <see cref="BuildUsing{TFactory}"/> method to quickly build a builder.
         /// </summary>
         /// <returns>The built object</returns>
-        protected abstract TObject BuildObject();
+        protected virtual TObject BuildObject()
+        {
+            return BuildUsing<AllPropertiesFactory>();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="TFactory"></typeparam>
+        /// <returns></returns>
+        protected TObject BuildUsing<TFactory>()
+            where TFactory : IFactory, new()
+        {
+            var factory = new TFactory();
+            return factory.BuildObject(this);
+        }
 
         /// <summary>
         /// Return an NSubstitute proxy object when .Build() is called rather than a real object.
@@ -101,7 +116,7 @@ namespace TestStack.Dossier
         /// <param name="value">The value to record</param>
         public TBuilder Set<TValue>(Expression<Func<TObject, TValue>> property, TValue value)
         {
-            _properties[PropertyNameGetter.Get(property)] = value;
+            _properties[Reflector.GetPropertyNameFor(property)] = value;
             return this as TBuilder;
         }
 
@@ -109,7 +124,7 @@ namespace TestStack.Dossier
         /// Gets the recorded value for the given property from {TObject} or an anonymous
         ///  value if there isn't one specified.
         /// </summary>
-        /// <typeparam name="TValue">The type of the property</typeparam>
+        /// <typeparam name="TValue">The type of the property.</typeparam>
         /// <param name="property">A lambda expression specifying the property to retrieve the recorded value for</param>
         /// <returns>The recorded value of the property or an anonymous value for it</returns>
         public TValue Get<TValue>(Expression<Func<TObject, TValue>> property)
@@ -117,8 +132,22 @@ namespace TestStack.Dossier
             if (!Has(property))
                 return Any.Get(property);
 
-            return (TValue)_properties[PropertyNameGetter.Get(property)];
+            return (TValue)_properties[Reflector.GetPropertyNameFor(property)];
         }
+
+        /// <summary>
+        /// Gets the recorded value for the given property from {type} or an anonymous
+        ///  value if there isn't one specified.
+        /// </summary>
+        /// <param name="type">The type of the property.</param>
+        /// <param name="propertyName">The property name.</param>
+        /// <returns></returns>
+        public object Get(Type type, string propertyName)
+        {
+            if (!Has(propertyName))
+                return Any.Get(type, propertyName);
+            return _properties[propertyName];
+        } 
 
         /// <summary>
         /// Gets the recorded value for the given property from {TObject} or if no
@@ -154,7 +183,17 @@ namespace TestStack.Dossier
         /// <returns>Whether or not there is a recorded value for the property</returns>
         protected bool Has<TValue>(Expression<Func<TObject, TValue>> property)
         {
-            return _properties.ContainsKey(PropertyNameGetter.Get(property));
+            return Has(Reflector.GetPropertyNameFor(property));
+        }
+
+        /// <summary>
+        /// Returns whether or not there is currently an explicit value recorded against the given property from {TObject}.
+        /// </summary>
+        /// <param name="propertyName">A string specifying the name of the property to retrieve the recorded value for</param>
+        /// <returns>Whether or not there is a recorded value for the property</returns>
+        protected bool Has(string propertyName)
+        {
+            return _properties.ContainsKey(propertyName);
         }
 
         /// <summary>
