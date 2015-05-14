@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace TestStack.Dossier.Tests.Stubs.Examples
+﻿namespace TestStack.Dossier.Tests.TestHelpers.Objects.Examples
 {
     public class MixedAccessibilityDto
     {

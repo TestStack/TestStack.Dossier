@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace TestStack.Dossier.Tests.Stubs.ViewModels
+namespace TestStack.Dossier.Tests.TestHelpers.Objects.ViewModels
 {
     public class StudentViewModel
     {

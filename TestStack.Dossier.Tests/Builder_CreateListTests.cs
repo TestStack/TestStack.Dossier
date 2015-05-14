@@ -5,8 +5,8 @@ using Shouldly;
 using TestStack.Dossier.DataSources.Generators;
 using TestStack.Dossier.Factories;
 using TestStack.Dossier.Lists;
-using TestStack.Dossier.Tests.Stubs.Examples;
-using TestStack.Dossier.Tests.Stubs.ViewModels;
+using TestStack.Dossier.Tests.TestHelpers.Objects.Examples;
+using TestStack.Dossier.Tests.TestHelpers.Objects.ViewModels;
 using Xunit;
 
 namespace TestStack.Dossier.Tests

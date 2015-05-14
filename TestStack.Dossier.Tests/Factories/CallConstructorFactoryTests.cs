@@ -1,7 +1,7 @@
 ﻿using System;
 using Shouldly;
 using TestStack.Dossier.Factories;
-using TestStack.Dossier.Tests.Stubs.Examples;
+using TestStack.Dossier.Tests.TestHelpers.Objects.Examples;
 using Xunit;
 
 namespace TestStack.Dossier.Tests.Factories

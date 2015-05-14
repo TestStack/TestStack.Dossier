@@ -3,8 +3,8 @@ using System.Linq;
 using Shouldly;
 using TestStack.Dossier.DataSources.Generators;
 using TestStack.Dossier.Lists;
-using TestStack.Dossier.Tests.Builders;
-using TestStack.Dossier.Tests.Stubs.Entities;
+using TestStack.Dossier.Tests.TestHelpers.Builders;
+using TestStack.Dossier.Tests.TestHelpers.Objects.Entities;
 using Xunit;
 
 namespace TestStack.Dossier.Tests

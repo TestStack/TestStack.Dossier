@@ -1,6 +1,6 @@
 ﻿using System;
 using Shouldly;
-using TestStack.Dossier.Tests.Builders;
+using TestStack.Dossier.Tests.TestHelpers.Builders;
 using Xunit;
 
 namespace TestStack.Dossier.Tests

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq.Expressions;
-using TestStack.Dossier.Tests.Stubs.Entities;
+using TestStack.Dossier.Tests.TestHelpers.Objects.Entities;
 
-namespace TestStack.Dossier.Tests.Builders
+namespace TestStack.Dossier.Tests.TestHelpers.Builders
 {
     public class BasicCustomerBuilder : TestDataBuilder<Customer, BasicCustomerBuilder>
     {

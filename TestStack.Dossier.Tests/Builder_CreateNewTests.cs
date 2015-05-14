@@ -1,9 +1,8 @@
 ﻿using System;
 using Shouldly;
 using TestStack.Dossier.Factories;
-using TestStack.Dossier.Tests.Stubs.Entities;
-using TestStack.Dossier.Tests.Stubs.Examples;
-using TestStack.Dossier.Tests.Stubs.ViewModels;
+using TestStack.Dossier.Tests.TestHelpers.Objects.Examples;
+using TestStack.Dossier.Tests.TestHelpers.Objects.ViewModels;
 using Xunit;
 
 namespace TestStack.Dossier.Tests
