@@ -61,7 +61,7 @@
     <Compile Include="ChildBuilderTests.cs" />
     <Compile Include="Factories\AllPropertiesFactoryTests.cs" />
     <Compile Include="Factories\AutoFixtureFactoryTests.cs" />
-    <Compile Include="Factories\ConstructorFactoryTests.cs" />
+    <Compile Include="Factories\CallConstructorFactoryTests.cs" />
     <Compile Include="Factories\PublicPropertySettersFactoryTests.cs" />
     <Compile Include="Stubs\Entities\Company.cs" />
     <Compile Include="Stubs\Entities\Customer.cs" />

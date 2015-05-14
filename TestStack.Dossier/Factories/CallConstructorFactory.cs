@@ -4,9 +4,11 @@ using System.Linq;
 namespace TestStack.Dossier.Factories
 {
     /// <summary>
-    /// Builds the object using the constructor with the most arguments.
+    /// Builds the object using the constructor with the most arguments using values stored in the builder that match
+    ///   the constructor parameter name case insensitively.
+    /// If there is no value specified in the builder for an argument then the builder will supply an anonymous value.
     /// </summary>
-    public class ConstructorFactory : IFactory
+    public class CallConstructorFactory : IFactory
     {
         /// <inheritdoc />
         public virtual TObject BuildObject<TObject, TBuilder>(TestDataBuilder<TObject, TBuilder> builder)

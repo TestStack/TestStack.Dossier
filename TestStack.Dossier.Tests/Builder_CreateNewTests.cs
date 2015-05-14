@@ -1,5 +1,6 @@
 ﻿using System;
 using Shouldly;
+using TestStack.Dossier.Factories;
 using TestStack.Dossier.Tests.Stubs.Entities;
 using TestStack.Dossier.Tests.Stubs.Examples;
 using TestStack.Dossier.Tests.Stubs.ViewModels;
@@ -69,6 +70,21 @@ namespace TestStack.Dossier.Tests
             dto.SetByCtorWithPrivateSetter.ShouldBe("2");
             dto.NotSetByCtorWithPrivateSetter.ShouldBe("3");
             dto.NotSetByCtorWithPublicSetter.ShouldBe("4");
+        }
+
+        [Fact]
+        public void GivenBuilderWithFactoryOverride_WhenBuildingObject_ShouldRespectOverriddenFactory()
+        {
+            MixedAccessibilityDto dto = Builder<MixedAccessibilityDto>.CreateNew(new CallConstructorFactory())
+                .Set(x => x.SetByCtorWithPublicSetter, "1")
+                .Set(x => x.SetByCtorWithPrivateSetter, "2")
+                .Set(x => x.NotSetByCtorWithPrivateSetter, "3")
+                .Set(x => x.NotSetByCtorWithPublicSetter, "4");
+
+            dto.SetByCtorWithPublicSetter.ShouldBe("1");
+            dto.SetByCtorWithPrivateSetter.ShouldBe("2");
+            dto.NotSetByCtorWithPrivateSetter.ShouldNotBe("3");
+            dto.NotSetByCtorWithPublicSetter.ShouldNotBe("4");
         }
     }
 }

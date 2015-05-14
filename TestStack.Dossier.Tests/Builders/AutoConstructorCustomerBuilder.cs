@@ -22,7 +22,7 @@ namespace TestStack.Dossier.Tests.Builders
 
         protected override Customer BuildObject()
         {
-            return BuildUsing<ConstructorFactory>();
+            return BuildUsing<CallConstructorFactory>();
         }
     }
 }

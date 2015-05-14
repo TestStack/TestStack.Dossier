@@ -81,7 +81,7 @@
     <Compile Include="DataSources\Generators\SequentialGenerator.cs" />
     <Compile Include="EquivalenceClasses\StringEquivalenceClasses.cs" />
     <Compile Include="Factories\AutoFixtureFactory.cs" />
-    <Compile Include="Factories\ConstructorFactory.cs" />
+    <Compile Include="Factories\CallConstructorFactory.cs" />
     <Compile Include="Factories\AllPropertiesFactory.cs" />
     <Compile Include="Factories\PublicPropertySettersFactory.cs" />
     <Compile Include="IAnonymousValueSupplier.cs" />

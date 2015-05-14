@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using Shouldly;
 using TestStack.Dossier.DataSources.Generators;
+using TestStack.Dossier.Factories;
 using TestStack.Dossier.Lists;
+using TestStack.Dossier.Tests.Stubs.Examples;
 using TestStack.Dossier.Tests.Stubs.ViewModels;
 using Xunit;
 
@@ -166,6 +168,41 @@ namespace TestStack.Dossier.Tests
             List<StudentViewModel> studentViewModels = Builder<StudentViewModel>.CreateListOfSize(5);
 
             studentViewModels.Select(x => x.Grade).ShouldBeUnique();
+        }
+
+        public void WhenBuildingObjectsWithCtorAndPrivateSetters_ShouldSetPrivateSettersByDefault()
+        {
+            var dto = Builder<MixedAccessibilityDto>.CreateListOfSize(1)
+                .TheFirst(1)
+                    .Set(x => x.SetByCtorWithPublicSetter, "1")
+                    .Set(x => x.SetByCtorWithPrivateSetter, "2")
+                    .Set(x => x.NotSetByCtorWithPrivateSetter, "3")
+                    .Set(x => x.NotSetByCtorWithPublicSetter, "4")
+                .BuildList()
+                [0];
+
+            dto.SetByCtorWithPublicSetter.ShouldBe("1");
+            dto.SetByCtorWithPrivateSetter.ShouldBe("2");
+            dto.NotSetByCtorWithPrivateSetter.ShouldBe("3");
+            dto.NotSetByCtorWithPublicSetter.ShouldBe("4");
+        }
+
+        [Fact]
+        public void GivenBuilderListWithFactoryOverride_WhenBuildingObjects_ShouldRespectOverriddenFactory()
+        {
+            var dto = Builder<MixedAccessibilityDto>.CreateListOfSize(1, new CallConstructorFactory())
+                .TheFirst(1)
+                    .Set(x => x.SetByCtorWithPublicSetter, "1")
+                    .Set(x => x.SetByCtorWithPrivateSetter, "2")
+                    .Set(x => x.NotSetByCtorWithPrivateSetter, "3")
+                    .Set(x => x.NotSetByCtorWithPublicSetter, "4")
+                .BuildList()
+                [0];
+
+            dto.SetByCtorWithPublicSetter.ShouldBe("1");
+            dto.SetByCtorWithPrivateSetter.ShouldBe("2");
+            dto.NotSetByCtorWithPrivateSetter.ShouldNotBe("3");
+            dto.NotSetByCtorWithPublicSetter.ShouldNotBe("4");
         }
     }
 }
