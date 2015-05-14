@@ -13,15 +13,26 @@ namespace TestStack.Dossier.Tests.Factories
         {
             MixedAccessibilityDto dto = Builder<MixedAccessibilityDto>.CreateNew(new AutoFixtureFactory());
 
-            // ctor properties
             dto.SetByCtorWithPrivateSetter.ShouldNotBe(null);
             dto.SetByCtorWithPublicSetter.ShouldNotBe(null);
-
-            // public properties
-            dto.NotSetByCtorWithPublicSetter.ShouldNotBe(null);
-
-            // private properties
             dto.NotSetByCtorWithPrivateSetter.ShouldBe(null);
+            dto.NotSetByCtorWithPublicSetter.ShouldNotBe(null);
+        }
+
+        [Fact]
+        public void GivenAutoFixtureFactoryAgainstBuilderWithModifications_WhenBuilding_ThenNoCustomisationsAreUsed()
+        {
+            MixedAccessibilityDto dto = Builder<MixedAccessibilityDto>
+                .CreateNew(new AutoFixtureFactory())
+                .Set(x => x.SetByCtorWithPrivateSetter, "1")
+                .Set(x => x.SetByCtorWithPublicSetter, "2")
+                .Set(x => x.NotSetByCtorWithPrivateSetter, "3")
+                .Set(x => x.NotSetByCtorWithPublicSetter, "4");
+
+            dto.SetByCtorWithPrivateSetter.ShouldNotBe("1");
+            dto.SetByCtorWithPublicSetter.ShouldNotBe("2");
+            dto.NotSetByCtorWithPrivateSetter.ShouldNotBe("3");
+            dto.NotSetByCtorWithPublicSetter.ShouldNotBe("4");
         }
     }
 }
