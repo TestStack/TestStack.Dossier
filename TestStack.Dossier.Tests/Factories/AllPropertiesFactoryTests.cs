@@ -13,15 +13,11 @@ namespace TestStack.Dossier.Tests.Factories
         {
             MixedAccessibilityDto dto = Builder<MixedAccessibilityDto>.CreateNew(new AllPropertiesFactory());
 
-            // ctor properties
+            dto.SetByCtorNoPropertySetter.ShouldNotBe(null);
             dto.SetByCtorWithPrivateSetter.ShouldNotBe(null);
             dto.SetByCtorWithPublicSetter.ShouldNotBe(null);
-
-            // public properties
-            dto.NotSetByCtorWithPublicSetter.ShouldNotBe(null);
-
-            // private properties
             dto.NotSetByCtorWithPrivateSetter.ShouldNotBe(null);
+            dto.NotSetByCtorWithPublicSetter.ShouldNotBe(null);
         }
     }
 }

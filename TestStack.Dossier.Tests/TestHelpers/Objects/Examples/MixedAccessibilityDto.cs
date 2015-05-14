@@ -2,10 +2,13 @@
 {
     public class MixedAccessibilityDto
     {
-        public MixedAccessibilityDto(string setByCtorWithPrivateSetter, string setByCtorWithPublicSetter)
+        private readonly string _setByCtorNoPropertySetter;
+
+        public MixedAccessibilityDto(string setByCtorWithPrivateSetter, string setByCtorWithPublicSetter, string setByCtorNoPropertySetter)
         {
             SetByCtorWithPrivateSetter = setByCtorWithPrivateSetter;
             SetByCtorWithPublicSetter = setByCtorWithPublicSetter;
+            _setByCtorNoPropertySetter = setByCtorNoPropertySetter;
         }
 
         public string SetByCtorWithPrivateSetter { get; private set; }
@@ -15,9 +18,9 @@
         public string NotSetByCtorWithPrivateSetter { get; private set; }
         public string NotSetByCtorWithPublicSetter { get; set; }
 
-        public string CalculatedProperty
+        public string SetByCtorNoPropertySetter
         {
-            get { return SetByCtorWithPrivateSetter + " " + SetByCtorWithPublicSetter; }
+            get { return _setByCtorNoPropertySetter; }
         }
     }
 }

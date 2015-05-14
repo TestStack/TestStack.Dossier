@@ -10,17 +10,13 @@ namespace TestStack.Dossier.Tests.Factories
         [Fact]
         public void GivenPublicPropertiesFactory_WhenBuilding_ThenOnlyConstructorAndPublicPropertiesSet()
         {
-            MixedAccessibilityDto instructor = Builder<MixedAccessibilityDto>.CreateNew(new PublicPropertySettersFactory());
+            MixedAccessibilityDto dto = Builder<MixedAccessibilityDto>.CreateNew(new PublicPropertySettersFactory());
 
-            // ctor properties
-            instructor.SetByCtorWithPrivateSetter.ShouldNotBe(null);
-            instructor.SetByCtorWithPublicSetter.ShouldNotBe(null);
-            
-            // public properties
-            instructor.NotSetByCtorWithPublicSetter.ShouldNotBe(null);
-
-            // private properties
-            instructor.NotSetByCtorWithPrivateSetter.ShouldBe(null);
+            dto.SetByCtorNoPropertySetter.ShouldNotBe(null);
+            dto.SetByCtorWithPrivateSetter.ShouldNotBe(null);
+            dto.SetByCtorWithPublicSetter.ShouldNotBe(null);
+            dto.NotSetByCtorWithPublicSetter.ShouldNotBe(null);
+            dto.NotSetByCtorWithPrivateSetter.ShouldBe(null);
         }
     }
 }
