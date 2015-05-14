@@ -10,10 +10,5 @@ namespace TestStack.Dossier.Tests.TestHelpers.Builders
         {
             return new Customer("customer1", "First Name", "Last Name", 2013, CustomerClass.Normal);
         }
-
-        public virtual new BasicCustomerBuilder Set<TValue>(Expression<Func<Customer, TValue>> property, TValue value)
-        {
-            return base.Set(property, value);
-        }
     }
 }
