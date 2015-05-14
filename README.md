@@ -60,6 +60,7 @@ Prior to v2.0 this library was known as NTestDataBuilder.
                 return Set(x => x.FirstName, firstName);
             }
         
+            // Note: we typically only start with the methods that are strictly needed so the builders are quick to write and aren't bloated'
             public virtual CustomerBuilder WithLastName(string lastName)
             {
                 return Set(x => x.LastName, lastName);

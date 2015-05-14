@@ -31,5 +31,7 @@ namespace TestStack.Dossier.Tests.TestHelpers.Objects.ViewModels
         public DateTime EnrollmentDate { get; set; }
 
         public Grade Grade { get; set; }
+
+        public AddressViewModel Address { get; set; }
     }
 }

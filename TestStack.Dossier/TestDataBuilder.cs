@@ -77,10 +77,10 @@ namespace TestStack.Dossier
         protected abstract TObject BuildObject();
 
         /// <summary>
-        /// 
+        /// Builds the object from this builder using an <see cref="IFactory"/>.
         /// </summary>
-        /// <typeparam name="TFactory"></typeparam>
-        /// <returns></returns>
+        /// <typeparam name="TFactory">The factory to use to build the object</typeparam>
+        /// <returns>The built object</returns>
         protected TObject BuildUsing<TFactory>()
             where TFactory : IFactory, new()
         {
@@ -110,7 +110,7 @@ namespace TestStack.Dossier
         /// </summary>
         /// <typeparam name="TValue">The type of the property</typeparam>
         /// <param name="property">A lambda expression specifying the property to record a value for</param>
-        /// <param name="value">The value to record</param>
+        /// <param name="value">The builder so that other method calls can be chained</param>
         public virtual TBuilder Set<TValue>(Expression<Func<TObject, TValue>> property, TValue value)
         {
             _properties[Reflector.GetPropertyNameFor(property)] = value;
