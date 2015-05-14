@@ -17,16 +17,9 @@ namespace TestStack.Dossier.Suppliers
         }
 
         /// <inerhitdoc />
-        public TValue GenerateAnonymousValue<TObject, TValue>(AnonymousValueFixture any, string propertyName)
-        {
-            return any.Fixture.Create<TValue>();
-        }
-
-        /// How to create weakly-typed CreateAnonymous with AutoFixture
-        /// http://autofixture.codeplex.com/workitem/4229
-        /// <inerhitdoc />
         public object GenerateAnonymousValue(AnonymousValueFixture any, Type type, string propertyName)
         {
+            // http://autofixture.codeplex.com/workitem/4229
             var context = new SpecimenContext(any.Fixture);
             var specimen = context.Resolve(type);
             return specimen;
