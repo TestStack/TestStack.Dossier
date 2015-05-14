@@ -74,7 +74,10 @@ namespace TestStack.Dossier
         /// Build the actual object - you can call the <see cref="BuildUsing{TFactory}"/> method to quickly build a builder.
         /// </summary>
         /// <returns>The built object</returns>
-        protected abstract TObject BuildObject();
+        protected virtual TObject BuildObject()
+        {
+            return BuildUsing<AllPropertiesFactory>();
+        }
 
         /// <summary>
         /// 
