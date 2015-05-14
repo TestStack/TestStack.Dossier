@@ -36,24 +36,24 @@ namespace TestStack.Dossier.Tests
                 .Set(x => x.LastName, "Lanningham")
                 .Set(x => x.EnrollmentDate, new DateTime(2000, 1, 1));
 
-            var customer = builder.Build();
+            var vm = builder.Build();
 
-            customer.FirstName.ShouldBe("Pi");
-            customer.LastName.ShouldBe("Lanningham");
-            customer.EnrollmentDate.ShouldBe(new DateTime(2000, 1, 1));
+            vm.FirstName.ShouldBe("Pi");
+            vm.LastName.ShouldBe("Lanningham");
+            vm.EnrollmentDate.ShouldBe(new DateTime(2000, 1, 1));
         }
 
         [Fact]
         public void GivenBuilderWithModifications_WhenCallingBuildImplicitly_ShouldOverrideValues()
         {
-            StudentViewModel customer = Builder<StudentViewModel>.CreateNew()
+            StudentViewModel vm = Builder<StudentViewModel>.CreateNew()
                 .Set(x => x.FirstName, "Pi")
                 .Set(x => x.LastName, "Lanningham")
                 .Set(x => x.EnrollmentDate, new DateTime(2000, 1, 1));
 
-            customer.FirstName.ShouldBe("Pi");
-            customer.LastName.ShouldBe("Lanningham");
-            customer.EnrollmentDate.ShouldBe(new DateTime(2000, 1, 1));
+            vm.FirstName.ShouldBe("Pi");
+            vm.LastName.ShouldBe("Lanningham");
+            vm.EnrollmentDate.ShouldBe(new DateTime(2000, 1, 1));
         }
 
         [Fact]
