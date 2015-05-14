@@ -3,7 +3,10 @@ using System.Reflection;
 namespace TestStack.Dossier.Factories
 {
     /// <summary>
-    /// Creates an instance of an object by setting all public properties but not private properties.
+    /// Builds the object using the constructor with the most arguments using values stored in the builder that match
+    ///   the constructor parameter name case insensitively and then sets all public property setters with values from
+    ///   the builder.
+    /// If there is no value specified in the builder for a ctor argument / property then the builder will supply an anonymous value.
     /// </summary>
     public class PublicPropertySettersFactory : CallConstructorFactory
     {

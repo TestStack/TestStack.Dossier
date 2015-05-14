@@ -1,5 +1,4 @@
-﻿using System;
-using Shouldly;
+﻿using Shouldly;
 using TestStack.Dossier.Factories;
 using TestStack.Dossier.Tests.TestHelpers.Objects.Examples;
 using Xunit;

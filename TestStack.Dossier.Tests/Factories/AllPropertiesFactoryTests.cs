@@ -19,5 +19,23 @@ namespace TestStack.Dossier.Tests.Factories
             dto.NotSetByCtorWithPrivateSetter.ShouldNotBe(null);
             dto.NotSetByCtorWithPublicSetter.ShouldNotBe(null);
         }
+
+        [Fact]
+        public void GivenAllPropertiesFactoryAgainstBuilderWithModifications_WhenBuilding_ThenCustomisationsAreUsed()
+        {
+            MixedAccessibilityDto dto = Builder<MixedAccessibilityDto>
+                .CreateNew(new AllPropertiesFactory())
+                .Set(x => x.SetByCtorNoPropertySetter, "0")
+                .Set(x => x.SetByCtorWithPrivateSetter, "1")
+                .Set(x => x.SetByCtorWithPublicSetter, "2")
+                .Set(x => x.NotSetByCtorWithPrivateSetter, "3")
+                .Set(x => x.NotSetByCtorWithPublicSetter, "4");
+
+            dto.SetByCtorNoPropertySetter.ShouldBe("0");
+            dto.SetByCtorWithPrivateSetter.ShouldBe("1");
+            dto.SetByCtorWithPublicSetter.ShouldBe("2");
+            dto.NotSetByCtorWithPrivateSetter.ShouldBe("3");
+            dto.NotSetByCtorWithPublicSetter.ShouldBe("4");
+        }
     }
 }
