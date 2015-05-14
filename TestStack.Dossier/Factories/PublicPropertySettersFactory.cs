@@ -5,7 +5,7 @@ namespace TestStack.Dossier.Factories
     /// <summary>
     /// Creates an instance of an object by setting all public properties but not private properties.
     /// </summary>
-    public class PublicPropertiesFactory : ConstructorFactory
+    public class PublicPropertySettersFactory : ConstructorFactory
     {
         /// <inheritdoc />
         public override TObject BuildObject<TObject, TBuilder>(TestDataBuilder<TObject, TBuilder> builder)

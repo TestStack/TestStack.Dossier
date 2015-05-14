@@ -13,7 +13,7 @@ namespace TestStack.Dossier.Lists
 
         public void NonProxyableMemberNotification(Type type, MemberInfo memberInfo)
         {
-            if (new[]{"get_Any", "set_Any", "Build", "AsProxy", "Get", "GetOrDefault", "Set", "Has", "get_ListBuilder", "set_ListBuilder", "BuildUsing", "SetFactory"}.Contains(memberInfo.Name))
+            if (new[]{"get_Any", "set_Any", "Build", "AsProxy", "Get", "GetOrDefault", "Has", "get_ListBuilder", "set_ListBuilder", "BuildUsing", "SetFactory"}.Contains(memberInfo.Name))
                 return;
             throw new InvalidOperationException(string.Format("Tried to build a list with a builder who has non-virtual method. Please make {0} on type {1} virtual.", memberInfo.Name, type.Name));
         }

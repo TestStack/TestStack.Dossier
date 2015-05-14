@@ -83,7 +83,7 @@
     <Compile Include="Factories\AutoFixtureFactory.cs" />
     <Compile Include="Factories\ConstructorFactory.cs" />
     <Compile Include="Factories\AllPropertiesFactory.cs" />
-    <Compile Include="Factories\PublicPropertiesFactory.cs" />
+    <Compile Include="Factories\PublicPropertySettersFactory.cs" />
     <Compile Include="IAnonymousValueSupplier.cs" />
     <Compile Include="Lists\EnsureAllMethodsVirtual.cs" />
     <Compile Include="Lists\ListBuilder.cs" />
