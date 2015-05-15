@@ -3,8 +3,8 @@ using System.Linq;
 using Shouldly;
 using TestStack.Dossier.DataSources.Generators;
 using TestStack.Dossier.Lists;
-using TestStack.Dossier.Tests.Builders;
-using TestStack.Dossier.Tests.Entities;
+using TestStack.Dossier.Tests.TestHelpers.Builders;
+using TestStack.Dossier.Tests.TestHelpers.Objects.Entities;
 using Xunit;
 
 namespace TestStack.Dossier.Tests
@@ -70,16 +70,7 @@ namespace TestStack.Dossier.Tests
 
             var entities = builders.BuildList();
 
-            entities[0].ShouldNotBe(entities[1]);
-            entities[0].ShouldNotBe(entities[2]);
-            entities[0].ShouldNotBe(entities[3]);
-            entities[0].ShouldNotBe(entities[4]);
-            entities[1].ShouldNotBe(entities[2]);
-            entities[1].ShouldNotBe(entities[3]);
-            entities[1].ShouldNotBe(entities[4]);
-            entities[2].ShouldNotBe(entities[3]);
-            entities[2].ShouldNotBe(entities[4]);
-            entities[3].ShouldNotBe(entities[4]);
+            entities.ShouldBeUnique();
         }
 
         [Fact]
@@ -87,16 +78,7 @@ namespace TestStack.Dossier.Tests
         {
             List<Customer> entities = BasicCustomerBuilder.CreateListOfSize(5);
 
-            entities[0].ShouldNotBe(entities[1]);
-            entities[0].ShouldNotBe(entities[2]);
-            entities[0].ShouldNotBe(entities[3]);
-            entities[0].ShouldNotBe(entities[4]);
-            entities[1].ShouldNotBe(entities[2]);
-            entities[1].ShouldNotBe(entities[3]);
-            entities[1].ShouldNotBe(entities[4]);
-            entities[2].ShouldNotBe(entities[3]);
-            entities[2].ShouldNotBe(entities[4]);
-            entities[3].ShouldNotBe(entities[4]);
+            entities.ShouldBeUnique();
         }
 
         [Fact]

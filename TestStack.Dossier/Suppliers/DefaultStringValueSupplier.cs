@@ -1,4 +1,5 @@
-﻿using TestStack.Dossier.EquivalenceClasses;
+﻿using System;
+using TestStack.Dossier.EquivalenceClasses;
 
 namespace TestStack.Dossier.Suppliers
 {
@@ -8,15 +9,15 @@ namespace TestStack.Dossier.Suppliers
     public class DefaultStringValueSupplier : IAnonymousValueSupplier
     {
         /// <inheritdoc />
-        public bool CanSupplyValue<TObject, TValue>(string propertyName)
+        public bool CanSupplyValue(Type type, string propertyName)
         {
-            return typeof (TValue) == typeof(string);
+            return type == typeof(string);
         }
 
         /// <inheritdoc />
-        public TValue GenerateAnonymousValue<TObject, TValue>(AnonymousValueFixture any, string propertyName)
+        public object GenerateAnonymousValue(AnonymousValueFixture any, Type type, string propertyName)
         {
-            return (TValue) (object) any.StringStartingWith(propertyName);
+            return any.StringStartingWith(propertyName);
         }
     }
 }

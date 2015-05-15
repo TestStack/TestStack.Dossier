@@ -1,8 +1,8 @@
 ﻿using System;
 using NSubstitute;
-using TestStack.Dossier.Tests.Entities;
+using TestStack.Dossier.Tests.TestHelpers.Objects.Entities;
 
-namespace TestStack.Dossier.Tests.Builders
+namespace TestStack.Dossier.Tests.TestHelpers.Builders
 {
     class ProxyAlteringCustomerBuilder : TestDataBuilder<Customer, ProxyAlteringCustomerBuilder>
     {

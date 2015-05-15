@@ -1,4 +1,5 @@
-﻿using TestStack.Dossier.EquivalenceClasses.Person;
+﻿using System;
+using TestStack.Dossier.EquivalenceClasses.Person;
 
 namespace TestStack.Dossier.Suppliers
 {
@@ -8,16 +9,16 @@ namespace TestStack.Dossier.Suppliers
     public class DefaultLastNameValueSupplier : IAnonymousValueSupplier
     {
         /// <inheritdoc />
-        public bool CanSupplyValue<TObject, TValue>(string propertyName)
+        public bool CanSupplyValue(Type type, string propertyName)
         {
-            return typeof (TValue) == typeof(string) &&
+            return type == typeof(string) &&
                 (propertyName.ToLower() == "lastname" || propertyName.ToLower() == "surname");
         }
 
         /// <inheritdoc />
-        public TValue GenerateAnonymousValue<TObject, TValue>(AnonymousValueFixture any, string propertyName)
+        public object GenerateAnonymousValue(AnonymousValueFixture any, Type type, string propertyName)
         {
-            return (TValue) (object) any.LastName();
+            return any.LastName();
         }
     }
 }

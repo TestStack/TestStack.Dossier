@@ -1,7 +1,40 @@
 Breaking Changes
 ================
 
-Breaking change from NTestDataBuilder -> TestStack.Dossier 1.0
+Version 3.0
+-----------
+
+The signature of `IAnonymousValueSupplier` has changed from:
+
+```c#
+public interface IAnonymousValueSupplier
+{
+    bool CanSupplyValue(Type type, string propertyName);
+    TValue GenerateAnonymousValue<TObject, TValue>(AnonymousValueFixture any, string propertyName);
+}
+```
+
+To:
+
+```c#
+public interface IAnonymousValueSupplier
+{
+    bool CanSupplyValue(Type type, string propertyName);
+    object GenerateAnonymousValue(AnonymousValueFixture any, Type type, string propertyName);
+}
+```
+
+Note: the `GenerateAnonymousValue` method is no longer generic.
+
+### Reason
+
+In order to implement the `BuildUsing` method that allows you to build an object by convention in one line rather than having to call the constructor yourself we needed to have a non-generic version of the method. This change actually ended up making the anonymous value suppliers slightly easier to implement (no longer any need for type casting).
+
+### Fix
+
+If you have any custom anonymous value suppliers change the signature of your `GenerateAnonymousValue` method so it's no logner generic.
+
+Breaking change from NTestDataBuilder -> TestStack.Dossier 2.0
 --------------------------------------------------------------
 
 Namespace has changed from NTestDataBuilder to TestStack.Dossier.
@@ -14,7 +47,7 @@ The project has been renamed.
 
 Do a global find and replace of `using NTestDataBuilder` with `using TestStack.Dossier`.
 
-Breaking change from NTestDataBuilder -> TestStack.Dossier 1.0
+Breaking change from NTestDataBuilder -> TestStack.Dossier 2.0
 --------------------------------------------------------------
 
 When you don't `Set` a default value for a property that you later `Get` in your builder it will now generate an anonymous value for that property rather than throwing an exception.
@@ -29,7 +62,7 @@ The old behaviour of throwing an exception if a value hasn't been specified is n
 
 If you want to fix a static value for a property then by all means you can still use `Set` calls in your builder constructor. If you aren't happy with the default anonymous value that is generated for a property you can use the `Any` property to generate a value from a different equivalence class in combination with a `Set` call in your builder constructor.
 
-Breaking change from NTestDataBuilder -> TestStack.Dossier 1.0
+Breaking change from NTestDataBuilder -> TestStack.Dossier 2.0
 --------------------------------------------------------------
 
 The way that lists are generated no longer uses NBuilder - the new syntax is backwards compatible with NBuilder except that the namespace you need to include is different. You can also refactor your list generation to be a lot more terse, but that is optional. Any `BuildList` extension methods you created will now need to be deleted since they are no longer needed. You also need to ensure that all of the methods you call are marked virtual so the list generation can proxy those method calls.

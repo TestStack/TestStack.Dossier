@@ -1,8 +1,9 @@
-﻿using Shouldly;
+﻿using System;
+using Shouldly;
 using TestStack.Dossier.DataSources.Person;
 using TestStack.Dossier.Lists;
-using TestStack.Dossier.Tests.Builders;
 using TestStack.Dossier.Tests.TestHelpers;
+using TestStack.Dossier.Tests.TestHelpers.Builders;
 using Xunit;
 
 namespace TestStack.Dossier.Tests
@@ -113,9 +114,20 @@ namespace TestStack.Dossier.Tests
                    && propertyName.ToLower().StartsWith("year");
         }
 
+        public bool CanSupplyValue(Type type, string propertyName)
+        {
+            return type == typeof(int)
+                   && propertyName.ToLower().StartsWith("year");
+        }
+
         public TValue GenerateAnonymousValue<TObject, TValue>(AnonymousValueFixture any, string propertyName)
         {
             return (TValue)(object)_year++;
+        }
+
+        public object GenerateAnonymousValue(AnonymousValueFixture any, Type type, string propertyName)
+        {
+            return _year++;
         }
     }
 }

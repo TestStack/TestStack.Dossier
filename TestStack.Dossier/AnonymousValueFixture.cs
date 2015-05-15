@@ -82,13 +82,29 @@ namespace TestStack.Dossier
         /// <returns>The anonymous value, taking into account any registered conventions</returns>
         public T Get<TObject, T>(Expression<Func<TObject, T>> property)
         {
-            var propertyName = PropertyNameGetter.Get(property);
+            var propertyName = Reflector.GetPropertyNameFor(property);
             var valueSupplier = LocalValueSuppliers
                 .Concat(GlobalValueSuppliers)
                 .Concat(DefaultValueSuppliers)
-                .First(s => s.CanSupplyValue<TObject, T>(propertyName));
+                .First(s => s.CanSupplyValue(typeof(T), propertyName));
 
-            return valueSupplier.GenerateAnonymousValue<TObject, T>(this, propertyName);
+            return (T) valueSupplier.GenerateAnonymousValue(this, typeof(T), propertyName);
+        }
+
+        /// <summary>
+        /// Automatically generate an anonymous value for the given property expression.
+        /// </summary>
+        /// <param name="type">The type of the property</param>
+        /// <param name="propertyName">The name of the property</param>
+        /// <returns>The anonymous value, taking into account any registered conventions</returns>
+        public object Get(Type type, string propertyName)
+        {
+            var valueSupplier = LocalValueSuppliers
+                .Concat(GlobalValueSuppliers)
+                .Concat(DefaultValueSuppliers)
+                .First(s => s.CanSupplyValue(type, propertyName));
+
+            return valueSupplier.GenerateAnonymousValue(this, type, propertyName);
         }
     }
 }

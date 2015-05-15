@@ -1,7 +1,7 @@
 ﻿using System;
 using NSubstitute;
 using Shouldly;
-using TestStack.Dossier.Tests.Builders;
+using TestStack.Dossier.Tests.TestHelpers.Builders;
 using Xunit;
 
 namespace TestStack.Dossier.Tests

@@ -29,7 +29,7 @@ namespace TestStack.Dossier
         public T Build()
         {
             var proxy = Substitute.For<T>();
-            var properties = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+            var properties = Reflector.GetSettablePropertiesFor<T>();
             foreach (var property in properties.Where(property => _properties.ContainsKey(property.Name)))
             {
                 if (property.GetGetMethod().IsVirtual)

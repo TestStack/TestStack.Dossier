@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 
-namespace TestStack.Dossier.Tests.Entities
+namespace TestStack.Dossier.Tests.TestHelpers.Objects.Entities
 {
     public class Customer
     {
