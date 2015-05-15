@@ -14,12 +14,6 @@ namespace TestStack.Dossier.Suppliers
         }
 
         /// <inheritdoc />
-        public TValue GenerateAnonymousValue<TObject, TValue>(AnonymousValueFixture any, string propertyName)
-        {
-            return default(TValue);
-        }
-
-        /// <inheritdoc />
         public object GenerateAnonymousValue(AnonymousValueFixture any, Type type, string propertyName)
         {
             // See stackoverflow: http://stackoverflow.com/questions/325426/programmatic-equivalent-of-defaulttype

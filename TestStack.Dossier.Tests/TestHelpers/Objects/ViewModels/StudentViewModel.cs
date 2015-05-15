@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace TestStack.Dossier.Tests.Stubs.ViewModels
+namespace TestStack.Dossier.Tests.TestHelpers.Objects.ViewModels
 {
     public class StudentViewModel
     {
@@ -31,5 +31,7 @@ namespace TestStack.Dossier.Tests.Stubs.ViewModels
         public DateTime EnrollmentDate { get; set; }
 
         public Grade Grade { get; set; }
+
+        public AddressViewModel Address { get; set; }
     }
 }

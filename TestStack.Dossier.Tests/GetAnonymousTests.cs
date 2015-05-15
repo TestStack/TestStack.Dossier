@@ -2,8 +2,8 @@
 using Shouldly;
 using TestStack.Dossier.DataSources.Person;
 using TestStack.Dossier.Lists;
-using TestStack.Dossier.Tests.Builders;
 using TestStack.Dossier.Tests.TestHelpers;
+using TestStack.Dossier.Tests.TestHelpers.Builders;
 using Xunit;
 
 namespace TestStack.Dossier.Tests

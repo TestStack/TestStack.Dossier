@@ -16,12 +16,6 @@ namespace TestStack.Dossier.Suppliers
         }
 
         /// <inheritdoc />
-        public TValue GenerateAnonymousValue<TObject, TValue>(AnonymousValueFixture any, string propertyName)
-        {
-            return (TValue)(object)any.LastName();
-        }
-
-        /// <inheritdoc />
         public object GenerateAnonymousValue(AnonymousValueFixture any, Type type, string propertyName)
         {
             return any.LastName();

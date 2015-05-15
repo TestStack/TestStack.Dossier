@@ -3,16 +3,17 @@ using Ploeh.AutoFixture;
 namespace TestStack.Dossier.Factories
 {
     /// <summary>
-    /// Creates an instance of an object by setting all public and private properties.
+    /// Builds the object using the constructor with the most arguments using values stored in the builder that match
+    ///   the constructor parameter name case insensitively and then sets all public and private property setters with
+    ///   values from the builder.
+    /// If there is no value specified in the builder for a ctor argument / property then the builder will supply an anonymous value.
     /// </summary>
-    public class AllPropertiesFactory : IFactory
+    public class AllPropertiesFactory : CallConstructorFactory
     {
         /// <inheritdoc />
-        public TObject BuildObject<TObject, TBuilder>(TestDataBuilder<TObject, TBuilder> builder)
-            where TObject : class
-            where TBuilder : TestDataBuilder<TObject, TBuilder>, new()
+        public override TObject BuildObject<TObject, TBuilder>(TestDataBuilder<TObject, TBuilder> builder)
         {
-            var model = builder.Any.Fixture.Create<TObject>();
+            var model = base.BuildObject(builder);
 
             var properties = Reflector.GetSettablePropertiesFor<TObject>();
             foreach (var property in properties)

@@ -1,6 +1,6 @@
 using System;
 
-namespace TestStack.Dossier.Tests.Stubs.Entities
+namespace TestStack.Dossier.Tests.TestHelpers.Objects.Entities
 {
     public class Customer
     {

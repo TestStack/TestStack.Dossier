@@ -1,7 +1,7 @@
 ﻿using TestStack.Dossier.Factories;
-using TestStack.Dossier.Tests.Stubs.Entities;
+using TestStack.Dossier.Tests.TestHelpers.Objects.Entities;
 
-namespace TestStack.Dossier.Tests.Builders
+namespace TestStack.Dossier.Tests.TestHelpers.Builders
 {
     class AutoConstructorCustomerBuilder : TestDataBuilder<Customer, AutoConstructorCustomerBuilder>
     {
@@ -22,7 +22,7 @@ namespace TestStack.Dossier.Tests.Builders
 
         protected override Customer BuildObject()
         {
-            return BuildUsing<ConstructorFactory>();
+            return BuildUsing<CallConstructorFactory>();
         }
     }
 }
