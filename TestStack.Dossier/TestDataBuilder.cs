@@ -76,7 +76,7 @@ namespace TestStack.Dossier
         /// <returns>The built object</returns>
         protected virtual TObject BuildObject()
         {
-            return BuildUsing<AllPropertiesFactory>();
+            return BuildUsing<PublicPropertySettersFactory>();
         }
 
         /// <summary>
