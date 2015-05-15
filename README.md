@@ -85,16 +85,16 @@ Prior to v2.0 this library was known as NTestDataBuilder.
 
 3. Use the builder in a test, e.g.
 
-        var customer = new CustomerBuilder().WithFirstName("Robert").Build();
+		var customer = new CustomerBuilder()
+			.WithFirstName("Robert")
+			.Build();
 
 4. Consider using the Object Mother pattern in combination with the builders, see [my blog post](http://robdmoore.id.au/blog/2013/05/26/test-data-generation-the-right-way-object-mother-test-data-builders-nsubstitute-nbuilder/) for a description of how I use this library.
 
-How can I create a list of entities using my builders?
-------------------------------------------------------
+## How can I create a list of entities using my builders?
 
 This library allows you to build a list of entities fluently and tersely. Here is an example:
 
-```c#
     var customers = CustomerBuilder.CreateListOfSize(5)
         .TheFirst(1).WithFirstName("First")
         .TheNext(1).WithLastName("Next Last")
@@ -102,39 +102,36 @@ This library allows you to build a list of entities fluently and tersely. Here i
         .ThePrevious(2).With(b => b.WithLastName("last" + (++i).ToString()))
         .All().WhoJoinedIn(1999)
         .BuildList();
-```
 
 This would create the following (represented as json):
 
-```json
-[
-    {
-        "FirstName":"First",
-        "LastName":"LastNameff51d5e5-9ce4-4710-830e-9042cfd48a8b",
-        "YearJoined":1999
-    },
-    {
-        "FirstName":"FirstName7b08da9c-8c13-47f7-abe9-09b73b935e1f",
-        "LastName":"Next Last",
-        "YearJoined":1999
-    },
-    {
-        "FirstName":"FirstName836d4c54-b227-4c1b-b684-de4cd940c251",
-        "LastName":"last1",
-        "YearJoined":1999
-    },
-    {
-        "FirstName":"FirstName5f53e895-921e-4130-8ed8-610b017f3b9b",
-        "LastName":"last2",
-        "YearJoined":1999
-    },
-    {
-        "FirstName":"FirstName9cf6b05f-38aa-47c1-9fd7-e3c1009cf3e4",
-        "LastName":"Last Last",
-        "YearJoined":1999
-    }
-]
-```
+	[
+	    {
+	        "FirstName":"First",
+	        "LastName":"LastNameff51d5e5-9ce4-4710-830e-9042cfd48a8b",
+	        "YearJoined":1999
+	    },
+	    {
+	        "FirstName":"FirstName7b08da9c-8c13-47f7-abe9-09b73b935e1f",
+	        "LastName":"Next Last",
+	        "YearJoined":1999
+	    },
+	    {
+	        "FirstName":"FirstName836d4c54-b227-4c1b-b684-de4cd940c251",
+	        "LastName":"last1",
+	        "YearJoined":1999
+	    },
+	    {
+	        "FirstName":"FirstName5f53e895-921e-4130-8ed8-610b017f3b9b",
+	        "LastName":"last2",
+	        "YearJoined":1999
+	    },
+	    {
+	        "FirstName":"FirstName9cf6b05f-38aa-47c1-9fd7-e3c1009cf3e4",
+	        "LastName":"Last Last",
+	        "YearJoined":1999
+	    }
+	]
 
 ### Castle Dynamic Proxy Generator Exception error
 
@@ -155,8 +152,8 @@ If you use the list builder functionality and get the following error:
 
 Then you need to mark all the public methods on your builder as virtual. This is because we are using Castle Dynamic Proxy to generate lists and it can't intercept non-virtual methods.
 
-Create Entities Implicitly
---------------------------
+## Create Entities Implicitly
+
 In the previous examples, you have seen how to create entities *explicitly*, by calling the `Build()` and `BuildList()` methods. For the ultimate in terseness, you can omit these methods, and Dossier will *implicitly* call them for you. The one caveat is that you must explicitly declare the variable type rather than using the `var` keyword (unless you are passing into a method with the desired type).
 
 So, to create a single entity:
@@ -175,46 +172,48 @@ Or to create a list of entities:
     List<Customer> data = CustomerBuilder.CreateListOfSize(3)
         .TheFirst(1).WithFirstName("John");
 
-Create object without requiring custom builder class
-----------------------------------------------------
+## Create object without requiring custom builder class
 
-If you are building domain entities or other important classes having a custom builder class with intention-revealing method (e.g. WithFirstName) provides terseness (avoiding lambda expressions) and allows the builder class to start forming documentation about the usage of that object.
+If you are building domain entities, or other important classes, having a custom builder class with intention-revealing method (e.g. WithFirstName) provides terseness (avoiding lambda expressions) and allows the builder class to start forming documentation about the usage of that object.
 
 Sometimes though, you just want to build a class without that ceremony. Typically, we find that this applies for view models and DTOs.
 
-In that instance you can use the generic Builder implementation as shown below:
+In that instance you can use the generic `Builder` implementation as shown below:
 
-```c#
-StudentViewModel vm = Builder<StudentViewModel>.CreateNew()
-    .Set(x => x.FirstName, "Pi")
-    .Set(x => x.LastName, "Lanningham")
-    .Set(x => x.EnrollmentDate, new DateTime(2000, 1, 1));
-
-var studentViewModels = Builder<StudentViewModel>.CreateListOfSize(5)
-    .TheFirst(1).Set(x => x.FirstName, "First")
-    .TheNext(1).Set(x => x.LastName, "Next Last")
-    .TheLast(1).Set(x => x.LastName, "Last Last")
-    .ThePrevious(2).With(b => b.Set(x => x.LastName, "last" + (++i).ToString()))
-    .All().Set(x => x.EnrollmentDate, _enrollmentDate)
-    .BuildList();
-```
+	StudentViewModel vm = Builder<StudentViewModel>.CreateNew()
+	    .Set(x => x.FirstName, "Pi")
+	    .Set(x => x.LastName, "Lanningham")
+	    .Set(x => x.EnrollmentDate, new DateTime(2000, 1, 1));
+	
+	var studentViewModels = Builder<StudentViewModel>.CreateListOfSize(5)
+	    .TheFirst(1).Set(x => x.FirstName, "First")
+	    .TheNext(1).Set(x => x.LastName, "Next Last")
+	    .TheLast(1).Set(x => x.LastName, "Last Last")
+	    .ThePrevious(2).With(b => b.Set(x => x.LastName, "last" + (++i).ToString()))
+	    .All().Set(x => x.EnrollmentDate, _enrollmentDate)
+	    .BuildList();
 
 The syntax is modelled closely against what NBuilder provides and the behaviour of the class should be very similar.
 
+Note, that in the first example above, it was not necessary to call the `Build` method at the end of the method chain. This is because the `vm` variable has been defined as `StudentViewModel` and the C# compiler is able to infer the type and the object is set *implicitly*.
+
+In the second example, the `var` keyword is used to define `studentViewModels`, and so it is necessary to *explicitly* call `BuildList` to set the variable.
+
 ### Customising the construction of the object
 
-By default the longest constructor of the class you specify will be called and then all properties (with public and private setters) will be set with values you specified (or anonymous values if none were specified).
+By default, the longest constructor of the class you specify will be called and then all properties (with public and private setters) will be set with values you specified (or anonymous values if none were specified).
 
-Sometimes you might not want this behaviour, in which case you can specify a custom construction factory (see build objects without calling constructor section for explanation of factories) as shown below:
+Sometimes you might not want this behaviour, in which case you can specify a custom construction factory (see *Build objects without calling constructor* section for explanation of factories) as shown below:
 
-```c#
-var dto = Builder<MixedAccessibilityDto>.CreateNew(new CallConstructorFactory()).Build();
+	var dto = Builder<MixedAccessibilityDto>
+		.CreateNew(new CallConstructorFactory())
+		.Build();
+	
+	var dtos = MixedAccessibilityDto dto = Builder<MixedAccessibilityDto>
+		.CreateListOfSize(5, new CallConstructorFactory())
+		.BuildList();
 
-var dtos = MixedAccessibilityDto dto = Builder<MixedAccessibilityDto>.CreateListOfSize(5, new CallConstructorFactory()).BuildList();
-```
-
-Build objects without calling constructor
------------------------------------------
+## Build objects without calling constructor
 
 When you extend the `TestDataBuilder` as part of creating a custom builder you will be forced to override the abstract `BuildObject` method. You have full flexibility to  call the constructor of your class directly as shown above, but you can also invoke some convention-based factories to speed up the creation of your builder (also shown above) using the `BuildUsing` method.
 
@@ -225,8 +224,7 @@ The `BuildUsing` method takes an instance of `IFactory`, of which you can create
 * `CallConstructorFactory` - Calls the longest constructor with builder values (or anonymous values if none set) based on case-insensitive match of constructor parameter names against property names
 * `AutoFixtureFactory` - Asks AutoFixture to create an anonymous instance of the class (note: does **not** use any builder values or anonymous values from Dossier)
 
-Propogating the anonymous value fixture across builders
--------------------------------------------------------
+## Propagating the anonymous value fixture across builders
 
 Within a particular instance of `AnonymousValueFixture`, which is created for every builder, any generators that return a sequence of values (e.g. unique values) will be maintained. If you want to ensure that the same anonymous value fixture is used across multiple related builders then:
 
@@ -258,13 +256,11 @@ Within a particular instance of `AnonymousValueFixture`, which is created for ev
 
 There is currently no way to share an anonymous value fixture across unrelated builder instances. If this is something you need please raise an issue so we can discuss your requirement.
 
-Anonymous Values and Equivalence Classes
-----------------------------------------
+## Anonymous Values and Equivalence Classes
 
 todo: Coming soon!
 
-How can I create proxy objects?
--------------------------------
+## How can I create proxy objects?
 
 This library integrates with [NSubstitute](http://nsubstitute.github.io/) for generating proxy objects, this means you can call the `AsProxy` method on your builder to request that the result from calling `Build` will be an NSubstitute proxy with the public properties set to return the values you have specified via your builder, e.g.
 
@@ -275,7 +271,6 @@ This library integrates with [NSubstitute](http://nsubstitute.github.io/) for ge
 
 If you need to alter the proxy before calling `Build` to add complex behaviours that can't be expressed by the default public properties returns values then you can override the `AlterProxy` method in your builder, e.g.
 
-```c#
     class CustomerBuilder : TestDataBuilder<Customer, CustomerBuilder>
     {
         // ...
@@ -300,12 +295,10 @@ If you need to alter the proxy before calling `Build` to add complex behaviours 
     
     var customer = new CustomerBuilder().AsProxy().HasBeenMemberForYears(10);
     var years = customer.CustomerForHowManyYears(DateTime.Now); // 10
-```
 
 *Remember that when using proxy objects of real classes that you need to mark properties and methods as virtual and have a protected empty constructor.*
 
-Why does TestStack.Dossier have NSubstitute and AutoFixture as dependencies?
-------------------------------------------------------------------------
+## Why does TestStack.Dossier have NSubstitute and AutoFixture as dependencies?
 
 TestStack.Dossier is an opinionated framework and as such prescribes how to build your fixture data, including how to build lists, anonymous data and mock objects. Because of this we have decided to bundle it with the best of breed libraries for this purpose: AutoFixture and NSubstitute.
 
@@ -313,7 +306,6 @@ This allows for this library to provide a rich value-add on top of the basics of
 
 If you have a suggestion for the library that can incorporate this value-add without bundling these libraries feel free to submit a pull request.
 
-Contributions / Questions
--------------------------
+## Contributions / Questions
 
 If you would like to contribute to this project then feel free to communicate with Rob via Twitter (@robdmoore) or alternatively submit a pull request / issue.
