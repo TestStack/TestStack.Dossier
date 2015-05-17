@@ -24,15 +24,15 @@ public interface IAnonymousValueSupplier
 }
 ```
 
-Note: the `GenerateAnonymousValue` method is no longer generic.
+Note: the `CanSupplyValue` method and the `GenerateAnonymousValue` method are no longer generic.
 
 ### Reason
 
-In order to implement the `BuildUsing` method that allows you to build an object by convention in one line rather than having to call the constructor yourself we needed to have a non-generic version of the method. This change actually ended up making the anonymous value suppliers slightly easier to implement (no longer any need for type casting).
+In order to implement the `BuildUsing` method that allows you to build an object by convention in one line rather than having to call the constructor yourself we needed to have a non-generic version of the methods. This change actually ended up making the anonymous value suppliers slightly easier to implement (no longer any need for type casting).
 
 ### Fix
 
-If you have any custom anonymous value suppliers change the signature of your `GenerateAnonymousValue` method so it's no logner generic.
+If you have any custom anonymous value suppliers change the signature of your `CanSupplyValue` and `GenerateAnonymousValue` methods so they are no longer generic.
 
 Breaking change from NTestDataBuilder -> TestStack.Dossier 2.0
 --------------------------------------------------------------
