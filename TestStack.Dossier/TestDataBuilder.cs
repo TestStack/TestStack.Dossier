@@ -15,8 +15,7 @@ namespace TestStack.Dossier
         where TObject : class
         where TBuilder : TestDataBuilder<TObject, TBuilder>, new()
     {
-        private readonly Dictionary<string, object> _properties = new Dictionary<string, object>(StringComparer.InvariantCultureIgnoreCase);
-        private readonly Dictionary<string, Func<object>> _propFactories = new Dictionary<string, Func<object>>();
+        private readonly Dictionary<string, Func<object>> _properties = new Dictionary<string, Func<object>>();
         private ProxyBuilder<TObject> _proxyBuilder;
 
         /// <summary>
@@ -118,7 +117,7 @@ namespace TestStack.Dossier
         /// <returns>The builder so that other method calls can be chained</returns>
         public virtual TBuilder Set<TValue>(Expression<Func<TObject, TValue>> property, TValue value)
         {
-            _properties[Reflector.GetPropertyNameFor(property)] = value;
+            _properties[Reflector.GetPropertyNameFor(property)] = () => value;
             return this as TBuilder;
         }
 
@@ -130,7 +129,7 @@ namespace TestStack.Dossier
         /// <param name="factory">A method which produces instances of {TValue} for the property.</param>
         public virtual TBuilder Set<TValue>(Expression<Func<TObject, TValue>> property, Func<TValue> factory)
         {
-            _propFactories[Reflector.GetPropertyNameFor(property)] = () => factory() as object;
+            _properties[Reflector.GetPropertyNameFor(property)] = () => factory() as object;
             return this as TBuilder;
         }
 
@@ -155,11 +154,8 @@ namespace TestStack.Dossier
         /// <returns></returns>
         public object Get(Type type, string propertyName)
         {
-            object value;
-            if (_properties.TryGetValue(propertyName, out value)) return value;
-
             Func<object> factory;
-            if (_propFactories.TryGetValue(propertyName, out factory)) return factory();
+            if (_properties.TryGetValue(propertyName, out factory)) return factory();
 
             return Any.Get(type, propertyName);
         } 
@@ -208,7 +204,7 @@ namespace TestStack.Dossier
         /// <returns>Whether or not there is a recorded value for the property</returns>
         protected bool Has(string propertyName)
         {
-            return _properties.ContainsKey(propertyName) || _propFactories.ContainsKey(propertyName);
+            return _properties.ContainsKey(propertyName);
         }
 
         /// <summary>
