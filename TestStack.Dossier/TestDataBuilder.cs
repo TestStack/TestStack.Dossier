@@ -127,6 +127,7 @@ namespace TestStack.Dossier
         /// <typeparam name="TValue">The type of the property</typeparam>
         /// <param name="property">A lambda expression specifying the property to record a value for</param>
         /// <param name="factory">A method which produces instances of {TValue} for the property.</param>
+        /// <returns>The builder so that other method calls can be chained</returns>
         public virtual TBuilder Set<TValue>(Expression<Func<TObject, TValue>> property, Func<TValue> factory)
         {
             _properties[Reflector.GetPropertyNameFor(property)] = () => factory() as object;
