@@ -156,7 +156,8 @@ namespace TestStack.Dossier
         public object Get(Type type, string propertyName)
         {
             Func<object> factory;
-            if (_properties.TryGetValue(propertyName, out factory)) return factory();
+            if (_properties.TryGetValue(propertyName, out factory))
+                return factory();
 
             return Any.Get(type, propertyName);
         } 
