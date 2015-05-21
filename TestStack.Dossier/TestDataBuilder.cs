@@ -15,7 +15,7 @@ namespace TestStack.Dossier
         where TObject : class
         where TBuilder : TestDataBuilder<TObject, TBuilder>, new()
     {
-        private readonly Dictionary<string, object> _properties = new Dictionary<string, object>(StringComparer.InvariantCultureIgnoreCase);
+        private readonly Dictionary<string, Func<object>> _properties = new Dictionary<string, Func<object>>();
         private ProxyBuilder<TObject> _proxyBuilder;
 
         /// <summary>
@@ -107,16 +107,30 @@ namespace TestStack.Dossier
         /// </summary>
         /// <param name="proxy">The proxy object</param>
         protected virtual void AlterProxy(TObject proxy) {}
-        
+
         /// <summary>
         /// Records the given value for the given property from {TObject} and returns the builder to allow chaining.
         /// </summary>
         /// <typeparam name="TValue">The type of the property</typeparam>
         /// <param name="property">A lambda expression specifying the property to record a value for</param>
-        /// <param name="value">The builder so that other method calls can be chained</param>
+        /// <param name="value">The value to set the property to</param>
+        /// <returns>The builder so that other method calls can be chained</returns>
         public virtual TBuilder Set<TValue>(Expression<Func<TObject, TValue>> property, TValue value)
         {
-            _properties[Reflector.GetPropertyNameFor(property)] = value;
+            _properties[Reflector.GetPropertyNameFor(property)] = () => value;
+            return this as TBuilder;
+        }
+
+        /// <summary>
+        /// Records a given value provider for the given property from {TObject} and returns the builder to allow chaining.
+        /// </summary>
+        /// <typeparam name="TValue">The type of the property</typeparam>
+        /// <param name="property">A lambda expression specifying the property to record a value for</param>
+        /// <param name="factory">A method which produces instances of {TValue} for the property.</param>
+        /// <returns>The builder so that other method calls can be chained</returns>
+        public virtual TBuilder Set<TValue>(Expression<Func<TObject, TValue>> property, Func<TValue> factory)
+        {
+            _properties[Reflector.GetPropertyNameFor(property)] = () => factory() as object;
             return this as TBuilder;
         }
 
@@ -129,10 +143,7 @@ namespace TestStack.Dossier
         /// <returns>The recorded value of the property or an anonymous value for it</returns>
         public TValue Get<TValue>(Expression<Func<TObject, TValue>> property)
         {
-            if (!Has(property))
-                return Any.Get(property);
-
-            return (TValue)_properties[Reflector.GetPropertyNameFor(property)];
+            return (TValue)Get(typeof (TValue), Reflector.GetPropertyNameFor(property));
         }
 
         /// <summary>
@@ -144,9 +155,11 @@ namespace TestStack.Dossier
         /// <returns></returns>
         public object Get(Type type, string propertyName)
         {
-            if (!Has(propertyName))
-                return Any.Get(type, propertyName);
-            return _properties[propertyName];
+            Func<object> factory;
+            if (_properties.TryGetValue(propertyName, out factory))
+                return factory();
+
+            return Any.Get(type, propertyName);
         } 
 
         /// <summary>

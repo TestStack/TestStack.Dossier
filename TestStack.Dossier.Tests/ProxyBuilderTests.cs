@@ -12,7 +12,7 @@ namespace TestStack.Dossier.Tests
         [Fact]
         public void GivenClassToProxyWithNoProperties_WhenBuildingProxy_ReturnAClassWithNoReturnsValuesSet()
         {
-            var proxyBuilder = new ProxyBuilder<Customer>(new Dictionary<string, object>());
+            var proxyBuilder = new ProxyBuilder<Customer>(new Dictionary<string, Func<object>>());
 
             var proxy = proxyBuilder.Build();
 
@@ -24,7 +24,7 @@ namespace TestStack.Dossier.Tests
         [Fact]
         public void GivenClassToProxyWithNoProperties_WhenBuildingProxy_ReturnAnNSubstituteProxyOfThatClass()
         {
-            var proxyBuilder = new ProxyBuilder<Customer>(new Dictionary<string, object>());
+            var proxyBuilder = new ProxyBuilder<Customer>(new Dictionary<string, Func<object>>());
 
             var proxy = proxyBuilder.Build();
 
@@ -32,13 +32,14 @@ namespace TestStack.Dossier.Tests
         }
 
         [Fact]
-        public void GivenClassToProxyWithSinglePropertyValue_WhenBuildingProxy_ReturnAClassWithReturnValueSet()
+        public void GivenClassToProxyWithSinglePropertyValue_WhenBuildingProxy_ReturnAClassWithReturnValueSetFromFunction()
         {
-            var proxyBuilder = new ProxyBuilder<Customer>(new Dictionary<string, object> {{"FirstName", "FirstName"}});
+            int nonce = new Random().Next(0, 100);
+            var proxyBuilder = new ProxyBuilder<Customer>(new Dictionary<string, Func<object>> {{"FirstName", () => "FirstName" + nonce}});
 
             var proxy = proxyBuilder.Build();
 
-            proxy.FirstName.ShouldBe("FirstName");
+            proxy.FirstName.ShouldBe("FirstName" + nonce);
             proxy.LastName.ShouldBe(string.Empty);
             proxy.YearJoined.ShouldBe(0);
         }
@@ -46,11 +47,11 @@ namespace TestStack.Dossier.Tests
         [Fact]
         public void GivenClassToProxyWithMultiplePropertyValues_WhenBuildingProxy_ReturnAClassWithReturnValueSet()
         {
-            var proxyBuilder = new ProxyBuilder<Customer>(new Dictionary<string, object>
+            var proxyBuilder = new ProxyBuilder<Customer>(new Dictionary<string, Func<object>>
                 {
-                    { "FirstName", "FirstName" },
-                    { "LastName", "LastName" },
-                    { "YearJoined", 1 },
+                    { "FirstName", () => "FirstName" },
+                    { "LastName", () => "LastName" },
+                    { "YearJoined", () => 1 },
                 }
             );
 
@@ -64,10 +65,10 @@ namespace TestStack.Dossier.Tests
         [Fact]
         public void GivenClassWithSomeVirtualProperties_WhenBuildingProxy_ThenOnlyVirtualMembersAreProxied()
         {
-            var proxyBuilder = new ProxyBuilder<Company>(new Dictionary<string, object>()
+            var proxyBuilder = new ProxyBuilder<Company>(new Dictionary<string, Func<object>>()
             {
-                {"Name", "Vandelay Industries"},
-                {"EmployeeCount", 100}
+                {"Name", () => "Vandelay Industries"},
+                {"EmployeeCount", () => 100}
             });
 
             var proxy = proxyBuilder.Build();
