@@ -170,7 +170,7 @@ namespace TestStack.Dossier.Tests
             studentViewModels.Select(x => x.Grade).ShouldBeUnique();
         }
 
-        public void WhenBuildingObjectsWithCtorAndPrivateSetters_ShouldSetPrivateSettersByDefault()
+        public void WhenBuildingObjectsWithCtorAndPrivateSetters_ThenSetPrivateSettersByDefault()
         {
             var dto = Builder<MixedAccessibilityDto>.CreateListOfSize(1)
                 .TheFirst(1)
@@ -188,7 +188,7 @@ namespace TestStack.Dossier.Tests
         }
 
         [Fact]
-        public void GivenBuilderListWithFactoryOverride_WhenBuildingObjects_ShouldRespectOverriddenFactory()
+        public void GivenBuilderListWithFactoryOverride_WhenBuildingObjects_ThenRespectOverriddenFactory()
         {
             var dto = Builder<MixedAccessibilityDto>.CreateListOfSize(1, new CallConstructorFactory())
                 .TheFirst(1)
@@ -203,6 +203,19 @@ namespace TestStack.Dossier.Tests
             dto.SetByCtorWithPrivateSetter.ShouldBe("2");
             dto.NotSetByCtorWithPrivateSetter.ShouldNotBe("3");
             dto.NotSetByCtorWithPublicSetter.ShouldNotBe("4");
+        }
+
+        [Fact]
+        public void GivenBuilder_WhenCallingSetWithLambda_ThenInvokeEachTime()
+        {
+            var grade = Grade.A;
+            var customers = Builder<StudentViewModel>.CreateListOfSize(10)
+                .All().Set(x => x.Grade, () => grade++)
+                .BuildList();
+
+            var gradeAssertion = Grade.A;
+            foreach (var c in customers)
+                c.Grade.ShouldBe(gradeAssertion++);
         }
     }
 }

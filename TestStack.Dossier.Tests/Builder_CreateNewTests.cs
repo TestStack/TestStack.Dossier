@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Shouldly;
 using TestStack.Dossier.Factories;
 using TestStack.Dossier.Tests.TestHelpers.Objects.Examples;
@@ -29,7 +30,7 @@ namespace TestStack.Dossier.Tests
         }
 
         [Fact]
-        public void GivenBuilderWithModifications_WhenCallingBuildExplicitly_ShouldOverrideValues()
+        public void GivenBuilderWithModifications_WhenCallingBuildExplicitly_ThenOverrideValues()
         {
             var builder = Builder<StudentViewModel>.CreateNew()
                 .Set(x => x.FirstName, "Pi")
@@ -44,7 +45,7 @@ namespace TestStack.Dossier.Tests
         }
 
         [Fact]
-        public void GivenBuilderWithModifications_WhenCallingBuildImplicitly_ShouldOverrideValues()
+        public void GivenBuilderWithModifications_WhenCallingBuildImplicitly_ThenOverrideValues()
         {
             StudentViewModel vm = Builder<StudentViewModel>.CreateNew()
                 .Set(x => x.FirstName, "Pi")
@@ -57,7 +58,7 @@ namespace TestStack.Dossier.Tests
         }
 
         [Fact]
-        public void GivenBuilder_WhenBuildingObjectWithCtorAndPrivateSetters_ShouldSetPrivateSettersByDefault()
+        public void GivenBuilder_WhenBuildingObjectWithCtorAndPrivateSetters_ThenSetPrivateSettersByDefault()
         {
             MixedAccessibilityDto dto = Builder<MixedAccessibilityDto>.CreateNew()
                 .Set(x => x.SetByCtorWithPublicSetter, "1")
@@ -72,7 +73,7 @@ namespace TestStack.Dossier.Tests
         }
 
         [Fact]
-        public void GivenBuilderWithFactoryOverride_WhenBuildingObject_ShouldRespectOverriddenFactory()
+        public void GivenBuilderWithFactoryOverride_WhenBuildingObject_ThenRespectOverriddenFactory()
         {
             MixedAccessibilityDto dto = Builder<MixedAccessibilityDto>.CreateNew(new CallConstructorFactory())
                 .Set(x => x.SetByCtorWithPublicSetter, "1")
@@ -84,6 +85,22 @@ namespace TestStack.Dossier.Tests
             dto.SetByCtorWithPrivateSetter.ShouldBe("2");
             dto.NotSetByCtorWithPrivateSetter.ShouldNotBe("3");
             dto.NotSetByCtorWithPublicSetter.ShouldNotBe("4");
+        }
+
+        [Fact]
+        public void GivenBuilder_WhenCallingSetWithLambda_ThenInvokeEachTime()
+        {
+            var grade = Grade.A;
+            var builder = Builder<StudentViewModel>.CreateNew()
+                .Set(x => x.FirstName, "Pi")
+                .Set(x => x.LastName, "Lanningham")
+                .Set(x => x.Grade, () => grade++);
+
+            var customerA = builder.Build();
+            var customerB = builder.Build();
+
+            customerA.Grade.ShouldBe(Grade.A);
+            customerB.Grade.ShouldBe(Grade.B);
         }
     }
 }
