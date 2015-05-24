@@ -1,6 +1,6 @@
 # TestStack.Dossier
 
-TestStack.Dossier provides you with the code infrastructure to easily and quickly generate test fixture data for your automated tests in a terse, readable and maintainable way using the Test Data Builder pattern.
+TestStack.Dossier provides you with the code infrastructure to easily and quickly generate test fixture data for your automated tests in a terse, readable and maintainable way using the Test Data Builder, anonymous value and equivalence class patterns.
 
 For more information please see the [blog post](http://robdmoore.id.au/blog/2013/05/26/test-data-generation-the-right-way-object-mother-test-data-builders-nsubstitute-nbuilder/) that gives the theory behind the approach this library was intended for and the [presentation and example code](https://github.com/robdmoore/TestFixtureDataGenerationPresentation) that gives a concrete example of the usage of the library (and the theory behind it).
 
@@ -69,7 +69,7 @@ Prior to v2.0 this library was known as NTestDataBuilder.
             }
         
             // Note: we typically only start with the methods that are strictly needed so the
-            //   builders are quick to write and aren't bloated'
+            //   builders are quick to write and aren't bloated 
             public virtual CustomerBuilder WithLastName(string lastName)
             {
                 return Set(x => x.LastName, lastName);
@@ -152,4 +152,6 @@ More comprehensive documentation is available on our [documentation website](htt
 
 ## Contributions / Questions
 
-If you would like to contribute to this project then feel free to communicate with us via Twitter ([]@teststacknet](https://twitter.com/teststacknet)) or alternatively submit a [pull request](https://github.com/TestStack/TestStack.Dossier/compare/) / [issue](https://github.com/TestStack/TestStack.Dossier/issues/new).
+If you would like to contribute to this project then feel free to communicate with us via Twitter ([@teststacknet](https://twitter.com/teststacknet)) or alternatively submit a [pull request](https://github.com/TestStack/TestStack.Dossier/compare/) / [issue](https://github.com/TestStack/TestStack.Dossier/issues/new).
+
+Feel free to check out our [up-for-grabs issues if you don't know where to start](https://github.com/TestStack/TestStack.Dossier/labels/up-for-grabs).
