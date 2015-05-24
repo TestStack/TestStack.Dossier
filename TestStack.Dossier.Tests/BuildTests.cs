@@ -49,32 +49,6 @@ namespace TestStack.Dossier.Tests
         }
 
         [Fact]
-        public void GivenBuilder_WhenCallingSetWithLambda_ShouldInvokeEachTime()
-        {
-            int counter = 2014;
-            var builder = new CustomerBuilder()
-                .Set(x => x.FirstName, "Pi")
-                .Set(x => x.LastName, "Lanningham")
-                .Set(x => x.YearJoined, () => counter++);
-
-            var customerA = builder.Build();
-            var customerB = builder.Build();
-
-            customerA.YearJoined.ShouldBe(2014);
-            customerB.YearJoined.ShouldBe(2015);
-
-            List<Customer> customerList = CustomerBuilder.CreateListOfSize(10)
-                                            .All()
-                                                .Set(x => x.YearJoined, () => counter++);
-            int newCounter = 2016;
-            foreach (var c in customerList)
-            {
-                c.YearJoined.ShouldBe(newCounter++);
-            }
-
-        }
-
-        [Fact]
         public void GivenBasicBuilder_WhenCallingBuildImplicitly_ThenReturnAnObject()
         {
             Customer customer = new BasicCustomerBuilder(); 
