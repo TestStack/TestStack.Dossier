@@ -14,8 +14,8 @@ namespace TestStack.Dossier.Lists
         where TBuilder : TestDataBuilder<TObject, TBuilder>, new()
         where TObject : class
     {
-        private int _start = 0;
-        private int _count = 0;
+        private int _start;
+        private int _count;
         private readonly List<TBuilder> _list;
 
         internal ListBuilder(int size)
