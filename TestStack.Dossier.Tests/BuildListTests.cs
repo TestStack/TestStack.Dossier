@@ -172,5 +172,24 @@ namespace TestStack.Dossier.Tests
             customers[3].CustomerClass.ShouldBe(CustomerClass.Gold);
             customers[4].CustomerClass.ShouldBe(CustomerClass.Platinum);
         }
+
+        [Fact]
+        public void GivenBuilderWithSetCallsInConstructor_WhenBuildingAListOfTheBuilders_ThenDefaultValuesShouldBeRespectedUnlessOverridden()
+        {
+            const string overriddenFirstName = "FirstOverride";
+            const string overriddenLastName = "LastOverride";
+
+            var customers = BuilderWithDefaults.CreateListOfSize(3)
+                .TheFirst(1).With(x => x.Set(y => y.FirstName, overriddenFirstName))
+                .TheNext(1).With(x => x.Set(y => y.LastName, overriddenLastName))
+                .BuildList();
+
+            customers[0].FirstName.ShouldBe(overriddenFirstName);
+            customers[0].LastName.ShouldBe(BuilderWithDefaults.DefaultLastName);
+            customers[1].FirstName.ShouldBe(BuilderWithDefaults.DefaultFirstName);
+            customers[1].LastName.ShouldBe(overriddenLastName);
+            customers[2].FirstName.ShouldBe(BuilderWithDefaults.DefaultFirstName);
+            customers[2].LastName.ShouldBe(BuilderWithDefaults.DefaultLastName);
+        }
     }
 }

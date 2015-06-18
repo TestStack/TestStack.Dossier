@@ -14,16 +14,16 @@ namespace TestStack.Dossier.Lists
         where TBuilder : TestDataBuilder<TObject, TBuilder>, new()
         where TObject : class
     {
-        private int _start = 0;
-        private int _count = 0;
+        private int _start;
+        private int _count;
         private readonly List<TBuilder> _list;
 
         internal ListBuilder(int size)
         {
+            _list = new List<TBuilder>();
             BuilderProxy = (TBuilder) ListBuilderGenerator.Generator
                 .CreateClassProxy(typeof (TBuilder), new ProxyGenerationOptions(new EnsureAllMethodsVirtual()), new ListBuilderInterceptor<TObject, TBuilder>(this));
             BuilderProxy.ListBuilder = this;
-            _list = new List<TBuilder>();
             var fixture = new AnonymousValueFixture();
             for (var i = 0; i < size; i++)
                 _list.Add(new TBuilder {Any = fixture});
