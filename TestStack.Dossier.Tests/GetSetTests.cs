@@ -26,6 +26,27 @@ namespace TestStack.Dossier.Tests
         }
 
         [Fact]
+        public void GivenAValueHasBeenSetAgainstANestedProperty_WhenRetrievingTheValueForThatProperty_ThenTheSetValueIsReturned()
+        {
+            _b.Set(x => x.PostalAddress.Identifier, SetValue);
+
+            var retrieved = _b.Get(x => x.PostalAddress.Identifier);
+
+            retrieved.ShouldBe(SetValue);
+        }
+
+        [Fact]
+        public void GivenAValueHasBeenSetAgainstANestedPropertyAndDifferentVaLueHasBeenSetAgainstANonNestedPropertyWithTheSameName_WhenRetrievingTheValueForThatNestedProperty_ThenTheSetValueIsReturned()
+        {
+            _b.Set(x => x.PostalAddress.Identifier, SetValue);
+            _b.Set(x => x.Identifier, (string)null);
+
+            var retrieved = _b.Get(x => x.PostalAddress.Identifier);
+
+            retrieved.ShouldBe(SetValue);
+        }
+
+        [Fact]
         public void GivenTwoValuesHaveBeenSetAgainstAProperty_WhenRetrievingTheValueForThatProperty_ThenTheLastSetValueIsReturned()
         {
             _b.Set(x => x.FirstName, "random");

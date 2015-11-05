@@ -6,7 +6,7 @@ namespace TestStack.Dossier.Tests.TestHelpers.Builders
     {
         protected override Customer BuildObject()
         {
-            return new Customer("customer1", "First Name", "Last Name", 2013, CustomerClass.Normal);
+            return new Customer("customer1", "First Name", "Last Name", 2013, new Address("AddressIdentifier", 5, "Street Name", "Suburb", "City", "PostCode"),  CustomerClass.Normal);
         }
     }
 }

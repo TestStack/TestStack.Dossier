@@ -19,6 +19,11 @@ namespace TestStack.Dossier.Tests.TestHelpers.Builders
             return Set(x => x.YearJoined, yearJoined);
         }
 
+        public virtual CustomerBuilder WithPostalAdressIdentifier(string identifier)
+        {
+            return Set(x => x.PostalAddress.Identifier, identifier);
+        }
+
         protected override Customer BuildObject()
         {
             return new Customer(
@@ -26,6 +31,14 @@ namespace TestStack.Dossier.Tests.TestHelpers.Builders
                 Get(x => x.FirstName),
                 Get(x => x.LastName),
                 Get(x => x.YearJoined),
+                new Address(
+                    Get(x => x.PostalAddress.Identifier),
+                    Get(x => x.PostalAddress.StreetNo),
+                    Get(x => x.PostalAddress.StreetName),
+                    Get(x => x.PostalAddress.Suburb),
+                    Get(x => x.PostalAddress.City),
+                    Get(x => x.PostalAddress.PostCode)
+                    ), 
                 Get(x => x.CustomerClass)
             );
         }

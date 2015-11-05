@@ -92,6 +92,7 @@
     <Compile Include="Lists\ListBuilderInterceptor.cs" />
     <Compile Include="NullingExpandoObject.cs" />
     <Compile Include="Factories\IFactory.cs" />
+    <Compile Include="PathExpressionVisitor.cs" />
     <Compile Include="Reflector.cs" />
     <Compile Include="Suppliers\DefaultEmailValueSupplier.cs" />
     <Compile Include="Suppliers\DefaultLastNameValueSupplier.cs" />
