@@ -6,7 +6,7 @@ namespace TestStack.Dossier.Tests.TestHelpers.Objects.Entities
     {
         protected Customer() {}
 
-        public Customer(string identifier, string firstName, string lastName, int yearJoined, CustomerClass customerClass)
+        public Customer(string identifier, string firstName, string lastName, int yearJoined, Address postalAddress, CustomerClass customerClass)
         {
             if (string.IsNullOrEmpty(identifier))
                 throw new ArgumentNullException("identifier");
@@ -19,6 +19,7 @@ namespace TestStack.Dossier.Tests.TestHelpers.Objects.Entities
             FirstName = firstName;
             LastName = lastName;
             YearJoined = yearJoined;
+            PostalAddress = postalAddress;
             CustomerClass = customerClass;
         }
 
@@ -33,6 +34,7 @@ namespace TestStack.Dossier.Tests.TestHelpers.Objects.Entities
         public virtual string FirstName { get; private set; }
         public virtual string LastName { get; private set; }
         public virtual int YearJoined { get; private set; }
+        public virtual Address PostalAddress { get; private set; }
         public virtual CustomerClass CustomerClass { get; private set; }
     }
 }

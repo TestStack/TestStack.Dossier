@@ -11,6 +11,7 @@ namespace TestStack.Dossier
         public static string GetPropertyNameFor<TObject, TValue>(Expression<Func<TObject, TValue>> property)
         {
             var memExp = property.Body as MemberExpression;
+
             if (memExp == null)
                 throw new ArgumentException(
                     string.Format(
@@ -21,7 +22,10 @@ namespace TestStack.Dossier
                     "property"
                 );
 
-            return memExp.Member.Name;
+            var visitor = new PathExpressionVisitor();
+            visitor.Visit(memExp);
+
+            return string.Join(".", Enumerable.Reverse(visitor.Path));
         }
 
         public static PropertyInfo[] GetSettablePropertiesFor<T>()

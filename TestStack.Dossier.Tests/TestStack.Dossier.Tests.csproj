@@ -66,6 +66,7 @@
     <Compile Include="Factories\CallConstructorFactoryTests.cs" />
     <Compile Include="Factories\PublicPropertySettersFactoryTests.cs" />
     <Compile Include="TestHelpers\Builders\BuilderWithDefaults.cs" />
+    <Compile Include="TestHelpers\Objects\Entities\Address.cs" />
     <Compile Include="TestHelpers\Objects\Entities\Company.cs" />
     <Compile Include="TestHelpers\Objects\Entities\Customer.cs" />
     <Compile Include="TestHelpers\Objects\Entities\CustomerClass.cs" />
