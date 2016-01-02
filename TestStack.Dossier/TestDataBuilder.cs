@@ -11,7 +11,7 @@ namespace TestStack.Dossier
     /// </summary>
     /// <typeparam name="TObject">The type of object this class generates</typeparam>
     /// <typeparam name="TBuilder">The type for this class, yes this is a recursive type definition</typeparam>
-    public abstract class TestDataBuilder<TObject, TBuilder>
+    public abstract class TestDataBuilder<TObject, TBuilder> : ITestDataBuilder<TObject>
         where TObject : class
         where TBuilder : TestDataBuilder<TObject, TBuilder>, new()
     {
