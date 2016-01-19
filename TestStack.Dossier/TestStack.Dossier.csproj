@@ -94,6 +94,10 @@
     <Compile Include="NullingExpandoObject.cs" />
     <Compile Include="Factories\IFactory.cs" />
     <Compile Include="PathExpressionVisitor.cs" />
+    <Compile Include="Picking\ItemPicker.cs" />
+    <Compile Include="Picking\Pick.cs" />
+    <Compile Include="Picking\RandomItemPicker.cs" />
+    <Compile Include="Picking\RepeatingSequenceItemPicker.cs" />
     <Compile Include="Reflector.cs" />
     <Compile Include="Suppliers\DefaultEmailValueSupplier.cs" />
     <Compile Include="Suppliers\DefaultLastNameValueSupplier.cs" />
