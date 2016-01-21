@@ -52,9 +52,9 @@
   <ItemGroup>
     <Compile Include="AnonymousValueFixture.cs" />
     <Compile Include="Builder.cs" />
-    <Compile Include="DataSources\Pick.cs" />
-    <Compile Include="DataSources\RandomItemSource.cs" />
-    <Compile Include="DataSources\RepeatingSequenceSource.cs" />
+    <Compile Include="DataSources\Picking\Pick.cs" />
+    <Compile Include="DataSources\Picking\RandomItemSource.cs" />
+    <Compile Include="DataSources\Picking\RepeatingSequenceSource.cs" />
     <Compile Include="ITestDataBuilder.cs" />
     <Compile Include="DataSources\Dictionaries\Cache.cs" />
     <Compile Include="DataSources\Dictionaries\IDictionaryRepository.cs" />

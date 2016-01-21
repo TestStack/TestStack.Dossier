@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using Shouldly;
 using TestStack.Dossier.DataSources;
+using TestStack.Dossier.DataSources.Picking;
 using TestStack.Dossier.Lists;
 using TestStack.Dossier.Tests.TestHelpers.Objects.Entities;
 using Xunit;

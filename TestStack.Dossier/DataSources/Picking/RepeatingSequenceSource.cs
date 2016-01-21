@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using TestStack.Dossier.DataSources.Generators;
 
-namespace TestStack.Dossier.DataSources
+namespace TestStack.Dossier.DataSources.Picking
 {
     /// <summary>
     /// Implements the repeatable sequence strategy

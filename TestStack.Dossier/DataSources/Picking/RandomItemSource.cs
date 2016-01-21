@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace TestStack.Dossier.DataSources
+namespace TestStack.Dossier.DataSources.Picking
 {
     /// <summary>
     /// Implements the random item strategy

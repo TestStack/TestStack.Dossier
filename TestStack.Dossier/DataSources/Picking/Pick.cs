@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TestStack.Dossier.DataSources
+namespace TestStack.Dossier.DataSources.Picking
 {
     /// <summary>
     /// Pick a sequence of items from a collection of items according to different selection strategies.
