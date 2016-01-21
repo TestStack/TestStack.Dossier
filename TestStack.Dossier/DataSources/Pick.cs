@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TestStack.Dossier.Picking
+namespace TestStack.Dossier.DataSources
 {
     /// <summary>
     /// Pick a sequence of items from a collection of items according to different selection strategies.
@@ -12,10 +12,10 @@ namespace TestStack.Dossier.Picking
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="list">The list.</param>
-        /// <returns>The RandomItemPicker class.</returns>
-        public static RandomItemPicker<T> RandomItemFrom<T>(IList<T> list)
+        /// <returns>The RandomItemSource class.</returns>
+        public static RandomItemSource<T> RandomItemFrom<T>(IList<T> list)
         {
-            return new RandomItemPicker<T>(list);
+            return new RandomItemSource<T>(list);
         }
 
         /// <summary>
@@ -24,9 +24,9 @@ namespace TestStack.Dossier.Picking
         /// <typeparam name="T"></typeparam>
         /// <param name="list">The list.</param>
         /// <returns></returns>
-        public static RepeatingSequenceItemPicker<T> RepeatingSequenceFrom<T>(IList<T> list)
+        public static RepeatingSequenceSource<T> RepeatingSequenceFrom<T>(IList<T> list)
         {
-            return new RepeatingSequenceItemPicker<T>(list);
+            return new RepeatingSequenceSource<T>(list);
         }
     }
 }
