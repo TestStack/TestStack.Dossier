@@ -5,7 +5,7 @@ using Xunit;
 
 namespace TestStack.Dossier.Tests.DataSources.Dictionaries
 {
-    public class FileDictionarySourceTests
+    public class WordsTests
     {
         [Fact]
         public void WhenInitializingList_ThenPassClassNameToRepositoryAsDictionaryName()
@@ -19,9 +19,9 @@ namespace TestStack.Dossier.Tests.DataSources.Dictionaries
         }
     }
 
-    public class DummySource : FileDictionarySource
+    public class DummySource : Words
     {
         internal DummySource(IDictionaryRepository repository) 
-            : base(Substitute.For<IGenerator>(), repository) { }
+            : base(Substitute.For<IGenerator>(), repository, "Dummy") { }
     }
 }

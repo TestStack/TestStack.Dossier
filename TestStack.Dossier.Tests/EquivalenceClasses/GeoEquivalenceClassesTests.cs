@@ -3,21 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using Shouldly;
 using TestStack.Dossier.DataSources;
-using TestStack.Dossier.DataSources.Geography;
-using TestStack.Dossier.EquivalenceClasses.Geo;
-using Xunit;
+using TestStack.Dossier.DataSources.Dictionaries;
 using Xunit.Extensions;
 
 namespace TestStack.Dossier.Tests.EquivalenceClasses
 {
     public class GeoEquivalenceClassesTests
     {
-         public static AnonymousValueFixture Any { get; private set; }
-
-         public GeoEquivalenceClassesTests()
-        {
-            Any = new AnonymousValueFixture();
-        }
+         public static AnonymousValueFixture Any { get; private set; } = new AnonymousValueFixture();
 
         [Theory]
         [PropertyData("TestCases")]
@@ -41,11 +34,11 @@ namespace TestStack.Dossier.Tests.EquivalenceClasses
         {
             get
             {
-                yield return new object[] { new GeoContinentSource(), GenerateTestCasesForSut(Any.Continent) };
-                yield return new object[] { new GeoCountrySource(), GenerateTestCasesForSut(Any.Country) };
-                yield return new object[] { new GeoCountryCodeSource(), GenerateTestCasesForSut(Any.CountryCode) };
-                yield return new object[] { new GeoLatitudeSource(), GenerateTestCasesForSut(Any.Latitude) };
-                yield return new object[] { new GeoLongitudeSource(), GenerateTestCasesForSut(Any.Longitude) };
+                yield return new object[] { new Words(FromDictionary.GeoContinent), GenerateTestCasesForSut(Any.Continent) };
+                yield return new object[] { new Words(FromDictionary.GeoCountry), GenerateTestCasesForSut(Any.Country) };
+                yield return new object[] { new Words(FromDictionary.GeoCountryCode), GenerateTestCasesForSut(Any.CountryCode) };
+                yield return new object[] { new Words(FromDictionary.GeoLatitude), GenerateTestCasesForSut(Any.Latitude) };
+                yield return new object[] { new Words(FromDictionary.GeoLongitude), GenerateTestCasesForSut(Any.Longitude) };
             }
         }
 

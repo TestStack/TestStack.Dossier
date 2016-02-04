@@ -1,23 +1,16 @@
-﻿using TestStack.Dossier.DataSources.Generators;
-using TestStack.Dossier.DataSources.Person;
+using TestStack.Dossier.DataSources.Dictionaries;
+using TestStack.Dossier.DataSources.Generators;
 
-namespace TestStack.Dossier.EquivalenceClasses.Person
+// ReSharper disable once CheckNamespace
+namespace TestStack.Dossier
 {
     /// <summary>
     /// Extension methods that describe equivalence classes for generating anonymous person-related values.
     /// </summary>
-    public static class NameEquivalenceClasses
+    public static class PersonEquivalenceClasses
     {
-        private static PersonEmailAddressSource _personEmailAddressSource;
-        private static PersonEmailAddressSource _uniquePersonEmailAddressSource;
-        private static PersonLanguageSource _personLanguageSource;
-        private static PersonNameFirstFemaleSource _personNameFirstFemaleSource;
-        private static PersonNameFirstSource _personNameFirstSource;
-        private static PersonNameFullSource _personNameFullSource;
-        private static PersonNameLastSource _personNameLastSource;
-        private static PersonNameFirstMaleSource _personNameFirstMaleSource;
-        private static PersonNameSuffixSource _personNameSuffixSource;
-        private static PersonNameTitleSource _personNameTitleSource;
+        private static Words _personEmailAddressSource;
+        private static Words _uniquePersonEmailAddressSource;
 
         /// <summary>
         /// Generate and return an email address.
@@ -26,8 +19,7 @@ namespace TestStack.Dossier.EquivalenceClasses.Person
         /// <returns>The generated email</returns>
         public static string EmailAddress(this AnonymousValueFixture fixture)
         {
-            if (_personEmailAddressSource == null) _personEmailAddressSource = new PersonEmailAddressSource();
-            return _personEmailAddressSource.Next();
+            return fixture.DictionaryFor(FromDictionary.PersonEmailAddress).Next();
         }
 
         /// <summary>
@@ -39,9 +31,9 @@ namespace TestStack.Dossier.EquivalenceClasses.Person
         {
             if (_uniquePersonEmailAddressSource == null)
             {
-                if (_personEmailAddressSource == null) _personEmailAddressSource = new PersonEmailAddressSource();
+                if (_personEmailAddressSource == null) _personEmailAddressSource = fixture.DictionaryFor(FromDictionary.PersonEmailAddress);
                 var generator = new SequentialGenerator(0, _personEmailAddressSource.Data.Count, listShouldBeUnique: true);
-                _uniquePersonEmailAddressSource = new PersonEmailAddressSource(generator);
+                _uniquePersonEmailAddressSource = new Words(generator, new CachedFileDictionaryRepository(),  FromDictionary.PersonEmailAddress);
             }
 
             return _uniquePersonEmailAddressSource.Next();
@@ -54,8 +46,7 @@ namespace TestStack.Dossier.EquivalenceClasses.Person
         /// <returns>The generated language</returns>
         public static string Language(this AnonymousValueFixture fixture)
         {
-            if (_personLanguageSource == null) _personLanguageSource = new PersonLanguageSource();
-            return _personLanguageSource.Next();
+            return fixture.DictionaryFor(FromDictionary.PersonLanguage).Next();
         }
 
         /// <summary>
@@ -65,8 +56,7 @@ namespace TestStack.Dossier.EquivalenceClasses.Person
         /// <returns>The generated female first name</returns>
         public static string FemaleFirstName(this AnonymousValueFixture fixture)
         {
-            if (_personNameFirstFemaleSource == null) _personNameFirstFemaleSource = new PersonNameFirstFemaleSource();
-            return _personNameFirstFemaleSource.Next();
+            return fixture.DictionaryFor(FromDictionary.PersonNameFirstFemale).Next();
         }
 
         /// <summary>
@@ -76,8 +66,7 @@ namespace TestStack.Dossier.EquivalenceClasses.Person
         /// <returns>The generated first name</returns>
         public static string FirstName(this AnonymousValueFixture fixture)
         {
-            if (_personNameFirstSource == null) _personNameFirstSource = new PersonNameFirstSource();
-            return _personNameFirstSource.Next();
+            return fixture.DictionaryFor(FromDictionary.PersonNameFirst).Next();
         }
 
         /// <summary>
@@ -87,8 +76,7 @@ namespace TestStack.Dossier.EquivalenceClasses.Person
         /// <returns>The generated full name</returns>
         public static string FullName(this AnonymousValueFixture fixture)
         {
-            if (_personNameFullSource == null) _personNameFullSource = new PersonNameFullSource();
-            return _personNameFullSource.Next();
+            return fixture.DictionaryFor(FromDictionary.PersonNameFull).Next();
         }
 
         /// <summary>
@@ -98,8 +86,7 @@ namespace TestStack.Dossier.EquivalenceClasses.Person
         /// <returns>The generated last name</returns>
         public static string LastName(this AnonymousValueFixture fixture)
         {
-            if (_personNameLastSource == null) _personNameLastSource = new PersonNameLastSource();
-            return _personNameLastSource.Next();
+            return fixture.DictionaryFor(FromDictionary.PersonNameLast).Next();
         }
 
         /// <summary>
@@ -109,8 +96,7 @@ namespace TestStack.Dossier.EquivalenceClasses.Person
         /// <returns>The generated male first name</returns>
         public static string MaleFirstName(this AnonymousValueFixture fixture)
         {
-            if (_personNameFirstMaleSource == null) _personNameFirstMaleSource = new PersonNameFirstMaleSource();
-            return _personNameFirstMaleSource.Next();
+            return fixture.DictionaryFor(FromDictionary.PersonNameFirstMale).Next();
         }
 
         /// <summary>
@@ -120,8 +106,7 @@ namespace TestStack.Dossier.EquivalenceClasses.Person
         /// <returns>The generated suffix</returns>
         public static string Suffix(this AnonymousValueFixture fixture)
         {
-            if (_personNameSuffixSource == null) _personNameSuffixSource = new PersonNameSuffixSource();
-            return _personNameSuffixSource.Next();
+            return fixture.DictionaryFor(FromDictionary.PersonNameSuffix).Next();
         }
 
         /// <summary>
@@ -131,10 +116,8 @@ namespace TestStack.Dossier.EquivalenceClasses.Person
         /// <returns>The generated title</returns>
         public static string Title(this AnonymousValueFixture fixture)
         {
-            if (_personNameTitleSource == null) _personNameTitleSource = new PersonNameTitleSource();
-            return _personNameTitleSource.Next();
+            return fixture.DictionaryFor(FromDictionary.PersonNameTitle).Next();
         }
 
     }
-
 }

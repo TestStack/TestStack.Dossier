@@ -1,18 +1,13 @@
-﻿using TestStack.Dossier.DataSources.Geography;
+﻿using TestStack.Dossier.DataSources.Dictionaries;
 
-namespace TestStack.Dossier.EquivalenceClasses.Geo
+// ReSharper disable once CheckNamespace
+namespace TestStack.Dossier
 {
     /// <summary>
     /// Extension methods that describe equivalence classes for generating anonymous geography-related values.
     /// </summary>
-    public static class GeographyEquivalenceClassescs
+    public static class GeographyEquivalenceClasses
     {
-        private static GeoContinentSource _geoContinentSource;
-        private static GeoCountrySource _geoCountrySource;
-        private static GeoCountryCodeSource _geoCountryCodeSource;
-        private static GeoLatitudeSource _geoLatitudeSource;
-        private static GeoLongitudeSource _geoLongitudeSource;
-
         /// <summary>
         /// Generate and return a continent name.
         /// </summary>
@@ -20,8 +15,7 @@ namespace TestStack.Dossier.EquivalenceClasses.Geo
         /// <returns>The generated continent</returns>
         public static string Continent(this AnonymousValueFixture fixture)
         {
-            if (_geoContinentSource == null) _geoContinentSource = new GeoContinentSource();
-            return _geoContinentSource.Next();
+            return fixture.DictionaryFor(FromDictionary.GeoContinent).Next();
         }
 
         /// <summary>
@@ -31,8 +25,7 @@ namespace TestStack.Dossier.EquivalenceClasses.Geo
         /// <returns>The generated country</returns>
         public static string Country(this AnonymousValueFixture fixture)
         {
-            if (_geoCountrySource == null) _geoCountrySource = new GeoCountrySource();
-            return _geoCountrySource.Next();
+            return fixture.DictionaryFor(FromDictionary.GeoCountry).Next();
         }
 
         /// <summary>
@@ -42,10 +35,8 @@ namespace TestStack.Dossier.EquivalenceClasses.Geo
         /// <returns>The generated country code</returns>
         public static string CountryCode(this AnonymousValueFixture fixture)
         {
-            if (_geoCountryCodeSource == null) _geoCountryCodeSource = new GeoCountryCodeSource();
-            return _geoCountryCodeSource.Next();
+            return fixture.DictionaryFor(FromDictionary.GeoCountryCode).Next();
         }
-
 
         /// <summary>
         /// Generate and return a latitude coordinate.
@@ -54,8 +45,7 @@ namespace TestStack.Dossier.EquivalenceClasses.Geo
         /// <returns>The generated latitude</returns>
         public static string Latitude(this AnonymousValueFixture fixture)
         {
-            if (_geoLatitudeSource == null) _geoLatitudeSource = new GeoLatitudeSource();
-            return _geoLatitudeSource.Next();
+            return fixture.DictionaryFor(FromDictionary.GeoLatitude).Next();
         }
 
         /// <summary>
@@ -65,8 +55,7 @@ namespace TestStack.Dossier.EquivalenceClasses.Geo
         /// <returns>The generated longitude</returns>
         public static string Longitude(this AnonymousValueFixture fixture)
         {
-            if (_geoLongitudeSource == null) _geoLongitudeSource = new GeoLongitudeSource();
-            return _geoLongitudeSource.Next();
+            return fixture.DictionaryFor(FromDictionary.GeoLongitude).Next();
         }
     }
 }

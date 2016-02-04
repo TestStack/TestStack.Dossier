@@ -72,8 +72,8 @@
     <Compile Include="TestHelpers\Objects\Entities\CustomerClass.cs" />
     <Compile Include="DataSources\DataSourceTests.cs" />
     <Compile Include="DataSources\Dictionaries\CacheTests.cs" />
-    <Compile Include="DataSources\Dictionaries\FileDictionaryRepositoryIntegrationTests.cs" />
-    <Compile Include="DataSources\Dictionaries\FileDictionarySourceTests.cs" />
+    <Compile Include="DataSources\Dictionaries\CachedFileDictionaryRepositoryIntegrationTests.cs" />
+    <Compile Include="DataSources\Dictionaries\WordsTests.cs" />
     <Compile Include="DataSources\Dictionaries\Resources\FileDataConventions.cs" />
     <Compile Include="DataSources\Generators\RandomGeneratorTests.cs" />
     <Compile Include="DataSources\Generators\SequentiaGeneratorTests.cs" />

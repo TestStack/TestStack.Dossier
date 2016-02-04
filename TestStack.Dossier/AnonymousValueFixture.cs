@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Text;
 using Ploeh.AutoFixture;
+using TestStack.Dossier.DataSources.Dictionaries;
 using TestStack.Dossier.Suppliers;
 
 namespace TestStack.Dossier
@@ -25,6 +28,7 @@ namespace TestStack.Dossier
                 new DefaultValueTypeValueSupplier(),
                 new DefaultValueSupplier()
             };
+            _dictionaries = new ConcurrentDictionary<string, Words>();
         }
 
         /// <summary>
@@ -106,5 +110,21 @@ namespace TestStack.Dossier
 
             return valueSupplier.GenerateAnonymousValue(this, type, propertyName);
         }
+
+        /// <summary>
+        /// Gets a data source for a file dictionary, which can be built-in or a user-supplied text file.
+        /// </summary>
+        /// <param name="dictionaryName">The name of the file dictionary, without the extension</param>
+        /// <returns></returns>
+        public Words DictionaryFor(string dictionaryName)
+        {
+            if (!_dictionaries.ContainsKey(dictionaryName))
+            {
+                _dictionaries[dictionaryName] = new Words(dictionaryName);
+            }
+            return _dictionaries[dictionaryName];
+        }
+
+        private static ConcurrentDictionary<string, Words> _dictionaries;
     }
 }

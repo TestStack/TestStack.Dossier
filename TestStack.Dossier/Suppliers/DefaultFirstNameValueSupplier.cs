@@ -1,5 +1,5 @@
 ﻿using System;
-using TestStack.Dossier.EquivalenceClasses.Person;
+using TestStack.Dossier.EquivalenceClasses;
 
 namespace TestStack.Dossier.Suppliers
 {
