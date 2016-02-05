@@ -15,7 +15,7 @@ namespace TestStack.Dossier
         /// <returns>The generated value.</returns>
         public static string ColourHex(this AnonymousValueFixture fixture)
         {
-            return fixture.DictionaryFor(FromDictionary.ColourHex).Next();
+            return fixture.Words(FromDictionary.ColourHex).Next();
         }
 
         /// <summary>
@@ -25,7 +25,7 @@ namespace TestStack.Dossier
         /// <returns>The generated value.</returns>
         public static string ColourName(this AnonymousValueFixture fixture)
         {
-            return fixture.DictionaryFor(FromDictionary.ColourName).Next();
+            return fixture.Words(FromDictionary.ColourName).Next();
         }
     }
 }

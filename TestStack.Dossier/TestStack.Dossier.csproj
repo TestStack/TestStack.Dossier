@@ -68,7 +68,7 @@
     <Compile Include="EquivalenceClasses\LoremIpsumEquivalence.cs" />
     <Compile Include="EquivalenceClasses\PersonEquivalence.cs" />
     <Compile Include="ITestDataBuilder.cs" />
-    <Compile Include="DataSources\Dictionaries\Cache.cs" />
+    <Compile Include="DataSources\Dictionaries\WordsCache.cs" />
     <Compile Include="DataSources\Dictionaries\IDictionaryRepository.cs" />
     <Compile Include="DataSources\Dictionaries\CachedFileDictionaryRepository.cs" />
     <Compile Include="DataSources\DataSource.cs" />

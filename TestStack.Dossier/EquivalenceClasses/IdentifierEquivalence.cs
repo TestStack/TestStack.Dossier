@@ -15,7 +15,7 @@ namespace TestStack.Dossier
         /// <returns>The generated value.</returns>
         public static string IdentifierBitcoinAddress(this AnonymousValueFixture fixture)
         {
-            return fixture.DictionaryFor(FromDictionary.IdentifierBitcoinAddress).Next();
+            return fixture.Words(FromDictionary.IdentifierBitcoinAddress).Next();
         }
 
         /// <summary>
@@ -25,7 +25,7 @@ namespace TestStack.Dossier
         /// <returns>The generated value.</returns>
         public static string IdentifierIban(this AnonymousValueFixture fixture)
         {
-            return fixture.DictionaryFor(FromDictionary.IdentifierIban).Next();
+            return fixture.Words(FromDictionary.IdentifierIban).Next();
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace TestStack.Dossier
         /// <returns>The generated value.</returns>
         public static string IdentifierIpAddressV4(this AnonymousValueFixture fixture)
         {
-            return fixture.DictionaryFor(FromDictionary.IdentifierIpAddressV4).Next();
+            return fixture.Words(FromDictionary.IdentifierIpAddressV4).Next();
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace TestStack.Dossier
         /// <returns>The generated value.</returns>
         public static string IdentifierIpAddressV6(this AnonymousValueFixture fixture)
         {
-            return fixture.DictionaryFor(FromDictionary.IdentifierIpAddressV6).Next();
+            return fixture.Words(FromDictionary.IdentifierIpAddressV6).Next();
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace TestStack.Dossier
         /// <returns>The generated value.</returns>
         public static string IdentifierIsbn(this AnonymousValueFixture fixture)
         {
-            return fixture.DictionaryFor(FromDictionary.IdentifierIsbn).Next();
+            return fixture.Words(FromDictionary.IdentifierIsbn).Next();
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace TestStack.Dossier
         /// <returns>The generated value.</returns>
         public static string IdentifierMacAddress(this AnonymousValueFixture fixture)
         {
-            return fixture.DictionaryFor(FromDictionary.IdentifierMacAddress).Next();
+            return fixture.Words(FromDictionary.IdentifierMacAddress).Next();
         }
     }
 }

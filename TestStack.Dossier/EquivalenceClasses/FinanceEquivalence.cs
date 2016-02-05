@@ -15,7 +15,7 @@ namespace TestStack.Dossier
         /// <returns>The generated value.</returns>
         public static string FinanceCreditCardNumber(this AnonymousValueFixture fixture)
         {
-            return fixture.DictionaryFor(FromDictionary.FinanceCreditCardNumber).Next();
+            return fixture.Words(FromDictionary.FinanceCreditCardNumber).Next();
         }
 
         /// <summary>
@@ -25,7 +25,7 @@ namespace TestStack.Dossier
         /// <returns>The generated value.</returns>
         public static string FinanceCreditCardType(this AnonymousValueFixture fixture)
         {
-            return fixture.DictionaryFor(FromDictionary.FinanceCreditCardType).Next();
+            return fixture.Words(FromDictionary.FinanceCreditCardType).Next();
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace TestStack.Dossier
         /// <returns>The generated value.</returns>
         public static string FinanceCurrency(this AnonymousValueFixture fixture)
         {
-            return fixture.DictionaryFor(FromDictionary.FinanceCurrency).Next();
+            return fixture.Words(FromDictionary.FinanceCurrency).Next();
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace TestStack.Dossier
         /// <returns>The generated value.</returns>
         public static string FinanceCurrencyCode(this AnonymousValueFixture fixture)
         {
-            return fixture.DictionaryFor(FromDictionary.FinanceCurrencyCode).Next();
+            return fixture.Words(FromDictionary.FinanceCurrencyCode).Next();
         }
 
     }

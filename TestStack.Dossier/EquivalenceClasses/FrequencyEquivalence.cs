@@ -15,7 +15,7 @@ namespace TestStack.Dossier
         /// <returns>The generated value.</returns>
         public static string Frequency(this AnonymousValueFixture fixture)
         {
-            return fixture.DictionaryFor(FromDictionary.Frequency).Next();
+            return fixture.Words(FromDictionary.Frequency).Next();
         }
 
     }

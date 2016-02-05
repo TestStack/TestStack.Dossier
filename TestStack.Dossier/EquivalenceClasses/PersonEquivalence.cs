@@ -21,7 +21,7 @@ namespace TestStack.Dossier
         {
             if (_uniquePersonEmailAddressSource == null)
             {
-                if (_personEmailAddressSource == null) _personEmailAddressSource = fixture.DictionaryFor(FromDictionary.PersonEmailAddress);
+                if (_personEmailAddressSource == null) _personEmailAddressSource = fixture.Words(FromDictionary.PersonEmailAddress);
                 var generator = new SequentialGenerator(0, _personEmailAddressSource.Data.Count, listShouldBeUnique: true);
                 _uniquePersonEmailAddressSource = new Words(generator, new CachedFileDictionaryRepository(), FromDictionary.PersonEmailAddress);
             }
@@ -36,7 +36,7 @@ namespace TestStack.Dossier
         /// <returns>The generated value.</returns>
         public static string PersonEmailAddress(this AnonymousValueFixture fixture)
         {
-            return fixture.DictionaryFor(FromDictionary.PersonEmailAddress).Next();
+            return fixture.Words(FromDictionary.PersonEmailAddress).Next();
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace TestStack.Dossier
         /// <returns>The generated value.</returns>
         public static string PersonLanguage(this AnonymousValueFixture fixture)
         {
-            return fixture.DictionaryFor(FromDictionary.PersonLanguage).Next();
+            return fixture.Words(FromDictionary.PersonLanguage).Next();
         }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace TestStack.Dossier
         /// <returns>The generated value.</returns>
         public static string PersonNameFirst(this AnonymousValueFixture fixture)
         {
-            return fixture.DictionaryFor(FromDictionary.PersonNameFirst).Next();
+            return fixture.Words(FromDictionary.PersonNameFirst).Next();
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace TestStack.Dossier
         /// <returns>The generated value.</returns>
         public static string PersonNameFirstFemale(this AnonymousValueFixture fixture)
         {
-            return fixture.DictionaryFor(FromDictionary.PersonNameFirstFemale).Next();
+            return fixture.Words(FromDictionary.PersonNameFirstFemale).Next();
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace TestStack.Dossier
         /// <returns>The generated value.</returns>
         public static string PersonNameFirstMale(this AnonymousValueFixture fixture)
         {
-            return fixture.DictionaryFor(FromDictionary.PersonNameFirstMale).Next();
+            return fixture.Words(FromDictionary.PersonNameFirstMale).Next();
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace TestStack.Dossier
         /// <returns>The generated value.</returns>
         public static string PersonNameFull(this AnonymousValueFixture fixture)
         {
-            return fixture.DictionaryFor(FromDictionary.PersonNameFull).Next();
+            return fixture.Words(FromDictionary.PersonNameFull).Next();
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace TestStack.Dossier
         /// <returns>The generated value.</returns>
         public static string PersonNameLast(this AnonymousValueFixture fixture)
         {
-            return fixture.DictionaryFor(FromDictionary.PersonNameLast).Next();
+            return fixture.Words(FromDictionary.PersonNameLast).Next();
         }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace TestStack.Dossier
         /// <returns>The generated value.</returns>
         public static string PersonNameSuffix(this AnonymousValueFixture fixture)
         {
-            return fixture.DictionaryFor(FromDictionary.PersonNameSuffix).Next();
+            return fixture.Words(FromDictionary.PersonNameSuffix).Next();
         }
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace TestStack.Dossier
         /// <returns>The generated value.</returns>
         public static string PersonNameTitle(this AnonymousValueFixture fixture)
         {
-            return fixture.DictionaryFor(FromDictionary.PersonNameTitle).Next();
+            return fixture.Words(FromDictionary.PersonNameTitle).Next();
         }
 
         /// <summary>
@@ -126,7 +126,7 @@ namespace TestStack.Dossier
         /// <returns>The generated value.</returns>
         public static string PersonPassword(this AnonymousValueFixture fixture)
         {
-            return fixture.DictionaryFor(FromDictionary.PersonPassword).Next();
+            return fixture.Words(FromDictionary.PersonPassword).Next();
         }
 
         /// <summary>
@@ -136,7 +136,7 @@ namespace TestStack.Dossier
         /// <returns>The generated value.</returns>
         public static string PersonRace(this AnonymousValueFixture fixture)
         {
-            return fixture.DictionaryFor(FromDictionary.PersonRace).Next();
+            return fixture.Words(FromDictionary.PersonRace).Next();
         }
 
         /// <summary>
@@ -146,7 +146,7 @@ namespace TestStack.Dossier
         /// <returns>The generated value.</returns>
         public static string PersonUsername(this AnonymousValueFixture fixture)
         {
-            return fixture.DictionaryFor(FromDictionary.PersonUsername).Next();
+            return fixture.Words(FromDictionary.PersonUsername).Next();
         }
 
     }

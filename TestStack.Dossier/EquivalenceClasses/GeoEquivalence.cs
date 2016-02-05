@@ -15,7 +15,7 @@ namespace TestStack.Dossier
         /// <returns>The generated value.</returns>
         public static string GeoContinent(this AnonymousValueFixture fixture)
         {
-            return fixture.DictionaryFor(FromDictionary.GeoContinent).Next();
+            return fixture.Words(FromDictionary.GeoContinent).Next();
         }
 
         /// <summary>
@@ -25,7 +25,7 @@ namespace TestStack.Dossier
         /// <returns>The generated value.</returns>
         public static string GeoCountry(this AnonymousValueFixture fixture)
         {
-            return fixture.DictionaryFor(FromDictionary.GeoCountry).Next();
+            return fixture.Words(FromDictionary.GeoCountry).Next();
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace TestStack.Dossier
         /// <returns>The generated value.</returns>
         public static string GeoCountryCode(this AnonymousValueFixture fixture)
         {
-            return fixture.DictionaryFor(FromDictionary.GeoCountryCode).Next();
+            return fixture.Words(FromDictionary.GeoCountryCode).Next();
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace TestStack.Dossier
         /// <returns>The generated value.</returns>
         public static string GeoLatitude(this AnonymousValueFixture fixture)
         {
-            return fixture.DictionaryFor(FromDictionary.GeoLatitude).Next();
+            return fixture.Words(FromDictionary.GeoLatitude).Next();
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace TestStack.Dossier
         /// <returns>The generated value.</returns>
         public static string GeoLongitude(this AnonymousValueFixture fixture)
         {
-            return fixture.DictionaryFor(FromDictionary.GeoLongitude).Next();
+            return fixture.Words(FromDictionary.GeoLongitude).Next();
         }
 
     }

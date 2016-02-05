@@ -15,7 +15,7 @@ namespace TestStack.Dossier
         /// <returns>The generated value.</returns>
         public static string ShirtSize(this AnonymousValueFixture fixture)
         {
-            return fixture.DictionaryFor(FromDictionary.ShirtSize).Next();
+            return fixture.Words(FromDictionary.ShirtSize).Next();
         }
 
     }

@@ -15,7 +15,7 @@ namespace TestStack.Dossier
         /// <returns>The generated value.</returns>
         public static string CompanyIndustry(this AnonymousValueFixture fixture)
         {
-            return fixture.DictionaryFor(FromDictionary.CompanyIndustry).Next();
+            return fixture.Words(FromDictionary.CompanyIndustry).Next();
         }
 
         /// <summary>
@@ -25,7 +25,7 @@ namespace TestStack.Dossier
         /// <returns>The generated value.</returns>
         public static string CompanyJobTitle(this AnonymousValueFixture fixture)
         {
-            return fixture.DictionaryFor(FromDictionary.CompanyJobTitle).Next();
+            return fixture.Words(FromDictionary.CompanyJobTitle).Next();
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace TestStack.Dossier
         /// <returns>The generated value.</returns>
         public static string CompanyLocation(this AnonymousValueFixture fixture)
         {
-            return fixture.DictionaryFor(FromDictionary.CompanyLocation).Next();
+            return fixture.Words(FromDictionary.CompanyLocation).Next();
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace TestStack.Dossier
         /// <returns>The generated value.</returns>
         public static string CompanyName(this AnonymousValueFixture fixture)
         {
-            return fixture.DictionaryFor(FromDictionary.CompanyName).Next();
+            return fixture.Words(FromDictionary.CompanyName).Next();
         }
 
     }

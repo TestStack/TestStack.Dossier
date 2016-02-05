@@ -84,7 +84,7 @@
     <Compile Include="TestHelpers\Objects\Entities\Customer.cs" />
     <Compile Include="TestHelpers\Objects\Entities\CustomerClass.cs" />
     <Compile Include="DataSources\DataSourceTests.cs" />
-    <Compile Include="DataSources\Dictionaries\CacheTests.cs" />
+    <Compile Include="DataSources\Dictionaries\WordsCacheTests.cs" />
     <Compile Include="DataSources\Dictionaries\CachedFileDictionaryRepositoryIntegrationTests.cs" />
     <Compile Include="DataSources\Dictionaries\WordsTests.cs" />
     <Compile Include="DataSources\Dictionaries\Resources\FileDataConventions.cs" />

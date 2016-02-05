@@ -15,7 +15,7 @@ namespace TestStack.Dossier
         /// <returns>The generated value.</returns>
         public static string AddressAusCity(this AnonymousValueFixture fixture)
         {
-            return fixture.DictionaryFor(FromDictionary.AddressAusCity).Next();
+            return fixture.Words(FromDictionary.AddressAusCity).Next();
         }
 
         /// <summary>
@@ -25,7 +25,7 @@ namespace TestStack.Dossier
         /// <returns>The generated value.</returns>
         public static string AddressAusCompany(this AnonymousValueFixture fixture)
         {
-            return fixture.DictionaryFor(FromDictionary.AddressAusCompany).Next();
+            return fixture.Words(FromDictionary.AddressAusCompany).Next();
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace TestStack.Dossier
         /// <returns>The generated value.</returns>
         public static string AddressAusPhone(this AnonymousValueFixture fixture)
         {
-            return fixture.DictionaryFor(FromDictionary.AddressAusPhone).Next();
+            return fixture.Words(FromDictionary.AddressAusPhone).Next();
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace TestStack.Dossier
         /// <returns>The generated value.</returns>
         public static string AddressAusPostCode(this AnonymousValueFixture fixture)
         {
-            return fixture.DictionaryFor(FromDictionary.AddressAusPostCode).Next();
+            return fixture.Words(FromDictionary.AddressAusPostCode).Next();
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace TestStack.Dossier
         /// <returns>The generated value.</returns>
         public static string AddressAusState(this AnonymousValueFixture fixture)
         {
-            return fixture.DictionaryFor(FromDictionary.AddressAusState).Next();
+            return fixture.Words(FromDictionary.AddressAusState).Next();
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace TestStack.Dossier
         /// <returns>The generated value.</returns>
         public static string AddressAusStateAbbreviation(this AnonymousValueFixture fixture)
         {
-            return fixture.DictionaryFor(FromDictionary.AddressAusStateAbbreviation).Next();
+            return fixture.Words(FromDictionary.AddressAusStateAbbreviation).Next();
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace TestStack.Dossier
         /// <returns>The generated value.</returns>
         public static string AddressAusStreet(this AnonymousValueFixture fixture)
         {
-            return fixture.DictionaryFor(FromDictionary.AddressAusStreet).Next();
+            return fixture.Words(FromDictionary.AddressAusStreet).Next();
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace TestStack.Dossier
         /// <returns>The generated value.</returns>
         public static string AddressAusWebsite(this AnonymousValueFixture fixture)
         {
-            return fixture.DictionaryFor(FromDictionary.AddressAusWebsite).Next();
+            return fixture.Words(FromDictionary.AddressAusWebsite).Next();
         }
 
     }

@@ -15,7 +15,7 @@ namespace TestStack.Dossier
         /// <returns>The generated value.</returns>
         public static string InternetDomainCountryCodeTopLevelDomain(this AnonymousValueFixture fixture)
         {
-            return fixture.DictionaryFor(FromDictionary.InternetDomainCountryCodeTopLevelDomain).Next();
+            return fixture.Words(FromDictionary.InternetDomainCountryCodeTopLevelDomain).Next();
         }
 
         /// <summary>
@@ -25,7 +25,7 @@ namespace TestStack.Dossier
         /// <returns>The generated value.</returns>
         public static string InternetDomainName(this AnonymousValueFixture fixture)
         {
-            return fixture.DictionaryFor(FromDictionary.InternetDomainName).Next();
+            return fixture.Words(FromDictionary.InternetDomainName).Next();
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace TestStack.Dossier
         /// <returns>The generated value.</returns>
         public static string InternetDomainTopLevel(this AnonymousValueFixture fixture)
         {
-            return fixture.DictionaryFor(FromDictionary.InternetDomainTopLevel).Next();
+            return fixture.Words(FromDictionary.InternetDomainTopLevel).Next();
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace TestStack.Dossier
         /// <returns>The generated value.</returns>
         public static string InternetUrl(this AnonymousValueFixture fixture)
         {
-            return fixture.DictionaryFor(FromDictionary.InternetUrl).Next();
+            return fixture.Words(FromDictionary.InternetUrl).Next();
         }
 
     }

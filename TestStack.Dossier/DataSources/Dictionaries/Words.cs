@@ -25,6 +25,8 @@ namespace TestStack.Dossier.DataSources.Dictionaries
             _dictionaryName = dictionaryName;
         }
 
+        internal string DictionaryName => _dictionaryName;
+
         /// <inheritdoc />
         protected override IList<string> InitializeDataSource()
         {

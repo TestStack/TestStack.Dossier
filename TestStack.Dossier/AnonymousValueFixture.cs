@@ -28,7 +28,6 @@ namespace TestStack.Dossier
                 new DefaultValueTypeValueSupplier(),
                 new DefaultValueSupplier()
             };
-            _dictionaries = new ConcurrentDictionary<string, Words>();
         }
 
         /// <summary>
@@ -114,17 +113,13 @@ namespace TestStack.Dossier
         /// <summary>
         /// Gets a data source for a file dictionary, which can be built-in or a user-supplied text file.
         /// </summary>
-        /// <param name="dictionaryName">The name of the file dictionary, without the extension</param>
+        /// <param name="dictionaryName">The name of the file dictionary, without the extension.
+        /// Recommended to use the FromDictionary list of constants for the built-in file dictionaries.
+        /// Just use a normal string for user-supplied text files.</param>
         /// <returns></returns>
-        public Words DictionaryFor(string dictionaryName)
+        public Words Words(string dictionaryName)
         {
-            if (!_dictionaries.ContainsKey(dictionaryName))
-            {
-                _dictionaries[dictionaryName] = new Words(dictionaryName);
-            }
-            return _dictionaries[dictionaryName];
+            return WordsCache.Get(dictionaryName);
         }
-
-        private static ConcurrentDictionary<string, Words> _dictionaries;
     }
 }

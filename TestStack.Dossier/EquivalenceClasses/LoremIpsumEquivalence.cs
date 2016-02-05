@@ -15,7 +15,7 @@ namespace TestStack.Dossier
         /// <returns>The generated value.</returns>
         public static string LoremIpsum(this AnonymousValueFixture fixture)
         {
-            return fixture.DictionaryFor(FromDictionary.LoremIpsum).Next();
+            return fixture.Words(FromDictionary.LoremIpsum).Next();
         }
 
     }
