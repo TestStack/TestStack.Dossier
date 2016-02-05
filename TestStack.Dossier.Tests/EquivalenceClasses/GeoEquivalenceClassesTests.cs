@@ -1,55 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Shouldly;
+﻿using System.Collections.Generic;
 using TestStack.Dossier.DataSources;
 using TestStack.Dossier.DataSources.Dictionaries;
 using Xunit.Extensions;
 
 namespace TestStack.Dossier.Tests.EquivalenceClasses
 {
-    public class GeoEquivalenceClassesTests
+    public class GeoEquivalenceClassesTests : FileDictionaryEquivalenceTests
     {
-         public static AnonymousValueFixture Any { get; private set; } = new AnonymousValueFixture();
-
         [Theory]
-        [PropertyData("TestCases")]
-        public void WhenGettingAnyGeoData_ThenReturnRandomGeoDataWhichIsReasonablyUnique(DataSource<string> source,
-            List<string> testCases)
+        [ClassData(typeof(GeoTestCases))]
+        public override void WhenGettingAnyData_ThenReturnRandomDataWhichIsReasonablyUnique(DataSource<string> source, List<string> testCases)
         {
-            foreach (var testCase in testCases)
-            {
-                testCase.ShouldBeOfType<string>();
-                testCase.ShouldNotBeNullOrEmpty();
-                source.Data.ShouldContain(testCase);
-            }
-            if (source.Data.Count > 15)
-            {
-                var unique = testCases.Distinct().Count();
-                unique.ShouldBeGreaterThan(5);
-            }
+            base.WhenGettingAnyData_ThenReturnRandomDataWhichIsReasonablyUnique(source, testCases);
         }
+    }
 
-        public static IEnumerable<object[]> TestCases
+    public class GeoTestCases : FileDictionaryEquivalenceTestCases
+    {
+        protected  override List<object[]> GetData()
         {
-            get
+            return new List<object[]>
             {
-                yield return new object[] { new Words(FromDictionary.GeoContinent), GenerateTestCasesForSut(Any.GeoContinent) };
-                yield return new object[] { new Words(FromDictionary.GeoCountry), GenerateTestCasesForSut(Any.GeoCountry) };
-                yield return new object[] { new Words(FromDictionary.GeoCountryCode), GenerateTestCasesForSut(Any.GeoCountryCode) };
-                yield return new object[] { new Words(FromDictionary.GeoLatitude), GenerateTestCasesForSut(Any.GeoLatitude) };
-                yield return new object[] { new Words(FromDictionary.GeoLongitude), GenerateTestCasesForSut(Any.GeoLongitude) };
-            }
+                new object[] {new Words(FromDictionary.GeoContinent), GenerateTestCasesForSut(Any.GeoContinent)},
+                new object[] {new Words(FromDictionary.GeoCountry), GenerateTestCasesForSut(Any.GeoCountry)},
+                new object[] {new Words(FromDictionary.GeoCountryCode), GenerateTestCasesForSut(Any.GeoCountryCode)},
+                new object[] {new Words(FromDictionary.GeoLatitude), GenerateTestCasesForSut(Any.GeoLatitude)},
+                new object[] {new Words(FromDictionary.GeoLongitude), GenerateTestCasesForSut(Any.GeoLongitude)},
+            };
         }
-
-        private static List<string> GenerateTestCasesForSut(Func<string> any)
-        {
-            var results = new List<string>();
-            for (int i = 0; i < 10; i++)
-            {
-                results.Add(any());
-            }
-            return results;
-        } 
     }
 }

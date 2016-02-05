@@ -58,6 +58,9 @@
     <Compile Include="Builder_CreateListTests.cs" />
     <Compile Include="Builder_CreateNewTests.cs" />
     <Compile Include="Builder_SetUsingBuilderTests.cs" />
+    <Compile Include="EquivalenceClasses\AddressAusEquivalenceClassesTests.cs" />
+    <Compile Include="EquivalenceClasses\FileDictionaryEquivalenceTestCases.cs" />
+    <Compile Include="EquivalenceClasses\FileDictionaryEquivalenceTests.cs" />
     <Compile Include="TestHelpers\Builders\AddressViewModelBuilder.cs" />
     <Compile Include="TestHelpers\Builders\AutoConstructorCustomerBuilder.cs" />
     <Compile Include="ChildBuilderTests.cs" />

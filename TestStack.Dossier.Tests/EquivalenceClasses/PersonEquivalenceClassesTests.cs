@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Shouldly;
 using TestStack.Dossier.DataSources;
@@ -9,26 +8,15 @@ using Xunit.Extensions;
 
 namespace TestStack.Dossier.Tests.EquivalenceClasses
 {
-    public class PersonEquivalenceClassesTests
+    public class PersonEquivalenceClassesTests : FileDictionaryEquivalenceTests
     {
-         public static AnonymousValueFixture Any { get; } = new AnonymousValueFixture();
+        public AnonymousValueFixture Any { get; } = new AnonymousValueFixture();
 
         [Theory]
-        [PropertyData("TestCases")]
-        public void WhenGettingAnyPersonData_ThenReturnRandomPersonDataWhichIsReasonablyUnique(DataSource<string> source,
-            List<string> testCases)
+        [ClassData(typeof(PersonTestCases))]
+        public override void WhenGettingAnyData_ThenReturnRandomDataWhichIsReasonablyUnique(DataSource<string> source, List<string> testCases)
         {
-            foreach (var testCase in testCases)
-            {
-                testCase.ShouldBeOfType<string>();
-                testCase.ShouldNotBeNullOrEmpty();
-                source.Data.ShouldContain(testCase);
-            }
-            if (source.Data.Count > 15)
-            {
-                var unique = testCases.Distinct().Count();
-                unique.ShouldBeGreaterThan(5);
-            }
+            base.WhenGettingAnyData_ThenReturnRandomDataWhichIsReasonablyUnique(source, testCases);
         }
 
         [Fact]
@@ -47,31 +35,27 @@ namespace TestStack.Dossier.Tests.EquivalenceClasses
             generatedValues.Distinct().Count()
                 .ShouldBe(generatedValues.Count);
         }
+    }
 
-        public static IEnumerable<object[]> TestCases
+    public class PersonTestCases : FileDictionaryEquivalenceTestCases
+    {
+        protected override List<object[]> GetData()
         {
-            get
+            return new List<object[]>
             {
-                yield return new object[] { new Words(FromDictionary.PersonEmailAddress), GenerateTestCasesForSut(Any.PersonEmailAddress) };
-                yield return new object[] { new Words(FromDictionary.PersonLanguage), GenerateTestCasesForSut(Any.PersonLanguage) };
-                yield return new object[] { new Words(FromDictionary.PersonNameFirstFemale), GenerateTestCasesForSut(Any.PersonNameFirstFemale) };
-                yield return new object[] { new Words(FromDictionary.PersonNameFirst), GenerateTestCasesForSut(Any.PersonNameFirst) };
-                yield return new object[] { new Words(FromDictionary.PersonNameFull), GenerateTestCasesForSut(Any.PersonNameFull) };
-                yield return new object[] { new Words(FromDictionary.PersonNameLast), GenerateTestCasesForSut(Any.PersonNameLast) };
-                yield return new object[] { new Words(FromDictionary.PersonNameFirstMale), GenerateTestCasesForSut(Any.PersonNameFirstMale) };
-                yield return new object[] { new Words(FromDictionary.PersonNameSuffix), GenerateTestCasesForSut(Any.PersonNameSuffix) };
-                yield return new object[] { new Words(FromDictionary.PersonNameTitle), GenerateTestCasesForSut(Any.PersonNameTitle) };
-            }
+                new object[]
+                {new Words(FromDictionary.PersonEmailAddress), GenerateTestCasesForSut(Any.PersonEmailAddress)},
+                new object[] {new Words(FromDictionary.PersonLanguage), GenerateTestCasesForSut(Any.PersonLanguage)},
+                new object[]
+                {new Words(FromDictionary.PersonNameFirstFemale), GenerateTestCasesForSut(Any.PersonNameFirstFemale)},
+                new object[] {new Words(FromDictionary.PersonNameFirst), GenerateTestCasesForSut(Any.PersonNameFirst)},
+                new object[] {new Words(FromDictionary.PersonNameFull), GenerateTestCasesForSut(Any.PersonNameFull)},
+                new object[] {new Words(FromDictionary.PersonNameLast), GenerateTestCasesForSut(Any.PersonNameLast)},
+                new object[]
+                {new Words(FromDictionary.PersonNameFirstMale), GenerateTestCasesForSut(Any.PersonNameFirstMale)},
+                new object[] {new Words(FromDictionary.PersonNameSuffix), GenerateTestCasesForSut(Any.PersonNameSuffix)},
+                new object[] {new Words(FromDictionary.PersonNameTitle), GenerateTestCasesForSut(Any.PersonNameTitle)},
+            };
         }
-
-        private static List<string> GenerateTestCasesForSut(Func<string> any)
-        {
-            var results = new List<string>();
-            for (int i = 0; i < 10; i++)
-            {
-                results.Add(any());
-            }
-            return results;
-        } 
     }
 }
