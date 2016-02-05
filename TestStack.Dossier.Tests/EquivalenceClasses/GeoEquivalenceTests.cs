@@ -5,7 +5,7 @@ using Xunit.Extensions;
 
 namespace TestStack.Dossier.Tests.EquivalenceClasses
 {
-    public class GeoEquivalenceClassesTests : FileDictionaryEquivalenceTests
+    public class GeoEquivalenceTests : FileDictionaryEquivalenceTests
     {
         [Theory]
         [ClassData(typeof(GeoTestCases))]

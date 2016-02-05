@@ -7,7 +7,7 @@ namespace TestStack.Dossier.Tests.EquivalenceClasses
 {
     namespace TestStack.Dossier.Tests.EquivalenceClasses
     {
-        public class AddressAusEquivalenceClassesTests : FileDictionaryEquivalenceTests
+        public class AddressAusEquivalenceTests : FileDictionaryEquivalenceTests
         {
             public AnonymousValueFixture Any { get; } = new AnonymousValueFixture();
 

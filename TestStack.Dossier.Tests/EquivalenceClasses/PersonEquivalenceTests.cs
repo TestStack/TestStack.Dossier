@@ -8,7 +8,7 @@ using Xunit.Extensions;
 
 namespace TestStack.Dossier.Tests.EquivalenceClasses
 {
-    public class PersonEquivalenceClassesTests : FileDictionaryEquivalenceTests
+    public class PersonEquivalenceTests : FileDictionaryEquivalenceTests
     {
         public AnonymousValueFixture Any { get; } = new AnonymousValueFixture();
 
