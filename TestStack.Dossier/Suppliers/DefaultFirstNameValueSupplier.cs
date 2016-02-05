@@ -1,5 +1,4 @@
 ﻿using System;
-using TestStack.Dossier.EquivalenceClasses;
 
 namespace TestStack.Dossier.Suppliers
 {

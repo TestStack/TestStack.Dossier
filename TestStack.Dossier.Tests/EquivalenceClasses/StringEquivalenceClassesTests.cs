@@ -1,5 +1,4 @@
 ﻿using Shouldly;
-using TestStack.Dossier.EquivalenceClasses;
 using Xunit;
 
 namespace TestStack.Dossier.Tests.EquivalenceClasses

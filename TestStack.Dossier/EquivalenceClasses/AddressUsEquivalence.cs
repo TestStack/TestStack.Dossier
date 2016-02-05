@@ -1,6 +1,7 @@
 using TestStack.Dossier.DataSources.Dictionaries;
 
-namespace TestStack.Dossier.EquivalenceClasses
+// ReSharper disable once CheckNamespace
+namespace TestStack.Dossier
 {
     /// <summary>
     /// Extension methods that describe equivalence classes for generating anonymous US adress-related values.

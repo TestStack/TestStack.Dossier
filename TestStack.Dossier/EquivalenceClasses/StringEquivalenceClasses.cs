@@ -2,7 +2,8 @@
 using Ploeh.AutoFixture;
 using Ploeh.AutoFixture.Kernel;
 
-namespace TestStack.Dossier.EquivalenceClasses
+// ReSharper disable once CheckNamespace
+namespace TestStack.Dossier
 {
     /// <summary>
     /// Extension methods that describe equivalence classes for generating anonymous string values.
