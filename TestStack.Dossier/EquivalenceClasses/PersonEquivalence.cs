@@ -1,4 +1,5 @@
 ﻿using TestStack.Dossier.DataSources.Dictionaries;
+using TestStack.Dossier.DataSources.Generators;
 
 // ReSharper disable once CheckNamespace
 namespace TestStack.Dossier
@@ -8,6 +9,26 @@ namespace TestStack.Dossier
     /// </summary>
     public static class PersonEquivalence
     {
+        private static Words _personEmailAddressSource;
+        private static Words _uniquePersonEmailAddressSource;
+
+        /// <summary>
+        /// Generate and return a unique email address (within the fixture).
+        /// </summary>
+        /// <param name="fixture">The fixture to generate a unique email for</param>
+        /// <returns>The generated unique email</returns>
+        public static string UniqueEmailAddress(this AnonymousValueFixture fixture)
+        {
+            if (_uniquePersonEmailAddressSource == null)
+            {
+                if (_personEmailAddressSource == null) _personEmailAddressSource = fixture.DictionaryFor(FromDictionary.PersonEmailAddress);
+                var generator = new SequentialGenerator(0, _personEmailAddressSource.Data.Count, listShouldBeUnique: true);
+                _uniquePersonEmailAddressSource = new Words(generator, new CachedFileDictionaryRepository(), FromDictionary.PersonEmailAddress);
+            }
+
+            return _uniquePersonEmailAddressSource.Next();
+        }
+
         /// <summary>
         /// Generate and return a person email address.
         /// </summary>

@@ -67,8 +67,6 @@
     <Compile Include="EquivalenceClasses\InternetEquivalence.cs" />
     <Compile Include="EquivalenceClasses\LoremIpsumEquivalence.cs" />
     <Compile Include="EquivalenceClasses\PersonEquivalence.cs" />
-    <Compile Include="EquivalenceClasses\PersonEquivalenceClasses.cs" />
-    <Compile Include="EquivalenceClasses\GeographyEquivalenceClasses.cs" />
     <Compile Include="ITestDataBuilder.cs" />
     <Compile Include="DataSources\Dictionaries\Cache.cs" />
     <Compile Include="DataSources\Dictionaries\IDictionaryRepository.cs" />

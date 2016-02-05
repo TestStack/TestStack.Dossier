@@ -16,7 +16,7 @@ namespace TestStack.Dossier.Suppliers
         /// <inheritdoc />
         public object GenerateAnonymousValue(AnonymousValueFixture any, Type type, string propertyName)
         {
-            return any.FirstName();
+            return any.PersonNameFirst();
         }
     }
 }

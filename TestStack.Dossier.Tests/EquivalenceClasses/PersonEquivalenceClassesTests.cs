@@ -52,15 +52,15 @@ namespace TestStack.Dossier.Tests.EquivalenceClasses
         {
             get
             {
-                yield return new object[] { new Words(FromDictionary.PersonEmailAddress), GenerateTestCasesForSut(Any.EmailAddress) };
-                yield return new object[] { new Words(FromDictionary.PersonLanguage), GenerateTestCasesForSut(Any.Language) };
-                yield return new object[] { new Words(FromDictionary.PersonNameFirstFemale), GenerateTestCasesForSut(Any.FemaleFirstName) };
-                yield return new object[] { new Words(FromDictionary.PersonNameFirst), GenerateTestCasesForSut(Any.FirstName) };
-                yield return new object[] { new Words(FromDictionary.PersonNameFull), GenerateTestCasesForSut(Any.FullName) };
-                yield return new object[] { new Words(FromDictionary.PersonNameLast), GenerateTestCasesForSut(Any.LastName) };
-                yield return new object[] { new Words(FromDictionary.PersonNameFirstMale), GenerateTestCasesForSut(Any.MaleFirstName) };
-                yield return new object[] { new Words(FromDictionary.PersonNameSuffix), GenerateTestCasesForSut(Any.Suffix) };
-                yield return new object[] { new Words(FromDictionary.PersonNameTitle), GenerateTestCasesForSut(Any.Title) };
+                yield return new object[] { new Words(FromDictionary.PersonEmailAddress), GenerateTestCasesForSut(Any.PersonEmailAddress) };
+                yield return new object[] { new Words(FromDictionary.PersonLanguage), GenerateTestCasesForSut(Any.PersonLanguage) };
+                yield return new object[] { new Words(FromDictionary.PersonNameFirstFemale), GenerateTestCasesForSut(Any.PersonNameFirstFemale) };
+                yield return new object[] { new Words(FromDictionary.PersonNameFirst), GenerateTestCasesForSut(Any.PersonNameFirst) };
+                yield return new object[] { new Words(FromDictionary.PersonNameFull), GenerateTestCasesForSut(Any.PersonNameFull) };
+                yield return new object[] { new Words(FromDictionary.PersonNameLast), GenerateTestCasesForSut(Any.PersonNameLast) };
+                yield return new object[] { new Words(FromDictionary.PersonNameFirstMale), GenerateTestCasesForSut(Any.PersonNameFirstMale) };
+                yield return new object[] { new Words(FromDictionary.PersonNameSuffix), GenerateTestCasesForSut(Any.PersonNameSuffix) };
+                yield return new object[] { new Words(FromDictionary.PersonNameTitle), GenerateTestCasesForSut(Any.PersonNameTitle) };
             }
         }
 

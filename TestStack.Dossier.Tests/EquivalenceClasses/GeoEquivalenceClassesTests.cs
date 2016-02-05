@@ -34,11 +34,11 @@ namespace TestStack.Dossier.Tests.EquivalenceClasses
         {
             get
             {
-                yield return new object[] { new Words(FromDictionary.GeoContinent), GenerateTestCasesForSut(Any.Continent) };
-                yield return new object[] { new Words(FromDictionary.GeoCountry), GenerateTestCasesForSut(Any.Country) };
-                yield return new object[] { new Words(FromDictionary.GeoCountryCode), GenerateTestCasesForSut(Any.CountryCode) };
-                yield return new object[] { new Words(FromDictionary.GeoLatitude), GenerateTestCasesForSut(Any.Latitude) };
-                yield return new object[] { new Words(FromDictionary.GeoLongitude), GenerateTestCasesForSut(Any.Longitude) };
+                yield return new object[] { new Words(FromDictionary.GeoContinent), GenerateTestCasesForSut(Any.GeoContinent) };
+                yield return new object[] { new Words(FromDictionary.GeoCountry), GenerateTestCasesForSut(Any.GeoCountry) };
+                yield return new object[] { new Words(FromDictionary.GeoCountryCode), GenerateTestCasesForSut(Any.GeoCountryCode) };
+                yield return new object[] { new Words(FromDictionary.GeoLatitude), GenerateTestCasesForSut(Any.GeoLatitude) };
+                yield return new object[] { new Words(FromDictionary.GeoLongitude), GenerateTestCasesForSut(Any.GeoLongitude) };
             }
         }
 
