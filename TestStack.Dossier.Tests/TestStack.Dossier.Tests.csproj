@@ -58,6 +58,7 @@
     <Compile Include="Builder_CreateListTests.cs" />
     <Compile Include="Builder_CreateNewTests.cs" />
     <Compile Include="Builder_SetUsingBuilderTests.cs" />
+    <Compile Include="DataSources\Picking\PickingTests.cs" />
     <Compile Include="TestHelpers\Builders\AddressViewModelBuilder.cs" />
     <Compile Include="TestHelpers\Builders\AutoConstructorCustomerBuilder.cs" />
     <Compile Include="ChildBuilderTests.cs" />
@@ -119,6 +120,7 @@
       <Name>TestStack.Dossier</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

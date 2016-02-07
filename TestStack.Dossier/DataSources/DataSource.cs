@@ -40,6 +40,7 @@ namespace TestStack.Dossier.DataSources
                 }
                 return _list;
             }
+            internal set { _list = value; }
         }
 
         /// <summary>

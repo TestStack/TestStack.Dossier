@@ -52,6 +52,9 @@
   <ItemGroup>
     <Compile Include="AnonymousValueFixture.cs" />
     <Compile Include="Builder.cs" />
+    <Compile Include="DataSources\Picking\Pick.cs" />
+    <Compile Include="DataSources\Picking\RandomItemSource.cs" />
+    <Compile Include="DataSources\Picking\RepeatingSequenceSource.cs" />
     <Compile Include="ITestDataBuilder.cs" />
     <Compile Include="DataSources\Dictionaries\Cache.cs" />
     <Compile Include="DataSources\Dictionaries\IDictionaryRepository.cs" />
@@ -178,6 +181,9 @@
     <EmbeddedResource Include="DataSources\Dictionaries\Resources\PersonRace.txt" />
     <EmbeddedResource Include="DataSources\Dictionaries\Resources\PersonUsername.txt" />
     <EmbeddedResource Include="DataSources\Dictionaries\Resources\ShirtSize.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Picking\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
