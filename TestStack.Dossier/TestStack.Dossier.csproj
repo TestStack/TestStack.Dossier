@@ -53,8 +53,23 @@
   <ItemGroup>
     <Compile Include="AnonymousValueFixture.cs" />
     <Compile Include="Builder.cs" />
+    <Compile Include="DataSources\Dictionaries\FileDictionarySource.cs" />
     <Compile Include="DataSources\Dictionaries\Words.cs" />
     <Compile Include="DataSources\Dictionaries\FromDictionary.cs" />
+    <Compile Include="DataSources\Geography\GeoContinentSource.cs" />
+    <Compile Include="DataSources\Geography\GeoCountryCodeSource.cs" />
+    <Compile Include="DataSources\Geography\GeoCountrySource.cs" />
+    <Compile Include="DataSources\Geography\GeoLatitudeSource.cs" />
+    <Compile Include="DataSources\Geography\GeoLongitudeSource.cs" />
+    <Compile Include="DataSources\Person\PersonEmailAddressSource.cs" />
+    <Compile Include="DataSources\Person\PersonLanguageSource.cs" />
+    <Compile Include="DataSources\Person\PersonNameFirstFemaleSource.cs" />
+    <Compile Include="DataSources\Person\PersonNameFirstMaleSource.cs" />
+    <Compile Include="DataSources\Person\PersonNameFirstSource.cs" />
+    <Compile Include="DataSources\Person\PersonNameFullSource.cs" />
+    <Compile Include="DataSources\Person\PersonNameLastSource.cs" />
+    <Compile Include="DataSources\Person\PersonNameSuffixSource.cs" />
+    <Compile Include="DataSources\Person\PersonNameTitleSource.cs" />
     <Compile Include="EquivalenceClasses\AddressAusEquivalence.cs" />
     <Compile Include="EquivalenceClasses\AddressUkEquivalence.cs" />
     <Compile Include="EquivalenceClasses\AddressUsEquivalence.cs" />
@@ -183,10 +198,10 @@
     <EmbeddedResource Include="DataSources\Dictionaries\Resources\PersonUsername.txt" />
     <EmbeddedResource Include="DataSources\Dictionaries\Resources\ShirtSize.txt" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Folder Include="Picking\" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

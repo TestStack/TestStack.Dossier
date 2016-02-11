@@ -205,6 +205,12 @@ namespace TestStack.Dossier.DataSources
 namespace TestStack.Dossier.DataSources.Dictionaries
 {
     
+    [System.ObsoleteAttribute("FileDictionarySource is deprecated, please use Words(FromDictionary) instead.")]
+    public abstract class FileDictionarySource : TestStack.Dossier.DataSources.DataSource<string>
+    {
+        protected FileDictionarySource() { }
+        protected override System.Collections.Generic.IList<string> InitializeDataSource() { }
+    }
     public class FromDictionary
     {
         public const string AddressAusCity = "AddressAusCity";
@@ -304,6 +310,121 @@ namespace TestStack.Dossier.DataSources.Generators
         public int ListSize { get; set; }
         public int StartIndex { get; set; }
         public int Generate() { }
+    }
+}
+namespace TestStack.Dossier.DataSources.Geography
+{
+    
+    [System.ObsoleteAttribute("GeoContinentSource is deprecated, please use Words(FromDictionary.GeoContinent) i" +
+        "nstead.")]
+    public class GeoContinentSource : TestStack.Dossier.DataSources.Dictionaries.FileDictionarySource
+    {
+        public GeoContinentSource() { }
+    }
+    [System.ObsoleteAttribute("GeoCountryCodeSource is deprecated, please use Words(FromDictionary.GeoCountryCod" +
+        "e) instead.")]
+    public class GeoCountryCodeSource : TestStack.Dossier.DataSources.Dictionaries.FileDictionarySource
+    {
+        public GeoCountryCodeSource() { }
+    }
+    [System.ObsoleteAttribute("GeoCountrySource is deprecated, please use Words(FromDictionary.GeoCountry) inste" +
+        "ad.")]
+    public class GeoCountrySource : TestStack.Dossier.DataSources.Dictionaries.FileDictionarySource
+    {
+        public GeoCountrySource() { }
+    }
+    [System.ObsoleteAttribute("GeoLatitudeSource is deprecated, please use Words(FromDictionary.GeoLatitude) ins" +
+        "tead.")]
+    public class GeoLatitudeSource : TestStack.Dossier.DataSources.Dictionaries.FileDictionarySource
+    {
+        public GeoLatitudeSource() { }
+    }
+    [System.ObsoleteAttribute("GeoLongitudeSource is deprecated, please use Words(FromDictionary.GeoLongitude) i" +
+        "nstead.")]
+    public class GeoLongitudeSource : TestStack.Dossier.DataSources.Dictionaries.FileDictionarySource
+    {
+        public GeoLongitudeSource() { }
+    }
+}
+namespace TestStack.Dossier.DataSources.Person
+{
+    
+    [System.ObsoleteAttribute("PersonEmailAddressSource is deprecated, please use Words(FromDictionary.PersonEma" +
+        "ilAddress) instead.")]
+    public class PersonEmailAddressSource : TestStack.Dossier.DataSources.Dictionaries.FileDictionarySource
+    {
+        public PersonEmailAddressSource() { }
+        public PersonEmailAddressSource(TestStack.Dossier.DataSources.Generators.IGenerator generator) { }
+    }
+    [System.ObsoleteAttribute("PersonLanguageSource is deprecated, please use Words(FromDictionary.PersonLanguag" +
+        "e) instead.")]
+    public class PersonLanguageSource : TestStack.Dossier.DataSources.Dictionaries.FileDictionarySource
+    {
+        public PersonLanguageSource() { }
+    }
+    [System.ObsoleteAttribute("PersonNameFirstFemaleSource is deprecated, please use Words(FromDictionary.Person" +
+        "NameFirstFemale) instead.")]
+    public class PersonNameFirstFemaleSource : TestStack.Dossier.DataSources.Dictionaries.FileDictionarySource
+    {
+        public PersonNameFirstFemaleSource() { }
+    }
+    [System.ObsoleteAttribute("PersonNameFirstMaleSource is deprecated, please use Words(FromDictionary.PersonNa" +
+        "meFirstMale) instead.")]
+    public class PersonNameFirstMaleSource : TestStack.Dossier.DataSources.Dictionaries.FileDictionarySource
+    {
+        public PersonNameFirstMaleSource() { }
+    }
+    [System.ObsoleteAttribute("PersonNameFirstSource is deprecated, please use Words(FromDictionary.PersonNameFi" +
+        "rst) instead.")]
+    public class PersonNameFirstSource : TestStack.Dossier.DataSources.Dictionaries.FileDictionarySource
+    {
+        public PersonNameFirstSource() { }
+    }
+    [System.ObsoleteAttribute("PersonNameFullSource is deprecated, please use Words(FromDictionary.PersonNameFul" +
+        "l) instead.")]
+    public class PersonNameFullSource : TestStack.Dossier.DataSources.Dictionaries.FileDictionarySource
+    {
+        public PersonNameFullSource() { }
+    }
+    [System.ObsoleteAttribute("PersonNameLastSource is deprecated, please use Words(FromDictionary.PersonNameLas" +
+        "t) instead.")]
+    public class PersonNameLastSource : TestStack.Dossier.DataSources.Dictionaries.FileDictionarySource
+    {
+        public PersonNameLastSource() { }
+    }
+    [System.ObsoleteAttribute("PersonNameSuffixSource is deprecated, please use Words(FromDictionary.PersonNameS" +
+        "uffix) instead.")]
+    public class PersonNameSuffixSource : TestStack.Dossier.DataSources.Dictionaries.FileDictionarySource
+    {
+        public PersonNameSuffixSource() { }
+    }
+    [System.ObsoleteAttribute("PersonNameTitleSource is deprecated, please use Words(FromDictionary.PersonNameTi" +
+        "tle) instead.")]
+    public class PersonNameTitleSource : TestStack.Dossier.DataSources.Dictionaries.FileDictionarySource
+    {
+        public PersonNameTitleSource() { }
+    }
+}
+namespace TestStack.Dossier.DataSources.Picking
+{
+    
+    public class Pick
+    {
+        public Pick() { }
+        public static TestStack.Dossier.DataSources.Picking.RandomItemSource<T> RandomItemFrom<T>(System.Collections.Generic.IList<T> list) { }
+        public static TestStack.Dossier.DataSources.Picking.RepeatingSequenceSource<T> RepeatingSequenceFrom<T>(System.Collections.Generic.IList<T> list) { }
+    }
+    public class RandomItemSource<T> : TestStack.Dossier.DataSources.DataSource<T>
+    
+    {
+        public RandomItemSource(System.Collections.Generic.IList<T> list) { }
+        protected override System.Collections.Generic.IList<T> InitializeDataSource() { }
+    }
+    public class RepeatingSequenceSource<T> : TestStack.Dossier.DataSources.DataSource<T>
+    
+    {
+        public RepeatingSequenceSource(System.Collections.Generic.IList<T> list) { }
+        protected override System.Collections.Generic.IList<T> InitializeDataSource() { }
     }
 }
 namespace TestStack.Dossier.EquivalenceClasses
