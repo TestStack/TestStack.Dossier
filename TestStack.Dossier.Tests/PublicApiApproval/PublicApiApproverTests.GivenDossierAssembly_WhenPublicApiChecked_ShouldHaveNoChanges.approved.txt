@@ -1,0 +1,394 @@
+[assembly: System.Runtime.CompilerServices.InternalsVisibleToAttribute("DynamicProxyGenAssembly2")]
+[assembly: System.Runtime.CompilerServices.InternalsVisibleToAttribute("TestStack.Dossier.Tests")]
+[assembly: System.Runtime.InteropServices.ComVisibleAttribute(false)]
+[assembly: System.Runtime.InteropServices.GuidAttribute("24a139fb-b390-4f14-9be6-cf9fb354bb5d")]
+[assembly: System.Runtime.Versioning.TargetFrameworkAttribute(".NETFramework,Version=v4.0", FrameworkDisplayName=".NET Framework 4")]
+
+namespace TestStack.Dossier
+{
+    
+    public class AnonymousValueFixture
+    {
+        public AnonymousValueFixture() { }
+        [System.Runtime.CompilerServices.DynamicAttribute()]
+        public object Bag { get; }
+        public static System.Collections.Generic.IEnumerable<TestStack.Dossier.IAnonymousValueSupplier> DefaultValueSuppliers { get; }
+        public Ploeh.AutoFixture.Fixture Fixture { get; }
+        public static System.Collections.Generic.ICollection<TestStack.Dossier.IAnonymousValueSupplier> GlobalValueSuppliers { get; }
+        public System.Collections.Generic.ICollection<TestStack.Dossier.IAnonymousValueSupplier> LocalValueSuppliers { get; }
+        public Ploeh.AutoFixture.RegularExpressionGenerator RegexGenerator { get; }
+        public T Get<TObject, T>(System.Linq.Expressions.Expression<System.Func<TObject, T>> property) { }
+        public object Get(System.Type type, string propertyName) { }
+    }
+    public class Builder<T> : TestStack.Dossier.TestDataBuilder<T, TestStack.Dossier.Builder<T>>
+        where T :  class
+    {
+        public Builder() { }
+        protected override T BuildObject() { }
+        public static TestStack.Dossier.Lists.ListBuilder<T, TestStack.Dossier.Builder<T>> CreateListOfSize(int size, TestStack.Dossier.Factories.IFactory factory) { }
+        public static TestStack.Dossier.Builder<T> CreateNew(TestStack.Dossier.Factories.IFactory factory = null) { }
+        public virtual TestStack.Dossier.Builder<T> SetUsingBuilder<TPropertyType, TPropertyBuilder>(System.Linq.Expressions.Expression<System.Func<T, TPropertyType>> property, System.Func<TPropertyBuilder, TPropertyBuilder> modifier = null)
+            where TPropertyType :  class
+            where TPropertyBuilder : TestStack.Dossier.TestDataBuilder<, >, new () { }
+        public virtual TestStack.Dossier.Builder<T> SetUsingBuilder<TPropertyType>(System.Linq.Expressions.Expression<System.Func<T, TPropertyType>> property, System.Func<TestStack.Dossier.Builder<TPropertyType>, TestStack.Dossier.Builder<TPropertyType>> modifier = null)
+            where TPropertyType :  class { }
+    }
+    public interface IAnonymousValueSupplier
+    {
+        bool CanSupplyValue(System.Type type, string propertyName);
+        object GenerateAnonymousValue(TestStack.Dossier.AnonymousValueFixture any, System.Type type, string propertyName);
+    }
+    public interface ITestDataBuilder<out TObject>
+        where out TObject :  class
+    {
+        TObject Build();
+    }
+    public class ProxyBuilder<T>
+        where T :  class
+    {
+        public ProxyBuilder(System.Collections.Generic.Dictionary<string, System.Func<object>> properties) { }
+        public T Build() { }
+    }
+    public abstract class TestDataBuilder<TObject, TBuilder> : TestStack.Dossier.ITestDataBuilder<TObject>
+        where TObject :  class
+        where TBuilder : TestStack.Dossier.TestDataBuilder<, >, new ()
+    {
+        protected TestDataBuilder() { }
+        public TestStack.Dossier.AnonymousValueFixture Any { get; }
+        public TestStack.Dossier.Lists.ListBuilder<TObject, TBuilder> ListBuilder { get; }
+        protected virtual void AlterProxy(TObject proxy) { }
+        public TBuilder AsProxy() { }
+        public TObject Build() { }
+        protected virtual TObject BuildObject() { }
+        protected TObject BuildUsing<TFactory>()
+            where TFactory : TestStack.Dossier.Factories.IFactory, new () { }
+        public static TestStack.Dossier.Lists.ListBuilder<TObject, TBuilder> CreateListOfSize(int size) { }
+        public TValue Get<TValue>(System.Linq.Expressions.Expression<System.Func<TObject, TValue>> property) { }
+        public object Get(System.Type type, string propertyName) { }
+        protected virtual TChildBuilder GetChildBuilder<TChildObject, TChildBuilder>(System.Func<TChildBuilder, TChildBuilder> modifier = null)
+            where TChildObject :  class
+            where TChildBuilder : TestStack.Dossier.TestDataBuilder<, >, new () { }
+        public TValue GetOrDefault<TValue>(System.Linq.Expressions.Expression<System.Func<TObject, TValue>> property) { }
+        protected bool Has<TValue>(System.Linq.Expressions.Expression<System.Func<TObject, TValue>> property) { }
+        protected bool Has(string propertyName) { }
+        public virtual bool IsListBuilderProxy() { }
+        public virtual TBuilder Set<TValue>(System.Linq.Expressions.Expression<System.Func<TObject, TValue>> property, TValue value) { }
+        public virtual TBuilder Set<TValue>(System.Linq.Expressions.Expression<System.Func<TObject, TValue>> property, System.Func<TValue> factory) { }
+    }
+}
+namespace TestStack.Dossier.DataSources
+{
+    
+    public abstract class DataSource<T> : TestStack.Dossier.DataSources.IDataSource<T>
+    
+    {
+        protected DataSource(TestStack.Dossier.DataSources.Generators.IGenerator generator) { }
+        protected DataSource() { }
+        public System.Collections.Generic.IList<T> Data { get; }
+        public TestStack.Dossier.DataSources.Generators.IGenerator Generator { get; }
+        protected abstract System.Collections.Generic.IList<T> InitializeDataSource();
+        public virtual T Next() { }
+    }
+    public interface IDataSource<T>
+    
+    {
+        System.Collections.Generic.IList<T> Data { get; }
+        TestStack.Dossier.DataSources.Generators.IGenerator Generator { get; }
+        T Next();
+    }
+}
+namespace TestStack.Dossier.DataSources.Dictionaries
+{
+    
+    public abstract class FileDictionarySource : TestStack.Dossier.DataSources.DataSource<string>
+    {
+        protected FileDictionarySource() { }
+        protected override System.Collections.Generic.IList<string> InitializeDataSource() { }
+    }
+}
+namespace TestStack.Dossier.DataSources.Generators
+{
+    
+    public interface IGenerator
+    {
+        int ListSize { get; set; }
+        int StartIndex { get; set; }
+        int Generate();
+    }
+    public class RandomGenerator : TestStack.Dossier.DataSources.Generators.IGenerator
+    {
+        public RandomGenerator() { }
+        public RandomGenerator(int startIndex, int listSize) { }
+        public int ListSize { get; set; }
+        public int StartIndex { get; set; }
+        public int Generate() { }
+    }
+    public class SequentialGenerator : TestStack.Dossier.DataSources.Generators.IGenerator
+    {
+        public SequentialGenerator() { }
+        public SequentialGenerator(int startIndex, int listSize, bool listShouldBeUnique = False) { }
+        public bool ListShouldBeUnique { get; }
+        public int ListSize { get; set; }
+        public int StartIndex { get; set; }
+        public int Generate() { }
+    }
+}
+namespace TestStack.Dossier.DataSources.Geography
+{
+    
+    public class GeoContinentSource : TestStack.Dossier.DataSources.Dictionaries.FileDictionarySource
+    {
+        public GeoContinentSource() { }
+    }
+    public class GeoCountryCodeSource : TestStack.Dossier.DataSources.Dictionaries.FileDictionarySource
+    {
+        public GeoCountryCodeSource() { }
+    }
+    public class GeoCountrySource : TestStack.Dossier.DataSources.Dictionaries.FileDictionarySource
+    {
+        public GeoCountrySource() { }
+    }
+    public class GeoLatitudeSource : TestStack.Dossier.DataSources.Dictionaries.FileDictionarySource
+    {
+        public GeoLatitudeSource() { }
+    }
+    public class GeoLongitudeSource : TestStack.Dossier.DataSources.Dictionaries.FileDictionarySource
+    {
+        public GeoLongitudeSource() { }
+    }
+}
+namespace TestStack.Dossier.DataSources.Person
+{
+    
+    public class PersonEmailAddressSource : TestStack.Dossier.DataSources.Dictionaries.FileDictionarySource
+    {
+        public PersonEmailAddressSource() { }
+        public PersonEmailAddressSource(TestStack.Dossier.DataSources.Generators.IGenerator generator) { }
+    }
+    public class PersonLanguageSource : TestStack.Dossier.DataSources.Dictionaries.FileDictionarySource
+    {
+        public PersonLanguageSource() { }
+    }
+    public class PersonNameFirstFemaleSource : TestStack.Dossier.DataSources.Dictionaries.FileDictionarySource
+    {
+        public PersonNameFirstFemaleSource() { }
+    }
+    public class PersonNameFirstMaleSource : TestStack.Dossier.DataSources.Dictionaries.FileDictionarySource
+    {
+        public PersonNameFirstMaleSource() { }
+    }
+    public class PersonNameFirstSource : TestStack.Dossier.DataSources.Dictionaries.FileDictionarySource
+    {
+        public PersonNameFirstSource() { }
+    }
+    public class PersonNameFullSource : TestStack.Dossier.DataSources.Dictionaries.FileDictionarySource
+    {
+        public PersonNameFullSource() { }
+    }
+    public class PersonNameLastSource : TestStack.Dossier.DataSources.Dictionaries.FileDictionarySource
+    {
+        public PersonNameLastSource() { }
+    }
+    public class PersonNameSuffixSource : TestStack.Dossier.DataSources.Dictionaries.FileDictionarySource
+    {
+        public PersonNameSuffixSource() { }
+    }
+    public class PersonNameTitleSource : TestStack.Dossier.DataSources.Dictionaries.FileDictionarySource
+    {
+        public PersonNameTitleSource() { }
+    }
+}
+namespace TestStack.Dossier.DataSources.Picking
+{
+    
+    public class Pick
+    {
+        public Pick() { }
+        public static TestStack.Dossier.DataSources.Picking.RandomItemSource<T> RandomItemFrom<T>(System.Collections.Generic.IList<T> list) { }
+        public static TestStack.Dossier.DataSources.Picking.RepeatingSequenceSource<T> RepeatingSequenceFrom<T>(System.Collections.Generic.IList<T> list) { }
+    }
+    public class RandomItemSource<T> : TestStack.Dossier.DataSources.DataSource<T>
+    
+    {
+        public RandomItemSource(System.Collections.Generic.IList<T> list) { }
+        protected override System.Collections.Generic.IList<T> InitializeDataSource() { }
+    }
+    public class RepeatingSequenceSource<T> : TestStack.Dossier.DataSources.DataSource<T>
+    
+    {
+        public RepeatingSequenceSource(System.Collections.Generic.IList<T> list) { }
+        protected override System.Collections.Generic.IList<T> InitializeDataSource() { }
+    }
+}
+namespace TestStack.Dossier.EquivalenceClasses
+{
+    
+    public class static EnumEquivalenceClasses
+    {
+        public static TEnum Except<TEnum>(this TestStack.Dossier.AnonymousValueFixture fixture, params TEnum[] except)
+            where TEnum :  struct, System.IComparable, System.IFormattable, System.IConvertible { }
+        public static TEnum Of<TEnum>(this TestStack.Dossier.AnonymousValueFixture fixture)
+            where TEnum :  struct, System.IComparable, System.IFormattable, System.IConvertible { }
+    }
+    public class static IntegerEquivalenceClasses
+    {
+        public static int IntegerExcept(this TestStack.Dossier.AnonymousValueFixture fixture, params int[] exceptFor) { }
+        public static int NegativeInteger(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static int PositiveInteger(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+    }
+    public class static StringEquivalenceClasses
+    {
+        public static string String(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string StringEndingWith(this TestStack.Dossier.AnonymousValueFixture fixture, string suffix) { }
+        public static string StringMatching(this TestStack.Dossier.AnonymousValueFixture fixture, string regexPattern) { }
+        public static string StringOfLength(this TestStack.Dossier.AnonymousValueFixture fixture, int length) { }
+        public static string StringStartingWith(this TestStack.Dossier.AnonymousValueFixture fixture, string prefix) { }
+    }
+}
+namespace TestStack.Dossier.EquivalenceClasses.Geo
+{
+    
+    public class static GeographyEquivalenceClassescs
+    {
+        public static string Continent(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string Country(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string CountryCode(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string Latitude(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string Longitude(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+    }
+}
+namespace TestStack.Dossier.EquivalenceClasses.Person
+{
+    
+    public class static NameEquivalenceClasses
+    {
+        public static string EmailAddress(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string FemaleFirstName(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string FirstName(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string FullName(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string Language(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string LastName(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string MaleFirstName(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string Suffix(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string Title(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string UniqueEmailAddress(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+    }
+}
+namespace TestStack.Dossier.Factories
+{
+    
+    public class AllPropertiesFactory : TestStack.Dossier.Factories.CallConstructorFactory
+    {
+        public AllPropertiesFactory() { }
+        public override TObject BuildObject<TObject, TBuilder>(TestStack.Dossier.TestDataBuilder<TObject, TBuilder> builder)
+            where TObject :  class
+            where TBuilder : TestStack.Dossier.TestDataBuilder<, >, new () { }
+    }
+    public class AutoFixtureFactory : TestStack.Dossier.Factories.IFactory
+    {
+        public AutoFixtureFactory() { }
+        public TObject BuildObject<TObject, TBuilder>(TestStack.Dossier.TestDataBuilder<TObject, TBuilder> builder)
+            where TObject :  class
+            where TBuilder : TestStack.Dossier.TestDataBuilder<, >, new () { }
+    }
+    public class CallConstructorFactory : TestStack.Dossier.Factories.IFactory
+    {
+        public CallConstructorFactory() { }
+        public virtual TObject BuildObject<TObject, TBuilder>(TestStack.Dossier.TestDataBuilder<TObject, TBuilder> builder)
+            where TObject :  class
+            where TBuilder : TestStack.Dossier.TestDataBuilder<, >, new () { }
+    }
+    public interface IFactory
+    {
+        TObject BuildObject<TObject, TBuilder>(TestStack.Dossier.TestDataBuilder<TObject, TBuilder> builder)
+            where TObject :  class
+            where TBuilder : TestStack.Dossier.TestDataBuilder<, >, new ();
+    }
+    public class PublicPropertySettersFactory : TestStack.Dossier.Factories.CallConstructorFactory
+    {
+        public PublicPropertySettersFactory() { }
+        public override TObject BuildObject<TObject, TBuilder>(TestStack.Dossier.TestDataBuilder<TObject, TBuilder> builder)
+            where TObject :  class
+            where TBuilder : TestStack.Dossier.TestDataBuilder<, >, new () { }
+    }
+}
+namespace TestStack.Dossier.Lists
+{
+    
+    public class ListBuilder<TObject, TBuilder>
+        where TObject :  class
+        where TBuilder : TestStack.Dossier.TestDataBuilder<, >, new ()
+    {
+        public TBuilder All() { }
+        public System.Collections.Generic.IList<TObject> BuildList() { }
+        public TBuilder TheFirst(int howMany) { }
+        public TBuilder TheLast(int howMany) { }
+        public TBuilder TheNext(int howMany) { }
+        public TBuilder ThePrevious(int howMany) { }
+        public TestStack.Dossier.Lists.ListBuilder<TObject, TBuilder> With(System.Func<TBuilder, TBuilder> modifier) { }
+    }
+    public class static ListBuilderExtensions
+    {
+        public static TBuilder All<TObject, TBuilder>(this TestStack.Dossier.TestDataBuilder<TObject, TBuilder> builder)
+            where TObject :  class
+            where TBuilder : TestStack.Dossier.TestDataBuilder<, >, new () { }
+        public static System.Collections.Generic.IList<TObject> BuildList<TObject, TBuilder>(this TestStack.Dossier.TestDataBuilder<TObject, TBuilder> builder)
+            where TObject :  class
+            where TBuilder : TestStack.Dossier.TestDataBuilder<, >, new () { }
+        public static TBuilder TheFirst<TObject, TBuilder>(this TestStack.Dossier.TestDataBuilder<TObject, TBuilder> builder, int howMany)
+            where TObject :  class
+            where TBuilder : TestStack.Dossier.TestDataBuilder<, >, new () { }
+        public static TBuilder TheLast<TObject, TBuilder>(this TestStack.Dossier.TestDataBuilder<TObject, TBuilder> builder, int howMany)
+            where TObject :  class
+            where TBuilder : TestStack.Dossier.TestDataBuilder<, >, new () { }
+        public static TBuilder TheNext<TObject, TBuilder>(this TestStack.Dossier.TestDataBuilder<TObject, TBuilder> builder, int howMany)
+            where TObject :  class
+            where TBuilder : TestStack.Dossier.TestDataBuilder<, >, new () { }
+        public static TBuilder ThePrevious<TObject, TBuilder>(this TestStack.Dossier.TestDataBuilder<TObject, TBuilder> builder, int howMany)
+            where TObject :  class
+            where TBuilder : TestStack.Dossier.TestDataBuilder<, >, new () { }
+        public static TestStack.Dossier.Lists.ListBuilder<TObject, TBuilder> With<TObject, TBuilder>(this TestStack.Dossier.TestDataBuilder<TObject, TBuilder> builder, System.Func<TBuilder, TBuilder> modifier)
+            where TObject :  class
+            where TBuilder : TestStack.Dossier.TestDataBuilder<, >, new () { }
+    }
+}
+namespace TestStack.Dossier.Suppliers
+{
+    
+    public class DefaultEmailValueSupplier : TestStack.Dossier.IAnonymousValueSupplier
+    {
+        public DefaultEmailValueSupplier() { }
+        public bool CanSupplyValue(System.Type type, string propertyName) { }
+        public object GenerateAnonymousValue(TestStack.Dossier.AnonymousValueFixture any, System.Type type, string propertyName) { }
+    }
+    public class DefaultFirstNameValueSupplier : TestStack.Dossier.IAnonymousValueSupplier
+    {
+        public DefaultFirstNameValueSupplier() { }
+        public bool CanSupplyValue(System.Type type, string propertyName) { }
+        public object GenerateAnonymousValue(TestStack.Dossier.AnonymousValueFixture any, System.Type type, string propertyName) { }
+    }
+    public class DefaultLastNameValueSupplier : TestStack.Dossier.IAnonymousValueSupplier
+    {
+        public DefaultLastNameValueSupplier() { }
+        public bool CanSupplyValue(System.Type type, string propertyName) { }
+        public object GenerateAnonymousValue(TestStack.Dossier.AnonymousValueFixture any, System.Type type, string propertyName) { }
+    }
+    public class DefaultStringValueSupplier : TestStack.Dossier.IAnonymousValueSupplier
+    {
+        public DefaultStringValueSupplier() { }
+        public bool CanSupplyValue(System.Type type, string propertyName) { }
+        public object GenerateAnonymousValue(TestStack.Dossier.AnonymousValueFixture any, System.Type type, string propertyName) { }
+    }
+    public class DefaultValueSupplier : TestStack.Dossier.IAnonymousValueSupplier
+    {
+        public DefaultValueSupplier() { }
+        public bool CanSupplyValue(System.Type type, string propertyName) { }
+        public object GenerateAnonymousValue(TestStack.Dossier.AnonymousValueFixture any, System.Type type, string propertyName) { }
+    }
+    public class DefaultValueTypeValueSupplier : TestStack.Dossier.IAnonymousValueSupplier
+    {
+        public DefaultValueTypeValueSupplier() { }
+        public bool CanSupplyValue(System.Type type, string propertyName) { }
+        public object GenerateAnonymousValue(TestStack.Dossier.AnonymousValueFixture any, System.Type type, string propertyName) { }
+    }
+}

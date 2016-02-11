@@ -39,9 +39,13 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\NSubstitute.1.8.1.0\lib\net45\NSubstitute.dll</HintPath>
     </Reference>
-    <Reference Include="Shouldly, Version=2.4.0.0, Culture=neutral, PublicKeyToken=6042cbcb05cbc941, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Shouldly.2.4.0\lib\net40\Shouldly.dll</HintPath>
+    <Reference Include="PublicApiGenerator, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PublicApiGenerator.4.0.1\lib\net40\PublicApiGenerator.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Shouldly, Version=2.7.0.0, Culture=neutral, PublicKeyToken=6042cbcb05cbc941, processorArchitecture=MSIL">
+      <HintPath>..\packages\Shouldly.2.7.0-beta0003\lib\net40\Shouldly.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -71,6 +75,7 @@
     <Compile Include="EquivalenceClasses\IntegerEquivalenceTests.cs" />
     <Compile Include="EquivalenceClasses\LoremIpsumEquivalenceTests.cs" />
     <Compile Include="EquivalenceClasses\ShirtSizeEquivalenceTests.cs" />
+    <Compile Include="PublicApiApproval\PublicApiApproverTests.cs" />
     <Compile Include="TestHelpers\Builders\AddressViewModelBuilder.cs" />
     <Compile Include="TestHelpers\Builders\AutoConstructorCustomerBuilder.cs" />
     <Compile Include="ChildBuilderTests.cs" />
