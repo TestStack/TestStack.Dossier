@@ -22,9 +22,9 @@ namespace TestStack.Dossier.Tests.EquivalenceClasses
             return new List<object[]>
             {
                 new object[]
-                {new Words(FromDictionary.ColourHex), GenerateTestCasesForSut(Any.ColourHex)},
+                {new Words(FromDictionary.ColourHex), GenerateTestCasesForSut(Any.Colour().Hex)},
                 new object[]
-                {new Words(FromDictionary.ColourName), GenerateTestCasesForSut(Any.ColourName)}
+                {new Words(FromDictionary.ColourName), GenerateTestCasesForSut(Any.Colour().Name)}
             };
         }
     }

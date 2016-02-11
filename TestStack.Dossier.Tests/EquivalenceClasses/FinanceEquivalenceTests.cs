@@ -22,13 +22,13 @@ namespace TestStack.Dossier.Tests.EquivalenceClasses
             return new List<object[]>
             {
                 new object[]
-                {new Words(FromDictionary.FinanceCreditCardNumber), GenerateTestCasesForSut(Any.FinanceCreditCardNumber)},
+                {new Words(FromDictionary.FinanceCreditCardNumber), GenerateTestCasesForSut(Any.Finance().CreditCardNumber)},
                 new object[]
-                {new Words(FromDictionary.FinanceCreditCardType), GenerateTestCasesForSut(Any.FinanceCreditCardType)},
+                {new Words(FromDictionary.FinanceCreditCardType), GenerateTestCasesForSut(Any.Finance().CreditCardType)},
                 new object[]
-                {new Words(FromDictionary.FinanceCurrency), GenerateTestCasesForSut(Any.FinanceCurrency)},
+                {new Words(FromDictionary.FinanceCurrency), GenerateTestCasesForSut(Any.Finance().Currency)},
                 new object[]
-                {new Words(FromDictionary.FinanceCurrencyCode), GenerateTestCasesForSut(Any.FinanceCurrencyCode)}
+                {new Words(FromDictionary.FinanceCurrencyCode), GenerateTestCasesForSut(Any.Finance().CurrencyCode)}
             };
         }
     }

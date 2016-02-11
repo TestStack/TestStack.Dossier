@@ -4,79 +4,82 @@ using TestStack.Dossier.DataSources.Dictionaries;
 namespace TestStack.Dossier
 {
     /// <summary>
-    /// Extension methods that describe equivalence classes for generating anonymous UK address-related values.
+    /// Methods that describe equivalence classes for generating anonymous UK address-related values.
     /// </summary>
-    public static class AddressUkEquivalence
+    public class AddressUkEquivalence
     {
+        private readonly AnonymousValueFixture _fixture;
+
+        /// <summary>
+        /// Creates a new <see cref="AddressUkEquivalence"/> with the AnonymousValueFixture from the extension method.
+        /// </summary>
+        /// <param name="fixture">The </param>
+        public AddressUkEquivalence(AnonymousValueFixture fixture)
+        {
+            _fixture = fixture;
+        }
+
         /// <summary>
         /// Generate and return a UK address city name.
         /// </summary>
-        /// <param name="fixture">The fixture to generate a value for.</param>
         /// <returns>The generated value.</returns>
-        public static string AddressUkCity(this AnonymousValueFixture fixture)
+        public string City()
         {
-            return fixture.Words(FromDictionary.AddressUkCity).Next();
+            return _fixture.Words(FromDictionary.AddressUkCity).Next();
         }
 
         /// <summary>
         /// Generate and return a UK address company name.
         /// </summary>
-        /// <param name="fixture">The fixture to generate a value for.</param>
         /// <returns>The generated value.</returns>
-        public static string AddressUkCompany(this AnonymousValueFixture fixture)
+        public string Company()
         {
-            return fixture.Words(FromDictionary.AddressUkCompany).Next();
+            return _fixture.Words(FromDictionary.AddressUkCompany).Next();
         }
 
         /// <summary>
         /// Generate and return a UK address county name.
         /// </summary>
-        /// <param name="fixture">The fixture to generate a value for.</param>
         /// <returns>The generated value.</returns>
-        public static string AddressUkCounty(this AnonymousValueFixture fixture)
+        public string County()
         {
-            return fixture.Words(FromDictionary.AddressUkCounty).Next();
+            return _fixture.Words(FromDictionary.AddressUkCounty).Next();
         }
 
         /// <summary>
         /// Generate and return a UK address phone number.
         /// </summary>
-        /// <param name="fixture">The fixture to generate a value for.</param>
         /// <returns>The generated value.</returns>
-        public static string AddressUkPhone(this AnonymousValueFixture fixture)
+        public string Phone()
         {
-            return fixture.Words(FromDictionary.AddressUkPhone).Next();
+            return _fixture.Words(FromDictionary.AddressUkPhone).Next();
         }
 
         /// <summary>
         /// Generate and return a UK address post code.
         /// </summary>
-        /// <param name="fixture">The fixture to generate a value for.</param>
         /// <returns>The generated value.</returns>
-        public static string AddressUkPostCode(this AnonymousValueFixture fixture)
+        public string PostCode()
         {
-            return fixture.Words(FromDictionary.AddressUkPostCode).Next();
+            return _fixture.Words(FromDictionary.AddressUkPostCode).Next();
         }
 
         /// <summary>
         /// Generate and return a UK address street name.
         /// </summary>
-        /// <param name="fixture">The fixture to generate a value for.</param>
         /// <returns>The generated value.</returns>
-        public static string AddressUkStreet(this AnonymousValueFixture fixture)
+        public string Street()
         {
-            return fixture.Words(FromDictionary.AddressUkStreet).Next();
+            return _fixture.Words(FromDictionary.AddressUkStreet).Next();
         }
 
         /// <summary>
         /// Generate and return a UK address website name.
         /// </summary>
-        /// <param name="fixture">The fixture to generate a value for.</param>
         /// <returns>The generated value.</returns>
-        public static string AddressUkWebsite(this AnonymousValueFixture fixture)
+        public string Website()
         {
-            return fixture.Words(FromDictionary.AddressUkWebsite).Next();
+            return _fixture.Words(FromDictionary.AddressUkWebsite).Next();
         }
-
     }
 }

@@ -4,89 +4,91 @@ using TestStack.Dossier.DataSources.Dictionaries;
 namespace TestStack.Dossier
 {
     /// <summary>
-    /// Extension methods that describe equivalence classes for generating anonymous Australian address-related values.
+    /// Methods that describe equivalence classes for generating anonymous Australian address-related values.
     /// </summary>
-    public static class AddressAusEquivalence
+    public class AddressAusEquivalence
     {
+        private readonly AnonymousValueFixture _fixture;
+
+        /// <summary>
+        /// Creates a new <see cref="AddressAusEquivalence"/> with the AnonymousValueFixture from the extension method.
+        /// </summary>
+        /// <param name="fixture">The </param>
+        public AddressAusEquivalence(AnonymousValueFixture fixture)
+        {
+            _fixture = fixture;
+        }
+
         /// <summary>
         /// Generate and return an Australian address city name.
         /// </summary>
-        /// <param name="fixture">The fixture to generate a value for.</param>
         /// <returns>The generated value.</returns>
-        public static string AddressAusCity(this AnonymousValueFixture fixture)
+        public string City()
         {
-            return fixture.Words(FromDictionary.AddressAusCity).Next();
+            return _fixture.Words(FromDictionary.AddressAusCity).Next();
         }
 
         /// <summary>
         /// Generate and return an Australian address company name.
         /// </summary>
-        /// <param name="fixture">The fixture to generate a value for.</param>
         /// <returns>The generated value.</returns>
-        public static string AddressAusCompany(this AnonymousValueFixture fixture)
+        public string Company()
         {
-            return fixture.Words(FromDictionary.AddressAusCompany).Next();
+            return _fixture.Words(FromDictionary.AddressAusCompany).Next();
         }
 
         /// <summary>
         /// Generate and return an Australian address phone number.
         /// </summary>
-        /// <param name="fixture">The fixture to generate a value for.</param>
         /// <returns>The generated value.</returns>
-        public static string AddressAusPhone(this AnonymousValueFixture fixture)
+        public string Phone()
         {
-            return fixture.Words(FromDictionary.AddressAusPhone).Next();
+            return _fixture.Words(FromDictionary.AddressAusPhone).Next();
         }
 
         /// <summary>
         /// Generate and return an Australian address post code.
         /// </summary>
-        /// <param name="fixture">The fixture to generate a value for.</param>
         /// <returns>The generated value.</returns>
-        public static string AddressAusPostCode(this AnonymousValueFixture fixture)
+        public string PostCode()
         {
-            return fixture.Words(FromDictionary.AddressAusPostCode).Next();
+            return _fixture.Words(FromDictionary.AddressAusPostCode).Next();
         }
 
         /// <summary>
         /// Generate and return an Australian address state name.
         /// </summary>
-        /// <param name="fixture">The fixture to generate a value for.</param>
         /// <returns>The generated value.</returns>
-        public static string AddressAusState(this AnonymousValueFixture fixture)
+        public string State()
         {
-            return fixture.Words(FromDictionary.AddressAusState).Next();
+            return _fixture.Words(FromDictionary.AddressAusState).Next();
         }
 
         /// <summary>
         /// Generate and return an Australian address state abbreviation.
         /// </summary>
-        /// <param name="fixture">The fixture to generate a value for.</param>
         /// <returns>The generated value.</returns>
-        public static string AddressAusStateAbbreviation(this AnonymousValueFixture fixture)
+        public string StateAbbreviation()
         {
-            return fixture.Words(FromDictionary.AddressAusStateAbbreviation).Next();
+            return _fixture.Words(FromDictionary.AddressAusStateAbbreviation).Next();
         }
 
         /// <summary>
         /// Generate and return an Australian address street name.
         /// </summary>
-        /// <param name="fixture">The fixture to generate a value for.</param>
         /// <returns>The generated value.</returns>
-        public static string AddressAusStreet(this AnonymousValueFixture fixture)
+        public string Street()
         {
-            return fixture.Words(FromDictionary.AddressAusStreet).Next();
+            return _fixture.Words(FromDictionary.AddressAusStreet).Next();
         }
 
         /// <summary>
         /// Generate and return an Australian address website name.
         /// </summary>
-        /// <param name="fixture">The fixture to generate a value for.</param>
         /// <returns>The generated value.</returns>
-        public static string AddressAusWebsite(this AnonymousValueFixture fixture)
+        public string Website()
         {
-            return fixture.Words(FromDictionary.AddressAusWebsite).Next();
+            return _fixture.Words(FromDictionary.AddressAusWebsite).Next();
         }
-
     }
 }

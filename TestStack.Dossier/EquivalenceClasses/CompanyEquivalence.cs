@@ -4,49 +4,55 @@ using TestStack.Dossier.DataSources.Dictionaries;
 namespace TestStack.Dossier
 {
     /// <summary>
-    /// Extension methods that describe equivalence classes for generating anonymous Company-related values.
+    /// Methods that describe equivalence classes for generating anonymous Company-related values.
     /// </summary>
-    public static class CompanyEquivalence
+    public class CompanyEquivalence
     {
+        private readonly AnonymousValueFixture _fixture;
+
+        /// <summary>
+        /// Creates a new <see cref="CompanyEquivalence"/> with the AnonymousValueFixture from the extension method.
+        /// </summary>
+        /// <param name="fixture">The </param>
+        public CompanyEquivalence(AnonymousValueFixture fixture)
+        {
+            _fixture = fixture;
+        }
+
         /// <summary>
         /// Generate and return a company industry name.
         /// </summary>
-        /// <param name="fixture">The fixture to generate a value for.</param>
         /// <returns>The generated value.</returns>
-        public static string CompanyIndustry(this AnonymousValueFixture fixture)
+        public string Industry()
         {
-            return fixture.Words(FromDictionary.CompanyIndustry).Next();
+            return _fixture.Words(FromDictionary.CompanyIndustry).Next();
         }
 
         /// <summary>
         /// Generate and return a company job title.
         /// </summary>
-        /// <param name="fixture">The fixture to generate a value for.</param>
         /// <returns>The generated value.</returns>
-        public static string CompanyJobTitle(this AnonymousValueFixture fixture)
+        public string JobTitle()
         {
-            return fixture.Words(FromDictionary.CompanyJobTitle).Next();
+            return _fixture.Words(FromDictionary.CompanyJobTitle).Next();
         }
 
         /// <summary>
         /// Generate and return a company location name.
         /// </summary>
-        /// <param name="fixture">The fixture to generate a value for.</param>
         /// <returns>The generated value.</returns>
-        public static string CompanyLocation(this AnonymousValueFixture fixture)
+        public string Location()
         {
-            return fixture.Words(FromDictionary.CompanyLocation).Next();
+            return _fixture.Words(FromDictionary.CompanyLocation).Next();
         }
 
         /// <summary>
         /// Generate and return a company name.
         /// </summary>
-        /// <param name="fixture">The fixture to generate a value for.</param>
         /// <returns>The generated value.</returns>
-        public static string CompanyName(this AnonymousValueFixture fixture)
+        public string Name()
         {
-            return fixture.Words(FromDictionary.CompanyName).Next();
+            return _fixture.Words(FromDictionary.CompanyName).Next();
         }
-
     }
 }

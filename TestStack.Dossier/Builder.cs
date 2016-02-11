@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq.Expressions;
-using Ploeh.AutoFixture.Kernel;
 using TestStack.Dossier.Factories;
 using TestStack.Dossier.Lists;
 
