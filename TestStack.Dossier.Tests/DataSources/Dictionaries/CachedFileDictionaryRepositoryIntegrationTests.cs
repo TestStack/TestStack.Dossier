@@ -5,7 +5,7 @@ using Xunit;
 
 namespace TestStack.Dossier.Tests.DataSources.Dictionaries
 {
-    public class FileDictionaryRepositoryIntegrationTests
+    public class CachedFileDictionaryRepositoryIntegrationTests
     {
         [Fact]
         public void GivenAnExternalFileDictionaryExists_WhenRetrievingWords_ThenExternalDictionaryIsUsed()

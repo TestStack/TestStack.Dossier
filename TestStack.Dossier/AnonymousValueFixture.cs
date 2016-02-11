@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Text;
 using Ploeh.AutoFixture;
+using TestStack.Dossier.DataSources.Dictionaries;
 using TestStack.Dossier.Suppliers;
 
 namespace TestStack.Dossier
@@ -105,6 +108,18 @@ namespace TestStack.Dossier
                 .First(s => s.CanSupplyValue(type, propertyName));
 
             return valueSupplier.GenerateAnonymousValue(this, type, propertyName);
+        }
+
+        /// <summary>
+        /// Gets a data source for a file dictionary, which can be built-in or a user-supplied text file.
+        /// </summary>
+        /// <param name="dictionaryName">The name of the file dictionary, without the extension.
+        /// Recommended to use the FromDictionary list of constants for the built-in file dictionaries.
+        /// Just use a normal string for user-supplied text files.</param>
+        /// <returns></returns>
+        public Words Words(string dictionaryName)
+        {
+            return WordsCache.Get(dictionaryName);
         }
     }
 }

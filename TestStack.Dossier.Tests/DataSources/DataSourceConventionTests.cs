@@ -2,9 +2,7 @@
 using System.Linq;
 using Shouldly;
 using TestStack.Dossier.DataSources;
-using TestStack.Dossier.DataSources.Geography;
-using TestStack.Dossier.DataSources.Person;
-using Xunit;
+using TestStack.Dossier.DataSources.Dictionaries;
 using Xunit.Extensions;
 
 namespace TestStack.Dossier.Tests.DataSources
@@ -25,21 +23,21 @@ namespace TestStack.Dossier.Tests.DataSources
         {
             get
             {
-                yield return new object[] { new GeoContinentSource(), 7 };
-                yield return new object[] { new GeoCountrySource(), 249 };
-                yield return new object[] { new GeoCountryCodeSource(), 64 };
-                yield return new object[] { new GeoLatitudeSource(), 1000 };
-                yield return new object[] { new GeoLongitudeSource(), 1000 };
+                yield return new object[] { new Words(FromDictionary.GeoContinent), 7 };
+                yield return new object[] { new Words(FromDictionary.GeoCountry), 249 };
+                yield return new object[] { new Words(FromDictionary.GeoCountryCode), 64 };
+                yield return new object[] { new Words(FromDictionary.GeoLatitude), 1000 };
+                yield return new object[] { new Words(FromDictionary.GeoLongitude), 1000 };
 
-                yield return new object[] { new PersonEmailAddressSource(), 1000 };
-                yield return new object[] { new PersonLanguageSource(), 97 };
-                yield return new object[] { new PersonNameFirstFemaleSource(), 100 };
-                yield return new object[] { new PersonNameFirstSource(), 479 };
-                yield return new object[] { new PersonNameFullSource(), 1000 };
-                yield return new object[] { new PersonNameLastSource(), 747 };
-                yield return new object[] { new PersonNameFirstMaleSource(), 100 };
-                yield return new object[] { new PersonNameSuffixSource(), 5 };
-                yield return new object[] { new PersonNameTitleSource(), 9 };
+                yield return new object[] { new Words(FromDictionary.PersonEmailAddress), 1000 };
+                yield return new object[] { new Words(FromDictionary.PersonLanguage), 97 };
+                yield return new object[] { new Words(FromDictionary.PersonNameFirstFemale), 100 };
+                yield return new object[] { new Words(FromDictionary.PersonNameFirst), 479 };
+                yield return new object[] { new Words(FromDictionary.PersonNameFull), 1000 };
+                yield return new object[] { new Words(FromDictionary.PersonNameLast), 747 };
+                yield return new object[] { new Words(FromDictionary.PersonNameFirstMale), 100 };
+                yield return new object[] { new Words(FromDictionary.PersonNameSuffix), 5 };
+                yield return new object[] { new Words(FromDictionary.PersonNameTitle), 9 };
             }
         }
     }

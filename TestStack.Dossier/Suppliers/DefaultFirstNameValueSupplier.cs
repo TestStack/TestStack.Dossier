@@ -1,5 +1,5 @@
 ﻿using System;
-using TestStack.Dossier.EquivalenceClasses.Person;
+using TestStack.Dossier.EquivalenceClasses;
 
 namespace TestStack.Dossier.Suppliers
 {
@@ -17,7 +17,7 @@ namespace TestStack.Dossier.Suppliers
         /// <inheritdoc />
         public object GenerateAnonymousValue(AnonymousValueFixture any, Type type, string propertyName)
         {
-            return any.FirstName();
+            return any.PersonNameFirst();
         }
     }
 }

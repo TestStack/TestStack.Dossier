@@ -22,6 +22,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Debug\TestStack.Dossier.xml</DocumentationFile>
+    <LangVersion>5</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -52,34 +53,49 @@
   <ItemGroup>
     <Compile Include="AnonymousValueFixture.cs" />
     <Compile Include="Builder.cs" />
+    <Compile Include="DataSources\Dictionaries\FileDictionarySource.cs" />
+    <Compile Include="DataSources\Dictionaries\Words.cs" />
+    <Compile Include="DataSources\Dictionaries\FromDictionary.cs" />
+    <Compile Include="DataSources\Geography\GeoContinentSource.cs" />
+    <Compile Include="DataSources\Geography\GeoCountryCodeSource.cs" />
+    <Compile Include="DataSources\Geography\GeoCountrySource.cs" />
+    <Compile Include="DataSources\Geography\GeoLatitudeSource.cs" />
+    <Compile Include="DataSources\Geography\GeoLongitudeSource.cs" />
+    <Compile Include="DataSources\Person\PersonEmailAddressSource.cs" />
+    <Compile Include="DataSources\Person\PersonLanguageSource.cs" />
+    <Compile Include="DataSources\Person\PersonNameFirstFemaleSource.cs" />
+    <Compile Include="DataSources\Person\PersonNameFirstMaleSource.cs" />
+    <Compile Include="DataSources\Person\PersonNameFirstSource.cs" />
+    <Compile Include="DataSources\Person\PersonNameFullSource.cs" />
+    <Compile Include="DataSources\Person\PersonNameLastSource.cs" />
+    <Compile Include="DataSources\Person\PersonNameSuffixSource.cs" />
+    <Compile Include="DataSources\Person\PersonNameTitleSource.cs" />
+    <Compile Include="EquivalenceClasses\AddressAusEquivalence.cs" />
+    <Compile Include="EquivalenceClasses\AddressUkEquivalence.cs" />
+    <Compile Include="EquivalenceClasses\AddressUsEquivalence.cs" />
+    <Compile Include="EquivalenceClasses\Geo\GeographyEquivalenceClassescs.cs" />
+    <Compile Include="EquivalenceClasses\Person\PersonEquivalenceClasses.cs" />
+    <Compile Include="EquivalenceClasses\ShirtSizeEquivalence.cs" />
+    <Compile Include="EquivalenceClasses\ColourEquivalence.cs" />
+    <Compile Include="EquivalenceClasses\CompanyEquivalence.cs" />
+    <Compile Include="EquivalenceClasses\FinanceEquivalence.cs" />
+    <Compile Include="EquivalenceClasses\FrequencyEquivalence.cs" />
+    <Compile Include="EquivalenceClasses\GeoEquivalence.cs" />
+    <Compile Include="EquivalenceClasses\IdentifierEquivalence.cs" />
+    <Compile Include="EquivalenceClasses\InternetEquivalence.cs" />
+    <Compile Include="EquivalenceClasses\LoremIpsumEquivalence.cs" />
+    <Compile Include="EquivalenceClasses\PersonEquivalence.cs" />
     <Compile Include="DataSources\Picking\Pick.cs" />
     <Compile Include="DataSources\Picking\RandomItemSource.cs" />
     <Compile Include="DataSources\Picking\RepeatingSequenceSource.cs" />
     <Compile Include="ITestDataBuilder.cs" />
-    <Compile Include="DataSources\Dictionaries\Cache.cs" />
+    <Compile Include="DataSources\Dictionaries\WordsCache.cs" />
     <Compile Include="DataSources\Dictionaries\IDictionaryRepository.cs" />
     <Compile Include="DataSources\Dictionaries\CachedFileDictionaryRepository.cs" />
-    <Compile Include="DataSources\Dictionaries\FileDictionarySource.cs" />
-    <Compile Include="DataSources\Geography\GeoContinentSource.cs" />
-    <Compile Include="DataSources\Geography\GeoCountryCodeSource.cs" />
-    <Compile Include="DataSources\Geography\GeoCountrySource.cs" />
     <Compile Include="DataSources\DataSource.cs" />
-    <Compile Include="DataSources\Geography\GeoLatitudeSource.cs" />
-    <Compile Include="DataSources\Geography\GeoLongitudeSource.cs" />
     <Compile Include="DataSources\IDataSource.cs" />
-    <Compile Include="DataSources\Person\PersonEmailAddressSource.cs" />
-    <Compile Include="DataSources\Person\PersonLanguageSource.cs" />
-    <Compile Include="DataSources\Person\PersonNameFirstFemaleSource.cs" />
-    <Compile Include="DataSources\Person\PersonNameFirstSource.cs" />
-    <Compile Include="DataSources\Person\PersonNameFullSource.cs" />
-    <Compile Include="DataSources\Person\PersonNameLastSource.cs" />
-    <Compile Include="DataSources\Person\PersonNameFirstMaleSource.cs" />
-    <Compile Include="DataSources\Person\PersonNameSuffixSource.cs" />
-    <Compile Include="DataSources\Person\PersonNameTitleSource.cs" />
     <Compile Include="EquivalenceClasses\EnumEquivalenceClasses.cs" />
-    <Compile Include="EquivalenceClasses\Geo\GeographyEquivalenceClassescs.cs" />
     <Compile Include="EquivalenceClasses\IntegerEquivalenceClasses.cs" />
-    <Compile Include="EquivalenceClasses\Person\PersonEquivalenceClasses.cs" />
     <Compile Include="DataSources\Generators\IGenerator.cs" />
     <Compile Include="DataSources\Generators\RandomGenerator.cs" />
     <Compile Include="DataSources\Generators\SequentialGenerator.cs" />
@@ -182,9 +198,8 @@
     <EmbeddedResource Include="DataSources\Dictionaries\Resources\PersonUsername.txt" />
     <EmbeddedResource Include="DataSources\Dictionaries\Resources\ShirtSize.txt" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Picking\" />
-  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

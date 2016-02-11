@@ -1,24 +1,10 @@
-﻿using TestStack.Dossier.DataSources.Generators;
-using TestStack.Dossier.DataSources.Person;
-
-namespace TestStack.Dossier.EquivalenceClasses.Person
+﻿namespace TestStack.Dossier.EquivalenceClasses.Person
 {
     /// <summary>
     /// Extension methods that describe equivalence classes for generating anonymous person-related values.
     /// </summary>
     public static class NameEquivalenceClasses
     {
-        private static PersonEmailAddressSource _personEmailAddressSource;
-        private static PersonEmailAddressSource _uniquePersonEmailAddressSource;
-        private static PersonLanguageSource _personLanguageSource;
-        private static PersonNameFirstFemaleSource _personNameFirstFemaleSource;
-        private static PersonNameFirstSource _personNameFirstSource;
-        private static PersonNameFullSource _personNameFullSource;
-        private static PersonNameLastSource _personNameLastSource;
-        private static PersonNameFirstMaleSource _personNameFirstMaleSource;
-        private static PersonNameSuffixSource _personNameSuffixSource;
-        private static PersonNameTitleSource _personNameTitleSource;
-
         /// <summary>
         /// Generate and return an email address.
         /// </summary>
@@ -26,8 +12,7 @@ namespace TestStack.Dossier.EquivalenceClasses.Person
         /// <returns>The generated email</returns>
         public static string EmailAddress(this AnonymousValueFixture fixture)
         {
-            if (_personEmailAddressSource == null) _personEmailAddressSource = new PersonEmailAddressSource();
-            return _personEmailAddressSource.Next();
+            return fixture.PersonEmailAddress();
         }
 
         /// <summary>
@@ -37,14 +22,7 @@ namespace TestStack.Dossier.EquivalenceClasses.Person
         /// <returns>The generated unique email</returns>
         public static string UniqueEmailAddress(this AnonymousValueFixture fixture)
         {
-            if (_uniquePersonEmailAddressSource == null)
-            {
-                if (_personEmailAddressSource == null) _personEmailAddressSource = new PersonEmailAddressSource();
-                var generator = new SequentialGenerator(0, _personEmailAddressSource.Data.Count, listShouldBeUnique: true);
-                _uniquePersonEmailAddressSource = new PersonEmailAddressSource(generator);
-            }
-
-            return _uniquePersonEmailAddressSource.Next();
+            return fixture.PersonUniqueEmailAddress();
         }
 
         /// <summary>
@@ -54,8 +32,7 @@ namespace TestStack.Dossier.EquivalenceClasses.Person
         /// <returns>The generated language</returns>
         public static string Language(this AnonymousValueFixture fixture)
         {
-            if (_personLanguageSource == null) _personLanguageSource = new PersonLanguageSource();
-            return _personLanguageSource.Next();
+            return fixture.PersonLanguage();
         }
 
         /// <summary>
@@ -65,8 +42,7 @@ namespace TestStack.Dossier.EquivalenceClasses.Person
         /// <returns>The generated female first name</returns>
         public static string FemaleFirstName(this AnonymousValueFixture fixture)
         {
-            if (_personNameFirstFemaleSource == null) _personNameFirstFemaleSource = new PersonNameFirstFemaleSource();
-            return _personNameFirstFemaleSource.Next();
+            return fixture.PersonNameFirstFemale();
         }
 
         /// <summary>
@@ -76,8 +52,7 @@ namespace TestStack.Dossier.EquivalenceClasses.Person
         /// <returns>The generated first name</returns>
         public static string FirstName(this AnonymousValueFixture fixture)
         {
-            if (_personNameFirstSource == null) _personNameFirstSource = new PersonNameFirstSource();
-            return _personNameFirstSource.Next();
+            return fixture.PersonNameFirst();
         }
 
         /// <summary>
@@ -87,8 +62,7 @@ namespace TestStack.Dossier.EquivalenceClasses.Person
         /// <returns>The generated full name</returns>
         public static string FullName(this AnonymousValueFixture fixture)
         {
-            if (_personNameFullSource == null) _personNameFullSource = new PersonNameFullSource();
-            return _personNameFullSource.Next();
+            return fixture.PersonNameFull();
         }
 
         /// <summary>
@@ -98,8 +72,7 @@ namespace TestStack.Dossier.EquivalenceClasses.Person
         /// <returns>The generated last name</returns>
         public static string LastName(this AnonymousValueFixture fixture)
         {
-            if (_personNameLastSource == null) _personNameLastSource = new PersonNameLastSource();
-            return _personNameLastSource.Next();
+            return fixture.PersonNameLast();
         }
 
         /// <summary>
@@ -109,8 +82,7 @@ namespace TestStack.Dossier.EquivalenceClasses.Person
         /// <returns>The generated male first name</returns>
         public static string MaleFirstName(this AnonymousValueFixture fixture)
         {
-            if (_personNameFirstMaleSource == null) _personNameFirstMaleSource = new PersonNameFirstMaleSource();
-            return _personNameFirstMaleSource.Next();
+            return fixture.PersonNameFirstMale();
         }
 
         /// <summary>
@@ -120,8 +92,7 @@ namespace TestStack.Dossier.EquivalenceClasses.Person
         /// <returns>The generated suffix</returns>
         public static string Suffix(this AnonymousValueFixture fixture)
         {
-            if (_personNameSuffixSource == null) _personNameSuffixSource = new PersonNameSuffixSource();
-            return _personNameSuffixSource.Next();
+            return fixture.PersonNameSuffix();
         }
 
         /// <summary>
@@ -131,10 +102,7 @@ namespace TestStack.Dossier.EquivalenceClasses.Person
         /// <returns>The generated title</returns>
         public static string Title(this AnonymousValueFixture fixture)
         {
-            if (_personNameTitleSource == null) _personNameTitleSource = new PersonNameTitleSource();
-            return _personNameTitleSource.Next();
+            return fixture.PersonNameTitle();
         }
-
     }
-
 }

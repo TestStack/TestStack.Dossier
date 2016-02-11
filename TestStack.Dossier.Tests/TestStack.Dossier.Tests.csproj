@@ -24,6 +24,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
+    <LangVersion>5</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -39,9 +40,13 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\NSubstitute.1.8.1.0\lib\net45\NSubstitute.dll</HintPath>
     </Reference>
-    <Reference Include="Shouldly, Version=2.4.0.0, Culture=neutral, PublicKeyToken=6042cbcb05cbc941, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Shouldly.2.4.0\lib\net40\Shouldly.dll</HintPath>
+    <Reference Include="PublicApiGenerator, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PublicApiGenerator.4.0.1\lib\net40\PublicApiGenerator.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Shouldly, Version=2.7.0.0, Culture=neutral, PublicKeyToken=6042cbcb05cbc941, processorArchitecture=MSIL">
+      <HintPath>..\packages\Shouldly.2.7.0-beta0003\lib\net40\Shouldly.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -58,6 +63,22 @@
     <Compile Include="Builder_CreateListTests.cs" />
     <Compile Include="Builder_CreateNewTests.cs" />
     <Compile Include="Builder_SetUsingBuilderTests.cs" />
+    <Compile Include="EquivalenceClasses\AddressAusEquivalenceTests.cs" />
+    <Compile Include="EquivalenceClasses\AddressUkEquivalenceTests.cs" />
+    <Compile Include="EquivalenceClasses\AddressUsEquivalenceTests.cs" />
+    <Compile Include="EquivalenceClasses\ColourEquivalenceTests.cs" />
+    <Compile Include="EquivalenceClasses\CompanyEquivalenceTests.cs" />
+    <Compile Include="EquivalenceClasses\FileDictionaryEquivalenceTestCases.cs" />
+    <Compile Include="EquivalenceClasses\FileDictionaryEquivalenceTests.cs" />
+    <Compile Include="EquivalenceClasses\FinanceEquivalenceTests.cs" />
+    <Compile Include="EquivalenceClasses\FrequencyEquivalenceTests.cs" />
+    <Compile Include="EquivalenceClasses\GeoEquivalenceClassesTests.cs" />
+    <Compile Include="EquivalenceClasses\IdentifierEquivalenceTests.cs" />
+    <Compile Include="EquivalenceClasses\IntegerEquivalenceTests.cs" />
+    <Compile Include="EquivalenceClasses\LoremIpsumEquivalenceTests.cs" />
+    <Compile Include="EquivalenceClasses\PersonEquivalenceClassesTests.cs" />
+    <Compile Include="EquivalenceClasses\ShirtSizeEquivalenceTests.cs" />
+    <Compile Include="PublicApiApproval\PublicApiApproverTests.cs" />
     <Compile Include="DataSources\Picking\PickingTests.cs" />
     <Compile Include="TestHelpers\Builders\AddressViewModelBuilder.cs" />
     <Compile Include="TestHelpers\Builders\AutoConstructorCustomerBuilder.cs" />
@@ -72,15 +93,15 @@
     <Compile Include="TestHelpers\Objects\Entities\Customer.cs" />
     <Compile Include="TestHelpers\Objects\Entities\CustomerClass.cs" />
     <Compile Include="DataSources\DataSourceTests.cs" />
-    <Compile Include="DataSources\Dictionaries\CacheTests.cs" />
-    <Compile Include="DataSources\Dictionaries\FileDictionaryRepositoryIntegrationTests.cs" />
-    <Compile Include="DataSources\Dictionaries\FileDictionarySourceTests.cs" />
+    <Compile Include="DataSources\Dictionaries\WordsCacheTests.cs" />
+    <Compile Include="DataSources\Dictionaries\CachedFileDictionaryRepositoryIntegrationTests.cs" />
+    <Compile Include="DataSources\Dictionaries\WordsTests.cs" />
     <Compile Include="DataSources\Dictionaries\Resources\FileDataConventions.cs" />
     <Compile Include="DataSources\Generators\RandomGeneratorTests.cs" />
     <Compile Include="DataSources\Generators\SequentiaGeneratorTests.cs" />
     <Compile Include="DataSources\DataSourceConventionTests.cs" />
-    <Compile Include="EquivalenceClasses\GeoEquivalenceClassesTests.cs" />
-    <Compile Include="EquivalenceClasses\PersonEquivalenceClassesTests.cs" />
+    <Compile Include="EquivalenceClasses\GeoEquivalenceTests.cs" />
+    <Compile Include="EquivalenceClasses\PersonEquivalenceTests.cs" />
     <Compile Include="EquivalenceClasses\IntegerEquivalenceClassesTests.cs" />
     <Compile Include="EquivalenceClasses\EnumEquivalenceClassesTests.cs" />
     <Compile Include="EquivalenceClasses\StringEquivalenceClassesTests.cs" />

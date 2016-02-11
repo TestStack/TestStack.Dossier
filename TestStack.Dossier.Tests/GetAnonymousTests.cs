@@ -1,6 +1,6 @@
 ﻿using System;
 using Shouldly;
-using TestStack.Dossier.DataSources.Person;
+using TestStack.Dossier.DataSources.Dictionaries;
 using TestStack.Dossier.Lists;
 using TestStack.Dossier.Tests.TestHelpers;
 using TestStack.Dossier.Tests.TestHelpers.Builders;
@@ -55,7 +55,7 @@ namespace TestStack.Dossier.Tests
         {
             var firstName = _b.Get(x => x.FirstName);
 
-            new PersonNameFirstSource().Data
+            new Words(FromDictionary.PersonNameFirst).Data
                 .ShouldContain(firstName);
         }
 
@@ -64,7 +64,7 @@ namespace TestStack.Dossier.Tests
         {
             var lastName = _b.Get(x => x.LastName);
 
-            new PersonNameLastSource().Data
+            new Words(FromDictionary.PersonNameLast).Data
                 .ShouldContain(lastName);
         }
 

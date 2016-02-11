@@ -12,11 +12,6 @@ namespace TestStack.Dossier.DataSources.Dictionaries
     {
         public IList<string> GetWordsFrom(string dictionary)
         {
-            if (Cache.Contains(dictionary))
-            {
-                return Cache.Get(dictionary);
-            }
-
             var words = new List<string>();
 
             var name = string.Format("{0}.txt", dictionary);
@@ -30,7 +25,6 @@ namespace TestStack.Dossier.DataSources.Dictionaries
                 words = GetWordsFromEmbeddedResource(GetType().Assembly, resourceName).ToList();
             }
 
-            Cache.Set(dictionary, words);
             return words;
         }
 
