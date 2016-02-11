@@ -1,6 +1,31 @@
 Breaking Changes
 ================
 
+Version 3.3
+-----------
+The classes inheriting from `FileDictionarySource` have been marked as obsolete and will be removed in version 4. Instead you should use the new `Words` class, passing in the name of a file dictionary (either one of the built-in ones or one that you create). All the built-in ones are listed in the FromDictionary class where the constants match the filename embedded into Dossier. So, for example, instead of using the `GeoCountrySource` class you would instead use `Words(FromDictionary.GeoCountry)`.
+
+All of the file dictionaries have been added to the AnonymousValueFixture class as equivalence class extension methods. So, for example, in your builder class you can now call:
+
+```c#
+Any.InternetURL();
+Any.LoremIpsum();
+Any.ColourName();
+```
+
+Picking functionality has been added which allows you to select items from a list according to different strategies. Currently, two strategies have been added, `RandomItemFrom` and `RepeatingSequenceFrom`:
+
+```c#
+var names = new Words(FromDictionary.PersonNameFirst).Data;
+var days = new List<string> {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
+var customers = Builder<Customer>
+	.CreateListOfSize(15)
+	.All()
+	.Set(x => x.Name, Pick.RandomItemFrom(names).Next)
+	.Set(x => x.Day, Pick.RepeatingSequenceFrom(days).Next)
+	.BuildList();
+```
+
 Version 3.0
 -----------
 
