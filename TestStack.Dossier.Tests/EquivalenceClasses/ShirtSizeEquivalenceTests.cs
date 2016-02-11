@@ -5,30 +5,27 @@ using Xunit.Extensions;
 
 namespace TestStack.Dossier.Tests.EquivalenceClasses
 {
-    namespace TestStack.Dossier.Tests.EquivalenceClasses
+    public class ShirtSizeEquivalenceTests : FileDictionaryEquivalenceTests
     {
-        public class ShirtSizeEquivalenceTests : FileDictionaryEquivalenceTests
-        {
-            public AnonymousValueFixture Any { get; } = new AnonymousValueFixture();
+        public AnonymousValueFixture Any { get; } = new AnonymousValueFixture();
 
-            [Theory]
-            [ClassData(typeof(ShirtSizeTestCases))]
-            public override void WhenGettingAnyData_ThenReturnRandomDataWhichIsReasonablyUnique(DataSource<string> source, List<string> testCases)
-            {
-                base.WhenGettingAnyData_ThenReturnRandomDataWhichIsReasonablyUnique(source, testCases);
-            }
+        [Theory]
+        [ClassData(typeof(ShirtSizeTestCases))]
+        public override void WhenGettingAnyData_ThenReturnRandomDataWhichIsReasonablyUnique(DataSource<string> source, List<string> testCases)
+        {
+            base.WhenGettingAnyData_ThenReturnRandomDataWhichIsReasonablyUnique(source, testCases);
         }
+    }
 
-        public class ShirtSizeTestCases : FileDictionaryEquivalenceTestCases
+    public class ShirtSizeTestCases : FileDictionaryEquivalenceTestCases
+    {
+        protected override List<object[]> GetData()
         {
-            protected override List<object[]> GetData()
+            return new List<object[]>
             {
-                return new List<object[]>
-                {
-                    new object[]
-                    {new Words(FromDictionary.ShirtSize), GenerateTestCasesForSut(Any.ShirtSize)}
-                };
-            }
+                new object[]
+                {new Words(FromDictionary.ShirtSize), GenerateTestCasesForSut(Any.ShirtSize)}
+            };
         }
     }
 }

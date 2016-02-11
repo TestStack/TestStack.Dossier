@@ -57,6 +57,8 @@
     <Compile Include="EquivalenceClasses\AddressAusEquivalence.cs" />
     <Compile Include="EquivalenceClasses\AddressUkEquivalence.cs" />
     <Compile Include="EquivalenceClasses\AddressUsEquivalence.cs" />
+    <Compile Include="EquivalenceClasses\Geo\GeographyEquivalenceClassescs.cs" />
+    <Compile Include="EquivalenceClasses\Person\PersonEquivalenceClasses.cs" />
     <Compile Include="EquivalenceClasses\ShirtSizeEquivalence.cs" />
     <Compile Include="EquivalenceClasses\ColourEquivalence.cs" />
     <Compile Include="EquivalenceClasses\CompanyEquivalence.cs" />

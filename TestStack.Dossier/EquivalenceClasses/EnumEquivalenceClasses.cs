@@ -2,8 +2,7 @@
 using System.Linq;
 using Ploeh.AutoFixture;
 
-// ReSharper disable once CheckNamespace
-namespace TestStack.Dossier
+namespace TestStack.Dossier.EquivalenceClasses
 {
     /// <summary>
     /// Extension methods that describe equivalence classes for generating anonymous enum values.

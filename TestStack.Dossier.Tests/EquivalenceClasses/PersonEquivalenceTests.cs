@@ -26,10 +26,11 @@ namespace TestStack.Dossier.Tests.EquivalenceClasses
             var generatedValues = new List<string>();
             var any2 = new AnonymousValueFixture();
 
-            generatedValues.Add(any2.UniqueEmailAddress());
+            any2.ResetUniqueEmailAddressSource();
+            generatedValues.Add(any2.PersonUniqueEmailAddress());
             for (var i = 0; i < source.Data.Count - 1; i++)
             {
-                generatedValues.Add(Any.UniqueEmailAddress());
+                generatedValues.Add(Any.PersonUniqueEmailAddress());
             }
 
             generatedValues.Distinct().Count()

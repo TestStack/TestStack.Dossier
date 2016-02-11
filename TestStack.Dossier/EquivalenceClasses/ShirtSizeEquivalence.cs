@@ -19,6 +19,4 @@ namespace TestStack.Dossier
         }
 
     }
-
-
 }

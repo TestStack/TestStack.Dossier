@@ -71,9 +71,11 @@
     <Compile Include="EquivalenceClasses\FileDictionaryEquivalenceTests.cs" />
     <Compile Include="EquivalenceClasses\FinanceEquivalenceTests.cs" />
     <Compile Include="EquivalenceClasses\FrequencyEquivalenceTests.cs" />
+    <Compile Include="EquivalenceClasses\GeoEquivalenceClassesTests.cs" />
     <Compile Include="EquivalenceClasses\IdentifierEquivalenceTests.cs" />
     <Compile Include="EquivalenceClasses\IntegerEquivalenceTests.cs" />
     <Compile Include="EquivalenceClasses\LoremIpsumEquivalenceTests.cs" />
+    <Compile Include="EquivalenceClasses\PersonEquivalenceClassesTests.cs" />
     <Compile Include="EquivalenceClasses\ShirtSizeEquivalenceTests.cs" />
     <Compile Include="PublicApiApproval\PublicApiApproverTests.cs" />
     <Compile Include="TestHelpers\Builders\AddressViewModelBuilder.cs" />

@@ -17,16 +17,22 @@ namespace TestStack.Dossier
         /// </summary>
         /// <param name="fixture">The fixture to generate a unique email for</param>
         /// <returns>The generated unique email</returns>
-        public static string UniqueEmailAddress(this AnonymousValueFixture fixture)
+        public static string PersonUniqueEmailAddress(this AnonymousValueFixture fixture)
         {
             if (_uniquePersonEmailAddressSource == null)
             {
-                if (_personEmailAddressSource == null) _personEmailAddressSource = fixture.Words(FromDictionary.PersonEmailAddress);
-                var generator = new SequentialGenerator(0, _personEmailAddressSource.Data.Count, listShouldBeUnique: true);
-                _uniquePersonEmailAddressSource = new Words(generator, new CachedFileDictionaryRepository(), FromDictionary.PersonEmailAddress);
+                fixture.ResetUniqueEmailAddressSource();
             }
 
             return _uniquePersonEmailAddressSource.Next();
+        }
+
+        internal static void ResetUniqueEmailAddressSource(this AnonymousValueFixture fixture)
+        {
+            if (_personEmailAddressSource == null) _personEmailAddressSource = fixture.Words(FromDictionary.PersonEmailAddress);
+            var generator = new SequentialGenerator(0, _personEmailAddressSource.Data.Count, listShouldBeUnique: true);
+            _uniquePersonEmailAddressSource = new Words(generator, new CachedFileDictionaryRepository(),
+                FromDictionary.PersonEmailAddress);
         }
 
         /// <summary>

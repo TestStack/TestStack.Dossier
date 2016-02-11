@@ -79,13 +79,6 @@ namespace TestStack.Dossier
         public static string CompanyLocation(this TestStack.Dossier.AnonymousValueFixture fixture) { }
         public static string CompanyName(this TestStack.Dossier.AnonymousValueFixture fixture) { }
     }
-    public class static EnumEquivalenceClasses
-    {
-        public static TEnum Except<TEnum>(this TestStack.Dossier.AnonymousValueFixture fixture, params TEnum[] except)
-            where TEnum :  struct, System.IComparable, System.IFormattable, System.IConvertible { }
-        public static TEnum Of<TEnum>(this TestStack.Dossier.AnonymousValueFixture fixture)
-            where TEnum :  struct, System.IComparable, System.IFormattable, System.IConvertible { }
-    }
     public class static FinanceEquivalence
     {
         public static string FinanceCreditCardNumber(this TestStack.Dossier.AnonymousValueFixture fixture) { }
@@ -119,12 +112,6 @@ namespace TestStack.Dossier
         public static string IdentifierIsbn(this TestStack.Dossier.AnonymousValueFixture fixture) { }
         public static string IdentifierMacAddress(this TestStack.Dossier.AnonymousValueFixture fixture) { }
     }
-    public class static IntegerEquivalenceClasses
-    {
-        public static int IntegerExcept(this TestStack.Dossier.AnonymousValueFixture fixture, params int[] exceptFor) { }
-        public static int NegativeInteger(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static int PositiveInteger(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-    }
     public class static InternetEquivalence
     {
         public static string InternetDomainCountryCodeTopLevelDomain(this TestStack.Dossier.AnonymousValueFixture fixture) { }
@@ -154,8 +141,8 @@ namespace TestStack.Dossier
         public static string PersonNameTitle(this TestStack.Dossier.AnonymousValueFixture fixture) { }
         public static string PersonPassword(this TestStack.Dossier.AnonymousValueFixture fixture) { }
         public static string PersonRace(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string PersonUniqueEmailAddress(this TestStack.Dossier.AnonymousValueFixture fixture) { }
         public static string PersonUsername(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string UniqueEmailAddress(this TestStack.Dossier.AnonymousValueFixture fixture) { }
     }
     public class ProxyBuilder<T>
         where T :  class
@@ -166,14 +153,6 @@ namespace TestStack.Dossier
     public class static ShirtSizeEquivalence
     {
         public static string ShirtSize(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-    }
-    public class static StringEquivalenceClasses
-    {
-        public static string String(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string StringEndingWith(this TestStack.Dossier.AnonymousValueFixture fixture, string suffix) { }
-        public static string StringMatching(this TestStack.Dossier.AnonymousValueFixture fixture, string regexPattern) { }
-        public static string StringOfLength(this TestStack.Dossier.AnonymousValueFixture fixture, int length) { }
-        public static string StringStartingWith(this TestStack.Dossier.AnonymousValueFixture fixture, string prefix) { }
     }
     public abstract class TestDataBuilder<TObject, TBuilder> : TestStack.Dossier.ITestDataBuilder<TObject>
         where TObject :  class
@@ -325,6 +304,60 @@ namespace TestStack.Dossier.DataSources.Generators
         public int ListSize { get; set; }
         public int StartIndex { get; set; }
         public int Generate() { }
+    }
+}
+namespace TestStack.Dossier.EquivalenceClasses
+{
+    
+    public class static EnumEquivalenceClasses
+    {
+        public static TEnum Except<TEnum>(this TestStack.Dossier.AnonymousValueFixture fixture, params TEnum[] except)
+            where TEnum :  struct, System.IComparable, System.IFormattable, System.IConvertible { }
+        public static TEnum Of<TEnum>(this TestStack.Dossier.AnonymousValueFixture fixture)
+            where TEnum :  struct, System.IComparable, System.IFormattable, System.IConvertible { }
+    }
+    public class static IntegerEquivalenceClasses
+    {
+        public static int IntegerExcept(this TestStack.Dossier.AnonymousValueFixture fixture, params int[] exceptFor) { }
+        public static int NegativeInteger(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static int PositiveInteger(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+    }
+    public class static StringEquivalenceClasses
+    {
+        public static string String(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string StringEndingWith(this TestStack.Dossier.AnonymousValueFixture fixture, string suffix) { }
+        public static string StringMatching(this TestStack.Dossier.AnonymousValueFixture fixture, string regexPattern) { }
+        public static string StringOfLength(this TestStack.Dossier.AnonymousValueFixture fixture, int length) { }
+        public static string StringStartingWith(this TestStack.Dossier.AnonymousValueFixture fixture, string prefix) { }
+    }
+}
+namespace TestStack.Dossier.EquivalenceClasses.Geo
+{
+    
+    public class static GeographyEquivalenceClassescs
+    {
+        public static string Continent(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string Country(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string CountryCode(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string Latitude(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string Longitude(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+    }
+}
+namespace TestStack.Dossier.EquivalenceClasses.Person
+{
+    
+    public class static NameEquivalenceClasses
+    {
+        public static string EmailAddress(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string FemaleFirstName(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string FirstName(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string FullName(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string Language(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string LastName(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string MaleFirstName(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string Suffix(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string Title(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string UniqueEmailAddress(this TestStack.Dossier.AnonymousValueFixture fixture) { }
     }
 }
 namespace TestStack.Dossier.Factories

@@ -5,30 +5,27 @@ using Xunit.Extensions;
 
 namespace TestStack.Dossier.Tests.EquivalenceClasses
 {
-    namespace TestStack.Dossier.Tests.EquivalenceClasses
+    public class LoremIpsumEquivalenceTests : FileDictionaryEquivalenceTests
     {
-        public class LoremIpsumEquivalenceTests : FileDictionaryEquivalenceTests
-        {
-            public AnonymousValueFixture Any { get; } = new AnonymousValueFixture();
+        public AnonymousValueFixture Any { get; } = new AnonymousValueFixture();
 
-            [Theory]
-            [ClassData(typeof(LoremIpsumTestCases))]
-            public override void WhenGettingAnyData_ThenReturnRandomDataWhichIsReasonablyUnique(DataSource<string> source, List<string> testCases)
-            {
-                base.WhenGettingAnyData_ThenReturnRandomDataWhichIsReasonablyUnique(source, testCases);
-            }
+        [Theory]
+        [ClassData(typeof(LoremIpsumTestCases))]
+        public override void WhenGettingAnyData_ThenReturnRandomDataWhichIsReasonablyUnique(DataSource<string> source, List<string> testCases)
+        {
+            base.WhenGettingAnyData_ThenReturnRandomDataWhichIsReasonablyUnique(source, testCases);
         }
+    }
 
-        public class LoremIpsumTestCases : FileDictionaryEquivalenceTestCases
+    public class LoremIpsumTestCases : FileDictionaryEquivalenceTestCases
+    {
+        protected override List<object[]> GetData()
         {
-            protected override List<object[]> GetData()
+            return new List<object[]>
             {
-                return new List<object[]>
-                {
-                    new object[]
-                    {new Words(FromDictionary.LoremIpsum), GenerateTestCasesForSut(Any.LoremIpsum)}
-                };
-            }
+                new object[]
+                {new Words(FromDictionary.LoremIpsum), GenerateTestCasesForSut(Any.LoremIpsum)}
+            };
         }
     }
 }

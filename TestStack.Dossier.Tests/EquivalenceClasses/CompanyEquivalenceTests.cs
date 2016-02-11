@@ -5,36 +5,33 @@ using Xunit.Extensions;
 
 namespace TestStack.Dossier.Tests.EquivalenceClasses
 {
-    namespace TestStack.Dossier.Tests.EquivalenceClasses
+    public class CompanyEquivalenceTests : FileDictionaryEquivalenceTests
     {
-        public class CompanyEquivalenceTests : FileDictionaryEquivalenceTests
-        {
-            public AnonymousValueFixture Any { get; } = new AnonymousValueFixture();
+        public AnonymousValueFixture Any { get; } = new AnonymousValueFixture();
 
-            [Theory]
-            [ClassData(typeof(CompanyTestCases))]
-            public override void WhenGettingAnyData_ThenReturnRandomDataWhichIsReasonablyUnique(DataSource<string> source, List<string> testCases)
-            {
-                base.WhenGettingAnyData_ThenReturnRandomDataWhichIsReasonablyUnique(source, testCases);
-            }
+        [Theory]
+        [ClassData(typeof(CompanyTestCases))]
+        public override void WhenGettingAnyData_ThenReturnRandomDataWhichIsReasonablyUnique(DataSource<string> source, List<string> testCases)
+        {
+            base.WhenGettingAnyData_ThenReturnRandomDataWhichIsReasonablyUnique(source, testCases);
         }
+    }
 
-        public class CompanyTestCases : FileDictionaryEquivalenceTestCases
+    public class CompanyTestCases : FileDictionaryEquivalenceTestCases
+    {
+        protected override List<object[]> GetData()
         {
-            protected override List<object[]> GetData()
+            return new List<object[]>
             {
-                return new List<object[]>
-                {
-                    new object[]
-                    {new Words(FromDictionary.CompanyName), GenerateTestCasesForSut(Any.CompanyName)},
-                    new object[]
-                    {new Words(FromDictionary.CompanyIndustry), GenerateTestCasesForSut(Any.CompanyIndustry)},
-                    new object[]
-                    {new Words(FromDictionary.CompanyJobTitle), GenerateTestCasesForSut(Any.CompanyJobTitle)},
-                    new object[]
-                    {new Words(FromDictionary.CompanyLocation), GenerateTestCasesForSut(Any.CompanyLocation)}
-                };
-            }
+                new object[]
+                {new Words(FromDictionary.CompanyName), GenerateTestCasesForSut(Any.CompanyName)},
+                new object[]
+                {new Words(FromDictionary.CompanyIndustry), GenerateTestCasesForSut(Any.CompanyIndustry)},
+                new object[]
+                {new Words(FromDictionary.CompanyJobTitle), GenerateTestCasesForSut(Any.CompanyJobTitle)},
+                new object[]
+                {new Words(FromDictionary.CompanyLocation), GenerateTestCasesForSut(Any.CompanyLocation)}
+            };
         }
     }
 }
