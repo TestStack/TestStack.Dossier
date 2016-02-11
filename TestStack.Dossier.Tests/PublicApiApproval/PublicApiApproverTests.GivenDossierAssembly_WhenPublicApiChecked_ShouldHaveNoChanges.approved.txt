@@ -7,6 +7,39 @@
 namespace TestStack.Dossier
 {
     
+    public class static AddressAusEquivalence
+    {
+        public static string AddressAusCity(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string AddressAusCompany(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string AddressAusPhone(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string AddressAusPostCode(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string AddressAusState(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string AddressAusStateAbbreviation(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string AddressAusStreet(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string AddressAusWebsite(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+    }
+    public class static AddressUkEquivalence
+    {
+        public static string AddressUkCity(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string AddressUkCompany(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string AddressUkCounty(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string AddressUkPhone(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string AddressUkPostCode(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string AddressUkStreet(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string AddressUkWebsite(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+    }
+    public class static AddressUsEquivalence
+    {
+        public static string AddressUsCity(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string AddressUsCompany(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string AddressUsPhone(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string AddressUsSocialSecurityNumber(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string AddressUsState(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string AddressUsStateAbbreviation(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string AddressUsStreet(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string AddressUsWebsite(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string AddressUsZipCode(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+    }
     public class AnonymousValueFixture
     {
         public AnonymousValueFixture() { }
@@ -19,6 +52,7 @@ namespace TestStack.Dossier
         public Ploeh.AutoFixture.RegularExpressionGenerator RegexGenerator { get; }
         public T Get<TObject, T>(System.Linq.Expressions.Expression<System.Func<TObject, T>> property) { }
         public object Get(System.Type type, string propertyName) { }
+        public TestStack.Dossier.DataSources.Dictionaries.Words Words(string dictionaryName) { }
     }
     public class Builder<T> : TestStack.Dossier.TestDataBuilder<T, TestStack.Dossier.Builder<T>>
         where T :  class
@@ -33,21 +67,92 @@ namespace TestStack.Dossier
         public virtual TestStack.Dossier.Builder<T> SetUsingBuilder<TPropertyType>(System.Linq.Expressions.Expression<System.Func<T, TPropertyType>> property, System.Func<TestStack.Dossier.Builder<TPropertyType>, TestStack.Dossier.Builder<TPropertyType>> modifier = null)
             where TPropertyType :  class { }
     }
+    public class static ColourEquivalence
+    {
+        public static string ColourHex(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string ColourName(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+    }
+    public class static CompanyEquivalence
+    {
+        public static string CompanyIndustry(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string CompanyJobTitle(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string CompanyLocation(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string CompanyName(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+    }
+    public class static FinanceEquivalence
+    {
+        public static string FinanceCreditCardNumber(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string FinanceCreditCardType(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string FinanceCurrency(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string FinanceCurrencyCode(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+    }
+    public class static FrequencyEquivalence
+    {
+        public static string Frequency(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+    }
+    public class static GeoEquivalence
+    {
+        public static string GeoContinent(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string GeoCountry(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string GeoCountryCode(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string GeoLatitude(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string GeoLongitude(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+    }
     public interface IAnonymousValueSupplier
     {
         bool CanSupplyValue(System.Type type, string propertyName);
         object GenerateAnonymousValue(TestStack.Dossier.AnonymousValueFixture any, System.Type type, string propertyName);
+    }
+    public class static IdentifierEquivalence
+    {
+        public static string IdentifierBitcoinAddress(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string IdentifierIban(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string IdentifierIpAddressV4(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string IdentifierIpAddressV6(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string IdentifierIsbn(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string IdentifierMacAddress(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+    }
+    public class static InternetEquivalence
+    {
+        public static string InternetDomainCountryCodeTopLevelDomain(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string InternetDomainName(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string InternetDomainTopLevel(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string InternetUrl(this TestStack.Dossier.AnonymousValueFixture fixture) { }
     }
     public interface ITestDataBuilder<out TObject>
         where out TObject :  class
     {
         TObject Build();
     }
+    public class static LoremIpsumEquivalence
+    {
+        public static string LoremIpsum(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+    }
+    public class static PersonEquivalence
+    {
+        public static string PersonEmailAddress(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string PersonLanguage(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string PersonNameFirst(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string PersonNameFirstFemale(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string PersonNameFirstMale(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string PersonNameFull(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string PersonNameLast(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string PersonNameSuffix(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string PersonNameTitle(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string PersonPassword(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string PersonRace(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string PersonUniqueEmailAddress(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public static string PersonUsername(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+    }
     public class ProxyBuilder<T>
         where T :  class
     {
         public ProxyBuilder(System.Collections.Generic.Dictionary<string, System.Func<object>> properties) { }
         public T Build() { }
+    }
+    public class static ShirtSizeEquivalence
+    {
+        public static string ShirtSize(this TestStack.Dossier.AnonymousValueFixture fixture) { }
     }
     public abstract class TestDataBuilder<TObject, TBuilder> : TestStack.Dossier.ITestDataBuilder<TObject>
         where TObject :  class
@@ -100,9 +205,83 @@ namespace TestStack.Dossier.DataSources
 namespace TestStack.Dossier.DataSources.Dictionaries
 {
     
+    [System.ObsoleteAttribute("FileDictionarySource is deprecated, please use Words(FromDictionary) instead.")]
     public abstract class FileDictionarySource : TestStack.Dossier.DataSources.DataSource<string>
     {
         protected FileDictionarySource() { }
+        protected override System.Collections.Generic.IList<string> InitializeDataSource() { }
+    }
+    public class FromDictionary
+    {
+        public const string AddressAusCity = "AddressAusCity";
+        public const string AddressAusCompany = "AddressAusCompany";
+        public const string AddressAusPhone = "AddressAusPhone";
+        public const string AddressAusPostCode = "AddressAusPostCode";
+        public const string AddressAusState = "AddressAusState";
+        public const string AddressAusStateAbbreviation = "AddressAusStateAbbreviation";
+        public const string AddressAusStreet = "AddressAusStreet";
+        public const string AddressAusWebsite = "AddressAusWebsite";
+        public const string AddressUkCity = "AddressUKCity";
+        public const string AddressUkCompany = "AddressUKCompany";
+        public const string AddressUkCounty = "AddressUKCounty";
+        public const string AddressUkPhone = "AddressUKPhone";
+        public const string AddressUkPostCode = "AddressUKPostCode";
+        public const string AddressUkStreet = "AddressUKStreet";
+        public const string AddressUkWebsite = "AddressUKWebsite";
+        public const string AddressUsCity = "AddressUSCity";
+        public const string AddressUsCompany = "AddressUSCompany";
+        public const string AddressUsPhone = "AddressUSPhone";
+        public const string AddressUsSocialSecurityNumber = "AddressUSSocialSecurityNumber";
+        public const string AddressUsState = "AddressUSState";
+        public const string AddressUsStateAbbreviation = "AddressUSStateAbbreviation";
+        public const string AddressUsStreet = "AddressUSStreet";
+        public const string AddressUsWebsite = "AddressUSWebsite";
+        public const string AddressUsZipCode = "AddressUSZipCode";
+        public const string ColourHex = "ColourHex";
+        public const string ColourName = "ColourName";
+        public const string CompanyIndustry = "CompanyIndustry";
+        public const string CompanyJobTitle = "CompanyJobTitle";
+        public const string CompanyLocation = "CompanyLocation";
+        public const string CompanyName = "CompanyName";
+        public const string FinanceCreditCardNumber = "FinanceCreditCardNumber";
+        public const string FinanceCreditCardType = "FinanceCreditCardType";
+        public const string FinanceCurrency = "FinanceCurrency";
+        public const string FinanceCurrencyCode = "FinanceCurrencyCode";
+        public const string Frequency = "Frequency";
+        public const string GeoContinent = "GeoContinent";
+        public const string GeoCountry = "GeoCountry";
+        public const string GeoCountryCode = "GeoCountryCode";
+        public const string GeoLatitude = "GeoLatitude";
+        public const string GeoLongitude = "GeoLongitude";
+        public const string IdentifierBitcoinAddress = "IdentifierBitcoinAddress";
+        public const string IdentifierIban = "IdentifierIBAN";
+        public const string IdentifierIpAddressV4 = "IdentifierIPAddressV4";
+        public const string IdentifierIpAddressV6 = "IdentifierIPAddressV6";
+        public const string IdentifierIsbn = "IdentifierISBN";
+        public const string IdentifierMacAddress = "IdentifierMacAddress";
+        public const string InternetDomainCountryCodeTopLevelDomain = "InternetDomainCountryCodeTopLevelDomain";
+        public const string InternetDomainName = "InternetDomainName";
+        public const string InternetDomainTopLevel = "InternetDomainTopLevel";
+        public const string InternetUrl = "InternetURL";
+        public const string LoremIpsum = "LoremIpsum";
+        public const string PersonEmailAddress = "PersonEmailAddress";
+        public const string PersonLanguage = "PersonLanguage";
+        public const string PersonNameFirst = "PersonNameFirst";
+        public const string PersonNameFirstFemale = "PersonNameFirstFemale";
+        public const string PersonNameFirstMale = "PersonNameFirstMale";
+        public const string PersonNameFull = "PersonNameFull";
+        public const string PersonNameLast = "PersonNameLast";
+        public const string PersonNameSuffix = "PersonNameSuffix";
+        public const string PersonNameTitle = "PersonNameTitle";
+        public const string PersonPassword = "PersonPassword";
+        public const string PersonRace = "PersonRace";
+        public const string PersonUsername = "PersonUsername";
+        public const string ShirtSize = "ShirtSize";
+        public FromDictionary() { }
+    }
+    public class Words : TestStack.Dossier.DataSources.DataSource<string>
+    {
+        public Words(string dictionaryName) { }
         protected override System.Collections.Generic.IList<string> InitializeDataSource() { }
     }
 }
@@ -136,22 +315,32 @@ namespace TestStack.Dossier.DataSources.Generators
 namespace TestStack.Dossier.DataSources.Geography
 {
     
+    [System.ObsoleteAttribute("GeoContinentSource is deprecated, please use Words(FromDictionary.GeoContinent) i" +
+        "nstead.")]
     public class GeoContinentSource : TestStack.Dossier.DataSources.Dictionaries.FileDictionarySource
     {
         public GeoContinentSource() { }
     }
+    [System.ObsoleteAttribute("GeoCountryCodeSource is deprecated, please use Words(FromDictionary.GeoCountryCod" +
+        "e) instead.")]
     public class GeoCountryCodeSource : TestStack.Dossier.DataSources.Dictionaries.FileDictionarySource
     {
         public GeoCountryCodeSource() { }
     }
+    [System.ObsoleteAttribute("GeoCountrySource is deprecated, please use Words(FromDictionary.GeoCountry) inste" +
+        "ad.")]
     public class GeoCountrySource : TestStack.Dossier.DataSources.Dictionaries.FileDictionarySource
     {
         public GeoCountrySource() { }
     }
+    [System.ObsoleteAttribute("GeoLatitudeSource is deprecated, please use Words(FromDictionary.GeoLatitude) ins" +
+        "tead.")]
     public class GeoLatitudeSource : TestStack.Dossier.DataSources.Dictionaries.FileDictionarySource
     {
         public GeoLatitudeSource() { }
     }
+    [System.ObsoleteAttribute("GeoLongitudeSource is deprecated, please use Words(FromDictionary.GeoLongitude) i" +
+        "nstead.")]
     public class GeoLongitudeSource : TestStack.Dossier.DataSources.Dictionaries.FileDictionarySource
     {
         public GeoLongitudeSource() { }
@@ -160,39 +349,57 @@ namespace TestStack.Dossier.DataSources.Geography
 namespace TestStack.Dossier.DataSources.Person
 {
     
+    [System.ObsoleteAttribute("PersonEmailAddressSource is deprecated, please use Words(FromDictionary.PersonEma" +
+        "ilAddress) instead.")]
     public class PersonEmailAddressSource : TestStack.Dossier.DataSources.Dictionaries.FileDictionarySource
     {
         public PersonEmailAddressSource() { }
         public PersonEmailAddressSource(TestStack.Dossier.DataSources.Generators.IGenerator generator) { }
     }
+    [System.ObsoleteAttribute("PersonLanguageSource is deprecated, please use Words(FromDictionary.PersonLanguag" +
+        "e) instead.")]
     public class PersonLanguageSource : TestStack.Dossier.DataSources.Dictionaries.FileDictionarySource
     {
         public PersonLanguageSource() { }
     }
+    [System.ObsoleteAttribute("PersonNameFirstFemaleSource is deprecated, please use Words(FromDictionary.Person" +
+        "NameFirstFemale) instead.")]
     public class PersonNameFirstFemaleSource : TestStack.Dossier.DataSources.Dictionaries.FileDictionarySource
     {
         public PersonNameFirstFemaleSource() { }
     }
+    [System.ObsoleteAttribute("PersonNameFirstMaleSource is deprecated, please use Words(FromDictionary.PersonNa" +
+        "meFirstMale) instead.")]
     public class PersonNameFirstMaleSource : TestStack.Dossier.DataSources.Dictionaries.FileDictionarySource
     {
         public PersonNameFirstMaleSource() { }
     }
+    [System.ObsoleteAttribute("PersonNameFirstSource is deprecated, please use Words(FromDictionary.PersonNameFi" +
+        "rst) instead.")]
     public class PersonNameFirstSource : TestStack.Dossier.DataSources.Dictionaries.FileDictionarySource
     {
         public PersonNameFirstSource() { }
     }
+    [System.ObsoleteAttribute("PersonNameFullSource is deprecated, please use Words(FromDictionary.PersonNameFul" +
+        "l) instead.")]
     public class PersonNameFullSource : TestStack.Dossier.DataSources.Dictionaries.FileDictionarySource
     {
         public PersonNameFullSource() { }
     }
+    [System.ObsoleteAttribute("PersonNameLastSource is deprecated, please use Words(FromDictionary.PersonNameLas" +
+        "t) instead.")]
     public class PersonNameLastSource : TestStack.Dossier.DataSources.Dictionaries.FileDictionarySource
     {
         public PersonNameLastSource() { }
     }
+    [System.ObsoleteAttribute("PersonNameSuffixSource is deprecated, please use Words(FromDictionary.PersonNameS" +
+        "uffix) instead.")]
     public class PersonNameSuffixSource : TestStack.Dossier.DataSources.Dictionaries.FileDictionarySource
     {
         public PersonNameSuffixSource() { }
     }
+    [System.ObsoleteAttribute("PersonNameTitleSource is deprecated, please use Words(FromDictionary.PersonNameTi" +
+        "tle) instead.")]
     public class PersonNameTitleSource : TestStack.Dossier.DataSources.Dictionaries.FileDictionarySource
     {
         public PersonNameTitleSource() { }
