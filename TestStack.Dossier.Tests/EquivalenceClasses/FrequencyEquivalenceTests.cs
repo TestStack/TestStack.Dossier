@@ -7,8 +7,6 @@ namespace TestStack.Dossier.Tests.EquivalenceClasses
 {
     public class FrequencyEquivalenceTests : FileDictionaryEquivalenceTests
     {
-        public AnonymousValueFixture Any { get; } = new AnonymousValueFixture();
-
         [Theory]
         [ClassData(typeof(FrequencyTestCases))]
         public override void WhenGettingAnyData_ThenReturnRandomDataWhichIsReasonablyUnique(DataSource<string> source, List<string> testCases)

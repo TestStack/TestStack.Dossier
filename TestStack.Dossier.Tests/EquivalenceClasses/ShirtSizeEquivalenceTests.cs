@@ -7,8 +7,6 @@ namespace TestStack.Dossier.Tests.EquivalenceClasses
 {
     public class ShirtSizeEquivalenceTests : FileDictionaryEquivalenceTests
     {
-        public AnonymousValueFixture Any { get; } = new AnonymousValueFixture();
-
         [Theory]
         [ClassData(typeof(ShirtSizeTestCases))]
         public override void WhenGettingAnyData_ThenReturnRandomDataWhichIsReasonablyUnique(DataSource<string> source, List<string> testCases)

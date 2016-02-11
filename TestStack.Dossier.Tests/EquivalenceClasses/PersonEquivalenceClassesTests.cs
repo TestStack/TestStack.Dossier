@@ -3,7 +3,6 @@ using System.Linq;
 using Shouldly;
 using TestStack.Dossier.DataSources;
 using TestStack.Dossier.DataSources.Dictionaries;
-using TestStack.Dossier.EquivalenceClasses;
 using TestStack.Dossier.EquivalenceClasses.Person;
 using Xunit;
 using Xunit.Extensions;
@@ -12,8 +11,6 @@ namespace TestStack.Dossier.Tests.EquivalenceClasses
 {
     public class PersonEquivalenceClassesTests : FileDictionaryEquivalenceTests
     {
-        public AnonymousValueFixture Any { get; } = new AnonymousValueFixture();
-
         [Theory]
         [ClassData(typeof(PersonTestCases2))]
         public override void WhenGettingAnyData_ThenReturnRandomDataWhichIsReasonablyUnique(DataSource<string> source, List<string> testCases)

@@ -7,8 +7,6 @@ namespace TestStack.Dossier.Tests.EquivalenceClasses
 {
     public class LoremIpsumEquivalenceTests : FileDictionaryEquivalenceTests
     {
-        public AnonymousValueFixture Any { get; } = new AnonymousValueFixture();
-
         [Theory]
         [ClassData(typeof(LoremIpsumTestCases))]
         public override void WhenGettingAnyData_ThenReturnRandomDataWhichIsReasonablyUnique(DataSource<string> source, List<string> testCases)

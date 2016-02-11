@@ -7,6 +7,8 @@ namespace TestStack.Dossier.Tests.EquivalenceClasses
 {
     public abstract class FileDictionaryEquivalenceTests
     {
+        protected AnonymousValueFixture Any = new AnonymousValueFixture();
+
         public virtual void WhenGettingAnyData_ThenReturnRandomDataWhichIsReasonablyUnique(DataSource<string> source,
             List<string> testCases)
         {

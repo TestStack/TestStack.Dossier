@@ -8,7 +8,7 @@ namespace TestStack.Dossier.Tests.EquivalenceClasses
     {
         protected abstract List<object[]> GetData();
 
-        public AnonymousValueFixture Any { get; } = new AnonymousValueFixture();
+        protected AnonymousValueFixture Any = new AnonymousValueFixture();
 
         private List<object[]> _data;
         public List<object[]> Data
