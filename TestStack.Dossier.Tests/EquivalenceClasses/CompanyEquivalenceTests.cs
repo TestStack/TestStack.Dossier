@@ -22,13 +22,13 @@ namespace TestStack.Dossier.Tests.EquivalenceClasses
             return new List<object[]>
             {
                 new object[]
-                {new Words(FromDictionary.CompanyName), GenerateTestCasesForSut(Any.Company().Name)},
+                {new Words(FromDictionary.CompanyName), GenerateTestCasesForSut(Any.Company.Name)},
                 new object[]
-                {new Words(FromDictionary.CompanyIndustry), GenerateTestCasesForSut(Any.Company().Industry)},
+                {new Words(FromDictionary.CompanyIndustry), GenerateTestCasesForSut(Any.Company.Industry)},
                 new object[]
-                {new Words(FromDictionary.CompanyJobTitle), GenerateTestCasesForSut(Any.Company().JobTitle)},
+                {new Words(FromDictionary.CompanyJobTitle), GenerateTestCasesForSut(Any.Company.JobTitle)},
                 new object[]
-                {new Words(FromDictionary.CompanyLocation), GenerateTestCasesForSut(Any.Company().Location)}
+                {new Words(FromDictionary.CompanyLocation), GenerateTestCasesForSut(Any.Company.Location)}
             };
         }
     }

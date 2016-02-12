@@ -22,26 +22,26 @@ namespace TestStack.Dossier.Tests.EquivalenceClasses
             return new List<object[]>
             {
                 new object[]
-                {new Words(FromDictionary.AddressUsCity), GenerateTestCasesForSut(Any.AddressUs().City)},
+                {new Words(FromDictionary.AddressUsCity), GenerateTestCasesForSut(Any.AddressUs.City)},
                 new object[]
-                {new Words(FromDictionary.AddressUsCompany), GenerateTestCasesForSut(Any.AddressUs().Company)},
+                {new Words(FromDictionary.AddressUsCompany), GenerateTestCasesForSut(Any.AddressUs.Company)},
                 new object[]
-                {new Words(FromDictionary.AddressUsPhone), GenerateTestCasesForSut(Any.AddressUs().Phone)},
+                {new Words(FromDictionary.AddressUsPhone), GenerateTestCasesForSut(Any.AddressUs.Phone)},
                 new object[]
-                {new Words(FromDictionary.AddressUsSocialSecurityNumber), GenerateTestCasesForSut(Any.AddressUs().SocialSecurityNumber)},
+                {new Words(FromDictionary.AddressUsSocialSecurityNumber), GenerateTestCasesForSut(Any.AddressUs.SocialSecurityNumber)},
                 new object[]
-                {new Words(FromDictionary.AddressUsState), GenerateTestCasesForSut(Any.AddressUs().State)},
+                {new Words(FromDictionary.AddressUsState), GenerateTestCasesForSut(Any.AddressUs.State)},
                 new object[]
                 {
                     new Words(FromDictionary.AddressUsStateAbbreviation),
-                    GenerateTestCasesForSut(Any.AddressUs().StateAbbreviation)
+                    GenerateTestCasesForSut(Any.AddressUs.StateAbbreviation)
                 },
                 new object[]
-                {new Words(FromDictionary.AddressUsStreet), GenerateTestCasesForSut(Any.AddressUs().Street)},
+                {new Words(FromDictionary.AddressUsStreet), GenerateTestCasesForSut(Any.AddressUs.Street)},
                 new object[]
-                {new Words(FromDictionary.AddressUsWebsite), GenerateTestCasesForSut(Any.AddressUs().Website)},
+                {new Words(FromDictionary.AddressUsWebsite), GenerateTestCasesForSut(Any.AddressUs.Website)},
                 new object[]
-                {new Words(FromDictionary.AddressUsZipCode), GenerateTestCasesForSut(Any.AddressUs().ZipCode)}
+                {new Words(FromDictionary.AddressUsZipCode), GenerateTestCasesForSut(Any.AddressUs.ZipCode)}
             };
         }
     }

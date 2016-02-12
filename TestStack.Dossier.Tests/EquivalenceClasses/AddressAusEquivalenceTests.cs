@@ -22,24 +22,24 @@ namespace TestStack.Dossier.Tests.EquivalenceClasses
             return new List<object[]>
             {
                 new object[]
-                {new Words(FromDictionary.AddressAusCity), GenerateTestCasesForSut(Any.AddressAus().City)},
+                {new Words(FromDictionary.AddressAusCity), GenerateTestCasesForSut(Any.AddressAus.City)},
                 new object[]
-                {new Words(FromDictionary.AddressAusCompany), GenerateTestCasesForSut(Any.AddressAus().Company)},
+                {new Words(FromDictionary.AddressAusCompany), GenerateTestCasesForSut(Any.AddressAus.Company)},
                 new object[]
-                {new Words(FromDictionary.AddressAusPhone), GenerateTestCasesForSut(Any.AddressAus().Phone)},
+                {new Words(FromDictionary.AddressAusPhone), GenerateTestCasesForSut(Any.AddressAus.Phone)},
                 new object[]
-                {new Words(FromDictionary.AddressAusPostCode), GenerateTestCasesForSut(Any.AddressAus().PostCode)},
+                {new Words(FromDictionary.AddressAusPostCode), GenerateTestCasesForSut(Any.AddressAus.PostCode)},
                 new object[]
-                {new Words(FromDictionary.AddressAusState), GenerateTestCasesForSut(Any.AddressAus().State)},
+                {new Words(FromDictionary.AddressAusState), GenerateTestCasesForSut(Any.AddressAus.State)},
                 new object[]
                 {
                     new Words(FromDictionary.AddressAusStateAbbreviation),
-                    GenerateTestCasesForSut(Any.AddressAus().StateAbbreviation)
+                    GenerateTestCasesForSut(Any.AddressAus.StateAbbreviation)
                 },
                 new object[]
-                {new Words(FromDictionary.AddressAusStreet), GenerateTestCasesForSut(Any.AddressAus().Street)},
+                {new Words(FromDictionary.AddressAusStreet), GenerateTestCasesForSut(Any.AddressAus.Street)},
                 new object[]
-                {new Words(FromDictionary.AddressAusWebsite), GenerateTestCasesForSut(Any.AddressAus().Website)},
+                {new Words(FromDictionary.AddressAusWebsite), GenerateTestCasesForSut(Any.AddressAus.Website)},
             };
         }
     }

@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 using Ploeh.AutoFixture;
 using TestStack.Dossier.DataSources.Dictionaries;
 using TestStack.Dossier.Suppliers;
@@ -14,7 +12,7 @@ namespace TestStack.Dossier
     /// Allows you to create extension methods to generate anonymous values and to set up
     ///   conventions for automatic generation of anonymous values based on property expressions.
     /// </summary>
-    public class AnonymousValueFixture
+    public partial class AnonymousValueFixture
     {
         static AnonymousValueFixture()
         {

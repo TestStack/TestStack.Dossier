@@ -2,56 +2,64 @@
 namespace TestStack.Dossier
 {
     /// <summary>
-    /// Extension methods that describe equivalence classes for generating anonymous values.
+    /// Equivalence classes for generating anonymous values.
     /// </summary>
-    public static class Equivalence
+    public partial class AnonymousValueFixture
     {
         /// <summary>
-        /// Extension methods that describe equivalence classes for generating anonymous Australian address-related values.
+        /// Equivalence classes for generating anonymous Australian address-related values.
         /// </summary>
-        public static AddressAusEquivalence AddressAus(this AnonymousValueFixture fixture)
+        public AddressAusEquivalence AddressAus
         {
-            return new AddressAusEquivalence(fixture);
+            get { return new AddressAusEquivalence(this); }
         }
 
         /// <summary>
-        /// Extension methods that describe equivalence classes for generating anonymous United Kingdom address-related values.
+        /// Equivalence classes for generating anonymous United Kingdom address-related values.
         /// </summary>
-        public static AddressUkEquivalence AddressUk(this AnonymousValueFixture fixture)
+        public AddressUkEquivalence AddressUk
         {
-            return new AddressUkEquivalence(fixture);
+            get { return new AddressUkEquivalence(this);}
         }
 
         /// <summary>
-        /// Extension methods that describe equivalence classes for generating anonymous United States address-related values.
+        /// Equivalence classes for generating anonymous United States address-related values.
         /// </summary>
-        public static AddressUsEquivalence AddressUs(this AnonymousValueFixture fixture)
+        public AddressUsEquivalence AddressUs
         {
-            return new AddressUsEquivalence(fixture);
+            get { return new AddressUsEquivalence(this); }
         }
 
         /// <summary>
-        /// Extension methods that describe equivalence classes for generating anonymous colour-related values.
+        /// Equivalence classes for generating anonymous colour-related values.
         /// </summary>
-        public static ColourEquivalence Colour(this AnonymousValueFixture fixture)
+        public ColourEquivalence Colour
         {
-            return new ColourEquivalence(fixture);
+            get { return new ColourEquivalence(this); }
         }
 
         /// <summary>
-        /// Extension methods that describe equivalence classes for generating anonymous company-related values.
+        /// Equivalence classes for generating anonymous company-related values.
         /// </summary>
-        public static CompanyEquivalence Company(this AnonymousValueFixture fixture)
+        public CompanyEquivalence Company
         {
-            return new CompanyEquivalence(fixture);
+            get { return new CompanyEquivalence(this); }
         }
 
         /// <summary>
-        /// Extension methods that describe equivalence classes for generating anonymous finance-related values.
+        /// Equivalence classes for generating anonymous finance-related values.
         /// </summary>
-        public static FinanceEquivalence Finance(this AnonymousValueFixture fixture)
+        public FinanceEquivalence Finance
         {
-            return new FinanceEquivalence(fixture);
+            get { return new FinanceEquivalence(this); }
+        }
+
+        /// <summary>
+        /// Equivalence classes for generating anonymous frequency-related values.
+        /// </summary>
+        public FrequencyEquivalence Frequency
+        {
+            get { return new FrequencyEquivalence(this); }
         }
     }
 }

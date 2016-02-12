@@ -22,19 +22,19 @@ namespace TestStack.Dossier.Tests.EquivalenceClasses
             return new List<object[]>
             {
                 new object[]
-                {new Words(FromDictionary.AddressUkCounty), GenerateTestCasesForSut(Any.AddressUk().County)},
+                {new Words(FromDictionary.AddressUkCounty), GenerateTestCasesForSut(Any.AddressUk.County)},
                 new object[]
-                {new Words(FromDictionary.AddressUkCity), GenerateTestCasesForSut(Any.AddressUk().City)},
+                {new Words(FromDictionary.AddressUkCity), GenerateTestCasesForSut(Any.AddressUk.City)},
                 new object[]
-                {new Words(FromDictionary.AddressUkCompany), GenerateTestCasesForSut(Any.AddressUk().Company)},
+                {new Words(FromDictionary.AddressUkCompany), GenerateTestCasesForSut(Any.AddressUk.Company)},
                 new object[]
-                {new Words(FromDictionary.AddressUkPhone), GenerateTestCasesForSut(Any.AddressUk().Phone)},
+                {new Words(FromDictionary.AddressUkPhone), GenerateTestCasesForSut(Any.AddressUk.Phone)},
                 new object[]
-                {new Words(FromDictionary.AddressUkPostCode), GenerateTestCasesForSut(Any.AddressUk().PostCode)},
+                {new Words(FromDictionary.AddressUkPostCode), GenerateTestCasesForSut(Any.AddressUk.PostCode)},
                 new object[]
-                {new Words(FromDictionary.AddressUkStreet), GenerateTestCasesForSut(Any.AddressUk().Street)},
+                {new Words(FromDictionary.AddressUkStreet), GenerateTestCasesForSut(Any.AddressUk.Street)},
                 new object[]
-                {new Words(FromDictionary.AddressUkWebsite), GenerateTestCasesForSut(Any.AddressUk().Website)},
+                {new Words(FromDictionary.AddressUkWebsite), GenerateTestCasesForSut(Any.AddressUk.Website)},
             };
         }
     }

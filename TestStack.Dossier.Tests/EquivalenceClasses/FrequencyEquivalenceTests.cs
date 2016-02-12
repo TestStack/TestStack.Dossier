@@ -22,7 +22,7 @@ namespace TestStack.Dossier.Tests.EquivalenceClasses
             return new List<object[]>
             {
                 new object[]
-                {new Words(FromDictionary.Frequency), GenerateTestCasesForSut(Any.Frequency)}
+                {new Words(FromDictionary.Frequency), GenerateTestCasesForSut(Any.Frequency.Frequency)}
             };
         }
     }
