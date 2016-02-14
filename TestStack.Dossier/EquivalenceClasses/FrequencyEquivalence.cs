@@ -4,28 +4,18 @@
 namespace TestStack.Dossier
 {
     /// <summary>
-    /// Methods that describe equivalence classes for generating anonymous Frequency-related values.
+    /// Extension methods that describe equivalence classes for generating anonymous Frequency-related values.
     /// </summary>
-    public class FrequencyEquivalence
+    public static class FrequencyEquivalence
     {
-        private readonly AnonymousValueFixture _fixture;
-
-        /// <summary>
-        /// Creates a new <see cref="FrequencyEquivalence"/> with the AnonymousValueFixture from the extension method.
-        /// </summary>
-        /// <param name="fixture">The </param>
-        public FrequencyEquivalence(AnonymousValueFixture fixture)
-        {
-            _fixture = fixture;
-        }
-
         /// <summary>
         /// Generate and return a frequency.
         /// </summary>
+        /// <param name="fixture">The fixture to generate a value for.</param>
         /// <returns>The generated value.</returns>
-        public string Frequency()
+        public static string Frequency(this AnonymousValueFixture fixture)
         {
-            return _fixture.Words(FromDictionary.Frequency).Next();
+            return fixture.Words(FromDictionary.Frequency).Next();
         }
     }
 }

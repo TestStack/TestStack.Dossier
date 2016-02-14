@@ -56,7 +56,6 @@ namespace TestStack.Dossier
         public static System.Collections.Generic.IEnumerable<TestStack.Dossier.IAnonymousValueSupplier> DefaultValueSuppliers { get; }
         public TestStack.Dossier.FinanceEquivalence Finance { get; }
         public Ploeh.AutoFixture.Fixture Fixture { get; }
-        public TestStack.Dossier.FrequencyEquivalence Frequency { get; }
         public TestStack.Dossier.GeoEquivalence Geography { get; }
         public static System.Collections.Generic.ICollection<TestStack.Dossier.IAnonymousValueSupplier> GlobalValueSuppliers { get; }
         public TestStack.Dossier.IdentifierEquivalence Identifier { get; }
@@ -103,10 +102,9 @@ namespace TestStack.Dossier
         public string Currency() { }
         public string CurrencyCode() { }
     }
-    public class FrequencyEquivalence
+    public class static FrequencyEquivalence
     {
-        public FrequencyEquivalence(TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public string Frequency() { }
+        public static string Frequency(this TestStack.Dossier.AnonymousValueFixture fixture) { }
     }
     public class GeoEquivalence
     {
@@ -482,10 +480,15 @@ namespace TestStack.Dossier.EquivalenceClasses.Geo
     
     public class static GeographyEquivalenceClassescs
     {
+        [System.ObsoleteAttribute("Continent is deprecated, please use Geography.Continent instead.")]
         public static string Continent(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        [System.ObsoleteAttribute("Country is deprecated, please use Geography.Country instead.")]
         public static string Country(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        [System.ObsoleteAttribute("CountryCode is deprecated, please use Geography.CountryCode instead.")]
         public static string CountryCode(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        [System.ObsoleteAttribute("Latitude is deprecated, please use Geography.Latitude instead.")]
         public static string Latitude(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        [System.ObsoleteAttribute("Longitude is deprecated, please use Geography.Longitude instead.")]
         public static string Longitude(this TestStack.Dossier.AnonymousValueFixture fixture) { }
     }
 }
@@ -494,15 +497,25 @@ namespace TestStack.Dossier.EquivalenceClasses.Person
     
     public class static PersonEquivalenceClasses
     {
+        [System.ObsoleteAttribute("EmailAddress is deprecated, please use Person.EmailAddress instead.")]
         public static string EmailAddress(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        [System.ObsoleteAttribute("FemaleFirstName is deprecated, please use Person.NameFirstFemale instead.")]
         public static string FemaleFirstName(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        [System.ObsoleteAttribute("FirstName is deprecated, please use Person.NameFirst instead.")]
         public static string FirstName(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        [System.ObsoleteAttribute("FullName is deprecated, please use Person.NameFull instead.")]
         public static string FullName(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        [System.ObsoleteAttribute("Language is deprecated, please use Person.Language instead.")]
         public static string Language(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        [System.ObsoleteAttribute("LastName is deprecated, please use Person.NameLast instead.")]
         public static string LastName(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        [System.ObsoleteAttribute("MaleFirstName is deprecated, please use Person.NameFirstMale instead.")]
         public static string MaleFirstName(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        [System.ObsoleteAttribute("Suffix is deprecated, please use Person.NameSuffix instead.")]
         public static string Suffix(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        [System.ObsoleteAttribute("Title is deprecated, please use Person.Title instead.")]
         public static string Title(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        [System.ObsoleteAttribute("UniqueEmailAddress is deprecated, please use Person.UniqueEmailAddress instead.")]
         public static string UniqueEmailAddress(this TestStack.Dossier.AnonymousValueFixture fixture) { }
     }
 }

@@ -55,14 +55,6 @@ namespace TestStack.Dossier
         }
 
         /// <summary>
-        /// Equivalence classes for generating anonymous frequency-related values.
-        /// </summary>
-        public FrequencyEquivalence Frequency
-        {
-            get { return new FrequencyEquivalence(this); }
-        }
-
-        /// <summary>
         /// Equivalence classes for generating anonymous geography-related values.
         /// </summary>
         public GeoEquivalence Geography
