@@ -4,68 +4,73 @@ using TestStack.Dossier.DataSources.Dictionaries;
 namespace TestStack.Dossier
 {
     /// <summary>
-    /// Extension methods that describe equivalence classes for generating anonymous Identifier-related values.
+    /// Methods that describe equivalence classes for generating anonymous Identifier-related values.
     /// </summary>
-    public static class IdentifierEquivalence
+    public class IdentifierEquivalence
     {
+        private readonly AnonymousValueFixture _fixture;
+
+        /// <summary>
+        /// Creates a new <see cref="IdentifierEquivalence"/> with the AnonymousValueFixture from the extension method.
+        /// </summary>
+        /// <param name="fixture">The </param>
+        public IdentifierEquivalence(AnonymousValueFixture fixture)
+        {
+            _fixture = fixture;
+        }
+
         /// <summary>
         /// Generate and return an identifier bitcoing address.
         /// </summary>
-        /// <param name="fixture">The fixture to generate a value for.</param>
         /// <returns>The generated value.</returns>
-        public static string IdentifierBitcoinAddress(this AnonymousValueFixture fixture)
+        public string BitcoinAddress()
         {
-            return fixture.Words(FromDictionary.IdentifierBitcoinAddress).Next();
+            return _fixture.Words(FromDictionary.IdentifierBitcoinAddress).Next();
         }
 
         /// <summary>
         /// Generate and return an identifier IBAN.
         /// </summary>
-        /// <param name="fixture">The fixture to generate a value for.</param>
         /// <returns>The generated value.</returns>
-        public static string IdentifierIban(this AnonymousValueFixture fixture)
+        public string Iban()
         {
-            return fixture.Words(FromDictionary.IdentifierIban).Next();
+            return _fixture.Words(FromDictionary.IdentifierIban).Next();
         }
 
         /// <summary>
         /// Generate and return an identifier IP address v4.
         /// </summary>
-        /// <param name="fixture">The fixture to generate a value for.</param>
         /// <returns>The generated value.</returns>
-        public static string IdentifierIpAddressV4(this AnonymousValueFixture fixture)
+        public string IpAddressV4()
         {
-            return fixture.Words(FromDictionary.IdentifierIpAddressV4).Next();
+            return _fixture.Words(FromDictionary.IdentifierIpAddressV4).Next();
         }
 
         /// <summary>
         /// Generate and return an identifier IP address v6.
         /// </summary>
-        /// <param name="fixture">The fixture to generate a value for.</param>
         /// <returns>The generated value.</returns>
-        public static string IdentifierIpAddressV6(this AnonymousValueFixture fixture)
+        public string IpAddressV6()
         {
-            return fixture.Words(FromDictionary.IdentifierIpAddressV6).Next();
+            return _fixture.Words(FromDictionary.IdentifierIpAddressV6).Next();
         }
 
         /// <summary>
         /// Generate and return an identifier ISBN.
         /// </summary>
-        /// <param name="fixture">The fixture to generate a value for.</param>
         /// <returns>The generated value.</returns>
-        public static string IdentifierIsbn(this AnonymousValueFixture fixture)
+        public string Isbn()
         {
-            return fixture.Words(FromDictionary.IdentifierIsbn).Next();
+            return _fixture.Words(FromDictionary.IdentifierIsbn).Next();
         }
 
         /// <summary>
         /// Generate and return an identifier MAC address.
         /// </summary>
-        /// <param name="fixture">The fixture to generate a value for.</param>
         /// <returns>The generated value.</returns>
-        public static string IdentifierMacAddress(this AnonymousValueFixture fixture)
+        public string MacAddress()
         {
-            return fixture.Words(FromDictionary.IdentifierMacAddress).Next();
+            return _fixture.Words(FromDictionary.IdentifierMacAddress).Next();
         }
     }
 }

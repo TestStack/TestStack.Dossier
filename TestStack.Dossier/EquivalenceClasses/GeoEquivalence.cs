@@ -4,59 +4,64 @@ using TestStack.Dossier.DataSources.Dictionaries;
 namespace TestStack.Dossier
 {
     /// <summary>
-    /// Extension methods that describe equivalence classes for generating anonymous Geography-related values.
+    /// Methods that describe equivalence classes for generating anonymous Geography-related values.
     /// </summary>
-    public static class GeoEquivalence
+    public class GeoEquivalence
     {
+        private readonly AnonymousValueFixture _fixture;
+
+        /// <summary>
+        /// Creates a new <see cref="GeoEquivalence"/> with the AnonymousValueFixture from the extension method.
+        /// </summary>
+        /// <param name="fixture">The </param>
+        public GeoEquivalence(AnonymousValueFixture fixture)
+        {
+            _fixture = fixture;
+        }
+
         /// <summary>
         /// Generate and return a geography continent name.
         /// </summary>
-        /// <param name="fixture">The fixture to generate a value for.</param>
         /// <returns>The generated value.</returns>
-        public static string GeoContinent(this AnonymousValueFixture fixture)
+        public string Continent()
         {
-            return fixture.Words(FromDictionary.GeoContinent).Next();
+            return _fixture.Words(FromDictionary.GeoContinent).Next();
         }
 
         /// <summary>
         /// Generate and return a geography country name.
         /// </summary>
-        /// <param name="fixture">The fixture to generate a value for.</param>
         /// <returns>The generated value.</returns>
-        public static string GeoCountry(this AnonymousValueFixture fixture)
+        public string Country()
         {
-            return fixture.Words(FromDictionary.GeoCountry).Next();
+            return _fixture.Words(FromDictionary.GeoCountry).Next();
         }
 
         /// <summary>
         /// Generate and return a geography country code.
         /// </summary>
-        /// <param name="fixture">The fixture to generate a value for.</param>
         /// <returns>The generated value.</returns>
-        public static string GeoCountryCode(this AnonymousValueFixture fixture)
+        public string CountryCode()
         {
-            return fixture.Words(FromDictionary.GeoCountryCode).Next();
+            return _fixture.Words(FromDictionary.GeoCountryCode).Next();
         }
 
         /// <summary>
         /// Generate and return a geography latitude.
         /// </summary>
-        /// <param name="fixture">The fixture to generate a value for.</param>
         /// <returns>The generated value.</returns>
-        public static string GeoLatitude(this AnonymousValueFixture fixture)
+        public string Latitude()
         {
-            return fixture.Words(FromDictionary.GeoLatitude).Next();
+            return _fixture.Words(FromDictionary.GeoLatitude).Next();
         }
 
         /// <summary>
         /// Generate and return a geography longitude.
         /// </summary>
-        /// <param name="fixture">The fixture to generate a value for.</param>
         /// <returns>The generated value.</returns>
-        public static string GeoLongitude(this AnonymousValueFixture fixture)
+        public string Longitude()
         {
-            return fixture.Words(FromDictionary.GeoLongitude).Next();
+            return _fixture.Words(FromDictionary.GeoLongitude).Next();
         }
-
     }
 }

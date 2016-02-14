@@ -3,7 +3,7 @@
     /// <summary>
     /// Extension methods that describe equivalence classes for generating anonymous person-related values.
     /// </summary>
-    public static class NameEquivalenceClasses
+    public static class PersonEquivalenceClasses
     {
         /// <summary>
         /// Generate and return an email address.
@@ -12,7 +12,7 @@
         /// <returns>The generated email</returns>
         public static string EmailAddress(this AnonymousValueFixture fixture)
         {
-            return fixture.PersonEmailAddress();
+            return fixture.Person.EmailAddress();
         }
 
         /// <summary>
@@ -22,7 +22,7 @@
         /// <returns>The generated unique email</returns>
         public static string UniqueEmailAddress(this AnonymousValueFixture fixture)
         {
-            return fixture.PersonUniqueEmailAddress();
+            return fixture.Person.UniqueEmailAddress();
         }
 
         /// <summary>
@@ -32,7 +32,7 @@
         /// <returns>The generated language</returns>
         public static string Language(this AnonymousValueFixture fixture)
         {
-            return fixture.PersonLanguage();
+            return fixture.Person.Language();
         }
 
         /// <summary>
@@ -42,7 +42,7 @@
         /// <returns>The generated female first name</returns>
         public static string FemaleFirstName(this AnonymousValueFixture fixture)
         {
-            return fixture.PersonNameFirstFemale();
+            return fixture.Person.NameFirstFemale();
         }
 
         /// <summary>
@@ -52,7 +52,7 @@
         /// <returns>The generated first name</returns>
         public static string FirstName(this AnonymousValueFixture fixture)
         {
-            return fixture.PersonNameFirst();
+            return fixture.Person.NameFirst();
         }
 
         /// <summary>
@@ -62,7 +62,7 @@
         /// <returns>The generated full name</returns>
         public static string FullName(this AnonymousValueFixture fixture)
         {
-            return fixture.PersonNameFull();
+            return fixture.Person.NameFull();
         }
 
         /// <summary>
@@ -72,7 +72,7 @@
         /// <returns>The generated last name</returns>
         public static string LastName(this AnonymousValueFixture fixture)
         {
-            return fixture.PersonNameLast();
+            return fixture.Person.NameLast();
         }
 
         /// <summary>
@@ -82,7 +82,7 @@
         /// <returns>The generated male first name</returns>
         public static string MaleFirstName(this AnonymousValueFixture fixture)
         {
-            return fixture.PersonNameFirstMale();
+            return fixture.Person.NameFirstMale();
         }
 
         /// <summary>
@@ -92,7 +92,7 @@
         /// <returns>The generated suffix</returns>
         public static string Suffix(this AnonymousValueFixture fixture)
         {
-            return fixture.PersonNameSuffix();
+            return fixture.Person.NameSuffix();
         }
 
         /// <summary>
@@ -102,7 +102,7 @@
         /// <returns>The generated title</returns>
         public static string Title(this AnonymousValueFixture fixture)
         {
-            return fixture.PersonNameTitle();
+            return fixture.Person.NameTitle();
         }
     }
 }

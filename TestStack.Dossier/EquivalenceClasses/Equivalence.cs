@@ -61,5 +61,37 @@ namespace TestStack.Dossier
         {
             get { return new FrequencyEquivalence(this); }
         }
+
+        /// <summary>
+        /// Equivalence classes for generating anonymous geography-related values.
+        /// </summary>
+        public GeoEquivalence Geography
+        {
+            get { return new GeoEquivalence(this); }
+        }
+
+        /// <summary>
+        /// Equivalence classes for generating anonymous identifier-related values.
+        /// </summary>
+        public IdentifierEquivalence Identifier
+        {
+            get { return new IdentifierEquivalence(this); }
+        }
+
+        /// <summary>
+        /// Equivalence classes for generating anonymous internet-related values.
+        /// </summary>
+        public InternetEquivalence Internet
+        {
+            get { return new InternetEquivalence(this); }
+        }
+
+        /// <summary>
+        /// Equivalence classes for generating anonymous person-related values.
+        /// </summary>
+        public PersonEquivalence Person
+        {
+            get { return new PersonEquivalence(this); }
+        }
     }
 }

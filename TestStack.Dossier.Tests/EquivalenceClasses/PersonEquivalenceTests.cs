@@ -24,11 +24,11 @@ namespace TestStack.Dossier.Tests.EquivalenceClasses
             var generatedValues = new List<string>();
             var any2 = new AnonymousValueFixture();
 
-            any2.ResetUniqueEmailAddressSource();
-            generatedValues.Add(any2.PersonUniqueEmailAddress());
+            PersonEquivalenceExtensions.InitializeUniqueEmailAddressSource();
+            generatedValues.Add(any2.Person.UniqueEmailAddress());
             for (var i = 0; i < source.Data.Count - 1; i++)
             {
-                generatedValues.Add(Any.PersonUniqueEmailAddress());
+                generatedValues.Add(Any.Person.UniqueEmailAddress());
             }
 
             generatedValues.Distinct().Count()
@@ -43,17 +43,17 @@ namespace TestStack.Dossier.Tests.EquivalenceClasses
             return new List<object[]>
             {
                 new object[]
-                {new Words(FromDictionary.PersonEmailAddress), GenerateTestCasesForSut(Any.PersonEmailAddress)},
-                new object[] {new Words(FromDictionary.PersonLanguage), GenerateTestCasesForSut(Any.PersonLanguage)},
+                {new Words(FromDictionary.PersonEmailAddress), GenerateTestCasesForSut(Any.Person.EmailAddress)},
+                new object[] {new Words(FromDictionary.PersonLanguage), GenerateTestCasesForSut(Any.Person.Language)},
                 new object[]
-                {new Words(FromDictionary.PersonNameFirstFemale), GenerateTestCasesForSut(Any.PersonNameFirstFemale)},
-                new object[] {new Words(FromDictionary.PersonNameFirst), GenerateTestCasesForSut(Any.PersonNameFirst)},
-                new object[] {new Words(FromDictionary.PersonNameFull), GenerateTestCasesForSut(Any.PersonNameFull)},
-                new object[] {new Words(FromDictionary.PersonNameLast), GenerateTestCasesForSut(Any.PersonNameLast)},
+                {new Words(FromDictionary.PersonNameFirstFemale), GenerateTestCasesForSut(Any.Person.NameFirstFemale)},
+                new object[] {new Words(FromDictionary.PersonNameFirst), GenerateTestCasesForSut(Any.Person.NameFirst)},
+                new object[] {new Words(FromDictionary.PersonNameFull), GenerateTestCasesForSut(Any.Person.NameFull)},
+                new object[] {new Words(FromDictionary.PersonNameLast), GenerateTestCasesForSut(Any.Person.NameLast)},
                 new object[]
-                {new Words(FromDictionary.PersonNameFirstMale), GenerateTestCasesForSut(Any.PersonNameFirstMale)},
-                new object[] {new Words(FromDictionary.PersonNameSuffix), GenerateTestCasesForSut(Any.PersonNameSuffix)},
-                new object[] {new Words(FromDictionary.PersonNameTitle), GenerateTestCasesForSut(Any.PersonNameTitle)},
+                {new Words(FromDictionary.PersonNameFirstMale), GenerateTestCasesForSut(Any.Person.NameFirstMale)},
+                new object[] {new Words(FromDictionary.PersonNameSuffix), GenerateTestCasesForSut(Any.Person.NameSuffix)},
+                new object[] {new Words(FromDictionary.PersonNameTitle), GenerateTestCasesForSut(Any.Person.NameTitle)},
             };
         }
     }

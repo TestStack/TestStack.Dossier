@@ -4,49 +4,55 @@ using TestStack.Dossier.DataSources.Dictionaries;
 namespace TestStack.Dossier
 {
     /// <summary>
-    /// Extension methods that describe equivalence classes for generating anonymous Internet-related values.
+    /// Methods that describe equivalence classes for generating anonymous Internet-related values.
     /// </summary>
-    public static class InternetEquivalence
+    public class InternetEquivalence
     {
+        private readonly AnonymousValueFixture _fixture;
+
+        /// <summary>
+        /// Creates a new <see cref="InternetEquivalence"/> with the AnonymousValueFixture from the extension method.
+        /// </summary>
+        /// <param name="fixture">The </param>
+        public InternetEquivalence(AnonymousValueFixture fixture)
+        {
+            _fixture = fixture;
+        }
+
         /// <summary>
         /// Generate and return an internet domain country code top level domain.
         /// </summary>
-        /// <param name="fixture">The fixture to generate a value for.</param>
         /// <returns>The generated value.</returns>
-        public static string InternetDomainCountryCodeTopLevelDomain(this AnonymousValueFixture fixture)
+        public string DomainCountryCodeTopLevelDomain()
         {
-            return fixture.Words(FromDictionary.InternetDomainCountryCodeTopLevelDomain).Next();
+            return _fixture.Words(FromDictionary.InternetDomainCountryCodeTopLevelDomain).Next();
         }
 
         /// <summary>
         /// Generate and return an internet domain name.
         /// </summary>
-        /// <param name="fixture">The fixture to generate a value for.</param>
         /// <returns>The generated value.</returns>
-        public static string InternetDomainName(this AnonymousValueFixture fixture)
+        public string DomainName()
         {
-            return fixture.Words(FromDictionary.InternetDomainName).Next();
+            return _fixture.Words(FromDictionary.InternetDomainName).Next();
         }
 
         /// <summary>
         /// Generate and return a an internet domain top level name.
         /// </summary>
-        /// <param name="fixture">The fixture to generate a value for.</param>
         /// <returns>The generated value.</returns>
-        public static string InternetDomainTopLevel(this AnonymousValueFixture fixture)
+        public string DomainTopLevel()
         {
-            return fixture.Words(FromDictionary.InternetDomainTopLevel).Next();
+            return _fixture.Words(FromDictionary.InternetDomainTopLevel).Next();
         }
 
         /// <summary>
         /// Generate and return an internet URL.
         /// </summary>
-        /// <param name="fixture">The fixture to generate a value for.</param>
         /// <returns>The generated value.</returns>
-        public static string InternetUrl(this AnonymousValueFixture fixture)
+        public string Url()
         {
-            return fixture.Words(FromDictionary.InternetUrl).Next();
+            return _fixture.Words(FromDictionary.InternetUrl).Next();
         }
-
     }
 }

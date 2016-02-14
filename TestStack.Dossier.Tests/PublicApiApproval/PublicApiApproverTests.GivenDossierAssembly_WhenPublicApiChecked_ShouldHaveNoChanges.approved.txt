@@ -57,8 +57,12 @@ namespace TestStack.Dossier
         public TestStack.Dossier.FinanceEquivalence Finance { get; }
         public Ploeh.AutoFixture.Fixture Fixture { get; }
         public TestStack.Dossier.FrequencyEquivalence Frequency { get; }
+        public TestStack.Dossier.GeoEquivalence Geography { get; }
         public static System.Collections.Generic.ICollection<TestStack.Dossier.IAnonymousValueSupplier> GlobalValueSuppliers { get; }
+        public TestStack.Dossier.IdentifierEquivalence Identifier { get; }
+        public TestStack.Dossier.InternetEquivalence Internet { get; }
         public System.Collections.Generic.ICollection<TestStack.Dossier.IAnonymousValueSupplier> LocalValueSuppliers { get; }
+        public TestStack.Dossier.PersonEquivalence Person { get; }
         public Ploeh.AutoFixture.RegularExpressionGenerator RegexGenerator { get; }
         public T Get<TObject, T>(System.Linq.Expressions.Expression<System.Func<TObject, T>> property) { }
         public object Get(System.Type type, string propertyName) { }
@@ -104,34 +108,37 @@ namespace TestStack.Dossier
         public FrequencyEquivalence(TestStack.Dossier.AnonymousValueFixture fixture) { }
         public string Frequency() { }
     }
-    public class static GeoEquivalence
+    public class GeoEquivalence
     {
-        public static string GeoContinent(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string GeoCountry(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string GeoCountryCode(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string GeoLatitude(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string GeoLongitude(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public GeoEquivalence(TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public string Continent() { }
+        public string Country() { }
+        public string CountryCode() { }
+        public string Latitude() { }
+        public string Longitude() { }
     }
     public interface IAnonymousValueSupplier
     {
         bool CanSupplyValue(System.Type type, string propertyName);
         object GenerateAnonymousValue(TestStack.Dossier.AnonymousValueFixture any, System.Type type, string propertyName);
     }
-    public class static IdentifierEquivalence
+    public class IdentifierEquivalence
     {
-        public static string IdentifierBitcoinAddress(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string IdentifierIban(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string IdentifierIpAddressV4(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string IdentifierIpAddressV6(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string IdentifierIsbn(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string IdentifierMacAddress(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public IdentifierEquivalence(TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public string BitcoinAddress() { }
+        public string Iban() { }
+        public string IpAddressV4() { }
+        public string IpAddressV6() { }
+        public string Isbn() { }
+        public string MacAddress() { }
     }
-    public class static InternetEquivalence
+    public class InternetEquivalence
     {
-        public static string InternetDomainCountryCodeTopLevelDomain(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string InternetDomainName(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string InternetDomainTopLevel(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string InternetUrl(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public InternetEquivalence(TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public string DomainCountryCodeTopLevelDomain() { }
+        public string DomainName() { }
+        public string DomainTopLevel() { }
+        public string Url() { }
     }
     public interface ITestDataBuilder<out TObject>
         where out TObject :  class
@@ -142,21 +149,25 @@ namespace TestStack.Dossier
     {
         public static string LoremIpsum(this TestStack.Dossier.AnonymousValueFixture fixture) { }
     }
-    public class static PersonEquivalence
+    public class PersonEquivalence
     {
-        public static string PersonEmailAddress(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string PersonLanguage(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string PersonNameFirst(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string PersonNameFirstFemale(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string PersonNameFirstMale(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string PersonNameFull(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string PersonNameLast(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string PersonNameSuffix(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string PersonNameTitle(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string PersonPassword(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string PersonRace(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string PersonUniqueEmailAddress(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string PersonUsername(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public PersonEquivalence(TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public string EmailAddress() { }
+        public string Language() { }
+        public string NameFirst() { }
+        public string NameFirstFemale() { }
+        public string NameFirstMale() { }
+        public string NameFull() { }
+        public string NameLast() { }
+        public string NameSuffix() { }
+        public string NameTitle() { }
+        public string Password() { }
+        public string Race() { }
+        public string Username() { }
+    }
+    public class static PersonEquivalenceExtensions
+    {
+        public static string UniqueEmailAddress(this TestStack.Dossier.PersonEquivalence personEquivalence) { }
     }
     public class ProxyBuilder<T>
         where T :  class
@@ -481,7 +492,7 @@ namespace TestStack.Dossier.EquivalenceClasses.Geo
 namespace TestStack.Dossier.EquivalenceClasses.Person
 {
     
-    public class static NameEquivalenceClasses
+    public class static PersonEquivalenceClasses
     {
         public static string EmailAddress(this TestStack.Dossier.AnonymousValueFixture fixture) { }
         public static string FemaleFirstName(this TestStack.Dossier.AnonymousValueFixture fixture) { }

@@ -12,7 +12,7 @@
         /// <returns>The generated continent</returns>
         public static string Continent(this AnonymousValueFixture fixture)
         {
-            return fixture.GeoContinent();
+            return fixture.Geography.Continent();
         }
 
         /// <summary>
@@ -22,7 +22,7 @@
         /// <returns>The generated country</returns>
         public static string Country(this AnonymousValueFixture fixture)
         {
-            return fixture.GeoCountry();
+            return fixture.Geography.Country();
         }
 
         /// <summary>
@@ -32,7 +32,7 @@
         /// <returns>The generated country code</returns>
         public static string CountryCode(this AnonymousValueFixture fixture)
         {
-            return fixture.GeoCountryCode();
+            return fixture.Geography.CountryCode();
         }
 
 
@@ -43,7 +43,7 @@
         /// <returns>The generated latitude</returns>
         public static string Latitude(this AnonymousValueFixture fixture)
         {
-            return fixture.GeoLatitude();
+            return fixture.Geography.Latitude();
         }
 
         /// <summary>
@@ -53,7 +53,7 @@
         /// <returns>The generated longitude</returns>
         public static string Longitude(this AnonymousValueFixture fixture)
         {
-            return fixture.GeoLongitude();
+            return fixture.Geography.Longitude();
         }
     }
 }
