@@ -24,17 +24,17 @@ namespace TestStack.Dossier.Tests.EquivalenceClasses
                 new object[]
                 {
                     new Words(FromDictionary.InternetDomainCountryCodeTopLevelDomain),
-                    GenerateTestCasesForSut(Any.InternetDomainCountryCodeTopLevelDomain)
+                    GenerateTestCasesForSut(Any.Internet.DomainCountryCodeTopLevelDomain)
                 },
                 new object[]
-                {new Words(FromDictionary.InternetDomainName), GenerateTestCasesForSut(Any.InternetDomainName)},
+                {new Words(FromDictionary.InternetDomainName), GenerateTestCasesForSut(Any.Internet.DomainName)},
                 new object[]
                 {
                     new Words(FromDictionary.InternetDomainTopLevel),
-                    GenerateTestCasesForSut(Any.InternetDomainTopLevel)
+                    GenerateTestCasesForSut(Any.Internet.DomainTopLevel)
                 },
                 new object[]
-                {new Words(FromDictionary.InternetUrl), GenerateTestCasesForSut(Any.InternetUrl)}
+                {new Words(FromDictionary.InternetUrl), GenerateTestCasesForSut(Any.Internet.Url)}
             };
         }
     }

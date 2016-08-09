@@ -17,6 +17,5 @@ namespace TestStack.Dossier
         {
             return fixture.Words(FromDictionary.Frequency).Next();
         }
-
     }
 }

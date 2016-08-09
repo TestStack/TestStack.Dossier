@@ -25,7 +25,7 @@ namespace TestStack.Dossier.Tests.EquivalenceClasses
             var generatedValues = new List<string>();
             var any2 = new AnonymousValueFixture();
 
-            any2.ResetUniqueEmailAddressSource();
+            PersonEquivalenceExtensions.InitializeUniqueEmailAddressSource();
             generatedValues.Add(any2.UniqueEmailAddress());
             for (var i = 0; i < source.Data.Count - 1; i++)
             {

@@ -4,28 +4,37 @@ using TestStack.Dossier.DataSources.Dictionaries;
 namespace TestStack.Dossier
 {
     /// <summary>
-    /// Extension methods that describe equivalence classes for generating anonymous Colour-related values.
+    /// Methods that describe equivalence classes for generating anonymous Colour-related values.
     /// </summary>
-    public static class ColourEquivalence
+    public class ColourEquivalence
     {
+        private readonly AnonymousValueFixture _fixture;
+
+        /// <summary>
+        /// Creates a new <see cref="ColourEquivalence"/> with the AnonymousValueFixture from the extension method.
+        /// </summary>
+        /// <param name="fixture">The </param>
+        public ColourEquivalence(AnonymousValueFixture fixture)
+        {
+            _fixture = fixture;
+        }
+
         /// <summary>
         /// Generate and return a Colour Hex value.
         /// </summary>
-        /// <param name="fixture">The fixture to generate a value for.</param>
         /// <returns>The generated value.</returns>
-        public static string ColourHex(this AnonymousValueFixture fixture)
+        public string Hex()
         {
-            return fixture.Words(FromDictionary.ColourHex).Next();
+            return _fixture.Words(FromDictionary.ColourHex).Next();
         }
 
         /// <summary>
         /// Generate and return a Colour name.
         /// </summary>
-        /// <param name="fixture">The fixture to generate a value for.</param>
         /// <returns>The generated value.</returns>
-        public static string ColourName(this AnonymousValueFixture fixture)
+        public string Name()
         {
-            return fixture.Words(FromDictionary.ColourName).Next();
+            return _fixture.Words(FromDictionary.ColourName).Next();
         }
     }
 }

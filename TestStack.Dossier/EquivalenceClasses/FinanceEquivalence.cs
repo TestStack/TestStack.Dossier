@@ -4,18 +4,29 @@ using TestStack.Dossier.DataSources.Dictionaries;
 namespace TestStack.Dossier
 {
     /// <summary>
-    /// Extension methods that describe equivalence classes for generating anonymous Finance-related values.
+    /// Methods that describe equivalence classes for generating anonymous Finance-related values.
     /// </summary>
-    public static class FinanceEquivalence
+    public class FinanceEquivalence
     {
+        private readonly AnonymousValueFixture _fixture;
+
+        /// <summary>
+        /// Creates a new <see cref="FinanceEquivalence"/> with the AnonymousValueFixture from the extension method.
+        /// </summary>
+        /// <param name="fixture">The </param>
+        public FinanceEquivalence(AnonymousValueFixture fixture)
+        {
+            _fixture = fixture;
+        }
+
         /// <summary>
         /// Generate and return a finance credit card number.
         /// </summary>
         /// <param name="fixture">The fixture to generate a value for.</param>
         /// <returns>The generated value.</returns>
-        public static string FinanceCreditCardNumber(this AnonymousValueFixture fixture)
+        public string CreditCardNumber()
         {
-            return fixture.Words(FromDictionary.FinanceCreditCardNumber).Next();
+            return _fixture.Words(FromDictionary.FinanceCreditCardNumber).Next();
         }
 
         /// <summary>
@@ -23,9 +34,9 @@ namespace TestStack.Dossier
         /// </summary>
         /// <param name="fixture">The fixture to generate a value for.</param>
         /// <returns>The generated value.</returns>
-        public static string FinanceCreditCardType(this AnonymousValueFixture fixture)
+        public string CreditCardType()
         {
-            return fixture.Words(FromDictionary.FinanceCreditCardType).Next();
+            return _fixture.Words(FromDictionary.FinanceCreditCardType).Next();
         }
 
         /// <summary>
@@ -33,9 +44,9 @@ namespace TestStack.Dossier
         /// </summary>
         /// <param name="fixture">The fixture to generate a value for.</param>
         /// <returns>The generated value.</returns>
-        public static string FinanceCurrency(this AnonymousValueFixture fixture)
+        public string Currency()
         {
-            return fixture.Words(FromDictionary.FinanceCurrency).Next();
+            return _fixture.Words(FromDictionary.FinanceCurrency).Next();
         }
 
         /// <summary>
@@ -43,9 +54,9 @@ namespace TestStack.Dossier
         /// </summary>
         /// <param name="fixture">The fixture to generate a value for.</param>
         /// <returns>The generated value.</returns>
-        public static string FinanceCurrencyCode(this AnonymousValueFixture fixture)
+        public string CurrencyCode()
         {
-            return fixture.Words(FromDictionary.FinanceCurrencyCode).Next();
+            return _fixture.Words(FromDictionary.FinanceCurrencyCode).Next();
         }
 
     }

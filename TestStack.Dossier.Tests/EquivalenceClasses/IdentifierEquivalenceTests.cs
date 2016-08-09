@@ -24,24 +24,24 @@ namespace TestStack.Dossier.Tests.EquivalenceClasses
                 new object[]
                 {
                     new Words(FromDictionary.IdentifierBitcoinAddress),
-                    GenerateTestCasesForSut(Any.IdentifierBitcoinAddress)
+                    GenerateTestCasesForSut(Any.Identifier.BitcoinAddress)
                 },
                 new object[]
-                {new Words(FromDictionary.IdentifierIban), GenerateTestCasesForSut(Any.IdentifierIban)},
+                {new Words(FromDictionary.IdentifierIban), GenerateTestCasesForSut(Any.Identifier.Iban)},
                 new object[]
                 {
-                    new Words(FromDictionary.IdentifierIpAddressV4), GenerateTestCasesForSut(Any.IdentifierIpAddressV4)
+                    new Words(FromDictionary.IdentifierIpAddressV4), GenerateTestCasesForSut(Any.Identifier.IpAddressV4)
                 },
                 new object[]
                 {
-                    new Words(FromDictionary.IdentifierIpAddressV6), GenerateTestCasesForSut(Any.IdentifierIpAddressV6)
+                    new Words(FromDictionary.IdentifierIpAddressV6), GenerateTestCasesForSut(Any.Identifier.IpAddressV6)
                 },
                 new object[]
-                {new Words(FromDictionary.IdentifierIsbn), GenerateTestCasesForSut(Any.IdentifierIsbn)},
+                {new Words(FromDictionary.IdentifierIsbn), GenerateTestCasesForSut(Any.Identifier.Isbn)},
                 new object[]
                 {
                     new Words(FromDictionary.IdentifierMacAddress),
-                    GenerateTestCasesForSut(Any.IdentifierMacAddress)
+                    GenerateTestCasesForSut(Any.Identifier.MacAddress)
                 }
             };
         }

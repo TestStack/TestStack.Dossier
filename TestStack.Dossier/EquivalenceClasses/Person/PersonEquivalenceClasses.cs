@@ -1,18 +1,21 @@
-﻿namespace TestStack.Dossier.EquivalenceClasses.Person
+﻿using System;
+
+namespace TestStack.Dossier.EquivalenceClasses.Person
 {
     /// <summary>
     /// Extension methods that describe equivalence classes for generating anonymous person-related values.
     /// </summary>
-    public static class NameEquivalenceClasses
+    public static class PersonEquivalenceClasses
     {
         /// <summary>
         /// Generate and return an email address.
         /// </summary>
         /// <param name="fixture">The fixture to generate a email for</param>
         /// <returns>The generated email</returns>
+        [Obsolete("EmailAddress is deprecated, please use Person.EmailAddress instead.")]
         public static string EmailAddress(this AnonymousValueFixture fixture)
         {
-            return fixture.PersonEmailAddress();
+            return fixture.Person.EmailAddress();
         }
 
         /// <summary>
@@ -20,9 +23,10 @@
         /// </summary>
         /// <param name="fixture">The fixture to generate a unique email for</param>
         /// <returns>The generated unique email</returns>
+        [Obsolete("UniqueEmailAddress is deprecated, please use Person.UniqueEmailAddress instead.")]
         public static string UniqueEmailAddress(this AnonymousValueFixture fixture)
         {
-            return fixture.PersonUniqueEmailAddress();
+            return fixture.Person.UniqueEmailAddress();
         }
 
         /// <summary>
@@ -30,9 +34,10 @@
         /// </summary>
         /// <param name="fixture">The fixture to generate a language for</param>
         /// <returns>The generated language</returns>
+        [Obsolete("Language is deprecated, please use Person.Language instead.")]
         public static string Language(this AnonymousValueFixture fixture)
         {
-            return fixture.PersonLanguage();
+            return fixture.Person.Language();
         }
 
         /// <summary>
@@ -40,9 +45,10 @@
         /// </summary>
         /// <param name="fixture">The fixture to generate a first name for</param>
         /// <returns>The generated female first name</returns>
+        [Obsolete("FemaleFirstName is deprecated, please use Person.NameFirstFemale instead.")]
         public static string FemaleFirstName(this AnonymousValueFixture fixture)
         {
-            return fixture.PersonNameFirstFemale();
+            return fixture.Person.NameFirstFemale();
         }
 
         /// <summary>
@@ -50,9 +56,10 @@
         /// </summary>
         /// <param name="fixture">The fixture to generate a first name for</param>
         /// <returns>The generated first name</returns>
+        [Obsolete("FirstName is deprecated, please use Person.NameFirst instead.")]
         public static string FirstName(this AnonymousValueFixture fixture)
         {
-            return fixture.PersonNameFirst();
+            return fixture.Person.NameFirst();
         }
 
         /// <summary>
@@ -60,9 +67,10 @@
         /// </summary>
         /// <param name="fixture">The fixture to generate a full name for</param>
         /// <returns>The generated full name</returns>
+        [Obsolete("FullName is deprecated, please use Person.NameFull instead.")]
         public static string FullName(this AnonymousValueFixture fixture)
         {
-            return fixture.PersonNameFull();
+            return fixture.Person.NameFull();
         }
 
         /// <summary>
@@ -70,9 +78,10 @@
         /// </summary>
         /// <param name="fixture">The fixture to generate a last name for</param>
         /// <returns>The generated last name</returns>
+        [Obsolete("LastName is deprecated, please use Person.NameLast instead.")]
         public static string LastName(this AnonymousValueFixture fixture)
         {
-            return fixture.PersonNameLast();
+            return fixture.Person.NameLast();
         }
 
         /// <summary>
@@ -80,9 +89,10 @@
         /// </summary>
         /// <param name="fixture">The fixture to generate a male first name for</param>
         /// <returns>The generated male first name</returns>
+        [Obsolete("MaleFirstName is deprecated, please use Person.NameFirstMale instead.")]
         public static string MaleFirstName(this AnonymousValueFixture fixture)
         {
-            return fixture.PersonNameFirstMale();
+            return fixture.Person.NameFirstMale();
         }
 
         /// <summary>
@@ -90,9 +100,10 @@
         /// </summary>
         /// <param name="fixture">The fixture to generate a suffix for</param>
         /// <returns>The generated suffix</returns>
+        [Obsolete("Suffix is deprecated, please use Person.NameSuffix instead.")]
         public static string Suffix(this AnonymousValueFixture fixture)
         {
-            return fixture.PersonNameSuffix();
+            return fixture.Person.NameSuffix();
         }
 
         /// <summary>
@@ -100,9 +111,10 @@
         /// </summary>
         /// <param name="fixture">The fixture to generate a title for</param>
         /// <returns>The generated title</returns>
+        [Obsolete("Title is deprecated, please use Person.Title instead.")]
         public static string Title(this AnonymousValueFixture fixture)
         {
-            return fixture.PersonNameTitle();
+            return fixture.Person.NameTitle();
         }
     }
 }

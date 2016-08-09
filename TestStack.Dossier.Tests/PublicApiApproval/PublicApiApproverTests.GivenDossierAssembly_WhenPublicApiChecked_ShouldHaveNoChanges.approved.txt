@@ -7,48 +7,61 @@
 namespace TestStack.Dossier
 {
     
-    public class static AddressAusEquivalence
+    public class AddressAusEquivalence
     {
-        public static string AddressAusCity(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string AddressAusCompany(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string AddressAusPhone(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string AddressAusPostCode(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string AddressAusState(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string AddressAusStateAbbreviation(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string AddressAusStreet(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string AddressAusWebsite(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public AddressAusEquivalence(TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public string City() { }
+        public string Company() { }
+        public string Phone() { }
+        public string PostCode() { }
+        public string State() { }
+        public string StateAbbreviation() { }
+        public string Street() { }
+        public string Website() { }
     }
-    public class static AddressUkEquivalence
+    public class AddressUkEquivalence
     {
-        public static string AddressUkCity(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string AddressUkCompany(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string AddressUkCounty(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string AddressUkPhone(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string AddressUkPostCode(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string AddressUkStreet(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string AddressUkWebsite(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public AddressUkEquivalence(TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public string City() { }
+        public string Company() { }
+        public string County() { }
+        public string Phone() { }
+        public string PostCode() { }
+        public string Street() { }
+        public string Website() { }
     }
-    public class static AddressUsEquivalence
+    public class AddressUsEquivalence
     {
-        public static string AddressUsCity(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string AddressUsCompany(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string AddressUsPhone(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string AddressUsSocialSecurityNumber(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string AddressUsState(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string AddressUsStateAbbreviation(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string AddressUsStreet(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string AddressUsWebsite(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string AddressUsZipCode(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public AddressUsEquivalence(TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public string City() { }
+        public string Company() { }
+        public string Phone() { }
+        public string SocialSecurityNumber() { }
+        public string State() { }
+        public string StateAbbreviation() { }
+        public string Street() { }
+        public string Website() { }
+        public string ZipCode() { }
     }
     public class AnonymousValueFixture
     {
         public AnonymousValueFixture() { }
+        public TestStack.Dossier.AddressAusEquivalence AddressAus { get; }
+        public TestStack.Dossier.AddressUkEquivalence AddressUk { get; }
+        public TestStack.Dossier.AddressUsEquivalence AddressUs { get; }
         [System.Runtime.CompilerServices.DynamicAttribute()]
         public object Bag { get; }
+        public TestStack.Dossier.ColourEquivalence Colour { get; }
+        public TestStack.Dossier.CompanyEquivalence Company { get; }
         public static System.Collections.Generic.IEnumerable<TestStack.Dossier.IAnonymousValueSupplier> DefaultValueSuppliers { get; }
+        public TestStack.Dossier.FinanceEquivalence Finance { get; }
         public Ploeh.AutoFixture.Fixture Fixture { get; }
+        public TestStack.Dossier.GeoEquivalence Geography { get; }
         public static System.Collections.Generic.ICollection<TestStack.Dossier.IAnonymousValueSupplier> GlobalValueSuppliers { get; }
+        public TestStack.Dossier.IdentifierEquivalence Identifier { get; }
+        public TestStack.Dossier.InternetEquivalence Internet { get; }
         public System.Collections.Generic.ICollection<TestStack.Dossier.IAnonymousValueSupplier> LocalValueSuppliers { get; }
+        public TestStack.Dossier.PersonEquivalence Person { get; }
         public Ploeh.AutoFixture.RegularExpressionGenerator RegexGenerator { get; }
         public T Get<TObject, T>(System.Linq.Expressions.Expression<System.Func<TObject, T>> property) { }
         public object Get(System.Type type, string propertyName) { }
@@ -67,57 +80,63 @@ namespace TestStack.Dossier
         public virtual TestStack.Dossier.Builder<T> SetUsingBuilder<TPropertyType>(System.Linq.Expressions.Expression<System.Func<T, TPropertyType>> property, System.Func<TestStack.Dossier.Builder<TPropertyType>, TestStack.Dossier.Builder<TPropertyType>> modifier = null)
             where TPropertyType :  class { }
     }
-    public class static ColourEquivalence
+    public class ColourEquivalence
     {
-        public static string ColourHex(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string ColourName(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public ColourEquivalence(TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public string Hex() { }
+        public string Name() { }
     }
-    public class static CompanyEquivalence
+    public class CompanyEquivalence
     {
-        public static string CompanyIndustry(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string CompanyJobTitle(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string CompanyLocation(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string CompanyName(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public CompanyEquivalence(TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public string Industry() { }
+        public string JobTitle() { }
+        public string Location() { }
+        public string Name() { }
     }
-    public class static FinanceEquivalence
+    public class FinanceEquivalence
     {
-        public static string FinanceCreditCardNumber(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string FinanceCreditCardType(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string FinanceCurrency(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string FinanceCurrencyCode(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public FinanceEquivalence(TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public string CreditCardNumber() { }
+        public string CreditCardType() { }
+        public string Currency() { }
+        public string CurrencyCode() { }
     }
     public class static FrequencyEquivalence
     {
         public static string Frequency(this TestStack.Dossier.AnonymousValueFixture fixture) { }
     }
-    public class static GeoEquivalence
+    public class GeoEquivalence
     {
-        public static string GeoContinent(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string GeoCountry(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string GeoCountryCode(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string GeoLatitude(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string GeoLongitude(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public GeoEquivalence(TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public string Continent() { }
+        public string Country() { }
+        public string CountryCode() { }
+        public string Latitude() { }
+        public string Longitude() { }
     }
     public interface IAnonymousValueSupplier
     {
         bool CanSupplyValue(System.Type type, string propertyName);
         object GenerateAnonymousValue(TestStack.Dossier.AnonymousValueFixture any, System.Type type, string propertyName);
     }
-    public class static IdentifierEquivalence
+    public class IdentifierEquivalence
     {
-        public static string IdentifierBitcoinAddress(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string IdentifierIban(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string IdentifierIpAddressV4(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string IdentifierIpAddressV6(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string IdentifierIsbn(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string IdentifierMacAddress(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public IdentifierEquivalence(TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public string BitcoinAddress() { }
+        public string Iban() { }
+        public string IpAddressV4() { }
+        public string IpAddressV6() { }
+        public string Isbn() { }
+        public string MacAddress() { }
     }
-    public class static InternetEquivalence
+    public class InternetEquivalence
     {
-        public static string InternetDomainCountryCodeTopLevelDomain(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string InternetDomainName(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string InternetDomainTopLevel(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string InternetUrl(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public InternetEquivalence(TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public string DomainCountryCodeTopLevelDomain() { }
+        public string DomainName() { }
+        public string DomainTopLevel() { }
+        public string Url() { }
     }
     public interface ITestDataBuilder<out TObject>
         where out TObject :  class
@@ -128,21 +147,25 @@ namespace TestStack.Dossier
     {
         public static string LoremIpsum(this TestStack.Dossier.AnonymousValueFixture fixture) { }
     }
-    public class static PersonEquivalence
+    public class PersonEquivalence
     {
-        public static string PersonEmailAddress(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string PersonLanguage(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string PersonNameFirst(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string PersonNameFirstFemale(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string PersonNameFirstMale(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string PersonNameFull(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string PersonNameLast(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string PersonNameSuffix(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string PersonNameTitle(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string PersonPassword(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string PersonRace(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string PersonUniqueEmailAddress(this TestStack.Dossier.AnonymousValueFixture fixture) { }
-        public static string PersonUsername(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public PersonEquivalence(TestStack.Dossier.AnonymousValueFixture fixture) { }
+        public string EmailAddress() { }
+        public string Language() { }
+        public string NameFirst() { }
+        public string NameFirstFemale() { }
+        public string NameFirstMale() { }
+        public string NameFull() { }
+        public string NameLast() { }
+        public string NameSuffix() { }
+        public string NameTitle() { }
+        public string Password() { }
+        public string Race() { }
+        public string Username() { }
+    }
+    public class static PersonEquivalenceExtensions
+    {
+        public static string UniqueEmailAddress(this TestStack.Dossier.PersonEquivalence personEquivalence) { }
     }
     public class ProxyBuilder<T>
         where T :  class
@@ -457,27 +480,42 @@ namespace TestStack.Dossier.EquivalenceClasses.Geo
     
     public class static GeographyEquivalenceClassescs
     {
+        [System.ObsoleteAttribute("Continent is deprecated, please use Geography.Continent instead.")]
         public static string Continent(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        [System.ObsoleteAttribute("Country is deprecated, please use Geography.Country instead.")]
         public static string Country(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        [System.ObsoleteAttribute("CountryCode is deprecated, please use Geography.CountryCode instead.")]
         public static string CountryCode(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        [System.ObsoleteAttribute("Latitude is deprecated, please use Geography.Latitude instead.")]
         public static string Latitude(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        [System.ObsoleteAttribute("Longitude is deprecated, please use Geography.Longitude instead.")]
         public static string Longitude(this TestStack.Dossier.AnonymousValueFixture fixture) { }
     }
 }
 namespace TestStack.Dossier.EquivalenceClasses.Person
 {
     
-    public class static NameEquivalenceClasses
+    public class static PersonEquivalenceClasses
     {
+        [System.ObsoleteAttribute("EmailAddress is deprecated, please use Person.EmailAddress instead.")]
         public static string EmailAddress(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        [System.ObsoleteAttribute("FemaleFirstName is deprecated, please use Person.NameFirstFemale instead.")]
         public static string FemaleFirstName(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        [System.ObsoleteAttribute("FirstName is deprecated, please use Person.NameFirst instead.")]
         public static string FirstName(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        [System.ObsoleteAttribute("FullName is deprecated, please use Person.NameFull instead.")]
         public static string FullName(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        [System.ObsoleteAttribute("Language is deprecated, please use Person.Language instead.")]
         public static string Language(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        [System.ObsoleteAttribute("LastName is deprecated, please use Person.NameLast instead.")]
         public static string LastName(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        [System.ObsoleteAttribute("MaleFirstName is deprecated, please use Person.NameFirstMale instead.")]
         public static string MaleFirstName(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        [System.ObsoleteAttribute("Suffix is deprecated, please use Person.NameSuffix instead.")]
         public static string Suffix(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        [System.ObsoleteAttribute("Title is deprecated, please use Person.Title instead.")]
         public static string Title(this TestStack.Dossier.AnonymousValueFixture fixture) { }
+        [System.ObsoleteAttribute("UniqueEmailAddress is deprecated, please use Person.UniqueEmailAddress instead.")]
         public static string UniqueEmailAddress(this TestStack.Dossier.AnonymousValueFixture fixture) { }
     }
 }
