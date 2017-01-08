@@ -116,6 +116,15 @@ namespace TestStack.Dossier.Lists
         }
 
         /// <summary>
+        /// Return the list of builder objects.
+        /// </summary>
+        /// <returns>The list of builder objects</returns>
+        public IEnumerable<TBuilder> GetBuilders()
+        {
+            return _list.AsReadOnly();
+        }
+
+        /// <summary>
         /// Builds the list of objects with implicit conversion operator.
         /// </summary>
         /// <returns>The built object</returns>

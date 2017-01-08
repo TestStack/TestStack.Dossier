@@ -566,6 +566,7 @@ namespace TestStack.Dossier.Lists
     {
         public TBuilder All() { }
         public System.Collections.Generic.IList<TObject> BuildList() { }
+        public System.Collections.Generic.IEnumerable<TBuilder> GetBuilders() { }
         public TBuilder TheFirst(int howMany) { }
         public TBuilder TheLast(int howMany) { }
         public TBuilder TheNext(int howMany) { }

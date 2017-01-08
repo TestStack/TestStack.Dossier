@@ -191,5 +191,19 @@ namespace TestStack.Dossier.Tests
             customers[2].FirstName.ShouldBe(BuilderWithDefaults.DefaultFirstName);
             customers[2].LastName.ShouldBe(BuilderWithDefaults.DefaultLastName);
         }
+
+        [Fact]
+        public void GivenListOfBuilders_WhenCallingGetBuilders_ThenTheListOfBuildersShouldBeReturned()
+        {
+            var list = BasicCustomerBuilder.CreateListOfSize(5);
+
+            var builders = list.GetBuilders();
+
+            builders.ShouldSatisfyAllConditions(
+                () => builders.ShouldBeAssignableTo<IEnumerable<BasicCustomerBuilder>>(),
+                () => builders.Count().ShouldBe(5),
+                () => builders.All(b => b != null),
+                () => builders.ShouldBeUnique());
+        }
     }
 }
