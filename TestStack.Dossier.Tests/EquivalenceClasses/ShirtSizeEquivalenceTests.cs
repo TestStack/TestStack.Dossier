@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using TestStack.Dossier.DataSources;
 using TestStack.Dossier.DataSources.Dictionaries;
-using Xunit.Extensions;
+using Xunit;
 
 namespace TestStack.Dossier.Tests.EquivalenceClasses
 {

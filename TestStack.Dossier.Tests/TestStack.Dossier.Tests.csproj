@@ -1,153 +1,27 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DC49CE57-CB3F-487D-83DC-6A4E78CB908C}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TestStack.Dossier.Tests</RootNamespace>
-    <AssemblyName>TestStack.Dossier.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
-    <TargetFrameworkProfile />
-    <NuGetPackageImportStamp>660882d1</NuGetPackageImportStamp>
+    <TargetFrameworks>netcoreapp2.0;net45</TargetFrameworks>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-    <LangVersion>5</LangVersion>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="NSubstitute, Version=1.8.1.0, Culture=neutral, PublicKeyToken=92dd2e9066daa5ca, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\NSubstitute.1.8.1.0\lib\net45\NSubstitute.dll</HintPath>
-    </Reference>
-    <Reference Include="PublicApiGenerator, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\PublicApiGenerator.4.0.1\lib\net40\PublicApiGenerator.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Shouldly, Version=2.7.0.0, Culture=neutral, PublicKeyToken=6042cbcb05cbc941, processorArchitecture=MSIL">
-      <HintPath>..\packages\Shouldly.2.7.0-beta0003\lib\net40\Shouldly.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="xunit">
-      <HintPath>..\packages\xunit.1.9.2\lib\net20\xunit.dll</HintPath>
-    </Reference>
-    <Reference Include="xunit.extensions">
-      <HintPath>..\packages\xunit.extensions.1.9.2\lib\net20\xunit.extensions.dll</HintPath>
-    </Reference>
+    <PackageReference Include="Castle.Core" Version="4.1.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.5.0-preview-20170727-01" />
+    <PackageReference Include="NSubstitute" Version="2.0.3" />
+    <PackageReference Include="Shouldly" Version="2.8.3" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="4.4.0-preview2-25405-01" />
+    <PackageReference Include="xunit" Version="2.3.0-beta3-build3705" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.3.0-beta3-build3705" />
   </ItemGroup>
+
   <ItemGroup>
-    <Compile Include="Builder_CreateListTests.cs" />
-    <Compile Include="Builder_CreateNewTests.cs" />
-    <Compile Include="Builder_SetUsingBuilderTests.cs" />
-    <Compile Include="EquivalenceClasses\AddressAusEquivalenceTests.cs" />
-    <Compile Include="EquivalenceClasses\AddressUkEquivalenceTests.cs" />
-    <Compile Include="EquivalenceClasses\AddressUsEquivalenceTests.cs" />
-    <Compile Include="EquivalenceClasses\ColourEquivalenceTests.cs" />
-    <Compile Include="EquivalenceClasses\CompanyEquivalenceTests.cs" />
-    <Compile Include="EquivalenceClasses\FileDictionaryEquivalenceTestCases.cs" />
-    <Compile Include="EquivalenceClasses\FileDictionaryEquivalenceTests.cs" />
-    <Compile Include="EquivalenceClasses\FinanceEquivalenceTests.cs" />
-    <Compile Include="EquivalenceClasses\FrequencyEquivalenceTests.cs" />
-    <Compile Include="EquivalenceClasses\GeoEquivalenceClassesTests.cs" />
-    <Compile Include="EquivalenceClasses\IdentifierEquivalenceTests.cs" />
-    <Compile Include="EquivalenceClasses\IntegerEquivalenceTests.cs" />
-    <Compile Include="EquivalenceClasses\LoremIpsumEquivalenceTests.cs" />
-    <Compile Include="EquivalenceClasses\PersonEquivalenceClassesTests.cs" />
-    <Compile Include="EquivalenceClasses\ShirtSizeEquivalenceTests.cs" />
-    <Compile Include="PublicApiApproval\PublicApiApproverTests.cs" />
-    <Compile Include="DataSources\Picking\PickingTests.cs" />
-    <Compile Include="TestHelpers\Builders\AddressViewModelBuilder.cs" />
-    <Compile Include="TestHelpers\Builders\AutoConstructorCustomerBuilder.cs" />
-    <Compile Include="ChildBuilderTests.cs" />
-    <Compile Include="Factories\AllPropertiesFactoryTests.cs" />
-    <Compile Include="Factories\AutoFixtureFactoryTests.cs" />
-    <Compile Include="Factories\CallConstructorFactoryTests.cs" />
-    <Compile Include="Factories\PublicPropertySettersFactoryTests.cs" />
-    <Compile Include="TestHelpers\Builders\BuilderWithDefaults.cs" />
-    <Compile Include="TestHelpers\Objects\Entities\Address.cs" />
-    <Compile Include="TestHelpers\Objects\Entities\Company.cs" />
-    <Compile Include="TestHelpers\Objects\Entities\Customer.cs" />
-    <Compile Include="TestHelpers\Objects\Entities\CustomerClass.cs" />
-    <Compile Include="DataSources\DataSourceTests.cs" />
-    <Compile Include="DataSources\Dictionaries\WordsCacheTests.cs" />
-    <Compile Include="DataSources\Dictionaries\CachedFileDictionaryRepositoryIntegrationTests.cs" />
-    <Compile Include="DataSources\Dictionaries\WordsTests.cs" />
-    <Compile Include="DataSources\Dictionaries\Resources\FileDataConventions.cs" />
-    <Compile Include="DataSources\Generators\RandomGeneratorTests.cs" />
-    <Compile Include="DataSources\Generators\SequentiaGeneratorTests.cs" />
-    <Compile Include="DataSources\DataSourceConventionTests.cs" />
-    <Compile Include="EquivalenceClasses\GeoEquivalenceTests.cs" />
-    <Compile Include="EquivalenceClasses\PersonEquivalenceTests.cs" />
-    <Compile Include="EquivalenceClasses\IntegerEquivalenceClassesTests.cs" />
-    <Compile Include="EquivalenceClasses\EnumEquivalenceClassesTests.cs" />
-    <Compile Include="EquivalenceClasses\StringEquivalenceClassesTests.cs" />
-    <Compile Include="AsProxyTests.cs" />
-    <Compile Include="BuildListTests.cs" />
-    <Compile Include="TestHelpers\Builders\BasicCustomerBuilder.cs" />
-    <Compile Include="TestHelpers\Builders\CustomerBuilder.cs" />
-    <Compile Include="TestHelpers\Builders\ProxyAlteringCustomerBuilder.cs" />
-    <Compile Include="BuildTests.cs" />
-    <Compile Include="GetAnonymousTests.cs" />
-    <Compile Include="GetOrDefaultTests.cs" />
-    <Compile Include="GetSetTests.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ProxyBuilderTests.cs" />
-    <Compile Include="TestHelpers\Objects\ViewModels\AddressViewModel.cs" />
-    <Compile Include="TestHelpers\Objects\ViewModels\Grade.cs" />
-    <Compile Include="TestHelpers\Objects\Examples\MixedAccessibilityDto.cs" />
-    <Compile Include="TestHelpers\Objects\ViewModels\StudentViewModel.cs" />
-    <Compile Include="TestHelpers\StaticAnonymousValueSupplier.cs" />
+    <ProjectReference Include="..\TestStack.Dossier\TestStack.Dossier.csproj" />
   </ItemGroup>
+
   <ItemGroup>
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
+    <None Update="SampleDictionaryFile.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="SampleDictionaryFile.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\TestStack.Dossier\TestStack.Dossier.csproj">
-      <Project>{01e4ee61-ab1a-4177-8b6c-d50205d167a9}</Project>
-      <Name>TestStack.Dossier</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
 </Project>

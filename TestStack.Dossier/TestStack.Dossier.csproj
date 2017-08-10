@@ -1,141 +1,76 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{01E4EE61-AB1A-4177-8B6C-D50205D167A9}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TestStack.Dossier</RootNamespace>
-    <AssemblyName>TestStack.Dossier</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <TargetFrameworks>netstandard2.0;net45;net40</TargetFrameworks>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\TestStack.Dossier.xml</DocumentationFile>
-    <LangVersion>5</LangVersion>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\TestStack.Dossier.xml</DocumentationFile>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="Castle.Core">
-      <HintPath>..\packages\Castle.Core.3.3.1\lib\net40-client\Castle.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="NSubstitute, Version=1.8.1.0, Culture=neutral, PublicKeyToken=92dd2e9066daa5ca, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\NSubstitute.1.8.1.0\lib\net40\NSubstitute.dll</HintPath>
-    </Reference>
-    <Reference Include="Ploeh.AutoFixture">
-      <HintPath>..\packages\AutoFixture.3.20.0\lib\net40\Ploeh.AutoFixture.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.XML" />
+    <None Remove="DataSources\Dictionaries\Resources\AddressAusCity.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\AddressAusCompany.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\AddressAusPhone.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\AddressAusPostCode.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\AddressAusState.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\AddressAusStateAbbreviation.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\AddressAusStreet.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\AddressAusWebsite.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\AddressUKCity.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\AddressUKCompany.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\AddressUKCounty.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\AddressUKPhone.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\AddressUKPostCode.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\AddressUKStreet.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\AddressUKWebsite.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\AddressUSCity.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\AddressUSCompany.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\AddressUSPhone.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\AddressUSSocialSecurityNumber.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\AddressUSState.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\AddressUSStateAbbreviation.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\AddressUSStreet.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\AddressUSWebsite.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\AddressUSZipCode.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\ColourHex.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\ColourName.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\CompanyIndustry.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\CompanyJobTitle.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\CompanyLocation.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\CompanyName.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\FinanceCreditCardNumber.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\FinanceCreditCardType.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\FinanceCurrency.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\FinanceCurrencyCode.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\Frequency.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\GeoContinent.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\GeoCountry.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\GeoCountryCode.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\GeoLatitude.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\GeoLongitude.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\IdentifierBitcoinAddress.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\IdentifierIBAN.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\IdentifierIPAddressV4.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\IdentifierIPAddressV6.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\IdentifierISBN.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\IdentifierMacAddress.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\InternetDomainCountryCodeTopLevelDomain.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\InternetDomainName.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\InternetDomainTopLevel.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\InternetURL.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\LoremIpsum.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\PersonEmailAddress.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\PersonLanguage.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\PersonNameFirst.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\PersonNameFirstFemale.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\PersonNameFirstMale.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\PersonNameFull.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\PersonNameLast.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\PersonNameSuffix.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\PersonNameTitle.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\PersonPassword.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\PersonRace.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\PersonUsername.txt" />
+    <None Remove="DataSources\Dictionaries\Resources\ShirtSize.txt" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="AnonymousValueFixture.cs" />
-    <Compile Include="Builder.cs" />
-    <Compile Include="DataSources\Dictionaries\FileDictionarySource.cs" />
-    <Compile Include="DataSources\Dictionaries\Words.cs" />
-    <Compile Include="DataSources\Dictionaries\FromDictionary.cs" />
-    <Compile Include="DataSources\Geography\GeoContinentSource.cs" />
-    <Compile Include="DataSources\Geography\GeoCountryCodeSource.cs" />
-    <Compile Include="DataSources\Geography\GeoCountrySource.cs" />
-    <Compile Include="DataSources\Geography\GeoLatitudeSource.cs" />
-    <Compile Include="DataSources\Geography\GeoLongitudeSource.cs" />
-    <Compile Include="DataSources\Person\PersonEmailAddressSource.cs" />
-    <Compile Include="DataSources\Person\PersonLanguageSource.cs" />
-    <Compile Include="DataSources\Person\PersonNameFirstFemaleSource.cs" />
-    <Compile Include="DataSources\Person\PersonNameFirstMaleSource.cs" />
-    <Compile Include="DataSources\Person\PersonNameFirstSource.cs" />
-    <Compile Include="DataSources\Person\PersonNameFullSource.cs" />
-    <Compile Include="DataSources\Person\PersonNameLastSource.cs" />
-    <Compile Include="DataSources\Person\PersonNameSuffixSource.cs" />
-    <Compile Include="DataSources\Person\PersonNameTitleSource.cs" />
-    <Compile Include="EquivalenceClasses\AddressAusEquivalence.cs" />
-    <Compile Include="EquivalenceClasses\AddressUkEquivalence.cs" />
-    <Compile Include="EquivalenceClasses\AddressUsEquivalence.cs" />
-    <Compile Include="EquivalenceClasses\Equivalence.cs" />
-    <Compile Include="EquivalenceClasses\Geo\GeographyEquivalenceClassescs.cs" />
-    <Compile Include="EquivalenceClasses\PersonEquivalenceExtensions.cs" />
-    <Compile Include="EquivalenceClasses\Person\PersonEquivalenceClasses.cs" />
-    <Compile Include="EquivalenceClasses\ShirtSizeEquivalence.cs" />
-    <Compile Include="EquivalenceClasses\ColourEquivalence.cs" />
-    <Compile Include="EquivalenceClasses\CompanyEquivalence.cs" />
-    <Compile Include="EquivalenceClasses\FinanceEquivalence.cs" />
-    <Compile Include="EquivalenceClasses\FrequencyEquivalence.cs" />
-    <Compile Include="EquivalenceClasses\GeoEquivalence.cs" />
-    <Compile Include="EquivalenceClasses\IdentifierEquivalence.cs" />
-    <Compile Include="EquivalenceClasses\InternetEquivalence.cs" />
-    <Compile Include="EquivalenceClasses\LoremIpsumEquivalence.cs" />
-    <Compile Include="EquivalenceClasses\PersonEquivalence.cs" />
-    <Compile Include="DataSources\Picking\Pick.cs" />
-    <Compile Include="DataSources\Picking\RandomItemSource.cs" />
-    <Compile Include="DataSources\Picking\RepeatingSequenceSource.cs" />
-    <Compile Include="ITestDataBuilder.cs" />
-    <Compile Include="DataSources\Dictionaries\WordsCache.cs" />
-    <Compile Include="DataSources\Dictionaries\IDictionaryRepository.cs" />
-    <Compile Include="DataSources\Dictionaries\CachedFileDictionaryRepository.cs" />
-    <Compile Include="DataSources\DataSource.cs" />
-    <Compile Include="DataSources\IDataSource.cs" />
-    <Compile Include="EquivalenceClasses\EnumEquivalenceClasses.cs" />
-    <Compile Include="EquivalenceClasses\IntegerEquivalenceClasses.cs" />
-    <Compile Include="DataSources\Generators\IGenerator.cs" />
-    <Compile Include="DataSources\Generators\RandomGenerator.cs" />
-    <Compile Include="DataSources\Generators\SequentialGenerator.cs" />
-    <Compile Include="EquivalenceClasses\StringEquivalenceClasses.cs" />
-    <Compile Include="Factories\AutoFixtureFactory.cs" />
-    <Compile Include="Factories\CallConstructorFactory.cs" />
-    <Compile Include="Factories\AllPropertiesFactory.cs" />
-    <Compile Include="Factories\PublicPropertySettersFactory.cs" />
-    <Compile Include="IAnonymousValueSupplier.cs" />
-    <Compile Include="Lists\EnsureAllMethodsVirtual.cs" />
-    <Compile Include="Lists\ListBuilder.cs" />
-    <Compile Include="Lists\ListBuilderExtensions.cs" />
-    <Compile Include="Lists\ListBuilderGenerator.cs" />
-    <Compile Include="Lists\ListBuilderInterceptor.cs" />
-    <Compile Include="NullingExpandoObject.cs" />
-    <Compile Include="Factories\IFactory.cs" />
-    <Compile Include="PathExpressionVisitor.cs" />
-    <Compile Include="Reflector.cs" />
-    <Compile Include="Suppliers\DefaultEmailValueSupplier.cs" />
-    <Compile Include="Suppliers\DefaultLastNameValueSupplier.cs" />
-    <Compile Include="Suppliers\DefaultFirstNameValueSupplier.cs" />
-    <Compile Include="Suppliers\DefaultValueSupplier.cs" />
-    <Compile Include="Suppliers\DefaultStringValueSupplier.cs" />
-    <Compile Include="Suppliers\DefaultValueTypeValueSupplier.cs" />
-    <Compile Include="TestDataBuilder.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ProxyBuilder.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="TestStack.Dossier.nuspec" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="DataSources\Dictionaries\Resources\GeoContinent.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="DataSources\Dictionaries\Resources\GeoCountry.txt" />
-  </ItemGroup>
+
   <ItemGroup>
     <EmbeddedResource Include="DataSources\Dictionaries\Resources\AddressAusCity.txt" />
     <EmbeddedResource Include="DataSources\Dictionaries\Resources\AddressAusCompany.txt" />
@@ -172,6 +107,8 @@
     <EmbeddedResource Include="DataSources\Dictionaries\Resources\FinanceCurrency.txt" />
     <EmbeddedResource Include="DataSources\Dictionaries\Resources\FinanceCurrencyCode.txt" />
     <EmbeddedResource Include="DataSources\Dictionaries\Resources\Frequency.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\GeoContinent.txt" />
+    <EmbeddedResource Include="DataSources\Dictionaries\Resources\GeoCountry.txt" />
     <EmbeddedResource Include="DataSources\Dictionaries\Resources\GeoCountryCode.txt" />
     <EmbeddedResource Include="DataSources\Dictionaries\Resources\GeoLatitude.txt" />
     <EmbeddedResource Include="DataSources\Dictionaries\Resources\GeoLongitude.txt" />
@@ -200,14 +137,11 @@
     <EmbeddedResource Include="DataSources\Dictionaries\Resources\PersonUsername.txt" />
     <EmbeddedResource Include="DataSources\Dictionaries\Resources\ShirtSize.txt" />
   </ItemGroup>
-  <ItemGroup />
-  <ItemGroup />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
+  <ItemGroup>
+    <PackageReference Include="AutoFixture" Version="3.50.4" />
+    <PackageReference Include="Castle.Core" Version="4.1.1" />
+    <PackageReference Include="NSubstitute" Version="2.0.3" />
+  </ItemGroup>
+
 </Project>

@@ -5,7 +5,6 @@ using TestStack.Dossier.DataSources;
 using TestStack.Dossier.DataSources.Dictionaries;
 using TestStack.Dossier.EquivalenceClasses.Person;
 using Xunit;
-using Xunit.Extensions;
 
 namespace TestStack.Dossier.Tests.EquivalenceClasses
 {

@@ -2,7 +2,7 @@
 using TestStack.Dossier.DataSources;
 using TestStack.Dossier.DataSources.Dictionaries;
 using TestStack.Dossier.EquivalenceClasses.Geo;
-using Xunit.Extensions;
+using Xunit;
 
 namespace TestStack.Dossier.Tests.EquivalenceClasses
 {

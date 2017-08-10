@@ -4,7 +4,6 @@ using Shouldly;
 using TestStack.Dossier.DataSources;
 using TestStack.Dossier.DataSources.Dictionaries;
 using Xunit;
-using Xunit.Extensions;
 
 namespace TestStack.Dossier.Tests.EquivalenceClasses
 {
