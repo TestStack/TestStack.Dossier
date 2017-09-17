@@ -2,8 +2,18 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard1.5;net45</TargetFrameworks>
+    <AssemblyName>TestStack.Dossier</AssemblyName>
+    <PackageId>TestStack.Dossier</PackageId>
+    <PackageVersion>3.5.0</PackageVersion>
+    <Authors>Robert Moore, Michael Whelan, TestStack</Authors>
+    <Description>
+      TestStack.Dossier provides you with the code infrastructure to easily and quickly generate test fixture data for your automated tests in a terse, readable and maintainable way using the Test Data Builder, anonymous value and equivalence class patterns. Formerly called NTestDataBuilder.
+    </Description>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageTags>testing data-generation test-fixture nbuilder nsubstitute autofixture mocking equivalence-class test-data-builder anonymous-value ntestdatabuilder</PackageTags>
+    <RepositoryUrl>https://github.com/TestStack/TestStack.Dossier</RepositoryUrl>
   </PropertyGroup>
-
+  
   <ItemGroup>
     <None Remove="DataSources\Dictionaries\Resources\AddressAusCity.txt" />
     <None Remove="DataSources\Dictionaries\Resources\AddressAusCompany.txt" />
