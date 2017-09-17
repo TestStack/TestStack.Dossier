@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Reflection;
 using Ploeh.AutoFixture;
 using Ploeh.AutoFixture.Kernel;
 
@@ -13,7 +14,7 @@ namespace TestStack.Dossier.Suppliers
         /// <inerhitdoc />
         public bool CanSupplyValue(Type type, string propertyName)
         {
-            return type.IsValueType;
+            return type.GetTypeInfo().IsValueType;
         }
 
         /// <inerhitdoc />

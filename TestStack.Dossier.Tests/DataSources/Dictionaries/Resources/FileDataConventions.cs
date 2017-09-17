@@ -13,7 +13,7 @@ namespace TestStack.Dossier.Tests.DataSources.Dictionaries.Resources
         [Fact]
         public void ApplyConventions()
         {
-            var assembly = typeof(IAnonymousValueSupplier).Assembly;
+            var assembly = typeof(IAnonymousValueSupplier).GetTypeInfo().Assembly;
             var resources = assembly
                 .GetManifestResourceNames()
                 .Where(x => x.EndsWith(".txt"))
