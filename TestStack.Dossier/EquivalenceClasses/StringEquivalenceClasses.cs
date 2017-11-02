@@ -1,6 +1,6 @@
 ﻿using System.Text;
-using Ploeh.AutoFixture;
-using Ploeh.AutoFixture.Kernel;
+using AutoFixture;
+using AutoFixture.Kernel;
 
 namespace TestStack.Dossier.EquivalenceClasses
 {
@@ -48,7 +48,8 @@ namespace TestStack.Dossier.EquivalenceClasses
         /// <returns>The generated string</returns>
         public static string StringStartingWith(this AnonymousValueFixture fixture, string prefix)
         {
-            return fixture.Fixture.Create(prefix);
+            //return fixture.Fixture.Create<string>(prefix);
+            return string.Format("{0}{1}", prefix, fixture.Fixture.Create<string>());
         }
 
         /// <summary>

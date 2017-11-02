@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using Ploeh.AutoFixture;
+using AutoFixture;
 
 namespace TestStack.Dossier.EquivalenceClasses
 {
