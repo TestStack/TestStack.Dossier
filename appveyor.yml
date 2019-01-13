@@ -64,7 +64,7 @@ deploy:
     SHOULD_DEPLOY: true
 after_deploy:
 - ps: >-
-    gren release --token=$env:GitHubToken
+    gren release --token=$env:GitHubToken --username=$env:GitHubOrganisation --repo=$env:APPVEYOR_PROJECT_NAME
 notifications:
 - provider: GitHubPullRequest
   on_build_success: true
