@@ -28,7 +28,7 @@ build:
   verbosity: minimal
 after_build:
 - ps: >-
-    dotnet pack $Env:APPVEYOR_PROJECT_NAME/$Env:APPVEYOR_PROJECT_NAME.csproj --configuration Release /p:Version="$Env:GitVersion_NuGetVersion" --no-build
+    dotnet pack $Env:APPVEYOR_PROJECT_NAME/$Env:APPVEYOR_PROJECT_NAME.csproj --configuration Release /p:Version="$Env:GitVersion_NuGetVersion" --no-build --output "$Env:APPVEYOR_BUILD_FOLDER"
 
     $currentCommitIsTagged = git tag -l --points-at HEAD
 
