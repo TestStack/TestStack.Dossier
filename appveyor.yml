@@ -1,0 +1,74 @@
+version: 1.0.{build}
+configuration: Release
+image:
+- Visual Studio 2017
+environment:
+  GitHubOrganisation: TestStack
+  GitHubToken:
+    secure: cBxvAtTgSlWVblTXtx8QKygh2HQeYZ9i0plMjJzCTNInGCm1XyG+nrSs18qUtC8W
+init:
+- ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+before_build:
+- ps: >-
+    nuget restore
+
+    choco install -y --no-progress git.install GitReleaseManager.Portable
+
+    npm install github-release-notes -g
+    
+    GitVersion /output buildserver /updateassemblyinfo
+
+    If (Test-Path ".\PreBuild.ps1") {
+
+      & ".\PreBuild.ps1"
+
+    }
+
+build:
+  parallel: true
+  verbosity: minimal
+after_build:
+- ps: >-
+    Get-ChildItem -Recurse *.nuspec | foreach { nuget pack $_.FullName -Properties "Configuration=Release;Platform=AnyCPU" -Symbols -Version $Env:GitVersion_NuGetVersion }
+
+    $currentTag = git tag -l --points-at HEAD
+
+    $HTTP_Request = [System.Net.WebRequest]::Create("https://api.github.com/repos/$env:GitHubOrganisation/$env:APPVEYOR_PROJECT_NAME/releases/tags/$Env:GitVersion_NuGetVersion")
+
+    $HTTP_Request.UserAgent = "Powershell"
+
+    try {
+
+      $HTTP_Request.GetResponse()
+
+    } catch [Net.WebException] { 
+
+        [System.Net.HttpWebResponse] $resp = [System.Net.HttpWebResponse] $_.Exception.Response  
+
+        if ($currentTag -And $resp.StatusCode -eq 404) {
+
+          $env:SHOULD_DEPLOY = 'true'
+
+        }
+
+    }
+test:
+  assemblies:
+    only:
+      - '**\*.*Tests.dll'
+artifacts:
+- path: '*.nupkg'
+deploy:
+- provider: NuGet
+  api_key:
+    secure: E55iN0yXlOk+HFXJ8SJ3XVLkJk27d1Hef98SJeg+zeHYXjMANmS+ZE1LuwNEk9Nv
+  on:
+    SHOULD_DEPLOY: true
+after_deploy:
+- ps: >-
+    gren release --token=$env:GitHubToken
+notifications:
+- provider: GitHubPullRequest
+  on_build_success: true
+  on_build_failure: true
+  on_build_status_changed: false
