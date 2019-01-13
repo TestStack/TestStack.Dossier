@@ -2,7 +2,6 @@
 using Shouldly;
 using TestStack.Dossier.DataSources.Generators;
 using Xunit;
-using Xunit.Extensions;
 
 namespace TestStack.Dossier.Tests.DataSources.Generators
 {

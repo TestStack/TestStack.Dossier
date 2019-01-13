@@ -7,7 +7,7 @@ using Xunit;
 
 namespace TestStack.Dossier.Tests
 {
-    class ProxyBuilderTests
+    public class ProxyBuilderTests
     {
         [Fact]
         public void GivenClassToProxyWithNoProperties_WhenBuildingProxy_ReturnAClassWithNoReturnsValuesSet()

@@ -1,12 +1,5 @@
-[assembly: System.Runtime.CompilerServices.InternalsVisibleToAttribute("DynamicProxyGenAssembly2")]
-[assembly: System.Runtime.CompilerServices.InternalsVisibleToAttribute("TestStack.Dossier.Tests")]
-[assembly: System.Runtime.InteropServices.ComVisibleAttribute(false)]
-[assembly: System.Runtime.InteropServices.GuidAttribute("24a139fb-b390-4f14-9be6-cf9fb354bb5d")]
-[assembly: System.Runtime.Versioning.TargetFrameworkAttribute(".NETFramework,Version=v4.0", FrameworkDisplayName=".NET Framework 4")]
-
 namespace TestStack.Dossier
 {
-    
     public class AddressAusEquivalence
     {
         public AddressAusEquivalence(TestStack.Dossier.AnonymousValueFixture fixture) { }
@@ -55,14 +48,14 @@ namespace TestStack.Dossier
         public TestStack.Dossier.CompanyEquivalence Company { get; }
         public static System.Collections.Generic.IEnumerable<TestStack.Dossier.IAnonymousValueSupplier> DefaultValueSuppliers { get; }
         public TestStack.Dossier.FinanceEquivalence Finance { get; }
-        public Ploeh.AutoFixture.Fixture Fixture { get; }
+        public AutoFixture.Fixture Fixture { get; }
         public TestStack.Dossier.GeoEquivalence Geography { get; }
         public static System.Collections.Generic.ICollection<TestStack.Dossier.IAnonymousValueSupplier> GlobalValueSuppliers { get; }
         public TestStack.Dossier.IdentifierEquivalence Identifier { get; }
         public TestStack.Dossier.InternetEquivalence Internet { get; }
         public System.Collections.Generic.ICollection<TestStack.Dossier.IAnonymousValueSupplier> LocalValueSuppliers { get; }
         public TestStack.Dossier.PersonEquivalence Person { get; }
-        public Ploeh.AutoFixture.RegularExpressionGenerator RegexGenerator { get; }
+        public AutoFixture.RegularExpressionGenerator RegexGenerator { get; }
         public T Get<TObject, T>(System.Linq.Expressions.Expression<System.Func<TObject, T>> property) { }
         public object Get(System.Type type, string propertyName) { }
         public TestStack.Dossier.DataSources.Dictionaries.Words Words(string dictionaryName) { }
@@ -200,15 +193,15 @@ namespace TestStack.Dossier
         protected bool Has<TValue>(System.Linq.Expressions.Expression<System.Func<TObject, TValue>> property) { }
         protected bool Has(string propertyName) { }
         public virtual bool IsListBuilderProxy() { }
+        public static TObject op_Implicit(TestStack.Dossier.TestDataBuilder<TObject, TBuilder> builder) { }
+        public static System.Collections.Generic.List<TObject> op_Implicit(TestStack.Dossier.TestDataBuilder<TObject, TBuilder> builder) { }
         public virtual TBuilder Set<TValue>(System.Linq.Expressions.Expression<System.Func<TObject, TValue>> property, TValue value) { }
         public virtual TBuilder Set<TValue>(System.Linq.Expressions.Expression<System.Func<TObject, TValue>> property, System.Func<TValue> factory) { }
     }
 }
 namespace TestStack.Dossier.DataSources
 {
-    
     public abstract class DataSource<T> : TestStack.Dossier.DataSources.IDataSource<T>
-    
     {
         protected DataSource(TestStack.Dossier.DataSources.Generators.IGenerator generator) { }
         protected DataSource() { }
@@ -218,7 +211,6 @@ namespace TestStack.Dossier.DataSources
         public virtual T Next() { }
     }
     public interface IDataSource<T>
-    
     {
         System.Collections.Generic.IList<T> Data { get; }
         TestStack.Dossier.DataSources.Generators.IGenerator Generator { get; }
@@ -227,7 +219,6 @@ namespace TestStack.Dossier.DataSources
 }
 namespace TestStack.Dossier.DataSources.Dictionaries
 {
-    
     [System.ObsoleteAttribute("FileDictionarySource is deprecated, please use Words(FromDictionary) instead.")]
     public abstract class FileDictionarySource : TestStack.Dossier.DataSources.DataSource<string>
     {
@@ -310,7 +301,6 @@ namespace TestStack.Dossier.DataSources.Dictionaries
 }
 namespace TestStack.Dossier.DataSources.Generators
 {
-    
     public interface IGenerator
     {
         int ListSize { get; set; }
@@ -337,7 +327,6 @@ namespace TestStack.Dossier.DataSources.Generators
 }
 namespace TestStack.Dossier.DataSources.Geography
 {
-    
     [System.ObsoleteAttribute("GeoContinentSource is deprecated, please use Words(FromDictionary.GeoContinent) i" +
         "nstead.")]
     public class GeoContinentSource : TestStack.Dossier.DataSources.Dictionaries.FileDictionarySource
@@ -371,7 +360,6 @@ namespace TestStack.Dossier.DataSources.Geography
 }
 namespace TestStack.Dossier.DataSources.Person
 {
-    
     [System.ObsoleteAttribute("PersonEmailAddressSource is deprecated, please use Words(FromDictionary.PersonEma" +
         "ilAddress) instead.")]
     public class PersonEmailAddressSource : TestStack.Dossier.DataSources.Dictionaries.FileDictionarySource
@@ -430,7 +418,6 @@ namespace TestStack.Dossier.DataSources.Person
 }
 namespace TestStack.Dossier.DataSources.Picking
 {
-    
     public class Pick
     {
         public Pick() { }
@@ -438,13 +425,11 @@ namespace TestStack.Dossier.DataSources.Picking
         public static TestStack.Dossier.DataSources.Picking.RepeatingSequenceSource<T> RepeatingSequenceFrom<T>(System.Collections.Generic.IList<T> list) { }
     }
     public class RandomItemSource<T> : TestStack.Dossier.DataSources.DataSource<T>
-    
     {
         public RandomItemSource(System.Collections.Generic.IList<T> list) { }
         protected override System.Collections.Generic.IList<T> InitializeDataSource() { }
     }
     public class RepeatingSequenceSource<T> : TestStack.Dossier.DataSources.DataSource<T>
-    
     {
         public RepeatingSequenceSource(System.Collections.Generic.IList<T> list) { }
         protected override System.Collections.Generic.IList<T> InitializeDataSource() { }
@@ -452,7 +437,6 @@ namespace TestStack.Dossier.DataSources.Picking
 }
 namespace TestStack.Dossier.EquivalenceClasses
 {
-    
     public class static EnumEquivalenceClasses
     {
         public static TEnum Except<TEnum>(this TestStack.Dossier.AnonymousValueFixture fixture, params TEnum[] except)
@@ -477,7 +461,6 @@ namespace TestStack.Dossier.EquivalenceClasses
 }
 namespace TestStack.Dossier.EquivalenceClasses.Geo
 {
-    
     public class static GeographyEquivalenceClassescs
     {
         [System.ObsoleteAttribute("Continent is deprecated, please use Geography.Continent instead.")]
@@ -494,7 +477,6 @@ namespace TestStack.Dossier.EquivalenceClasses.Geo
 }
 namespace TestStack.Dossier.EquivalenceClasses.Person
 {
-    
     public class static PersonEquivalenceClasses
     {
         [System.ObsoleteAttribute("EmailAddress is deprecated, please use Person.EmailAddress instead.")]
@@ -521,7 +503,6 @@ namespace TestStack.Dossier.EquivalenceClasses.Person
 }
 namespace TestStack.Dossier.Factories
 {
-    
     public class AllPropertiesFactory : TestStack.Dossier.Factories.CallConstructorFactory
     {
         public AllPropertiesFactory() { }
@@ -559,7 +540,6 @@ namespace TestStack.Dossier.Factories
 }
 namespace TestStack.Dossier.Lists
 {
-    
     public class ListBuilder<TObject, TBuilder>
         where TObject :  class
         where TBuilder : TestStack.Dossier.TestDataBuilder<, >, new ()
@@ -567,6 +547,7 @@ namespace TestStack.Dossier.Lists
         public TBuilder All() { }
         public System.Collections.Generic.IList<TObject> BuildList() { }
         public System.Collections.Generic.IEnumerable<TBuilder> GetBuilders() { }
+        public static System.Collections.Generic.List<TObject> op_Implicit(TestStack.Dossier.Lists.ListBuilder<TObject, TBuilder> builder) { }
         public TBuilder TheFirst(int howMany) { }
         public TBuilder TheLast(int howMany) { }
         public TBuilder TheNext(int howMany) { }
@@ -600,7 +581,6 @@ namespace TestStack.Dossier.Lists
 }
 namespace TestStack.Dossier.Suppliers
 {
-    
     public class DefaultEmailValueSupplier : TestStack.Dossier.IAnonymousValueSupplier
     {
         public DefaultEmailValueSupplier() { }

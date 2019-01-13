@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using Ploeh.AutoFixture;
+using AutoFixture;
 using TestStack.Dossier.DataSources.Dictionaries;
 using TestStack.Dossier.Suppliers;
 

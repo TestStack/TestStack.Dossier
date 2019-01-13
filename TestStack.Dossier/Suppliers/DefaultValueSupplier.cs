@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 
 namespace TestStack.Dossier.Suppliers
 {
@@ -17,7 +18,7 @@ namespace TestStack.Dossier.Suppliers
         public object GenerateAnonymousValue(AnonymousValueFixture any, Type type, string propertyName)
         {
             // See stackoverflow: http://stackoverflow.com/questions/325426/programmatic-equivalent-of-defaulttype
-            if (type.IsValueType)
+            if (type.GetTypeInfo().IsValueType)
             {
                 return Activator.CreateInstance(type);
             }

@@ -9,8 +9,8 @@ namespace TestStack.Dossier.Tests.PublicApiApproval
         public void GivenDossierAssembly_WhenPublicApiChecked_ShouldHaveNoChanges()
         {
             ShouldlyConfiguration.DiffTools.KnownDoNotLaunchStrategies.TeamCity.ShouldNotLaunch();
-            var dossierAssembly = typeof (AnonymousValueFixture).Assembly;
-            var publicApi = PublicApiGenerator.PublicApiGenerator.GetPublicApi(dossierAssembly);
+            var dossierAssembly = typeof(AnonymousValueFixture).Assembly;
+            var publicApi = PublicApiGenerator.ApiGenerator.GeneratePublicApi(dossierAssembly, shouldIncludeAssemblyAttributes: false);
             publicApi.ShouldMatchApproved();
         }
     }

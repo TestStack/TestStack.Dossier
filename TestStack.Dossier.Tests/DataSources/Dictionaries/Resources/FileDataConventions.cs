@@ -13,7 +13,7 @@ namespace TestStack.Dossier.Tests.DataSources.Dictionaries.Resources
         [Fact]
         public void ApplyConventions()
         {
-            var assembly = typeof(IAnonymousValueSupplier).Assembly;
+            var assembly = typeof(IAnonymousValueSupplier).GetTypeInfo().Assembly;
             var resources = assembly
                 .GetManifestResourceNames()
                 .Where(x => x.EndsWith(".txt"))
@@ -27,7 +27,7 @@ namespace TestStack.Dossier.Tests.DataSources.Dictionaries.Resources
             }
         }
 
-        public void Should_not_contain_duplicates(List<string> collection, string fileName)
+        private void Should_not_contain_duplicates(List<string> collection, string fileName)
         {
             var duplicates = collection
                 .GroupBy(x => x)
@@ -43,7 +43,7 @@ namespace TestStack.Dossier.Tests.DataSources.Dictionaries.Resources
             }
         }
 
-        public void Should_not_contain_null_or_empty_values(List<string> collection, string fileName)
+        private void Should_not_contain_null_or_empty_values(List<string> collection, string fileName)
         {
             var blanks = collection.Where(string.IsNullOrEmpty).ToList();
             if (blanks.Any())

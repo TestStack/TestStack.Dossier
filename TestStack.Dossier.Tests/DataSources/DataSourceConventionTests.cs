@@ -3,14 +3,14 @@ using System.Linq;
 using Shouldly;
 using TestStack.Dossier.DataSources;
 using TestStack.Dossier.DataSources.Dictionaries;
-using Xunit.Extensions;
+using Xunit;
 
 namespace TestStack.Dossier.Tests.DataSources
 {
     public class DataSourceConventionTests
     {
         [Theory]
-        [PropertyData("TestCases")]
+        [MemberData(nameof(TestCases))]
         public void DataSourceConventions(DataSource<string> sut, int expectedCount)
         {
             var collection = sut.Data.ToList();

@@ -22,7 +22,7 @@ namespace TestStack.Dossier.DataSources.Dictionaries
             else
             {
                 var resourceName = string.Format("TestStack.Dossier.DataSources.Dictionaries.Resources.{0}", name);
-                words = GetWordsFromEmbeddedResource(GetType().Assembly, resourceName).ToList();
+                words = GetWordsFromEmbeddedResource(GetType().GetTypeInfo().Assembly, resourceName).ToList();
             }
 
             return words;
