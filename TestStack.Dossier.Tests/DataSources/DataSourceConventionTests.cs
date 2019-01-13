@@ -10,7 +10,7 @@ namespace TestStack.Dossier.Tests.DataSources
     public class DataSourceConventionTests
     {
         [Theory]
-        [MemberData("TestCases")]
+        [MemberData(nameof(TestCases))]
         public void DataSourceConventions(DataSource<string> sut, int expectedCount)
         {
             var collection = sut.Data.ToList();

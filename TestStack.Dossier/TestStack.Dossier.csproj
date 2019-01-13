@@ -1,10 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard1.5;net452</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <AssemblyName>TestStack.Dossier</AssemblyName>
     <PackageId>TestStack.Dossier</PackageId>
-    <PackageVersion>4.0.0</PackageVersion>
     <Authors>Robert Moore, Michael Whelan, TestStack</Authors>
     <Description>
       TestStack.Dossier provides you with the code infrastructure to easily and quickly generate test fixture data for your automated tests in a terse, readable and maintainable way using the Test Data Builder, anonymous value and equivalence class patterns. Formerly called NTestDataBuilder.
@@ -149,8 +148,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoFixture" Version="4.0.0-rc1" />
-    <PackageReference Include="Castle.Core" Version="4.2.1" />
+    <PackageReference Include="AutoFixture" Version="4.6.0" />
+    <PackageReference Include="Castle.Core" Version="4.3.1" />
     <PackageReference Include="NSubstitute" Version="3.1.0" />
   </ItemGroup>
 

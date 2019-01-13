@@ -22,11 +22,11 @@ namespace TestStack.Dossier.Tests.EquivalenceClasses
         {
             return new List<object[]>
             {
-                new object[] {new Words(FromDictionary.GeoContinent), GenerateTestCasesForSut(Any.Continent)},
-                new object[] {new Words(FromDictionary.GeoCountry), GenerateTestCasesForSut(Any.Country)},
-                new object[] {new Words(FromDictionary.GeoCountryCode), GenerateTestCasesForSut(Any.CountryCode)},
-                new object[] {new Words(FromDictionary.GeoLatitude), GenerateTestCasesForSut(Any.Latitude)},
-                new object[] {new Words(FromDictionary.GeoLongitude), GenerateTestCasesForSut(Any.Longitude)},
+                new object[] {new Words(FromDictionary.GeoContinent), GenerateTestCasesForSut(Any.Geography.Continent)},
+                new object[] {new Words(FromDictionary.GeoCountry), GenerateTestCasesForSut(Any.Geography.Country)},
+                new object[] {new Words(FromDictionary.GeoCountryCode), GenerateTestCasesForSut(Any.Geography.CountryCode)},
+                new object[] {new Words(FromDictionary.GeoLatitude), GenerateTestCasesForSut(Any.Geography.Latitude)},
+                new object[] {new Words(FromDictionary.GeoLongitude), GenerateTestCasesForSut(Any.Geography.Longitude)},
             };
         }
     }

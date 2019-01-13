@@ -170,6 +170,7 @@ namespace TestStack.Dossier.Tests
             studentViewModels.Select(x => x.Grade).ShouldBeUnique();
         }
 
+        [Fact]
         public void WhenBuildingObjectsWithCtorAndPrivateSetters_ThenSetPrivateSettersByDefault()
         {
             var dto = Builder<MixedAccessibilityDto>.CreateListOfSize(1)
