@@ -22,7 +22,6 @@ namespace TestStack.Dossier
         /// <summary>
         /// Generate and return a finance credit card number.
         /// </summary>
-        /// <param name="fixture">The fixture to generate a value for.</param>
         /// <returns>The generated value.</returns>
         public string CreditCardNumber()
         {
@@ -32,7 +31,6 @@ namespace TestStack.Dossier
         /// <summary>
         /// Generate and return a finance credit card type.
         /// </summary>
-        /// <param name="fixture">The fixture to generate a value for.</param>
         /// <returns>The generated value.</returns>
         public string CreditCardType()
         {
@@ -42,7 +40,6 @@ namespace TestStack.Dossier
         /// <summary>
         /// Generate and return a finance currency name.
         /// </summary>
-        /// <param name="fixture">The fixture to generate a value for.</param>
         /// <returns>The generated value.</returns>
         public string Currency()
         {
@@ -52,7 +49,6 @@ namespace TestStack.Dossier
         /// <summary>
         /// Generate and return a finance currency code.
         /// </summary>
-        /// <param name="fixture">The fixture to generate a value for.</param>
         /// <returns>The generated value.</returns>
         public string CurrencyCode()
         {

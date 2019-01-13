@@ -12,7 +12,19 @@
     <PackageTags>testing data-generation test-fixture nbuilder nsubstitute autofixture mocking equivalence-class test-data-builder anonymous-value ntestdatabuilder</PackageTags>
     <RepositoryUrl>https://github.com/TestStack/TestStack.Dossier</RepositoryUrl>
   </PropertyGroup>
-  
+
+  <PropertyGroup>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <Target Name="PrepublishScript" BeforeTargets="PrepareForPublish">
+    <ItemGroup>
+      <DocFile Include="bin\$(Configuration)\$(TargetFramework)\$(TargetName).xml" />
+    </ItemGroup>
+    <Copy SourceFiles="@(DocFile)" DestinationFolder="$(PublishDir)" SkipUnchangedFiles="false" />
+  </Target>
+
   <ItemGroup>
     <None Remove="DataSources\Dictionaries\Resources\AddressAusCity.txt" />
     <None Remove="DataSources\Dictionaries\Resources\AddressAusCompany.txt" />
