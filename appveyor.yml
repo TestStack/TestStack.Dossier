@@ -16,7 +16,7 @@ before_build:
 
     npm install github-release-notes -g
 build_script:
-- dotnet build --source "**/*.csproj" --configuration Release --verbosity minimal -p:VersionPrefix="$(GitVersion_NuGetVersion)" -p:FileVersion="$(GitVersion_AssemblySemFileVer)" -p:InformationalVersion="$(GitVersion_InformationalVersion)"
+- ps: dotnet build --source "**/*.csproj" --configuration Release --verbosity minimal -p:VersionPrefix="$Env:GitVersion_NuGetVersion" -p:FileVersion="$Env:GitVersion_AssemblySemFileVer" -p:InformationalVersion="$Env:GitVersion_InformationalVersion"
 after_build:
 - ps: >-
     dotnet pack $Env:APPVEYOR_PROJECT_NAME/$Env:APPVEYOR_PROJECT_NAME.csproj --configuration Release /p:PackageVersion="$Env:GitVersion_NuGetVersion" --no-build --output "$Env:APPVEYOR_BUILD_FOLDER" --include-symbols
