@@ -10,7 +10,7 @@ before_build:
 - ps: >-
     dotnet restore
 
-    dotnet tool install -g GitVersion.Tool -version 4.0.1-beta1-58
+    dotnet tool install -g GitVersion.Tool --version 4.0.1-beta1-58
 
     dotnet gitversion /output buildserver
 
@@ -28,7 +28,7 @@ build:
   verbosity: minimal
 after_build:
 - ps: >-
-    dotnet pack $Env:APPVEYOR_PROJECT_NAME/$Env:APPVEYOR_PROJECT_NAME.csproj --configuration Release /p:Version="$Env:GitVersion_NuGetVersion"
+    dotnet pack $Env:APPVEYOR_PROJECT_NAME/$Env:APPVEYOR_PROJECT_NAME.csproj --configuration Release /p:Version="$Env:GitVersion_NuGetVersion" --no-build
 
     $currentCommitIsTagged = git tag -l --points-at HEAD
 
