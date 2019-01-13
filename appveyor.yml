@@ -15,17 +15,8 @@ before_build:
     dotnet gitversion /output buildserver
 
     npm install github-release-notes -g
-dotnet_csproj:
-  patch: true
-  file: '**\*.csproj'
-  version: '{version}'
-  package_version: $(GitVersion_NuGetVersion)
-  assembly_version: $(GitVersion_AssemblySemVer)
-  file_version: $(GitVersion_AssemblySemFileVer)
-  informational_version: (GitVersion_InformationalVersion$)
-build:
-  parallel: true
-  verbosity: minimal
+build_script:
+- dotnet build **\*.csproj --configuration Release -p:VersionPrefix="$Env:GitVersion_NuGetVersion" --verbosity minimal --version-suffix "$Env:GitVersion_NuGetVersion" -p:FileVersion "$Env:GitVersion_AssemblySemFileVer" -p:InformationalVersion "$Env:GitVersion_InformationalVersion"
 after_build:
 - ps: >-
     dotnet pack $Env:APPVEYOR_PROJECT_NAME/$Env:APPVEYOR_PROJECT_NAME.csproj --configuration Release /p:PackageVersion="$Env:GitVersion_NuGetVersion" --no-build --output "$Env:APPVEYOR_BUILD_FOLDER" --include-symbols
