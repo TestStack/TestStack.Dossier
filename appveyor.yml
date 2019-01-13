@@ -8,28 +8,30 @@ environment:
     secure: cBxvAtTgSlWVblTXtx8QKygh2HQeYZ9i0plMjJzCTNInGCm1XyG+nrSs18qUtC8W
 before_build:
 - ps: >-
-    nuget restore
+    dotnet restore
 
-    choco install -y --no-progress git.install GitReleaseManager.Portable
+    dotnet tool install -g GitVersion.Tool
+
+    dotnet gitversion /output buildserver
 
     npm install github-release-notes -g
-    
-    GitVersion /output buildserver /updateassemblyinfo
-
-    If (Test-Path ".\PreBuild.ps1") {
-
-      & ".\PreBuild.ps1"
-
-    }
-
+dotnet_csproj:
+  patch: true
+  file: '**\*.csproj'
+  version: '{version}'
+  package_version: $(GitVersion_NuGetVersion)
+  assembly_version: $(GitVersion_AssemblySemVer)
+  file_version: $(GitVersion_AssemblySemFileVer)
+  informational_version: (GitVersion_InformationalVersion$)
 build:
   parallel: true
   verbosity: minimal
+  publish_nuget: true
 after_build:
 - ps: >-
-    Get-ChildItem -Recurse *.nuspec | foreach { nuget pack $_.FullName -Properties "Configuration=Release;Platform=AnyCPU" -Symbols -Version $Env:GitVersion_NuGetVersion }
+    #dotnet pack $Env:APPVEYOR_PROJECT_NAME/$Env:APPVEYOR_PROJECT_NAME.csproj --configuration Release /p:Version="$Env:GitVersion_NuGetVersion"
 
-    $currentTag = git tag -l --points-at HEAD
+    $currentCommitIsTagged = git tag -l --points-at HEAD
 
     $HTTP_Request = [System.Net.WebRequest]::Create("https://api.github.com/repos/$env:GitHubOrganisation/$env:APPVEYOR_PROJECT_NAME/releases/tags/$Env:GitVersion_NuGetVersion")
 
@@ -42,8 +44,9 @@ after_build:
     } catch [Net.WebException] { 
 
         [System.Net.HttpWebResponse] $resp = [System.Net.HttpWebResponse] $_.Exception.Response  
+        $noExistingGitHubRelease = $resp.StatusCode -eq 404
 
-        if ($currentTag -And $resp.StatusCode -eq 404) {
+        if ($currentCommitIsTagged -And $noExistingGitHubRelease) {
 
           $env:SHOULD_DEPLOY = 'true'
 
