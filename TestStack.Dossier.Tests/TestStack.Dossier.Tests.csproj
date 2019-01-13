@@ -8,6 +8,7 @@
     <PackageReference Include="Castle.Core" Version="4.3.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
     <PackageReference Include="NSubstitute" Version="3.1.0" />
+    <PackageReference Include="publicapigenerator" Version="8.1.0" />
     <PackageReference Include="Shouldly" Version="3.0.2" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.5.0" />
     <PackageReference Include="xunit" Version="2.4.1" />
