@@ -6,8 +6,6 @@ environment:
   GitHubOrganisation: TestStack
   GitHubToken:
     secure: cBxvAtTgSlWVblTXtx8QKygh2HQeYZ9i0plMjJzCTNInGCm1XyG+nrSs18qUtC8W
-init:
-- ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 before_build:
 - ps: >-
     nuget restore
@@ -61,7 +59,7 @@ artifacts:
 deploy:
 - provider: NuGet
   api_key:
-    secure: sci7t37NkV5yoBPRwJjCMeU05wviPFOeRGFqYo1hkGWITUTuPNa8MefokUSHUwhv
+    secure: VwHQFq0vD5vJNiUtsZMgUYdw2tVfXJfWh++eHC2LyEMvQzWiESWy2yBwQajzYAjo
   on:
     SHOULD_DEPLOY: true
 after_deploy:
