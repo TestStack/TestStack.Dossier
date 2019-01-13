@@ -5,6 +5,7 @@ VisualStudioVersion = 15.0.26430.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BC8508D1-6FCB-46B2-9C14-F41F6AD76B09}"
 	ProjectSection(SolutionItems) = preProject
+		appveyor.yml = appveyor.yml
 		BREAKING_CHANGES.md = BREAKING_CHANGES.md
 		CONTRIBUTING.md = CONTRIBUTING.md
 		GitVersionConfig.yaml = GitVersionConfig.yaml
@@ -34,5 +35,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B1C35ECA-9807-42D4-935A-186845AF20A3}
 	EndGlobalSection
 EndGlobal
