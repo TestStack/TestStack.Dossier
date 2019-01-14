@@ -1,5 +1,9 @@
 # TestStack.Dossier
 
+[![Build status](https://ci.appveyor.com/api/projects/status/h8d3xulha7ecwb6m/branch/master?svg=true)](https://ci.appveyor.com/project/MRCollective/nhibernate-sqlazure)
+[![NuGet downloads](https://img.shields.io/nuget/dt/TestStack.Dossier.svg)](https://www.nuget.org/packages/TestStack.Dossier) 
+[![NuGet version](https://img.shields.io/nuget/vpre/TestStack.Dossier.svg)](https://www.nuget.org/packages/TestStack.Dossier)
+
 TestStack.Dossier provides you with the code infrastructure to easily and quickly generate test fixture data for your automated tests in a terse, readable and maintainable way using the Test Data Builder, anonymous value and equivalence class patterns.
 
 For more information please see the [blog post](http://robdmoore.id.au/blog/2013/05/26/test-data-generation-the-right-way-object-mother-test-data-builders-nsubstitute-nbuilder/) that gives the theory behind the approach this library was intended for and the [presentation and example code](https://github.com/robdmoore/TestFixtureDataGenerationPresentation) that gives a concrete example of the usage of the library (and the theory behind it).
