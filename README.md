@@ -22,7 +22,7 @@ Prior to v2.0 this library was known as NTestDataBuilder.
 3. If you want to build a custom builder class, e.g. for a domain object, so you can use the builder
     as documentation and also to make the experience of building that class in your tests more rich
     then you need to extend the TestDataBuilder class like in the following code example:
-
+```csharp
         // Customer.cs
         
         public class Customer
@@ -96,19 +96,19 @@ Prior to v2.0 this library was known as NTestDataBuilder.
                 );
             }
         }
-
+```
 4. Use the builder in a test, e.g.
-
+```csharp
 		var customer = new CustomerBuilder()
 			.WithFirstName("Robert")
 			.Build();
-
+```
 5. Consider using the Object Mother pattern in combination with the builders, see [my blog post](http://robdmoore.id.au/blog/2013/05/26/test-data-generation-the-right-way-object-mother-test-data-builders-nsubstitute-nbuilder/) for a description of how I use this library.
 
 ## Getting started - building a list of objects
 
 This library allows you to build a list of entities fluently and tersely. Here is an example:
-
+```csharp
     var customers = CustomerBuilder.CreateListOfSize(5)
         .TheFirst(1).WithFirstName("First")
         .TheNext(1).WithLastName("Next Last")
@@ -116,9 +116,9 @@ This library allows you to build a list of entities fluently and tersely. Here i
         .ThePrevious(2).With(b => b.WithLastName("last" + (++i).ToString()))
         .All().WhoJoinedIn(1999)
         .BuildList();
-
+```
 This would create the following (represented as json) - note the anonymous values that are generated:
-
+```json
 	[
 	    {
 	        "FirstName":"First",
@@ -146,7 +146,7 @@ This would create the following (represented as json) - note the anonymous value
 	        "YearJoined":1999
 	    }
 	]
-
+```
 
 The same works with the generic `Builder<T>` implementation too.
 
