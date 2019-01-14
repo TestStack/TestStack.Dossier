@@ -6,7 +6,7 @@
 
 TestStack.Dossier provides you with the code infrastructure to easily and quickly generate test fixture data for your automated tests in a terse, readable and maintainable way using the Test Data Builder, anonymous value and equivalence class patterns.
 
-For more information please see the [blog post](http://robdmoore.id.au/blog/2013/05/26/test-data-generation-the-right-way-object-mother-test-data-builders-nsubstitute-nbuilder/) that gives the theory behind the approach this library was intended for and the [presentation and example code](https://github.com/robdmoore/TestFixtureDataGenerationPresentation) that gives a concrete example of the usage of the library (and the theory behind it).
+For more information please see the [blog post](http://robdmoore.id.au/blog/2013/05/26/test-data-generation-the-right-way-object-mother-test-data-builders-nsubstitute-nbuilder) that gives the theory behind the approach this library was intended for and the [presentation and example code](https://github.com/robdmoore/TestFixtureDataGenerationPresentation) that gives a concrete example of the usage of the library (and the theory behind it).
 
 TestStack.Dossier is integrated with NSubstitute for proxy/mock/substitute object generation and AutoFixture for anonymous value generation. Version 1 was integrated with NBuilder for list generation, but that is now replaced with internal code that uses Castle Dynamic Proxy (il-merged into the dll) for an even terser syntax.
 
